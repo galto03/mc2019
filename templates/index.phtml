@@ -19,28 +19,33 @@
 
 
     <div id="sky"></div>
-    <div id="sun" class="env hidden">
-        <img src="img/sun_large.png" />
+    <div id="sun_and_moon" class="env hidden">
+        <img id="img_sun" src="img/sun_large.png"/>
+        <img id="img_moon" src="img/moon.svg"/>
     </div>
     <div id="ground" class="env hidden"></div>
     <button style="z-index:1000000; position: absolute" id="switch">switch</button>
+    <div id="night_overly" class="env"></div>
 </div>
 
 </body>
 <script>
   "use strict";
-  $(function() {
+  $(function () {
     var $env = $('.env');
 
-    $(window).on('load', function() {
-      $env.removeClass('hidden');
-    });
+    $(window)
+      .on('load', function () {
+        $env.removeClass('hidden');
+      });
 
-    $('#switch').on('click', function() {
-      $('#site_container').animate({'backgroundColor':'#000'}, 5000);
-      $('#stars_container').animate({'opacity':1}, 5000);
-      $env.addClass('night')
-    });
+    $('#switch')
+      .on('click', function () {
+        $('#site_container').animate({'backgroundColor': '#000'}, 5000);
+        $('#stars_container').animate({'opacity': 1}, 5000);
+
+        $env.addClass('night')
+      });
 
   });
 </script>

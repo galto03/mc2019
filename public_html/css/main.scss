@@ -6,6 +6,24 @@ body, html {
     overflow: hidden;
 }
 
+/* Night Overly **************************************************************/
+#night_overly {
+    width: 100%;
+    height: 1100px;
+    background-color: black;
+    overflow:hidden;
+    z-index: 4;
+    position: absolute;
+    opacity: 0;
+
+    &.night {
+        transition: opacity 5s;
+        opacity: 0.3;
+    }
+
+}
+
+
 /* Site Container **************************************************************/
 #site_container {
     width: 100%;
@@ -15,7 +33,7 @@ body, html {
 
 /* Ground **************************************************************/
 #ground {
-    background-image: url(http://dev.metaclock.com:8081/img/surface.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/surface.png);
     background-size: cover;
     background-repeat: repeat-x;
     top: 167px;
@@ -31,15 +49,10 @@ body, html {
     &.hidden {
         top: 110%;
     }
-
-    &.night {
-        //background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(http://dev.metaclock.com:8081/img/surface.png);
-
-    }
 }
 
-/* Sun **************************************************************/
-#sun {
+/* Sun and Moon **************************************************************/
+#sun_and_moon {
     top: 350px;
     position: absolute;
     left: calc(50% - 330px);
@@ -54,15 +67,32 @@ body, html {
         top: 100%
     }
 
-    img {
+    #img_sun {
         position: absolute;
         top:0;
         -webkit-animation: rotation 100s infinite linear;
+        opacity: 1;
+    }
+
+    #img_moon {
+        position: absolute;
+        -webkit-animation: rotation 100s infinite linear;
+        opacity: 0;
+        top: 100%;
     }
 
     &.night {
-        transition: all 6s;
-        top: 100%
+        #img_sun {
+            transition: top 6s;
+            top: 100%;
+        }
+        #img_moon {
+            transition: top 5s;
+            top: 0;
+            transition-delay: 2s;
+            opacity: 1;
+
+        }
 
     }
 }
@@ -73,6 +103,8 @@ body, html {
     overflow: hidden;
     z-index: 2;
     opacity: 0.6;
+    transition: opacity 2s;
+
 
     &#cloud_1 {
         top: 167px;
@@ -81,7 +113,7 @@ body, html {
         background-size: 100%;
         width: 200px;
         height: 158px;
-        -webkit-animation: cloudFlyLeft 60s infinite ease;
+        -webkit-animation: cloudFlyLeft 60s infinite linear;
     }
 
     &#cloud_2 {
@@ -91,7 +123,7 @@ body, html {
         background-size: 100%;
         width: 163px;
         height: 130px;
-        -webkit-animation: cloudFlyRight 55s infinite ease;
+        -webkit-animation: cloudFlyRight 55s infinite linear;
     }
 
     &#cloud_3 {
@@ -101,7 +133,7 @@ body, html {
         background-size: 100%;
         width: 220px;
         height: 178px;
-        -webkit-animation: cloudFlyRight 50s infinite ease;
+        -webkit-animation: cloudFlyRight 50s infinite linear;
     }
 
     &.night {
