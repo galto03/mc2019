@@ -1,28 +1,47 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="/css/main.css">
+
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/jquery.color.js"></script>
 </head>
 <body>
 
 <div id="site_container">
+    <div id="stars_container">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
 
-    <div id="cloud_1"></div>
-    <div id="cloud_2"></div>
-    <div id="cloud_3"></div> <!-- Opposite direction -->
-    <div id="star_1"></div>
-    <div id="star_2"></div>
-    <div id="star_3"></div>
-    <div id="star_4"></div>
-    <div id="star_5"></div>
-    <div id="star_6"></div>
-    <div id="star_7"></div>
-    <div id="star_8"></div>
-    <div id="star_9"></div>
-    <div id="star_10"></div>
+    <div id="cloud_1" class="env cloud"></div>
+    <div id="cloud_2" class="env cloud"></div>
+    <div id="cloud_3" class="env cloud"></div>
+
+
     <div id="sky"></div>
-    <div id="sun_and_moon"></div>
-    <div id="ground"></div>
+    <div id="sun" class="env hidden">
+        <img src="img/sun_large.png" />
+    </div>
+    <div id="ground" class="env hidden"></div>
+    <button style="z-index:1000000; position: absolute" id="switch">switch</button>
 </div>
 
 </body>
+<script>
+  "use strict";
+  $(function() {
+    var $env = $('.env');
+
+    $(window).on('load', function() {
+      $env.removeClass('hidden');
+    });
+
+    $('#switch').on('click', function() {
+      $('#site_container').animate({'backgroundColor':'#000'}, 5000);
+      $('#stars_container').animate({'opacity':1}, 5000);
+      $env.addClass('night')
+    });
+
+  });
+</script>
 </html>

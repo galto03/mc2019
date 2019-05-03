@@ -1,0 +1,215 @@
+body, html {
+  margin: 0;
+  background: #73beea;
+  font-family: "Heebo", sans-serif;
+  height: 1100px;
+  overflow: hidden;
+}
+
+/* Site Container **************************************************************/
+#site_container {
+  width: 100%;
+  height: 1100px;
+  background-color: #73beea;
+}
+
+/* Ground **************************************************************/
+#ground {
+  background-image: url(http://dev.metaclock.com:8081/img/surface.png);
+  background-size: cover;
+  background-repeat: repeat-x;
+  top: 167px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  max-width: 1920px;
+  height: 91%;
+  overflow: hidden;
+  transition: all 0.5s;
+  z-index: 3;
+}
+#ground.hidden {
+  top: 110%;
+}
+/* Sun **************************************************************/
+#sun {
+  top: 350px;
+  position: absolute;
+  left: calc(50% - 330px);
+  overflow: hidden;
+  transition: all 1s;
+  transition-delay: 1s;
+  height: 500px;
+  width: 667px;
+  z-index: 2;
+}
+#sun.hidden {
+  top: 100%;
+}
+#sun img {
+  position: absolute;
+  top: 0;
+  -webkit-animation: rotation 100s infinite linear;
+}
+#sun.night {
+  transition: all 6s;
+  top: 100%;
+}
+
+/* Clouds **************************************************************/
+.cloud {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  opacity: 0.6;
+}
+.cloud#cloud_1 {
+  top: 167px;
+  left: calc(50% - 330px);
+  background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
+  background-size: 100%;
+  width: 200px;
+  height: 158px;
+  -webkit-animation: cloudFlyLeft 60s infinite ease;
+}
+.cloud#cloud_2 {
+  top: 367px;
+  right: 0;
+  background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
+  background-size: 100%;
+  width: 163px;
+  height: 130px;
+  -webkit-animation: cloudFlyRight 55s infinite ease;
+}
+.cloud#cloud_3 {
+  top: 267px;
+  right: 100px;
+  background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
+  background-size: 100%;
+  width: 220px;
+  height: 178px;
+  -webkit-animation: cloudFlyRight 50s infinite ease;
+}
+.cloud.night {
+  opacity: 0;
+}
+
+/* Stars **************************************************************/
+.stars, .twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index: 2;
+}
+
+.twinkling {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index: 2;
+  animation: move-twink-back 200s linear infinite;
+}
+
+#stars_container {
+  opacity: 0;
+}
+
+/* Keyframes **************************************************************/
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes cloudFlyLeft {
+  from {
+    left: -200px;
+  }
+  to {
+    left: 100%;
+  }
+}
+@-webkit-keyframes cloudFlyRight {
+  from {
+    right: -220px;
+  }
+  to {
+    right: 100%;
+  }
+}
+/* Stars **************************************************************/
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-webkit-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-moz-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-ms-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-webkit-keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-moz-keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-ms-keyframes move-clouds-back {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
