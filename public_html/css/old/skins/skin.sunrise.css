@@ -1,0 +1,15 @@
+#page-bg {
+  background-image: url("../../img/landscape/sunrise.png") !important; }
+
+.page-container .header .link {
+  color: #ededed;
+  text-decoration: underline; }
+.page-container .header .sublink {
+  color: #a6b2aa;
+  text-decoration: underline; }
+.page-container .clock-container .wake-me-up-at {
+  color: #fff; }
+.page-container .clock-container .time-picker {
+  color: #3f51b5; }
+
+/*# sourceMappingURL=skin.sunrise.css.map */

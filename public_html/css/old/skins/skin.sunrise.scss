@@ -1,0 +1,35 @@
+#page-bg {
+  background-image: url('../../img/landscape/sunrise.png') !important;
+}
+
+.page-container {
+
+  .header {
+
+    .link {
+      color: #ededed;
+      text-decoration: underline;
+    }
+
+    .sublink {
+      color: #a6b2aa;
+      text-decoration: underline;
+    }
+  }
+
+  .widget-box {
+  }
+
+  .clock-container {
+
+    .wake-me-up-at {
+      color: #fff;
+    }
+
+    .time-picker {
+      color: #3f51b5;
+    }
+
+  }
+
+}

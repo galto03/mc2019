@@ -1,0 +1,12 @@
+@import url(../../normalize.css);
+body {
+  background-image: url(../../../img/landscape/night.png); }
+
+.page-container .header .link {
+  color: #ededed;
+  text-decoration: underline; }
+.page-container .header .sublink {
+  color: #a6b2aa;
+  text-decoration: underline; }
+
+/*# sourceMappingURL=night.css.map */

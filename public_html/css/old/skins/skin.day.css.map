@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACP,gBAAgB,EAAE,6CAA6C",
+"sources": ["skin.day.scss"],
+"names": [],
+"file": "skin.day.css"
+}

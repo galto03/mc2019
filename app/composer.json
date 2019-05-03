@@ -1,0 +1,19 @@
+{
+    "require": {
+        "slim/slim": "^3.12",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "^1.17",
+        "akrabat/rka-slim-session-middleware": "^2.0",
+        "facebook/graph-sdk" : "~5.0",
+        "dflydev/fig-cookies": "^1.0",
+        "martynbiz/slim3-controller": "^0.0.0",
+        "phpmailer/phpmailer": "^5.2"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Models\\": "Models/",
+            "App\\Controller\\": "Controllers/"
+        }
+    }
+}

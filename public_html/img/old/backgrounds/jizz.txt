@@ -1,0 +1,35 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 6C7F-81A7
+
+ Directory of C:\wamp64\www\dev.metaclock.com\public\img\backgrounds
+
+23/04/17  00:24    <DIR>          .
+23/04/17  00:24    <DIR>          ..
+22/04/17  18:38           339,661 astronouts-drinks-beer.jpg
+22/04/17  18:39           552,228 bird-orange-background.jpg
+22/04/17  18:38           888,726 black-stone-water.jpg
+22/04/17  18:39           362,502 black-white-tiger.jpg
+22/04/17  18:37           195,974 boat-in-bottle.jpg
+22/04/17  18:39           220,923 cat-look-at-fish.jpg
+22/04/17  18:37           194,190 cat-shouts.jpg
+22/04/17  18:34           683,729 chinese-scenery.jpg
+22/04/17  18:34           313,988 ciel.jpg
+22/04/17  18:35           606,171 cracky-floor.jpg
+22/04/17  18:35           628,863 dusk-wallpaper.jpg
+22/04/17  18:39           670,161 forest-waterfall.jpg
+23/04/17  00:24                 0 jizz.txt
+22/04/17  18:35           387,951 man-in-lake-forest.jpg
+22/04/17  18:40           827,401 nature-house-trees.jpg
+22/04/17  18:38           351,076 neurons-kiss.jpg
+22/04/17  18:38           230,468 planet-earth-float.jpg
+22/04/17  19:00    <DIR>          previews
+22/04/17  18:35           560,863 road-and-mountains.jpg
+22/04/17  18:35           461,849 sun-and-grass.jpg
+22/04/17  18:35         1,420,253 tree-in-wind.jpg
+22/04/17  18:35           906,367 trees-and-sunlight.jpg
+22/04/17  18:39           134,820 vector-lake-and-grass.jpg
+22/04/17  18:35           259,511 water-house-mountains.jpg
+22/04/17  18:39           690,046 water-path-with-trees.jpg
+22/04/17  18:33           246,044 waterful-landscape.jpg
+              25 File(s)     12,133,765 bytes
+               3 Dir(s)  57,204,637,696 bytes free

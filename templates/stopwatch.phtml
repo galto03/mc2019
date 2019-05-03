@@ -1,0 +1,688 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Social Alarm Clock - MetaClock.com</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!--        <link rel="stylesheet" href="css/normalize.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+
+    <script src="js/vendor/pace.min.js"></script>
+    <link rel="stylesheet" href="css/vendor/jquery.timeentry.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/radial-player.css">
+    <link rel="stylesheet" href="css/vendor/jquery-confirm.min.css">
+    <link rel="stylesheet" href="css/vendor/tippy.css">
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <!--<script src="js/vendor/browserstorage.js"></script>-->
+    <script src="js/vendor/ripple.min.js"></script>
+    <script src="js/vendor/l.min.js"></script>
+    <script src="js/vendor/howler.js"></script>
+    <script src="js/vendor/screenfull.min.js"></script>
+    <script src="js/vendor/lodash.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>-->
+    <script src="js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="js/vendor/moment.js"></script>
+    <script src="js/vendor/jquery.mousewheel.min.js"></script>
+    <script src="js/vendor/jquery.plugin.min.js"></script>
+    <script src="js/vendor/jquery-confirm.min.js"></script>
+    <script src="js/vendor/jquery.timeentry.min.js"></script>
+    <script src="js/vendor/Sortable.min.js"></script>
+    <script src="js/vendor/jquery.cycle.all.js"></script>
+
+    <script src="js/vendor/tippy.min.js"></script>
+    <!--        <script src="js/vendor/js.cookie.js"></script>-->
+    <!--<script src="js/plugins.js"></script>-->
+    <script src="js/main.js"></script>
+</head>
+<body>
+<script>
+    window.userSettings = <?php echo json_encode($userData); ?>;
+
+    // Remove in production
+    window.dbg = function() {
+        _.each(arguments, function(arg, key) {
+            console.log(arg);
+        });
+    };
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '436904686351641',
+            xfbml: true,
+            version: 'v2.8',
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            oauth : true //enables OAuth 2.0
+        });
+        if (typeof App === 'undefined') {
+            window.isFbInit = true;
+        } else {
+            App.initFbUser();
+        }
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<div id="page-bg"></div>
+<div class="page-container">
+    <div class="content-container">
+        <div class="header">
+            <div class="header-content">
+                <img class="logo" src="img/logo.png" alt="MetaClock - Social Online Alarm Clock">
+                <ul class="menu-item menu">
+                    <li class="current">Alarm Clock</li>
+                    <li><a href="stopwatch">Stopwatch</a></li>
+                    <li>Timer</li>
+                    <!--<li>Countdown</li>-->
+                    <li>
+                        <svg style="margin-top: -3px;" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </li>
+                </ul>
+                <div class="menu-item user">
+                    <div class="user-details">
+                        <div class="user-opts">
+                            <div class="user-name" style="display:none">
+                                <div>
+                                    <span>Good afternoon, <a class="link btnProfile" href="#profile">Guest</a></span>
+                                </div>
+                                <div class="actions">
+                                    <a class="link" href="">help</a>
+                                    <span>|</span>
+                                    <a class="link btnLogout" href="javascript:;">logout</a>
+                                </div>
+                            </div>
+                            <div style="display:inline-block; " class="login-btn-wrapper">
+                                        <span class="user-opt">
+                                            <button class="login-btn btnLoginFacebook" style="display:none">
+                                                Login with Facebook
+                                            </button>
+                                        </span>
+                            </div>
+
+                            <img class="user-image" alt="Facebook image" />
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item settings">
+
+                    <svg fill="#FFF" class="settings-item full-screen-btn" onclick="screenfull.toggle();" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-content alarm-init">
+            <div class="widget-box ad-container"></div>
+            <div class="widget-box social-container">
+
+            </div>
+            <div class="group">
+                <div class="widget-box todo-container">
+                    <div class="unfold-btn">
+                        <div class="unfold-text">Todos</div>
+                        <svg class="right-arrow-svg" fill="#2196F3" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path>
+                            <path d="M0-.25h24v24H0z" fill="none"></path>
+                        </svg>
+
+                    </div>
+                    <div class="todos-content-wrapper">
+                        <div class="header">To-do list</div>
+                        <div class="alarm-options" style="height: 46px;">
+                            <svg class="svg-add" fill="#607D8B" width="18" height="18" viewBox="0 0 27 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>+</title>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="plus" fill="#607D8B">
+                                        <polygon points="3 10.16 11.16 10.16 11.16 2 16.28 2 16.28 10.16 24.4 10.16 24.4 15.28 16.28 15.28 16.28 23.44 11.16 23.44 11.16 15.28 3 15.28"></polygon>
+                                    </g>
+                                </g>
+                            </svg>
+                            <svg class="svg-fold" fill="#607D8B" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                            </svg>
+                        </div>
+                        <div class="todo-list-wrapper">
+                            <ul class="todo-list">
+                                <li class="mock-data-template list-item">
+                                    <label class="checkbox">
+                                        <input id="check1" type="checkbox">
+                                        <span class="checkbox-span"></span>
+                                        <input type="text" class="checkbox-text" value="Eat some breakfast"/>
+                                    </label>
+                                    <div class="options-container">
+                                        <ul class="dropdown-menu">
+                                            <li class="drop">
+
+                                                <svg class="svg-opt" fill="#2196F3" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>
+                                                </svg>
+
+                                                <ul style="left: -132px;">
+                                                    <li data-priority="1" class="btn-set-priority">
+                                                        <div class="drop-item-icon">
+                                                            <svg fill="#F44336" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                                <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"></path>
+                                                            </svg>
+
+                                                        </div>
+                                                        <div class="drop-item-text">
+                                                            Important
+                                                        </div>
+                                                    </li>
+                                                    <li data-priority="0" class="btn-set-priority">
+                                                        <div class="drop-item-icon">
+                                                            <svg fill="#686666" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                                <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"></path>
+                                                            </svg>
+
+                                                        </div>
+                                                        <div class="drop-item-text">
+                                                            Normal
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <svg class="svg-opt btn-delete" fill="rgb(60, 144, 63)" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                        </svg>
+                                        <div class="svg-todo-sort-wrapper">
+                                            <svg class="svg-opt svg-todo-sort" fill="#076588" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="widget-box clock-container">
+                    <div class="alarm-state-init">
+
+                        <div class="alarm-options">
+                            <div class="sleep-mode-alert">
+
+                                <svg class="svg-alert" fill="#0289bc" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                                </svg>
+                                <div class="inner-desc">
+                                    Make sure your computer doesn't fall into Sleep Mode.
+                                    <!--(<a class="link" href="#">help</a>)-->
+                                </div>
+
+                            </div>
+
+                            <svg class="svg-top-menu svg-help" fill="#4CAF50" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+                            </svg>
+
+                            <div class="drop user-menu">
+                                <svg class="svg-top-menu svg-user" fill="#FF9800" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/>
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                </svg>
+
+                                <ul>
+                                    <li>
+                                        <div class="drop-item-icon">
+
+
+                                            <svg fill="#2196F3" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                                            </svg>
+
+                                        </div>
+                                        <div class="drop-item-text">
+                                            Alarm history
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="drop-item-icon">
+                                            <svg fill="#FF9800" height="16" width="16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                                                <g><g><path d="M10,775.6h980v122.5H10V775.6z M132.5,530.6H255v183.8H132.5V530.6z M316.3,285.6h122.5v428.8H316.3V285.6z M500,469.4h122.5v245H500V469.4z M683.8,101.9h122.5v612.5H683.8V101.9z"></path></g></g>
+                                            </svg>
+                                        </div>
+                                        <div class="drop-item-text">
+                                            My stats
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <svg class="svg-top-menu svg-settings" fill="#2196F3" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                            </svg>
+
+                        </div>
+                        <div class="clock">
+                            <div class="wake-me-up-at">Wake me up at</div>
+                            <input ondragstart="return false;" ondrop="return false;" type="text" class="time-picker" value="08:00">
+                        </div>
+
+                        <button class="clock-button btn-set-alarm ripple" ripple-color="#0089bc">Set Alarm</button>
+                        <button class="clock-button btn-test-alarm ripple" ripple-color="#e7805f">Test</button>
+
+                        <div class="alarm-info">
+                            <div class="info-box change-tune" style="cursor: pointer; ">
+                                <div class="box-view">
+                                    <svg class=" svg-tune-type svg-tune" fill="#03A9F4" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                                    </svg>
+                                    <img class="box-svg svg-tune-type svg-youtube" src="img/youtube.svg" alt="YouTube" style="display:none; vertical-align: -7px;" />
+                                    <div class="box-content">
+                                        <div class="title-cont">
+                                            <span class="title">Alarm tune</span>
+                                            <!--                                                    <span class="desc">Click to change</span>-->
+                                        </div>
+                                        <span class="link tune-title">Good Morning Beautiful</span>
+                                    </div>
+                                </div>
+                                <div class="box-settings" style="text-align:left">
+                                    <div class="controls">
+                                        <div class="play-wrapper">
+                                            <svg class="svg-play" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                            </svg>
+
+                                            <svg class="svg-pause" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"/>
+                                            </svg>
+                                            <span class="text-play">Play</span>
+                                        </div>
+                                        <div class="like-unlike-wrapper">
+                                            <svg class="svg-share" fill="#4CAF50" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path>
+                                            </svg>
+                                            <svg class="svg-like-unlike" fill="#2196F3" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"></path>
+                                            </svg>
+                                            <div class="like-count">11,023</div>
+                                        </div>
+                                        <div class="info">Click to change</div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="info-box snooze-form-wrapper snooze-on" style="">
+                                <div class="box-view">
+                                    <svg class="box-svg svg-snooze" fill="#03A9F4" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-3-9h3.63L9 15.2V17h6v-2h-3.63L15 10.8V9H9v2z"/>
+                                    </svg>
+                                    <div class="box-content">
+                                        <div class="title-cont">
+                                            <div class="title">
+                                                <span>Snooze</span>
+                                                <div class="link snooze-desc">
+                                                    <span class="snooze-every">Every</span>
+                                                    <strong class="snooze-mins">5</strong> minutes
+                                                    <span class="snooze-x" style="font-weight: bold;color: #04a9f4;">&times;</span>
+                                                    <span class="snooze-times" style="display:none"><strong>5</strong> times</span>
+                                                </div>
+                                            </div>
+                                            <div class="desc" style="top: -2px;">
+                                                <div class="onoffswitch">
+                                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="onoffsnooze" checked>
+                                                    <label class="onoffswitch-label" for="onoffsnooze">
+                                                        <span class="onoffswitch-inner"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <span class="snooze-off-notice">Off</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="box-settings">
+                                    <span>Every</span>
+                                    <select class="snooze-mins-select">
+                                        <option value="3">3</option>
+                                        <option value="5" selected>5</option>
+                                        <option value="7">7</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <span>minutes for</span>
+                                    <select class="snooze-times-select" style="width: 59px">
+                                        <option value="3">3 times</option>
+                                        <option value="5">5 times</option>
+                                        <option value="7">7 times</option>
+                                        <option value="0" selected>ever</option>
+                                    </select>
+                                    <!--                                            <span>times</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alarm-state-scheduled">
+
+                        <div class="alarm-schedule-wrapper">
+                            <!--                                        <svg class="svg-moving-clock" width="200" height="200">-->
+                            <!---->
+                            <!--                                            <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">-->
+                            <!--                                                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>-->
+                            <!--                                                <feOffset in="blur" dx="2.5" dy="2.5"/>-->
+                            <!--                                            </filter>-->
+                            <!---->
+                            <!--                                            <g>-->
+                            <!--                                                <circle id="shadow" style="fill:rgba(0,0,0,0.1)" cx="97" cy="100" r="87" filter="url(#innerShadow)"></circle>-->
+                            <!--                                                <circle id="circle" style="stroke: #ffffff;stroke-width: 12px;fill: rgba(33, 150, 243, 0.36);" cx="100" cy="100" r="80"></circle>-->
+                            <!--                                            </g>-->
+                            <!--                                            <g>-->
+                            <!--                                                <line x1="100" y1="100" x2="100" y2="55" transform="rotate(80 100 100)" style="stroke-width: 4px; stroke: rgba(14, 37, 48, 0.39);" id="alarmhand">-->
+                            <!--                                                    <animatetransform attributeName="transform"-->
+                            <!--                                                                      attributeType="XML"-->
+                            <!--                                                                      from="0"-->
+                            <!--                                                                      to="0"-->
+                            <!--                                                                      type="rotate"-->
+                            <!--                                                                      dur="43200s"-->
+                            <!--                                                                      repeatCount="indefinite"/>-->
+                            <!--                                                </line>-->
+                            <!--                                                <line x1="100" y1="100" x2="100" y2="55" transform="rotate(80 100 100)" style="stroke-width: 3px; stroke: #fffbf9;" id="hourhand">-->
+                            <!--                                                    <animatetransform attributeName="transform"-->
+                            <!--                                                                      attributeType="XML"-->
+                            <!--                                                                      type="rotate"-->
+                            <!--                                                                      from="0"-->
+                            <!--                                                                      to="0"-->
+                            <!--                                                                      dur="43200s"-->
+                            <!--                                                                      repeatCount="indefinite"/>-->
+                            <!--                                                </line>-->
+                            <!--                                                <line x1="100" y1="100" x2="100" y2="40" style="stroke-width: 4px; stroke: #fdfdfd;" id="minutehand">-->
+                            <!--                                                    <animatetransform attributeName="transform"-->
+                            <!--                                                                      attributeType="XML"-->
+                            <!--                                                                      type="rotate"-->
+                            <!--                                                                      dur="3600s"-->
+                            <!--                                                                      from="0"-->
+                            <!--                                                                      to="0"-->
+                            <!--                                                                      repeatCount="indefinite"/>-->
+                            <!--                                                </line>-->
+                            <!--                                                <line x1="100" y1="100" x2="100" y2="30" style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand">-->
+                            <!--                                                    <animatetransform attributeName="transform"-->
+                            <!--                                                                      attributeType="XML"-->
+                            <!--                                                                      type="rotate"-->
+                            <!--                                                                      from="0"-->
+                            <!--                                                                      to="0"-->
+                            <!--                                                                      dur="60s"-->
+                            <!--                                                                      repeatCount="indefinite"/>-->
+                            <!--                                                </line>-->
+                            <!--                                            </g>-->
+                            <!--                                            <circle id="center" style="fill:#128A86; stroke: #C1EFED; stroke-width: 2px;" cx="100" cy="100" r="3"></circle>-->
+                            <!--                                        </svg>-->
+
+                            <div class="upper-content">
+
+                                <div class="left-cont">
+                                    <div class="waking-up-time-cont">
+                                        <span>Waking up at</span>
+                                        <div class="waking-up-time">10:11:00</div>
+                                        <div class="hours-to-sleep">That's <span class="time-left">00:00:00 hours</span> to sleep</div>
+                                        <div>
+
+                                            <div id="mc-articles-controller">
+                                                <a href="#" id="mc-articles-prev">
+                                                    <svg fill="#000" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path>
+                                                        <path d="M0-.5h24v24H0z" fill="none"></path>
+                                                    </svg>
+                                                </a>
+                                                <div id="mc-articles" style="">
+                                                    <div class="item">
+                                                        <div>content</div>
+                                                        <div>content</div>
+                                                        <div>content</div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div>content 2</div>
+                                                        <div>content 2</div>
+                                                        <div>content 2</div>
+                                                    </div>
+
+                                                    <div class="item">
+                                                        <div>content 3</div>
+                                                        <div>content 3</div>
+                                                        <div>content 3</div>
+                                                    </div>
+                                                </div>
+                                                <a href="#" id="mc-articles-next">
+                                                    <svg fill="#000" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+                                                        <path d="M0-.25h24v24H0z" fill="none"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="night-day-mode-switch">
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="onoffmode" checked>
+                                                <label class="onoffswitch-label" for="onoffmode">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button class="clock-button btn-cancel-alarm ripple" ripple-color="#0089bc">Cancel Alarm<div class="rippleContainer" animating="0" style="transition: none; background: rgb(0, 137, 188); opacity: 0; box-shadow: none; top: 13px; left: 27px; transform: translate(-50%, -50%) scale(0);"></div></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lower-content">
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="alarm-state-fired">
+                        <div class="group">
+                            <div class="left-cont">
+                                <div class="gm-title">
+                                    Good morning, Tomer!
+                                </div>
+                                <div id="yt-frame-cont">
+
+                                </div>
+
+                            </div>
+                            <div class="right-cont"></div>
+                        </div>
+
+                        <div class="bottom-cont">
+                            <div class="song-cont">
+
+                                <img src="img/thgrey.gif" class="music-gif">
+                                <p class="song-title">Good Morning Beautiful</p>
+                            </div>
+
+                            <button class="clock-button btn-stop-alarm ripple" ripple-color="#0089bc">Exit Alarm (SPACE)</button>
+                            <button class="clock-button btn-stop-alarm-music ripple" ripple-color="#e7805f">Stop music</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="widget-box just-woke-up">
+                <ul>
+                    <li class="mock-just-woke-up">
+                        <div class="image-wrapper">
+                            <img style="border-radius: 13px;" src="http://graph.facebook.com/1010550902298355/picture?width=50&height=50" />
+                        </div>
+                        <div class="content-wrapper">
+                            <div class="name-and-title"><strong class="uname">Tomer</strong> woke up <span class="mood">funky</span> <span class="time-text"></span></div>
+                            <!--                                    <div class="time-ago">-->
+                            <!--                                        <svg fill="rgba(255, 255, 255, 0.7)" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">-->
+                            <!--                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>-->
+                            <!--                                            <path d="M0 0h24v24H0z" fill="none"></path>-->
+                            <!--                                            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>-->
+                            <!--                                        </svg>-->
+                            <!--                                    </div>-->
+                            <div class="listened-to">
+                                <div class="tune-name">
+                                    Listened to
+                                    <div class="play-wrapper">
+
+                                        <svg class="svg-play" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path>
+                                        </svg>
+
+
+                                        <svg class="svg-pause" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"></path>
+                                        </svg>
+                                        <span class="text-play tune-name-text" disable-play-text>Wacky Alarm</span>
+                                    </div>
+                                </div>
+                                <div class="tune-opt">
+                                    <div class="use-it" title="Use it">
+                                        <svg fill="#009688" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M16 8h-2v3h-3v2h3v3h2v-3h3v-2h-3zM2 12c0-2.79 1.64-5.2 4.01-6.32V3.52C2.52 4.76 0 8.09 0 12s2.52 7.24 6.01 8.48v-2.16C3.64 17.2 2 14.79 2 12zm13-9c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="likes">
+                                        <svg class="svg-like-unlike" fill="#2196F3" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>
+                                        </svg>
+                                        <span>10,999</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="bottom-left-cont">
+                <div class="widget-box ad-box"></div>
+                <div class="widget-box quote-box">
+                            <span class="quote-text">
+
+                            </span>
+                    <div class="author"></div>
+                    <div class="options">
+                        <svg class="refresh-quote" fill="#E91E63" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                        </svg></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer">
+        <span>MetaClock.com&copy; The social alarm clock</span>
+        <span>|</span>
+        <span><a href="#" class="link" style="color: white;">Terms</a></span>
+    </div>
+
+
+</div>
+<div id="snackbar" style="width:100%">
+    <div class="snackbar-inner">Some text some message..</div>
+</div>
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+    window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+    ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+</script>
+
+<script>
+    //        var initSvgClock = function() {
+    //            var hands = [];
+    //            hands.push(document.querySelector('#secondhand > *'));
+    //            hands.push(document.querySelector('#minutehand > *'));
+    //            hands.push(document.querySelector('#hourhand > *'));
+    //            hands.push(document.querySelector('#alarmhand > *'));
+    //
+    //            var cx = 100;
+    //            var cy = 100;
+    //
+    //            function shifter(val) {
+    //                return [val, cx, cy].join(' ');
+    //            }
+    //
+    //            var date = new Date();
+    //            var hoursAngle = 360 * date.getHours() / 12 + date.getMinutes() / 2;
+    //            var alarmHourAngle = 360 * (date.getHours() + 3) / 12 + (date.getMinutes() + 40) / 2;
+    //            var minuteAngle = 360 * date.getMinutes() / 60;
+    //            var secAngle = 360 * date.getSeconds() / 60;
+    //
+    //            hands[0].setAttribute('from', shifter(secAngle));
+    //            hands[0].setAttribute('to', shifter(secAngle + 360));
+    //            hands[1].setAttribute('from', shifter(minuteAngle));
+    //            hands[1].setAttribute('to', shifter(minuteAngle + 360));
+    //            hands[2].setAttribute('from', shifter(hoursAngle));
+    //            hands[2].setAttribute('to', shifter(hoursAngle + 360));
+    //            hands[3].setAttribute('from', shifter(alarmHourAngle));
+    //            hands[3].setAttribute('to', shifter(alarmHourAngle + 360));
+    //
+    //            for(var i = 1; i <= 12; i++) {
+    //                var el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    //                el.setAttribute('x1', '100');
+    //                el.setAttribute('y1', '30');
+    //                el.setAttribute('x2', '100');
+    //                el.setAttribute('y2', '40');
+    //                el.setAttribute('transform', 'rotate(' + (i*360/12) + ' 100 100)');
+    //                el.setAttribute('style', 'stroke: #ffffff;');
+    //                document.querySelector('.svg-moving-clock').appendChild(el);
+    //            }
+    //
+    //        };
+    //
+    //
+    //        initSvgClock();
+</script>
+<!--        <script src="https://www.google-analytics.com/analytics.js" async defer></script>-->
+
+
+<!--    <script type="text/javascript" src="js/vendor/smil.check.js"></script>-->
+</body>
+</html>

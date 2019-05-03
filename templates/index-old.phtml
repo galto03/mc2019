@@ -1,0 +1,218 @@
+<!--
+APPLICATION_NAME "My application"
+APPLICATION_DESCRIPTION "Just a useless application"
+
+OFFLINE_MANIFEST_PATH "./offline.appcache"
+
+LANG "en"
+LOCALE "en_US"
+
+PAGE_KEYWORD "uselessness"
+PAGE_NAME "About uselessness"
+PAGE_DESCRIPTION "Some useless news about nothing in particular. Just trying to find out the answer."
+PAGE_IMAGE_URL "https://static.example.com/article/about-uselessness.png"
+PAGE_CANONICAL_URL "https://example.com/about-uselessness"
+PAGE_SHORTLINK_URL "https://bit.ly/totoenvacances"
+
+GOOGLE_WEBMASTER_TOOLS_KEY "xxx"
+
+TWITTER_CREATOR_ACCOUNT "@ChtefiD"
+TWITTER_WEBSITE_ACCOUNT "@ChtefiD"
+
+FACEBOOK_PUBLISHER "https://www.facebook.com/my-website-page"
+FACEBOOK_AUTHOR "https://www.facebook.com/personal-author-page"
+GOOGLE_PUBLISHER "https://plus.google.com/+my-website-page"
+GOOGLE_AUTHOR "https://plus.google.com/+personal-author-page"
+
+SITEMAP_URL "/sitemap.xml"
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <title>Social Online Alarm Clock - MetaClock.com</title>
+
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="language" content="en" />
+    <meta name="application-name" content="MetaClock.com">
+    <meta name="description" content="MetaClock is the best internet alarm clock and to-do manager.">
+    <meta name="keywords" content="online alarm clock, alarm clock, online clock, online alarm, to-do list" />
+    <meta name="robots" content="index,follow" />
+
+<!--    <link rel="pingback" href=".../xmlrpc.php" />-->
+    <link rel="alternate" type="application/rss+xml" title="..." href=".../feed/" />
+    <link rel="shortlink" href="metaclock.com" />
+    <link rel="publisher" href="MetaClock"/>
+    <link rel="author" href="Tomer Gal"/>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.metaclock.com/sitemap.xml" />
+
+    <!-- Resolve DNS asap (can be useful for future pages) -->
+<!--    <link rel="dns-prefetch" href="//fonts.googleapis.com">-->
+
+    <!-- Better: DNS + TCP handshake + optional TLS negotiation -->
+    <!-- Use for current page -->
+<!--    <link rel="preconnect" href="//fonts.googleapis.com">-->
+
+    <!-- Download a resource right now (into cache) if we know it's going to be used later -->
+    <!-- (can be useful for future pages) -->
+<!--    <link rel="prefetch" href="image.png">-->
+
+    <!-- Download directly (high priority, whereas prefetch is low priority)
+         a resource that will be discovered later in the page (such as <script> at the end) -->
+<!--    <link rel="subresource" href="app.js">-->
+
+    <!-- Fetch the whole content of another page (css, process js etc.) -->
+    <!-- Useful when you know that the user will click on it for sure -->
+    <!-- It will take only a instant (everything will be already loaded!) -->
+<!--    <link rel="prerender" href="http://example.com/about">-->
+
+    <!-- always nice to use dns-prefetch or preconnect before, for stylesheets that are using those urls -->
+    <!-- eg: <link ref="preconnect" href="//fonts.gstatic.com"> -->
+<!--    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300">-->
+
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+<!--    <meta http-equiv="Default-Style" content="dark">-->
+
+<!--    <meta name="apple-mobile-web-app-capable" content="yes">-->
+<!--    <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes, minimal-ui">
+
+    <!-- Don't want the content to be translated on the fly by the browser ? -->
+    <meta name="google" value="notranslate">
+<!--    <meta name="google-site-verification" content="{{ GOOGLE_WEBMASTER_TOOLS_KEY }}">-->
+
+    <!-- fav icon -->
+    <link rel="fluid-icon" href="https://.../fluidicon.png" title="..."> <!-- ? -->
+<!--    <link rel="shortcut icon" type="image/x-icon" href="http://.../favicon.ico">-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="image_src" href="{{ PAGE_IMAGE_URL }}">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bing -->
+    <meta name="geo.placename" content="United States" />
+    <meta name="geo.position" content="x;x" />
+    <meta name="geo.region" content="usa" />
+    <meta name="ICBM" content="x,x" />
+
+    <script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","url":"https:\/\/...","name":"...","alternateName":"..."}</script>
+
+    <!-- Really Simple Discovery http://en.wikipedia.org/wiki/Really_Simple_Discovery -->
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.example.com/xmlrpc.php?rsd" />
+
+    <!-- WindowsLiveWriter  -->
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.example.com/wlwmanifest.xml" />
+
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="...">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/main.js"></script>
+
+
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<!--    <link rel="stylesheet" href="css/normalize.css">-->
+<!--    <link rel="stylesheet" href="css/skeleton.css">-->
+
+
+</head>
+<body>
+<div id="site_container">
+    <header>
+        <div id="logo">
+            <img src="/img/logo-night.png"/>
+        </div>
+        <div id="head_banner">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- MetaClock alarm window 728x90 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-6056202160838970"
+                 data-ad-slot="3338746476"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </header>
+    <div class="dynamic" id="sky-dyn"></div>
+    <div class="dynamic" id="background-dyn"></div>
+<!--    <div class="dynamic" id="todo-dyn"></div>-->
+    <div class="dynamic" id="circle-dyn">
+        <div id="alarm-set-cont">
+            You're alarm is set
+        </div>
+    </div>
+    <div class="dynamic" id="ground-dyn"></div>
+
+    <div class="dynamic" id="alarm-settings">
+        <div id="alarm-settings-cont">
+            <!--                <div class="desc">Wake up at</div>-->
+            <div id="alarm-time">
+                <input type="text" value="19" />
+                <span>:</span>
+                <input type="text" value="20" />
+            </div>
+            <!--                <div class="desc">Sound or YouTube video</div>-->
+            <div id="tune-and-set">
+                <div id="tune-and-set-container">
+                    <div id="alarm-tune">
+                        <div id="tune-icon">
+                            <div>
+                                <svg height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg" fill="#03A9F4" class="svg-tune-type svg-tune" style="display: inline;"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"></path></svg>
+<!--                                <svg enable-background="new 0 0 48 48" id="Layer_1" version="1.1" viewBox="0 0 48 48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><circle cx="24" cy="24" fill="#CA3737" r="24"></circle><path d="M35.2,18.5c0-0.1,0-0.2-0.1-0.3c0,0,0-0.1,0-0.1c-0.3-0.9-1.1-1.5-2.1-1.5h0.2c0,0-3.9-0.6-9.2-0.6  c-5.2,0-9.2,0.6-9.2,0.6H15c-1,0-1.8,0.6-2.1,1.5c0,0,0,0.1,0,0.1c0,0.1,0,0.2-0.1,0.3c-0.1,1-0.4,3.1-0.4,5.5  c0,2.4,0.3,4.5,0.4,5.5c0,0.1,0,0.2,0.1,0.3c0,0,0,0.1,0,0.1c0.3,0.9,1.1,1.5,2.1,1.5h-0.2c0,0,3.9,0.6,9.2,0.6  c5.2,0,9.2-0.6,9.2-0.6H33c1,0,1.8-0.6,2.1-1.5c0,0,0-0.1,0-0.1c0-0.1,0-0.2,0.1-0.3c0.1-1,0.4-3.1,0.4-5.5  C35.6,21.6,35.4,19.5,35.2,18.5z M27.4,24.5l-4.7,3.4C22.6,28,22.5,28,22.4,28c-0.1,0-0.2,0-0.3-0.1c-0.2-0.1-0.3-0.3-0.3-0.5v-6.8  c0-0.2,0.1-0.4,0.3-0.5c0.2-0.1,0.4-0.1,0.6,0l4.7,3.4c0.1,0.1,0.2,0.3,0.2,0.5C27.7,24.2,27.6,24.4,27.4,24.5z" fill="#FFFFFF"></path></svg>-->
+                            </div>
+<!--                            <img src="/img/youtube.png" />-->
+                        </div>
+
+                        <div id="tune-name">
+                            Wacky Alarm
+                        </div>
+                    </div>
+                    <div id="alarm-set">
+                        <a href="#" id="set-alarm-btn">SET ALARM</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Google Analytics -->
+<script async type="text/javascript"> <!-- async -->
+    var _gaq = _gaq || [];
+
+</script>
+
+</body>
+</html>
