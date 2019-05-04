@@ -1,9 +1,35 @@
 body, html {
     margin:0;
     background: #73beea;
-    font-family: 'Heebo', sans-serif;
+    //font-family: 'Heebo', sans-serif;
+    font-family: 'Comfortaa', cursive;
+
     height:1100px;
     overflow: hidden;
+}
+
+img {
+    width: 100%;
+}
+/* Header **************************************************************/
+header {
+    z-index: 35;
+    width: 1050px;
+    margin: 11px auto 0;
+    position: relative;
+
+    #logo {
+        width: 250px;
+        display: inline-block;
+
+    }
+
+    #pirsomet {
+        width: 730px;
+        height: 90px;
+        display: inline-block;
+        float: right;
+    }
 }
 
 /* Night Overly **************************************************************/
@@ -12,12 +38,12 @@ body, html {
     height: 1100px;
     background-color: black;
     overflow:hidden;
-    z-index: 4;
+    z-index: 30;
     position: absolute;
     opacity: 0;
 
     &.night {
-        transition: opacity 5s;
+        transition: opacity 1s;
         opacity: 0.3;
     }
 
@@ -29,6 +55,41 @@ body, html {
     width: 100%;
     height: 1100px;
     background-color: #73beea;
+    overflow: hidden;
+}
+
+/* Modals **************************************************************/
+#tune_modal  {
+    .modal_content {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+/* Good night text **************************************************************/
+#good_night_container {
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    top: 200px;
+    opacity: 0;
+    z-index: 35;
+
+    #good_night_text {
+        color: #fff;
+        font-size: 70px;
+    }
+
+    #good_night_info {
+        margin-top: 10px;
+        color: wheat;
+    }
+
+    &.night {
+        animation: opacity-show 2s 1 linear forwards;
+        animation-delay: .71s;
+    }
 }
 
 /* Ground **************************************************************/
@@ -36,32 +97,181 @@ body, html {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/surface.png);
     background-size: cover;
     background-repeat: repeat-x;
-    top: 167px;
+    background-position: center top;
+    top: 250px;
     bottom: 0;
     position: absolute;
     width: 100%;
-    max-width: 1920px;
+    //max-width: 1920px;
     height: 91%;
     overflow: hidden;
-    transition: all 0.5s;
-    z-index: 3;
+    transition: all 0.1s;
+    z-index: 30;
 
     &.hidden {
         top: 110%;
     }
 }
 
+/* Set alarm container **************************************************************/
+#set_alarm_container {
+    z-index: 35;
+    opacity: 0;
+    animation: opacity-show 1s 1 linear forwards;
+    animation-delay: .71s;
+
+}
+
+#set_alarm_content {
+    position: absolute;
+    width: 60%;
+    top: 23%;
+    left: 20%;
+    text-align: center;
+    text-shadow: #7ec6ed 1px 0 10px;
+
+    .wake_up_title {
+        font-size: 20px;
+        color: white;
+    }
+    .wake_up_time {
+        cursor: pointer;
+        font-size: 92px;
+        padding-bottom: 12px;
+        color: #49b4ef;
+        margin: 11px auto 34px;
+        width: 311px;
+        /* border: 1px black solid; */
+        background-color: #ffffff47;
+        border-radius: 24px;
+        height: 89px;
+        text-align: center;
+        padding-top: 8px;
+
+        &:hover {
+            background-color: #fff;
+        }
+
+        .wut_inner_container {
+
+            margin-top: 0;
+            letter-spacing: -2px;
+            font-family: "Nanum Gothic Coding", monospace;
+
+        }
+
+        .wut_hours {
+            margin-right: -39px;
+        }
+        .wut_minutes {
+            margin-left: -39px;
+        }
+
+        .wut_delimiter {
+            display: inline-block;
+            vertical-align: 0;
+            font-size: 81px;
+
+        }
+    }
+    .wake_up_sleep_time {}
+    .wu_tune {
+        display: inline-block;
+        text-align: left;
+        vertical-align: -33px;
+        padding-right: 10px;
+
+        //.wu_tune_header {
+        //    font-size: 12px;
+        //    color: white;
+        //}
+
+        .wu_tune_desc {
+            cursor: pointer;
+
+            .wu_tune_edit {
+                color: #fff;
+                font-size: 12px;
+                opacity: 0;
+            }
+
+            .wu_tune_music {
+                display: inline-block;
+
+                svg {
+                    width: 40px;
+                    vertical-align: 0px;
+                }
+            }
+
+            .wu_tune_name_cont {
+                display: inline-block;
+                font-size: 19px;
+                //color: #56ba52;
+                color: #54bcf0;
+                vertical-align: 5px;
+
+            }
+
+            &:hover {
+                .wu_tune_edit {
+                    opacity: 1;
+                }
+
+                .wu_tune_name {
+                    font-weight: bold;
+                    //color: #41963d;
+                    color: #54bcf0;
+                }
+            }
+        }
+    }
+
+    .set_alarm_btn_container {
+        display: inline-block;
+        vertical-align: -13px;
+
+        .set_alarm_btn {
+            //color: #73be4c;
+            color: #54bcf0;
+            font-weight: bold;
+            box-shadow:inset 0px 1px 0px 0px #ffffff;
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+            background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+            border-radius:6px;
+            border:1px solid #dcdcdc;
+            display:inline-block;
+            cursor:pointer;
+            font-size:16px;
+            padding:10px 19px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #ffffff;
+        }
+        .set_alarm_btn:hover {
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+            background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        }
+        .set_alarm_btn:active {
+            position:relative;
+            top:1px;
+        }
+
+
+    }
+}
+
 /* Sun and Moon **************************************************************/
-#sun_and_moon {
-    top: 350px;
+.sun_and_moon {
+    //top: 350px;
+    top: calc(50% - 140px);
     position: absolute;
     left: calc(50% - 330px);
     overflow: hidden;
     transition: all 1s;
-    transition-delay: 1s;
-    height: 500px;
+    transition-delay: 0.1s;
+    height: 573px;
     width: 667px;
-    z-index: 2;
+    z-index: 20;
 
     &.hidden {
         top: 100%
@@ -70,30 +280,32 @@ body, html {
     #img_sun {
         position: absolute;
         top:0;
-        -webkit-animation: rotation 100s infinite linear;
+        animation: rotation 100s infinite linear;
         opacity: 1;
     }
 
     #img_moon {
         position: absolute;
-        -webkit-animation: rotation 100s infinite linear;
+        animation: rotation 100s infinite linear;
         opacity: 0;
         top: 100%;
     }
 
     &.night {
-        #img_sun {
-            transition: top 6s;
+        #img_sun, #set_alarm_content {
+            transition: top 1s;
             top: 100%;
         }
+        #set_alarm_content {
+            animation: opacity-hide .2s 1 ease forwards;
+        }
         #img_moon {
-            transition: top 5s;
+            transition: top 1s;
             top: 0;
-            transition-delay: 2s;
+            transition-delay: 0.5s;
             opacity: 1;
 
         }
-
     }
 }
 
@@ -101,39 +313,47 @@ body, html {
 .cloud {
     position: absolute;
     overflow: hidden;
-    z-index: 2;
+    z-index: 20;
     opacity: 0.6;
     transition: opacity 2s;
+    background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
+    background-size: 100%;
 
 
     &#cloud_1 {
-        top: 167px;
-        left: calc(50% - 330px);
-        background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
-        background-size: 100%;
         width: 200px;
         height: 158px;
         -webkit-animation: cloudFlyLeft 60s infinite linear;
     }
 
     &#cloud_2 {
-        top: 367px;
-        right: 0;
-        background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
-        background-size: 100%;
         width: 163px;
         height: 130px;
-        -webkit-animation: cloudFlyRight 55s infinite linear;
+        animation: cloudFlyRight 65s infinite linear;
     }
 
     &#cloud_3 {
-        top: 267px;
-        right: 100px;
-        background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
-        background-size: 100%;
         width: 220px;
         height: 178px;
-        -webkit-animation: cloudFlyRight 50s infinite linear;
+        animation: cloudFlyRight 60s infinite linear;
+    }
+
+    &#cloud_4 {
+        width: 250px;
+        height: 200px;
+        animation: cloudFlyLeft 50s infinite linear;
+    }
+
+    &#cloud_5 {
+        width: 300px;
+        height: 230px;
+        animation: cloudFlyLeft 45s infinite linear;
+    }
+
+    &#cloud_6 {
+        width: 163px;
+        height: 130px;
+        animation: cloudFlyLeft 40s infinite linear;
     }
 
     &.night {
@@ -142,38 +362,41 @@ body, html {
 }
 
 /* Stars **************************************************************/
-.stars, .twinkling {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    width:100%;
-    height:100%;
-    display:block;
-
-}
-
-.stars {
-    background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-    z-index: 2;
-}
-
-.twinkling{
-    background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-    z-index: 2;
-
-    animation:move-twink-back 200s linear infinite;
-}
-
 #stars_container {
     opacity: 0;
+
+    .stars, .twinkling {
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100%;
+        height:100%;
+        display:block;
+        z-index: 20;
+    }
+
+    .stars {
+        background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    }
+
+    .twinkling{
+        background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+        animation:move-twink-back 200s linear infinite;
+    }
 }
 
-
+/* Preloader **************************************************************/
+#preloader {
+    z-index: 100;
+    position: absolute;
+    top: 300px;
+    left: calc(50% - 100px);
+}
 
 /* Keyframes **************************************************************/
-@-webkit-keyframes rotation {
+@keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);
     }
@@ -182,18 +405,18 @@ body, html {
     }
 }
 
-@-webkit-keyframes cloudFlyLeft {
+@keyframes cloudFlyLeft {
     from {
-        left: -200px;
+        left: -300px;
     }
     to {
         left: 100%;
     }
 }
 
-@-webkit-keyframes cloudFlyRight {
+@keyframes cloudFlyRight {
     from {
-        right: -220px;
+        right: -250px;
     }
     to {
         right: 100%;
@@ -206,15 +429,15 @@ body, html {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
-@-webkit-keyframes move-twink-back {
+@keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
-@-moz-keyframes move-twink-back {
+@keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
-@-ms-keyframes move-twink-back {
+@keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
 }
@@ -223,15 +446,24 @@ body, html {
     from {background-position:0 0;}
     to {background-position:10000px 0;}
 }
-@-webkit-keyframes move-clouds-back {
+@keyframes move-clouds-back {
     from {background-position:0 0;}
     to {background-position:10000px 0;}
 }
-@-moz-keyframes move-clouds-back {
+@keyframes move-clouds-back {
     from {background-position:0 0;}
     to {background-position:10000px 0;}
 }
-@-ms-keyframes move-clouds-back {
+@keyframes move-clouds-back {
     from {background-position: 0;}
     to {background-position:10000px 0;}
+}
+@keyframes opacity-show {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes opacity-hide {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }

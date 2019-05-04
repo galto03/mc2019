@@ -3,11 +3,20 @@
     <link rel="stylesheet" href="/css/main.css">
 
     <script src="/js/jquery-3.4.0.min.js"></script>
-    <script src="/js/jquery.color.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
+
 </head>
+
 <body>
 
 <div id="site_container">
+
     <div id="stars_container">
         <div class="stars"></div>
         <div class="twinkling"></div>
@@ -16,37 +25,168 @@
     <div id="cloud_1" class="env cloud"></div>
     <div id="cloud_2" class="env cloud"></div>
     <div id="cloud_3" class="env cloud"></div>
+    <div id="cloud_4" class="env cloud"></div>
+    <div id="cloud_5" class="env cloud"></div>
+    <div id="cloud_6" class="env cloud"></div>
 
 
     <div id="sky"></div>
-    <div id="sun_and_moon" class="env hidden">
+    <div class="env hidden sun_and_moon">
         <img id="img_sun" src="img/sun_large.png"/>
         <img id="img_moon" src="img/moon.svg"/>
     </div>
+
+    <div id="good_night_container" class="env">
+        <div id="good_night_text">
+            All set, good night
+        </div>
+        <div id="good_night_info">
+            make sure your computer doesn't fall into sleep mode
+        </div>
+    </div>
+    <div id="set_alarm_container" class="env hidden sun_and_moon">
+        <div id="set_alarm_content">
+            <div class="wake_up_title">
+                Wake me up at
+            </div>
+            <div class="wake_up_time">
+                <div class="wut_inner_container">
+                    <span class="wut_hours">20</span>
+                    <span class="wut_delimiter">:</span>
+                    <span class="wut_minutes">10</span>
+
+                </div>
+            </div>
+            <!--            <div class="wake_up_sleep_time">-->
+            <!--                About 6 hours of sleep-->
+            <!--            </div>-->
+            <div class="wu_tune">
+                <!--                <div class="wu_tune_header">Tune or YouTube</div>-->
+                <div class="wu_tune_desc">
+                    <div class="wu_tune_music">
+                        <svg enable-background="new 0 0 50 50" height="50px" id="Layer_1" version="1.1" viewBox="0 0 50 50" width="50px"
+                             xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect fill="none"
+                                  height="50"
+                                  width="50"/>
+                            <path fill="#fff"
+                                  d="M43,3v35.004c0,0-0.125,5.996-6.984,5.996C28.506,44,28,39.127,28,38c0-2.41,0.942-5.037,8-5.037c3.249,0,4-0.835,4-2.963  c0,0,0-15.463,0-16.78s-0.08-1.793-1.543-1.462c-2.517,0.569-18.957,4.133-19.613,4.29S18,16.594,18,17.75c0,2.127,0,22.997,0,25.25  s-1.742,6-8,6s-7-3.998-7-6c0-2.973,2.25-4.891,7.007-4.891C14.438,38.109,15,36.86,15,35c0-6.633,0-26.04,0-27  s0.391-1.609,1.366-1.824c1.631-0.358,24.78-5.131,24.78-5.131S43,0.622,43,3z"/>
+                        </svg>
+                    </div>
+                    <div class="wu_tune_name_cont">
+                        <div class="wu_tune_name">
+                            Wacky alarm
+                        </div>
+                        <div class="wu_tune_edit">
+                            Click to change
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="set_alarm_btn_container">
+                <a href="#" class="set_alarm_btn">SET ALARM</a>
+            </div>
+        </div>
+
+    </div>
     <div id="ground" class="env hidden"></div>
-    <button style="z-index:1000000; position: absolute" id="switch">switch</button>
     <div id="night_overly" class="env"></div>
+    <header>
+        <div id="logo">
+            <img src="img/logo-night.png" />
+        </div>
+        <div id="pirsomet">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- MetaClock alarm window 728x90 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-6056202160838970"
+                 data-ad-slot="3338746476"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+        </div>
+    </header>
 </div>
 
+
+<div id="tune_modal" class="ui_modal">
+    <div class="modal_content">
+        bla
+    </div>
+</div>
+
+<div id="time_modal" class="ui_modal">
+    <div class="modal_content">
+        bla
+    </div>
+</div>
+
+<div id="preloader">
+    Preloading the preloader...
+</div>
 </body>
 <script>
   "use strict";
   $(function () {
     var $env = $('.env');
 
-    $(window)
-      .on('load', function () {
+    window.isNight = false;
+
+    var randomizeClouds = function () {
+      $('.cloud').each(function () {
+          var value = 50 + Math.floor(Math.random() * 400);
+          $(this).css('top', value + "px");
+        })
+    };
+
+    $(window).on('load', function () {
         $env.removeClass('hidden');
+
+        randomizeClouds();
       });
 
-    $('#switch')
-      .on('click', function () {
-        $('#site_container').animate({'backgroundColor': '#000'}, 5000);
-        $('#stars_container').animate({'opacity': 1}, 5000);
+    $('.set_alarm_btn').on('click', function () {
+        if (window.isNight) {
+          $('#stars_container').animate({'opacity': 0}, 1000);
+          $env.removeClass('night');
+        } else {
+          $('#stars_container').animate({'opacity': 1}, 1000);
+          $env.addClass('night')
+        }
 
-        $env.addClass('night')
+        window.isNight = !window.isNight;
       });
+
+    $(".ui_modal").iziModal();
+
+    $(document).on('click', '.wu_tune_desc', function () {
+        $('#tune_modal').iziModal('open');
+    });
+
+    $(document).on('click', '.wake_up_time', function () {
+        $('#time_modal').iziModal('open');
+    });
 
   });
+
+  $('#site_container').css('opacity', 0);
+  $(window).on('load', function () {
+      $('#preloader')
+        .animate({'opacity': 0}, {
+          complete: function () {
+            $('#site_container').animate({'opacity': 1});
+
+//             setTimeout(function () {
+//               $('html').css('overflow-y', 'auto');
+//               }, 1000);
+          }
+        });
+    });
+
+
 </script>
+
+
 </html>
