@@ -57,6 +57,30 @@ header #pirsomet {
   height: 400px;
 }
 
+#time_modal .modal_content {
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#time_modal .modal_content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#time_modal .modal_content ul li {
+  cursor: pointer;
+  background-color: #edc643;
+  border-bottom: 1px #ffffff5e solid;
+  padding: 10px;
+  font-size: 42px;
+  color: white;
+  text-align: center;
+}
+#time_modal .modal_content ul li:hover {
+  background-color: #d5aa1b;
+  text-shadow: 0 0 10px #fff;
+}
+
 /* Good night text **************************************************************/
 #good_night_container {
   position: absolute;
@@ -114,6 +138,27 @@ header #pirsomet {
   left: 20%;
   text-align: center;
   text-shadow: #7ec6ed 1px 0 10px;
+}
+#set_alarm_content #time_dropdown {
+  position: absolute;
+  overflow: hidden;
+  display: none;
+  font-size: 21px;
+  list-style-type: none;
+  margin-top: 0;
+  padding: 0;
+  width: 162px;
+  top: 143px;
+  left: 109px;
+  max-height: 147px;
+  overflow-y: scroll;
+  border-bottom-left-radius: 15px;
+}
+#set_alarm_content #time_dropdown li {
+  border-bottom: 1px #ffffff61 solid;
+  background: #ffd95d;
+  padding: 7px;
+  width: 141px;
 }
 #set_alarm_content .wake_up_title {
   font-size: 20px;

@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/css/main.css">
 
     <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/timeago.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -56,6 +57,21 @@
                     <span class="wut_minutes">10</span>
 
                 </div>
+                <ul id="time_dropdown">
+                   <li>00:00</li>
+                   <li>01:00</li>
+                   <li>02:00</li>
+                   <li>03:00</li>
+                   <li>04:00</li>
+                   <li>05:00</li>
+                   <li>06:00</li>
+                   <li>07:00</li>
+                   <li>08:00</li>
+                   <li>09:00</li>
+                   <li>10:00</li>
+                   <li>11:00</li>
+                   <li>12:00</li>
+                </ul>
             </div>
             <!--            <div class="wake_up_sleep_time">-->
             <!--                About 6 hours of sleep-->
@@ -119,7 +135,8 @@
 
 <div id="time_modal" class="ui_modal">
     <div class="modal_content">
-        bla
+        <ul>
+        </ul>
     </div>
 </div>
 
@@ -159,7 +176,28 @@
         window.isNight = !window.isNight;
       });
 
-    $(".ui_modal").iziModal();
+    $("#tune_modal").iziModal({
+      title: 'Select a tune',
+      subtitle: 'You can select any tune, YouTube video or upload MP3',
+      headerColor: '#1a91d2',
+      width: 600,
+    });
+
+    var $timeModal = $("#time_modal");
+    $timeModal.iziModal({
+        title: 'Select a time to wake up',
+        subtitle: '',
+        headerColor: '#1a91d2',
+        width: 250,
+        onOpening: function() {
+          ([...Array(13).keys()]).forEach(function(hour) {
+            hour = hour < 10 ? "0" + hour : hour;
+            $timeModal.find('ul').append('<li>' + hour + ":" + '00</li>');
+            $timeModal.find('ul').append('<li>' + hour + ':' + '30</li>');
+          });
+
+        }
+    });
 
     $(document).on('click', '.wu_tune_desc', function () {
         $('#tune_modal').iziModal('open');
