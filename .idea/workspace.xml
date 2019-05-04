@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3520676-246b-4714-9e0a-aab1bc5c5cc5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,25 +25,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="59" selection-start-line="59" selection-start-column="4" selection-end-line="73" selection-end-column="25" />
+            <state relative-caret-position="466">
+              <caret line="157" column="34" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#ins#0;n#div#1;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#a#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#a#1;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
+            <state relative-caret-position="445">
+              <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
               <folding>
-                <element signature="e#11#132#0" />
                 <element signature="e#2250#3376#0" />
               </folding>
             </state>
@@ -61,36 +67,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>m_content</find>
-      <find>sun_and_</find>
-      <find>delay</find>
-      <find>set_alarm_container</find>
-      <find>.night</find>
-      <find>sun_And_moon</find>
-      <find>opacity-</find>
-      <find>modal</find>
-      <find>modal_contnet</find>
-      <find>opacity-show</find>
-      <find>good night</find>
-      <find>animation:</find>
-      <find>body-overflow-x</find>
-      <find>all set</find>
-      <find>night_over</find>
-      <find>ad_banner</find>
-      <find>10:20</find>
-      <find>wut_</find>
-      <find>:</find>
-      <find>wut_inner</find>
-      <find>time-blinker</find>
-      <find>click to</find>
-      <find>modal_conten</find>
-      <find>izimodal</find>
-      <find>time_modal</find>
-      <find>calculatedTime</find>
-      <find>20</find>
-      <find>set_alarm_content</find>
+      <find>activeWidth</find>
+      <find>e</find>
+      <find>slider-2')</find>
+      <find>use stri</find>
+      <find>document</find>
+      <find>slider-2</find>
+      <find>sliderResponsive</find>
+      <find>lider-2</find>
+      <find>let</find>
+      <find>$tuneTabs</find>
+      <find>tab_content_tune</find>
+      <find>content</find>
+      <find>$tabYoutube</find>
+      <find>tab_youtube</find>
+      <find>youtube</find>
+      <find>selector</find>
+      <find>window.tune_tabs_active</find>
+      <find>tune_tabs_active</find>
+      <find>aaa</find>
       <find>li {</find>
-      <find>head_banner</find>
+      <find>ul {</find>
+      <find>tune_</find>
+      <find>player</find>
+      <find>jplayer</find>
+      <find>cp-jplayer</find>
+      <find>tabs_content</find>
+      <find>jquery_jplayer_2</find>
+      <find>good_night_cont</find>
+      <find>hover</find>
+      <find>tunes_list</find>
     </findStrings>
     <replaceStrings>
       <replace>http://dev.mc.com:8081/</replace>
@@ -109,6 +115,7 @@
       <replace>3s</replace>
       <replace>1s</replace>
       <replace>modal_content</replace>
+      <replace>.</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -131,8 +138,8 @@
         <option value="$PROJECT_DIR$/templates/index-old.phtml" />
         <option value="$PROJECT_DIR$/public_html/js/jquery.color.js" />
         <option value="$PROJECT_DIR$/public_html/css/main.css" />
-        <option value="$PROJECT_DIR$/public_html/css/main.scss" />
         <option value="$PROJECT_DIR$/templates/index.phtml" />
+        <option value="$PROJECT_DIR$/public_html/css/main.scss" />
       </list>
     </option>
   </component>
@@ -234,7 +241,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -278,12 +285,12 @@
       <workItem from="1556892251547" duration="1579000" />
       <workItem from="1556894050205" duration="56000" />
       <workItem from="1556894135322" duration="2161000" />
-      <workItem from="1556899468358" duration="22973000" />
+      <workItem from="1556899468358" duration="30923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59278000" />
+    <option name="totallyTimeSpent" value="67228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-37" width="1920" height="1058" extended-state="6" />
@@ -482,23 +489,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
+    <entry file="file://$USER_HOME$/Downloads/v12/css/not.the.skin.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
+        <state relative-caret-position="466">
+          <caret line="157" column="34" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
           <folding>
-            <element signature="e#11#132#0" />
-            <element signature="e#2250#3376#0" />
+            <element signature="n#style#0;n#ins#0;n#div#1;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#1;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.phtml">
+    <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="59" selection-start-line="59" selection-start-column="4" selection-end-line="73" selection-end-column="25" />
+        <state relative-caret-position="445">
+          <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
           <folding>
-            <element signature="n#style#0;n#ins#0;n#div#1;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2250#3376#0" />
           </folding>
         </state>
       </provider>
@@ -561,7 +575,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

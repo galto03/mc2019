@@ -11,7 +11,15 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="js/jplayer/circle.skin/circle.player.css">
+
+    <script type="text/javascript" src="js/jplayer/jquery.transform.js"></script>
+    <script type="text/javascript" src="js/jplayer/jquery.grab.js"></script>
+    <script type="text/javascript" src="js/jplayer/jquery.jplayer.js"></script>
+    <script type="text/javascript" src="js/jplayer/mod.csstransforms.min.js"></script>
+    <script type="text/javascript" src="js/jplayer/circle.player.js"></script>
 </head>
 
 <body>
@@ -52,9 +60,9 @@
             </div>
             <div class="wake_up_time">
                 <div class="wut_inner_container">
-                    <span class="wut_hours">20</span>
+                    <span class="wut_hours">07</span>
                     <span class="wut_delimiter">:</span>
-                    <span class="wut_minutes">10</span>
+                    <span class="wut_minutes">00</span>
 
                 </div>
 <!--                <ul id="time_dropdown">-->
@@ -129,7 +137,52 @@
 
 <div id="tune_modal" class="ui_modal">
     <div class="modal_content">
-        bla
+        <nav class="tabs">
+            <div class="selector" style="width: 110px;"></div>
+            <a href="#" class="active tab_tune" tab="tab_tune"><i class="fas fa-music" style="padding-right:10px;"></i>Tune</a>
+            <a href="#" class="tab_youtube" tab="tab_youtube" ><i class="fab fa-youtube" style="padding-right:10px;"></i>YouTube</a>
+        </nav>
+        <div class="tabs_content">
+            <ul>
+                <li class="tab_content tab_tune_content">
+                    <ul class="tunes_list">
+                       <li>Song 1</li>
+                       <li>Song 2</li>
+                       <li>Song 3</li>
+                       <li>Song 4</li>
+                       <li>Song 5</li>
+                       <li>Song 6</li>
+                       <li>Song 7</li>
+                       <li>Song 8</li>
+                       <li>Song 9</li>
+                       <li>Song 10</li>
+                    </ul>
+                    <div class="tunes_player">
+                        <div id="jquery_jplayer_2" class="cp-jplayer"></div>
+                        <div id="cp_container_2" class="cp-container">
+                            <div class="cp-buffer-holder">
+                                <div class="cp-buffer-1"></div>
+                                <div class="cp-buffer-2"></div>
+                            </div>
+                            <div class="cp-progress-holder">
+                                <div class="cp-progress-1"></div>
+                                <div class="cp-progress-2"></div>
+                            </div>
+                            <div class="cp-circle-control"></div>
+                            <ul class="cp-controls">
+                                <li><a href="#" class="cp-play" tabindex="1">play</a></li>
+                                <li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </li>
+                <li style="display: none" class="tab_content tab_youtube_content">
+                    asdk youtube
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -145,11 +198,22 @@
 </div>
 </body>
 <script>
+
+
+
   "use strict";
   $(function () {
+
+
     var $env = $('.env');
 
     window.isNight = false;
+    window.alarmSettings = {
+      time: {
+        hours: 7,
+        minutes: 0
+      }
+    };
 
     var randomizeClouds = function () {
       $('.cloud').each(function () {
@@ -176,12 +240,34 @@
         window.isNight = !window.isNight;
       });
 
-    $("#tune_modal").iziModal({
+    var $tuneModal = $("#tune_modal");
+    $tuneModal.iziModal({
       title: 'Select a tune',
       subtitle: 'You can select any tune, YouTube video or upload MP3',
       headerColor: '#1a91d2',
       width: 600,
+      onOpening: function() {
+
+        var $tabs = $('.tabs');
+        if ($tabs.data('inited')) {
+          return;
+        }
+
+        $tabs.data('inited', true);
+
+        $tabs.on("click", "a", function (e) {
+
+          e.preventDefault();
+          $('.tabs a').removeClass("active");
+          $(this).addClass('active');
+          var activeWidth = $(this).innerWidth();
+          var itemPos = $(this).position();
+          $(".selector").css({"left": itemPos.left + "px", "width": activeWidth + "px"});
+        });
+      }
     });
+
+
 
     var $timeModal = $("#time_modal");
     $timeModal.iziModal({
@@ -189,14 +275,21 @@
         subtitle: '',
         headerColor: '#1a91d2',
         width: 250,
+        top: 250,
         onOpening: function() {
-          ([...Array(13).keys()]).forEach(function(hour) {
-            hour = hour < 10 ? "0" + hour : hour;
-            $timeModal.find('ul').append('<li>' + hour + ":" + '00</li>');
-            $timeModal.find('ul').append('<li>' + hour + ':' + '30</li>');
-          });
 
         }
+    });
+
+    ([...Array(24).keys()]).forEach(function(hour) {
+      hour = hour < 10 ? "0" + hour : hour;
+      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ":" + '00</li>');
+      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ':' + '30</li>');
+    });
+    $timeModal.find('li').on('click', function() {
+      var splitTime = $(this).text().split(":");
+      $('.wut_hours').text(splitTime[0]);
+      $('.wut_minutes').text(splitTime[1]);
     });
 
     $(document).on('click', '.wu_tune_desc', function () {
@@ -207,21 +300,43 @@
         $('#time_modal').iziModal('open');
     });
 
+    var $tuneTabsContent = $('#tune_modal .tabs_content');
+    var $tabTuneYoutube = $('.tab_youtube, .tab_tune');
+
+    $tabTuneYoutube.on('click', function () {
+      var $this = $(this);
+      if ($this.hasClass('active')) {
+        return;
+      }
+
+      $tuneTabsContent.find('.' + $tuneModal.find('.active').attr('tab') + '_content').fadeOut(function () {
+        $tuneTabsContent.find('.' + $this.attr('tab') + '_content').fadeIn(function() {
+
+        });
+      });
+    });
+    var myOtherOne = new CirclePlayer("#jquery_jplayer_2",
+                                      {
+                                        m4a:"http://www.jplayer.org/audio/m4a/Miaow-04-Lismore.m4a",
+                                        oga:"http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg"
+                                      }, {
+                                        cssSelectorAncestor: "#cp_container_2"
+                                      });
   });
 
   $('#site_container').css('opacity', 0);
   $(window).on('load', function () {
-      $('#preloader')
-        .animate({'opacity': 0}, {
-          complete: function () {
-            $('#site_container').animate({'opacity': 1});
+    $('#preloader')
+      .animate({'opacity': 0}, {
+        complete: function () {
+          $('#site_container').animate({'opacity': 1});
 
 //             setTimeout(function () {
 //               $('html').css('overflow-y', 'auto');
 //               }, 1000);
-          }
-        });
-    });
+        }
+      });
+  });
 
 
 </script>

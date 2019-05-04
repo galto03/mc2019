@@ -1,15 +1,22 @@
 body, html {
-    margin:0;
+    margin: 0;
+    padding: 0;
     background: #73beea;
-    //font-family: 'Heebo', sans-serif;
-    font-family: 'Comfortaa', cursive;
-
-    height:1100px;
+    font-family: "Comfortaa", cursive;
+    height: 1100px;
     overflow: hidden;
+    overflow-y: scroll;
+    width: 101%;
 }
 
 img {
     width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 /* Header **************************************************************/
 header {
@@ -62,8 +69,41 @@ header {
 #tune_modal  {
 
     .modal_content {
-        width: 400px;
         height: 400px;
+    }
+
+    .tabs_content {
+        background-color: #f2f2f2;
+        height: calc(100% - 36px);
+
+        .tab_tune_content {
+
+            .tunes_list {
+                vertical-align: top;
+                display: inline-block;
+                width: 281px;
+                overflow-y: scroll;
+                height: 100%;
+
+                li {
+                    background: #4ca8d4;
+                    border-bottom: 1px #f4f4f4 solid;
+                    display: block;
+                    padding: 14px;
+                    color: #f4f4f4;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #1c9bd8;
+                    }
+                }
+            }
+            .tunes_player {
+                vertical-align: top;
+                display: inline-block;
+                padding: 63px 0 0 63px;
+            }
+        }
     }
 }
 #time_modal  {
@@ -73,9 +113,6 @@ header {
         overflow-x: hidden;
 
         ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
             li {
                 cursor: pointer;
                 background-color: #edc643;
@@ -100,7 +137,7 @@ header {
     text-align: center;
     margin: 0 auto;
     width: 100%;
-    top: 200px;
+    top: 17%;
     opacity: 0;
     z-index: 35;
 
@@ -476,7 +513,7 @@ header {
 }
 
 
-/* Stars **************************************************************/
+/* Stars keyframes **************************************************************/
 @keyframes move-twink-back {
     from {background-position:0 0;}
     to {background-position:-10000px 5000px;}
@@ -518,4 +555,52 @@ header {
 @keyframes opacity-hide {
     from {opacity: 1;}
     to {opacity: 0;}
+}
+
+/* Tabs **************************************************************/
+.tabs{
+    font-size: 15px;
+    padding: 0px;
+    list-style: none;
+    background: #fff;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    /* border-radius: 50px; */
+    position: relative;
+    width: 100%;
+}
+
+.tabs a{
+    text-decoration:none;
+    color: #777;
+    text-transform:uppercase;
+    padding:10px 20px;
+    display:inline-block;
+    position:relative;
+    z-index:1;
+    transition-duration:0.6s;
+}
+
+.tabs a.active{
+    color: #fff;
+    font-weight: bold;
+}
+
+.tabs a i{
+    margin-right:5px;
+}
+
+.tabs .selector{
+    height:100%;
+    display:inline-block;
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:1;
+    transition-duration:0.6s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    background: linear-gradient(45deg, #d2c27a 0%, #ffca0e 100%);
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#8200f4',GradientType=1 );
 }
