@@ -139,17 +139,37 @@ header #pirsomet {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/surface.png);
   background-size: cover;
   background-repeat: repeat-x;
-  background-position: center top;
-  top: 250px;
+  background-position: center center;
+  top: 214px;
   bottom: 0;
   position: absolute;
   width: 100%;
-  height: 70%;
+  height: 840px;
   overflow: hidden;
   transition: all 0.1s;
   z-index: 30;
 }
 #ground.hidden {
+  top: 110%;
+}
+
+/* Ground **************************************************************/
+#underground {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/underground.png);
+  /* background-size: cover; */
+  background-repeat: repeat-x;
+  /* background-position: center top; */
+  top: 858px;
+  background-size: 600px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 437px;
+  overflow: hidden;
+  transition: all 0.1s;
+  z-index: 30;
+}
+#underground.hidden {
   top: 110%;
 }
 
@@ -270,15 +290,15 @@ header #pirsomet {
 
 /* Sun and Moon **************************************************************/
 .sun_and_moon {
-  top: calc(50% - 140px);
   position: absolute;
   left: calc(50% - 330px);
-  overflow: hidden;
   transition: all 1s;
   transition-delay: 0.1s;
   height: 573px;
   width: 667px;
   z-index: 20;
+  overflow: hidden;
+  top: 300px;
 }
 .sun_and_moon.hidden {
   top: 100%;
@@ -288,6 +308,7 @@ header #pirsomet {
   top: 0;
   animation: rotation 100s infinite linear;
   opacity: 1;
+  margin-top: 8px;
 }
 .sun_and_moon #img_moon {
   position: absolute;
@@ -554,13 +575,13 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 42%;
-  top: 51%;
+  left: 13%;
+  top: 57%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
   filter: drop-shadow(0 0 6px #699bff);
-  animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+  animation: tail 3000ms ease-in-out 1, shooting 3000ms ease-in-out 1;
 }
 .shooting_star::before {
   content: "";
@@ -586,164 +607,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( 28px);
-  left: calc( 266px);
-  animation-delay: 285ms;
+  top: calc( -175px);
+  left: calc( 92px);
+  animation-delay: 5373ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 285ms;
-}
-.shooting_star:nth-child(2) {
-  top: calc( 86px);
-  left: calc( 56px);
-  animation-delay: 8404ms;
-}
-.shooting_star:nth-child(2)::before, .shooting_star:nth-child(2)::after {
-  animation-delay: 8404ms;
-}
-.shooting_star:nth-child(3) {
-  top: calc( -76px);
-  left: calc( 184px);
-  animation-delay: 9510ms;
-}
-.shooting_star:nth-child(3)::before, .shooting_star:nth-child(3)::after {
-  animation-delay: 9510ms;
-}
-.shooting_star:nth-child(4) {
-  top: calc( 38px);
-  left: calc( 114px);
-  animation-delay: 2438ms;
-}
-.shooting_star:nth-child(4)::before, .shooting_star:nth-child(4)::after {
-  animation-delay: 2438ms;
-}
-.shooting_star:nth-child(5) {
-  top: calc( 29px);
-  left: calc( 245px);
-  animation-delay: 184ms;
-}
-.shooting_star:nth-child(5)::before, .shooting_star:nth-child(5)::after {
-  animation-delay: 184ms;
-}
-.shooting_star:nth-child(6) {
-  top: calc( -272px);
-  left: calc( 188px);
-  animation-delay: 8883ms;
-}
-.shooting_star:nth-child(6)::before, .shooting_star:nth-child(6)::after {
-  animation-delay: 8883ms;
-}
-.shooting_star:nth-child(7) {
-  top: calc( -184px);
-  left: calc( 173px);
-  animation-delay: 5808ms;
-}
-.shooting_star:nth-child(7)::before, .shooting_star:nth-child(7)::after {
-  animation-delay: 5808ms;
-}
-.shooting_star:nth-child(8) {
-  top: calc( -248px);
-  left: calc( 60px);
-  animation-delay: 651ms;
-}
-.shooting_star:nth-child(8)::before, .shooting_star:nth-child(8)::after {
-  animation-delay: 651ms;
-}
-.shooting_star:nth-child(9) {
-  top: calc( -136px);
-  left: calc( 128px);
-  animation-delay: 3042ms;
-}
-.shooting_star:nth-child(9)::before, .shooting_star:nth-child(9)::after {
-  animation-delay: 3042ms;
-}
-.shooting_star:nth-child(10) {
-  top: calc( -27px);
-  left: calc( 180px);
-  animation-delay: 2185ms;
-}
-.shooting_star:nth-child(10)::before, .shooting_star:nth-child(10)::after {
-  animation-delay: 2185ms;
-}
-.shooting_star:nth-child(11) {
-  top: calc( -213px);
-  left: calc( 242px);
-  animation-delay: 9350ms;
-}
-.shooting_star:nth-child(11)::before, .shooting_star:nth-child(11)::after {
-  animation-delay: 9350ms;
-}
-.shooting_star:nth-child(12) {
-  top: calc( -119px);
-  left: calc( 11px);
-  animation-delay: 1241ms;
-}
-.shooting_star:nth-child(12)::before, .shooting_star:nth-child(12)::after {
-  animation-delay: 1241ms;
-}
-.shooting_star:nth-child(13) {
-  top: calc( 18px);
-  left: calc( 138px);
-  animation-delay: 9871ms;
-}
-.shooting_star:nth-child(13)::before, .shooting_star:nth-child(13)::after {
-  animation-delay: 9871ms;
-}
-.shooting_star:nth-child(14) {
-  top: calc( -56px);
-  left: calc( 270px);
-  animation-delay: 1182ms;
-}
-.shooting_star:nth-child(14)::before, .shooting_star:nth-child(14)::after {
-  animation-delay: 1182ms;
-}
-.shooting_star:nth-child(15) {
-  top: calc( -63px);
-  left: calc( 7px);
-  animation-delay: 9917ms;
-}
-.shooting_star:nth-child(15)::before, .shooting_star:nth-child(15)::after {
-  animation-delay: 9917ms;
-}
-.shooting_star:nth-child(16) {
-  top: calc( -234px);
-  left: calc( 54px);
-  animation-delay: 5222ms;
-}
-.shooting_star:nth-child(16)::before, .shooting_star:nth-child(16)::after {
-  animation-delay: 5222ms;
-}
-.shooting_star:nth-child(17) {
-  top: calc( -57px);
-  left: calc( 142px);
-  animation-delay: 3025ms;
-}
-.shooting_star:nth-child(17)::before, .shooting_star:nth-child(17)::after {
-  animation-delay: 3025ms;
-}
-.shooting_star:nth-child(18) {
-  top: calc( -60px);
-  left: calc( 271px);
-  animation-delay: 2619ms;
-}
-.shooting_star:nth-child(18)::before, .shooting_star:nth-child(18)::after {
-  animation-delay: 2619ms;
-}
-.shooting_star:nth-child(19) {
-  top: calc( -108px);
-  left: calc( 40px);
-  animation-delay: 6514ms;
-}
-.shooting_star:nth-child(19)::before, .shooting_star:nth-child(19)::after {
-  animation-delay: 6514ms;
-}
-.shooting_star:nth-child(20) {
-  top: calc( -49px);
-  left: calc( 5px);
-  animation-delay: 4041ms;
-}
-.shooting_star:nth-child(20)::before, .shooting_star:nth-child(20)::after {
-  animation-delay: 4041ms;
+  animation-delay: 5373ms;
 }
 
 @keyframes tail {
