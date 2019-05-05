@@ -113,6 +113,9 @@ header {
         overflow-x: hidden;
 
         ul {
+            letter-spacing: -2px;
+            font-family: "Nanum Gothic Coding", monospace;
+
             li {
                 cursor: pointer;
                 background-color: #edc643;
@@ -211,7 +214,7 @@ header {
     position: absolute;
     width: 60%;
     top: 22%;
-    left: 20%;
+    left: 130px;
     text-align: center;
     text-shadow: #7ec6ed 1px 0 10px;
 

@@ -97,6 +97,10 @@ header #pirsomet {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+#time_modal .modal_content ul {
+  letter-spacing: -2px;
+  font-family: "Nanum Gothic Coding", monospace;
+}
 #time_modal .modal_content ul li {
   cursor: pointer;
   background-color: #edc643;
@@ -185,7 +189,7 @@ header #pirsomet {
   position: absolute;
   width: 60%;
   top: 22%;
-  left: 20%;
+  left: 130px;
   text-align: center;
   text-shadow: #7ec6ed 1px 0 10px;
 }
@@ -575,8 +579,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 13%;
-  top: 57%;
+  left: 50%;
+  top: 8%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -607,12 +611,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( -175px);
-  left: calc( 92px);
-  animation-delay: 5373ms;
+  top: calc( 18px);
+  left: calc( 126px);
+  animation-delay: 5009ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 5373ms;
+  animation-delay: 5009ms;
 }
 
 @keyframes tail {
