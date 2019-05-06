@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="/css/main.css">
 
     <script src="/js/jquery-3.4.0.min.js"></script>
-    <script src="/js/timeago.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -11,20 +10,42 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
+
+    <!--  Optimize with https://icomoon.io/app/  -->
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="js/jplayer/circle.skin/circle.player.css">
-
-    <script type="text/javascript" src="js/jplayer/jquery.transform.js"></script>
-    <script type="text/javascript" src="js/jplayer/jquery.grab.js"></script>
-    <script type="text/javascript" src="js/jplayer/jquery.jplayer.js"></script>
-    <script type="text/javascript" src="js/jplayer/mod.csstransforms.min.js"></script>
-    <script type="text/javascript" src="js/jplayer/circle.player.js"></script>
 
 
 </head>
 
 <body>
+
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-music" viewBox="0 0 32 32">
+            <title>music</title>
+            <path d="M30 0h2v23c0 2.761-3.134 5-7 5s-7-2.239-7-5c0-2.761 3.134-5 7-5 1.959 0 3.729 0.575 5 1.501v-11.501l-16 3.556v15.444c0 2.761-3.134 5-7 5s-7-2.239-7-5c0-2.761 3.134-5 7-5 1.959 0 3.729 0.575 5 1.501v-19.501l18-4z"></path>
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 32 32">
+            <title>info</title>
+            <path d="M14 9.5c0-0.825 0.675-1.5 1.5-1.5h1c0.825 0 1.5 0.675 1.5 1.5v1c0 0.825-0.675 1.5-1.5 1.5h-1c-0.825 0-1.5-0.675-1.5-1.5v-1z"></path>
+            <path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z"></path>
+            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+        </symbol>
+        <symbol id="icon-play2" viewBox="0 0 32 32">
+            <title>play2</title>
+            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>
+        </symbol>
+        <symbol id="icon-pause" viewBox="0 0 32 32">
+            <title>pause</title>
+            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z"></path>
+        </symbol>
+        <symbol id="icon-youtube" viewBox="0 0 32 32">
+            <title>youtube</title>
+            <path d="M31.681 9.6c0 0-0.313-2.206-1.275-3.175-1.219-1.275-2.581-1.281-3.206-1.356-4.475-0.325-11.194-0.325-11.194-0.325h-0.012c0 0-6.719 0-11.194 0.325-0.625 0.075-1.987 0.081-3.206 1.356-0.963 0.969-1.269 3.175-1.269 3.175s-0.319 2.588-0.319 5.181v2.425c0 2.587 0.319 5.181 0.319 5.181s0.313 2.206 1.269 3.175c1.219 1.275 2.819 1.231 3.531 1.369 2.563 0.244 10.881 0.319 10.881 0.319s6.725-0.012 11.2-0.331c0.625-0.075 1.988-0.081 3.206-1.356 0.962-0.969 1.275-3.175 1.275-3.175s0.319-2.587 0.319-5.181v-2.425c-0.006-2.588-0.325-5.181-0.325-5.181zM12.694 20.15v-8.994l8.644 4.513-8.644 4.481z"></path>
+        </symbol>
+    </defs>
+</svg>
+
 
 <div id="site_container">
 
@@ -103,22 +124,16 @@
             <!--            <div class="wake_up_sleep_time">-->
             <!--                About 6 hours of sleep-->
             <!--            </div>-->
-            <div class="wu_tune">
+            <div class="wu_tune" title="Wake me up before you go go go go-go"> <!-- TODO: CHANGE TO LIVE TEXT -->
                 <!--                <div class="wu_tune_header">Tune or YouTube</div>-->
                 <div class="wu_tune_desc">
                     <div class="wu_tune_music">
-                        <svg enable-background="new 0 0 50 50" height="50px" id="Layer_1" version="1.1" viewBox="0 0 50 50" width="50px"
-                             xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <rect fill="none"
-                                  height="50"
-                                  width="50"/>
-                            <path fill="#fff"
-                                  d="M43,3v35.004c0,0-0.125,5.996-6.984,5.996C28.506,44,28,39.127,28,38c0-2.41,0.942-5.037,8-5.037c3.249,0,4-0.835,4-2.963  c0,0,0-15.463,0-16.78s-0.08-1.793-1.543-1.462c-2.517,0.569-18.957,4.133-19.613,4.29S18,16.594,18,17.75c0,2.127,0,22.997,0,25.25  s-1.742,6-8,6s-7-3.998-7-6c0-2.973,2.25-4.891,7.007-4.891C14.438,38.109,15,36.86,15,35c0-6.633,0-26.04,0-27  s0.391-1.609,1.366-1.824c1.631-0.358,24.78-5.131,24.78-5.131S43,0.622,43,3z"/>
-                        </svg>
+                        <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
+
                     </div>
                     <div class="wu_tune_name_cont">
                         <div class="wu_tune_name">
-                            Wacky alarm
+                            Wake me up before you go go go go-go
                         </div>
                         <div class="wu_tune_edit">
                             Click to change
@@ -127,7 +142,7 @@
                 </div>
             </div>
             <div class="set_alarm_btn_container">
-                <a href="#" class="set_alarm_btn">SET ALARM</a>
+                <a href="#" class="set_alarm_btn mc_btn">SET ALARM</a>
             </div>
         </div>
 
@@ -137,18 +152,10 @@
     <div id="night_overly" class="env"></div>
     <header>
         <div id="logo">
-            <img src="img/logo-night.png" />
+            <a href="https://www.metaclock.com"><img src="img/logo-night.png" /></a>
         </div>
         <div id="pirsomet">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- MetaClock alarm window 728x90 -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-6056202160838970"
-                 data-ad-slot="3338746476"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            Ad
 
         </div>
     </header>
@@ -158,50 +165,86 @@
 <div id="tune_modal" class="ui_modal">
     <div class="modal_content">
         <nav class="tabs">
-            <div class="selector" style="width: 110px;"></div>
-            <a href="#" class="active tab_tune" tab="tab_tune"><i class="fas fa-music" style="padding-right:10px;"></i>Tune</a>
-            <a href="#" class="tab_youtube" tab="tab_youtube" ><i class="fab fa-youtube" style="padding-right:10px;"></i>YouTube</a>
+            <div class="selector" style="width: 297px;"></div>
+            <a href="#" class="tab active tab_tune" tab="tab_tune">
+                <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
+                <span class="name">Tune</span>
+
+            </a>
+            <a href="#" class="tab tab_youtube" tab="tab_youtube">
+                <svg class="icon icon-youtube"><use xlink:href="#icon-youtube"></use></svg>
+                <span class="name">YouTube</span>
+            </a>
         </nav>
         <div class="tabs_content">
             <ul>
                 <li class="tab_content tab_tune_content">
                     <ul class="tunes_list">
-                       <li>Song 1</li>
-                       <li>Song 2</li>
-                       <li>Song 3</li>
-                       <li>Song 4</li>
-                       <li>Song 5</li>
-                       <li>Song 6</li>
-                       <li>Song 7</li>
-                       <li>Song 8</li>
-                       <li>Song 9</li>
-                       <li>Song 10</li>
+                       <li>
+                           <span>Good morning beautiful</span>
+                           <span>Steve Holy</span>
+                       </li>
+                       <li>
+                           <span>Good morning to You</span>
+                           <span>Unknown</span>
+                       </li>
+                       <li>
+                           <span>Roja</span>
+                           <span>SP. Balasubramaniam & Chitra</span>
+                       </li>
+                        <li>
+                            <span>Kuch Kuch Hota Hai</span>
+                            <span>Hyacinth D'Souze</span>
+                        </li>
+                        <li>
+                            <span>Guten Morgen</span>
+                            <span>Unknown</span>
+                        </li>
+                        <li>
+                            <span>Sutta Na Mila</span>
+                            <span>Unknown</span>
+                        </li>
+                        <li>
+                            <span>Wake Up</span>
+                            <span>Unknown Minions</span>
+                        </li>
+                        <li>
+                            <span>Good Morning</span>
+                            <span>Miss Li</span>
+                        </li>
+                        <li>
+                            <span>I Feel Good</span>
+                            <span>James Brown</span>
+                        </li>
+                        <li>
+                            <span>Wake Me Up Before</span>
+                            <span>Wham!</span>
+                        </li>
                     </ul>
-                    <div class="tunes_player">
-                        <div id="jquery_jplayer_2" class="cp-jplayer"></div>
-                        <div id="cp_container_2" class="cp-container">
-                            <div class="cp-buffer-holder">
-                                <div class="cp-buffer-1"></div>
-                                <div class="cp-buffer-2"></div>
-                            </div>
-                            <div class="cp-progress-holder">
-                                <div class="cp-progress-1"></div>
-                                <div class="cp-progress-2"></div>
-                            </div>
-                            <div class="cp-circle-control"></div>
-                            <ul class="cp-controls">
-                                <li><a href="#" class="cp-play" tabindex="1">play</a></li>
-                                <li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li>
-                            </ul>
-                        </div>
-
-
-                    </div>
                 </li>
                 <li style="display: none" class="tab_content tab_youtube_content">
                     asdk youtube
+                    <input type="text" placeholder="Search YouTube or paste a link">
+                    <ul id="youtube_search_results">
+                        <li>Result</li>
+                        <li>Result</li>
+                        <li>Result</li>
+                    </ul>
+                    <div id="youtube_preview">
+
+                    </div>
                 </li>
             </ul>
+            <div class="controls">
+                <div class="active_tune">
+                    <span>Chosen tune</span>
+                    <span>Your mom</span>
+                </div>
+                <div class="buttons_container">
+                    <button id="cancel_tune" class="mc_btn" style="color: #ed0606; margin-right: 10px;">Cancel</button>
+                    <button id="ok_tune" class="mc_btn">Ok</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -284,6 +327,18 @@
           var itemPos = $(this).position();
           $(".selector").css({"left": itemPos.left + "px", "width": activeWidth + "px"});
         });
+
+        $('#ok_tune').on('click', function() {
+          // TODO
+          $tuneModal.iziModal('close');
+          console.log('ok')
+        });
+
+        $('#cancel_tune').on('click', function() {
+          // TODO
+          $tuneModal.iziModal('close');
+          console.log('cancel')
+        });
       }
     });
 
@@ -335,13 +390,7 @@
         });
       });
     });
-    var myOtherOne = new CirclePlayer("#jquery_jplayer_2",
-                                      {
-                                        m4a:"http://www.jplayer.org/audio/m4a/Miaow-04-Lismore.m4a",
-                                        oga:"http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg"
-                                      }, {
-                                        cssSelectorAncestor: "#cp_container_2"
-                                      });
+
   });
 
   $('#site_container').css('opacity', 0);

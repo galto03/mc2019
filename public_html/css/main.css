@@ -19,6 +19,33 @@ ul {
   padding: 0;
 }
 
+/* Buttons **************************************************************/
+.mc_btn {
+  color: #54bcf0;
+  font-weight: bold;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#f6f6f6",GradientType=0);
+  background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 19px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+}
+
+.mc_btn:hover {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f6f6f6", endColorstr="#ffffff",GradientType=0);
+  background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+}
+
+.mc_btn:active {
+  position: relative;
+  top: 1px;
+}
+
 /* Header **************************************************************/
 header {
   z-index: 35;
@@ -35,6 +62,7 @@ header #pirsomet {
   height: 90px;
   display: inline-block;
   float: right;
+  border: 1px white solid;
 }
 
 /* Night Overly **************************************************************/
@@ -64,32 +92,71 @@ header #pirsomet {
 #tune_modal .modal_content {
   height: 400px;
 }
+#tune_modal .tabs .icon {
+  padding-right: 6px;
+  width: 24px;
+  height: 24px;
+  vertical-align: -6px;
+  fill: #1c9bd8;
+}
 #tune_modal .tabs_content {
   background-color: #f2f2f2;
   height: calc(100% - 36px);
 }
+#tune_modal .tabs_content .controls {
+  display: block;
+  padding-top: 12px;
+  padding-left: 14px;
+}
+#tune_modal .tabs_content .controls .active_tune {
+  width: 67%;
+  display: inline-block;
+  line-height: 17px;
+  vertical-align: top;
+}
+#tune_modal .tabs_content .controls .active_tune span:first-child {
+  color: #000000;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+}
+#tune_modal .tabs_content .controls .active_tune span:nth-child(2) {
+  color: #1c9bd8;
+  font-size: 20px;
+}
+#tune_modal .tabs_content .controls .buttons_container {
+  display: inline-block;
+}
+#tune_modal .tabs_content .tab_content {
+  height: 304px;
+}
 #tune_modal .tabs_content .tab_tune_content .tunes_list {
   vertical-align: top;
   display: inline-block;
-  width: 281px;
   overflow-y: scroll;
   height: 100%;
+  width: 100%;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li {
   background: #4ca8d4;
   border-bottom: 1px #f4f4f4 solid;
   display: block;
   padding: 14px;
-  color: #f4f4f4;
   cursor: pointer;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li:hover {
   background-color: #1c9bd8;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_player {
-  vertical-align: top;
+#tune_modal .tabs_content .tab_tune_content .tunes_list li span:first-child {
+  color: #fccf1b;
+  display: block;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li span:nth-child(2) {
+  color: #f4f4f4;
+  font-size: 12px;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_description {
   display: inline-block;
-  padding: 63px 0 0 63px;
 }
 
 #time_modal .modal_content {
@@ -246,16 +313,27 @@ header #pirsomet {
 }
 #set_alarm_content .wu_tune .wu_tune_desc .wu_tune_music {
   display: inline-block;
+  vertical-align: 4px;
+  padding-right: 6px;
+  width: 40px;
+  height: 40px;
 }
 #set_alarm_content .wu_tune .wu_tune_desc .wu_tune_music svg {
-  width: 40px;
-  vertical-align: 0px;
+  fill: #fff;
+  height: 100%;
+  width: 100%;
 }
 #set_alarm_content .wu_tune .wu_tune_desc .wu_tune_name_cont {
   display: inline-block;
   font-size: 19px;
   color: #54bcf0;
-  vertical-align: 5px;
+  max-width: 193px;
+  white-space: nowrap;
+  vertical-align: 4px;
+}
+#set_alarm_content .wu_tune .wu_tune_desc .wu_tune_name_cont .wu_tune_name {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 #set_alarm_content .wu_tune .wu_tune_desc:hover .wu_tune_edit {
   opacity: 1;
@@ -267,29 +345,6 @@ header #pirsomet {
 #set_alarm_content .set_alarm_btn_container {
   display: inline-block;
   vertical-align: -13px;
-}
-#set_alarm_content .set_alarm_btn_container .set_alarm_btn {
-  color: #54bcf0;
-  font-weight: bold;
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#f6f6f6",GradientType=0);
-  background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-  border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 10px 19px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
-}
-#set_alarm_content .set_alarm_btn_container .set_alarm_btn:hover {
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f6f6f6", endColorstr="#ffffff",GradientType=0);
-  background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-}
-#set_alarm_content .set_alarm_btn_container .set_alarm_btn:active {
-  position: relative;
-  top: 1px;
 }
 
 /* Sun and Moon **************************************************************/
@@ -535,6 +590,7 @@ header #pirsomet {
   padding: 10px 20px;
   display: inline-block;
   position: relative;
+  width: 257px;
   z-index: 1;
   transition-duration: 0.6s;
 }
@@ -579,8 +635,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 50%;
-  top: 8%;
+  left: 14%;
+  top: 66%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -611,12 +667,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( 18px);
-  left: calc( 126px);
-  animation-delay: 5009ms;
+  top: calc( 29px);
+  left: calc( 245px);
+  animation-delay: 1444ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 5009ms;
+  animation-delay: 1444ms;
 }
 
 @keyframes tail {

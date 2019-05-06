@@ -9,6 +9,12 @@ body, html {
     width: 101%;
 }
 
+//* {
+//    outline-style:none;
+//    box-shadow:none;
+//    border-color:transparent;
+//}
+
 img {
     width: 100%;
 }
@@ -18,6 +24,33 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+/* Buttons **************************************************************/
+.mc_btn {
+    //color: #73be4c;
+    color: #54bcf0;
+    font-weight: bold;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+    background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    font-size:16px;
+    padding:10px 19px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+}
+.mc_btn:hover {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+    background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+}
+.mc_btn:active {
+    position:relative;
+    top:1px;
+}
+
 /* Header **************************************************************/
 header {
     z-index: 35;
@@ -36,6 +69,7 @@ header {
         height: 90px;
         display: inline-block;
         float: right;
+        border: 1px white solid;
     }
 }
 
@@ -72,36 +106,87 @@ header {
         height: 400px;
     }
 
+    .tabs {
+        .icon {
+            padding-right: 6px;
+            width: 24px;
+            height: 24px;
+            vertical-align: -6px;
+            fill: #1c9bd8;
+        }
+    }
+
     .tabs_content {
         background-color: #f2f2f2;
         height: calc(100% - 36px);
 
+        .controls {
+            display: block;
+            padding-top: 12px;
+            padding-left: 14px;
+
+            .active_tune {
+                width: 67%;
+                display: inline-block;
+                line-height: 17px;
+                vertical-align: top;
+
+                span:first-child {
+                    color: #000000;
+                    display: block;
+                    font-size: 12px;
+                    font-weight: bold;
+                }
+                span:nth-child(2) {
+                    color: #1c9bd8;
+                    font-size: 20px;
+                }
+            }
+
+            .buttons_container {
+                display: inline-block;
+
+                button {
+
+                }
+            }
+        }
+
+        .tab_content {
+            height: 304px;
+        }
         .tab_tune_content {
 
             .tunes_list {
                 vertical-align: top;
                 display: inline-block;
-                width: 281px;
                 overflow-y: scroll;
                 height: 100%;
+                width: 100%;
 
                 li {
                     background: #4ca8d4;
                     border-bottom: 1px #f4f4f4 solid;
                     display: block;
                     padding: 14px;
-                    color: #f4f4f4;
                     cursor: pointer;
 
                     &:hover {
                         background-color: #1c9bd8;
                     }
+
+                    span:first-child {
+                        color: #fccf1b;
+                        display: block;
+                    }
+                    span:nth-child(2) {
+                        color: #f4f4f4;
+                        font-size: 12px;
+                    }
                 }
             }
-            .tunes_player {
-                vertical-align: top;
+            .tunes_description {
                 display: inline-block;
-                padding: 63px 0 0 63px;
             }
         }
     }
@@ -309,10 +394,15 @@ header {
 
             .wu_tune_music {
                 display: inline-block;
+                vertical-align: 4px;
+                padding-right: 6px;
+                width: 40px;
+                height: 40px;
 
                 svg {
-                    width: 40px;
-                    vertical-align: 0px;
+                    fill: #fff;
+                    height: 100%;
+                    width: 100%;
                 }
             }
 
@@ -321,7 +411,16 @@ header {
                 font-size: 19px;
                 //color: #56ba52;
                 color: #54bcf0;
-                vertical-align: 5px;
+                //vertical-align: 5px;
+                max-width: 193px;
+                white-space: nowrap;
+                vertical-align: 4px;
+
+                .wu_tune_name {
+
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
 
             }
 
@@ -342,31 +441,6 @@ header {
     .set_alarm_btn_container {
         display: inline-block;
         vertical-align: -13px;
-
-        .set_alarm_btn {
-            //color: #73be4c;
-            color: #54bcf0;
-            font-weight: bold;
-            box-shadow:inset 0px 1px 0px 0px #ffffff;
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
-            background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-            border-radius:6px;
-            border:1px solid #dcdcdc;
-            display:inline-block;
-            cursor:pointer;
-            font-size:16px;
-            padding:10px 19px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px #ffffff;
-        }
-        .set_alarm_btn:hover {
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
-            background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-        }
-        .set_alarm_btn:active {
-            position:relative;
-            top:1px;
-        }
 
 
     }
@@ -600,6 +674,7 @@ header {
     padding:10px 20px;
     display:inline-block;
     position:relative;
+    width: 257px;
     z-index:1;
     transition-duration:0.6s;
 }
