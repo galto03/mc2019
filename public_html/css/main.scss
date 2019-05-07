@@ -25,6 +25,24 @@ ul {
     padding: 0;
 }
 
+.iziModal .iziModal-header {
+    padding-left: 52px;
+}
+
+.iziModal .iziModal-header-title {
+    font-size: 25px;
+    line-height: 26px;
+    padding-top: 4px;
+    font-family: "Comfortaa", cursive;
+}
+
+.iziModal .iziModal-header-subtitle {
+    font-family: "Comfortaa", cursive;
+}
+
+.iziModal .iziModal-header-buttons {
+    right: 22px;
+}
 /* Buttons **************************************************************/
 .mc_btn {
     //color: #73be4c;
@@ -126,10 +144,12 @@ header {
             padding-left: 14px;
 
             .active_tune {
-                width: 67%;
+                width: 307px;
                 display: inline-block;
                 line-height: 17px;
                 vertical-align: top;
+                padding-left: 38px;
+
 
                 span:first-child {
                     color: #000000;
@@ -146,14 +166,16 @@ header {
             .buttons_container {
                 display: inline-block;
 
-                button {
-
+                #cancel_tune {
+                    color: #b1b1b1;
+                    margin-right: 10px;
                 }
             }
         }
 
         .tab_content {
             height: 304px;
+            background: #fff;
         }
         .tab_tune_content {
 
@@ -165,28 +187,72 @@ header {
                 width: 100%;
 
                 li {
-                    background: #4ca8d4;
-                    border-bottom: 1px #f4f4f4 solid;
+                    background: #ffffff;
+                    border-bottom: 1px #f2f2f2 solid;
                     display: block;
-                    padding: 14px;
-                    cursor: pointer;
+                    line-height: 17px;
+                    height: 21px;
+                    padding: 13px 61px 23px 51px;
+                    //cursor: pointer;
+
+
+                    span:first-child {
+                        color: #1a91d2;
+                        display: block;
+                        font-size: 18px;
+                    }
+                    span:nth-child(2) {
+                        color: #1a91d2;
+                        font-size: 12px;
+                    }
+
+                    .play_pause_song {
+                        cursor: pointer;
+                        display: inline-block;
+                        width: 24px;
+                        height: 24px;
+                        float: right;
+                        margin-top: -13px;
+
+                        .icon {
+                            width: 100%;
+                            height: 100%;
+                            fill: #1a91d2;
+                        }
+
+                        .icon-pause {
+                            display: none;
+                        }
+
+                    }
 
                     &:hover {
                         background-color: #1c9bd8;
-                    }
 
-                    span:first-child {
-                        color: #fccf1b;
-                        display: block;
-                    }
-                    span:nth-child(2) {
-                        color: #f4f4f4;
-                        font-size: 12px;
+                        span {
+                            color: #fff;
+                        }
+
+                        .icon {
+                            fill: #fff;
+                        }
                     }
                 }
             }
             .tunes_description {
                 display: inline-block;
+            }
+        }
+
+        .tab_youtube_content {
+            #youtube_search {
+                width: 571px;
+                border: 1px #d8d8d8 solid;
+                border-radius: 9px;
+                margin: 13px;
+                height: 30px;
+                padding: 14px;
+                font-size: 15px;
             }
         }
     }
@@ -209,12 +275,19 @@ header {
                 font-size: 42px;
                 color: white;
                 text-align: center;
+                letter-spacing: 2px;
+
+                &:nth-child(2n) {
+                    background-color: #f3d872;
+                }
 
                 &:hover {
                     background-color: #d5aa1b;
                     text-shadow: 0 0 10px #fff;
+                    font-weight: bold;
                 }
             }
+
         }
     }
 }
@@ -336,7 +409,7 @@ header {
         font-size: 92px;
         padding-bottom: 12px;
         color: #49b4ef;
-        margin: 11px auto 34px;
+        margin: 20px auto 26px;
         width: 311px;
         /* border: 1px black solid; */
         background-color: #ffffff47;
@@ -564,11 +637,11 @@ header {
     }
 
     .stars {
-        background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+        background:#000 url(http://dev.metaclock.com:8081/img/stars.png) repeat top center;
     }
 
     .twinkling{
-        background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+        background:transparent url(http://dev.metaclock.com:8081/img/twinkling.png) repeat top center;
         animation:move-twink-back 200s linear infinite;
     }
 }
@@ -677,6 +750,7 @@ header {
     width: 257px;
     z-index:1;
     transition-duration:0.6s;
+    text-align: center;
 }
 
 .tabs a.active{

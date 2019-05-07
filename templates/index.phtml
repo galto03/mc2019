@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/main.css">
+
 
     <script src="/js/jquery-3.4.0.min.js"></script>
 
@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
 
+    <script src="https://apis.google.com/js/api.js"></script>
     <!--  Optimize with https://icomoon.io/app/  -->
-    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+<!--    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>-->
 
-
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
@@ -168,12 +169,12 @@
             <div class="selector" style="width: 297px;"></div>
             <a href="#" class="tab active tab_tune" tab="tab_tune">
                 <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
-                <span class="name">Tune</span>
+                <span class="name">MetaClock Tunes</span>
 
             </a>
             <a href="#" class="tab tab_youtube" tab="tab_youtube">
                 <svg class="icon icon-youtube"><use xlink:href="#icon-youtube"></use></svg>
-                <span class="name">YouTube</span>
+                <span class="name">YouTube Video</span>
             </a>
         </nav>
         <div class="tabs_content">
@@ -183,48 +184,111 @@
                        <li>
                            <span>Good morning beautiful</span>
                            <span>Steve Holy</span>
+                           <div class="play_pause_song">
+                               <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                           </div>
                        </li>
                        <li>
                            <span>Good morning to You</span>
                            <span>Unknown</span>
+                           <div class="play_pause_song">
+                               <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                           </div>
                        </li>
                        <li>
                            <span>Roja</span>
                            <span>SP. Balasubramaniam & Chitra</span>
+                           <div class="play_pause_song">
+                               <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                           </div>
                        </li>
                         <li>
                             <span>Kuch Kuch Hota Hai</span>
                             <span>Hyacinth D'Souze</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                         <li>
                             <span>Guten Morgen</span>
                             <span>Unknown</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                         <li>
                             <span>Sutta Na Mila</span>
                             <span>Unknown</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                         <li>
                             <span>Wake Up</span>
                             <span>Unknown Minions</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                         <li>
                             <span>Good Morning</span>
                             <span>Miss Li</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                         <li>
                             <span>I Feel Good</span>
                             <span>James Brown</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Maargazhi Poovea</span>
+                            <span>Sobha Shanker</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Northeast Tradewinds</span>
+                            <span>Mad Professor</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Trumpet Morning</span>
+                            <span>Unknown</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                         <li>
                             <span>Wake Me Up Before</span>
                             <span>Wham!</span>
+                            <div class="play_pause_song">
+                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
+                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                            </div>
                         </li>
                     </ul>
                 </li>
                 <li style="display: none" class="tab_content tab_youtube_content">
-                    asdk youtube
-                    <input type="text" placeholder="Search YouTube or paste a link">
+                    <input id="youtube_search" type="text" placeholder="Search YouTube or paste a link">
                     <ul id="youtube_search_results">
                         <li>Result</li>
                         <li>Result</li>
@@ -267,6 +331,20 @@
   "use strict";
   $(function () {
 
+    window.execute = function() {
+      return gapi.client.youtube.search.list({
+                                               "part": "snippet",
+                                               "maxResults": 25,
+                                               "q": "metaclock"
+                                             })
+        .then(function (response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function (err) { console.error("Execute error", err); });
+    }
+
+
 
     var $env = $('.env');
 
@@ -286,10 +364,26 @@
     };
 
     $(window).on('load', function () {
-        $env.removeClass('hidden');
+      $('#preloader').animate({'opacity': 0}, {
+        complete: function () {
+          $('#site_container').animate({'opacity': 1});
 
-        randomizeClouds();
+        }
       });
+      $env.removeClass('hidden');
+
+      randomizeClouds();
+
+
+      gapi.load("client", function() {
+        gapi.client.setApiKey("AIzaSyDNLiIgEPo9q_k9qIM8PgxgPh9G8buFl3Y");
+        gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+          .then(function () { console.log("GAPI client loaded for API"); },
+                function (err) { console.error("Error loading GAPI client for API", err); });
+
+      });
+
+    });
 
     $('.set_alarm_btn').on('click', function () {
         if (window.isNight) {
@@ -339,6 +433,20 @@
           $tuneModal.iziModal('close');
           console.log('cancel')
         });
+
+
+        $('#youtube_search').on('keyup', function(e) {
+          if (e.keyCode !== 13) {
+            return;
+          }
+
+          gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q": "metaclock"}).then(
+            function(response) {
+                console.log("Response", response);
+            },
+            function(err) { console.error("Execute error", err); });
+        });
+
       }
     });
 
@@ -394,18 +502,6 @@
   });
 
   $('#site_container').css('opacity', 0);
-  $(window).on('load', function () {
-    $('#preloader')
-      .animate({'opacity': 0}, {
-        complete: function () {
-          $('#site_container').animate({'opacity': 1});
-
-//             setTimeout(function () {
-//               $('html').css('overflow-y', 'auto');
-//               }, 1000);
-        }
-      });
-  });
 
 
 </script>

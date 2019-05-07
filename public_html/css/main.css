@@ -19,6 +19,25 @@ ul {
   padding: 0;
 }
 
+.iziModal .iziModal-header {
+  padding-left: 52px;
+}
+
+.iziModal .iziModal-header-title {
+  font-size: 25px;
+  line-height: 26px;
+  padding-top: 4px;
+  font-family: "Comfortaa", cursive;
+}
+
+.iziModal .iziModal-header-subtitle {
+  font-family: "Comfortaa", cursive;
+}
+
+.iziModal .iziModal-header-buttons {
+  right: 22px;
+}
+
 /* Buttons **************************************************************/
 .mc_btn {
   color: #54bcf0;
@@ -109,10 +128,11 @@ header #pirsomet {
   padding-left: 14px;
 }
 #tune_modal .tabs_content .controls .active_tune {
-  width: 67%;
+  width: 307px;
   display: inline-block;
   line-height: 17px;
   vertical-align: top;
+  padding-left: 38px;
 }
 #tune_modal .tabs_content .controls .active_tune span:first-child {
   color: #000000;
@@ -127,8 +147,13 @@ header #pirsomet {
 #tune_modal .tabs_content .controls .buttons_container {
   display: inline-block;
 }
+#tune_modal .tabs_content .controls .buttons_container #cancel_tune {
+  color: #b1b1b1;
+  margin-right: 10px;
+}
 #tune_modal .tabs_content .tab_content {
   height: 304px;
+  background: #fff;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list {
   vertical-align: top;
@@ -138,25 +163,58 @@ header #pirsomet {
   width: 100%;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li {
-  background: #4ca8d4;
-  border-bottom: 1px #f4f4f4 solid;
+  background: #ffffff;
+  border-bottom: 1px #f2f2f2 solid;
   display: block;
-  padding: 14px;
+  line-height: 17px;
+  height: 21px;
+  padding: 13px 61px 23px 51px;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li span:first-child {
+  color: #1a91d2;
+  display: block;
+  font-size: 18px;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li span:nth-child(2) {
+  color: #1a91d2;
+  font-size: 12px;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li .play_pause_song {
   cursor: pointer;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  float: right;
+  margin-top: -13px;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li .play_pause_song .icon {
+  width: 100%;
+  height: 100%;
+  fill: #1a91d2;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li .play_pause_song .icon-pause {
+  display: none;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li:hover {
   background-color: #1c9bd8;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_list li span:first-child {
-  color: #fccf1b;
-  display: block;
+#tune_modal .tabs_content .tab_tune_content .tunes_list li:hover span {
+  color: #fff;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_list li span:nth-child(2) {
-  color: #f4f4f4;
-  font-size: 12px;
+#tune_modal .tabs_content .tab_tune_content .tunes_list li:hover .icon {
+  fill: #fff;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_description {
   display: inline-block;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search {
+  width: 571px;
+  border: 1px #d8d8d8 solid;
+  border-radius: 9px;
+  margin: 13px;
+  height: 30px;
+  padding: 14px;
+  font-size: 15px;
 }
 
 #time_modal .modal_content {
@@ -176,10 +234,15 @@ header #pirsomet {
   font-size: 42px;
   color: white;
   text-align: center;
+  letter-spacing: 2px;
+}
+#time_modal .modal_content ul li:nth-child(2n) {
+  background-color: #f3d872;
 }
 #time_modal .modal_content ul li:hover {
   background-color: #d5aa1b;
   text-shadow: 0 0 10px #fff;
+  font-weight: bold;
 }
 
 /* Good night text **************************************************************/
@@ -269,7 +332,7 @@ header #pirsomet {
   font-size: 92px;
   padding-bottom: 12px;
   color: #49b4ef;
-  margin: 11px auto 34px;
+  margin: 20px auto 26px;
   width: 311px;
   /* border: 1px black solid; */
   background-color: #ffffff47;
@@ -449,10 +512,10 @@ header #pirsomet {
   z-index: 20;
 }
 #stars_container .stars {
-  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  background: #000 url(http://dev.metaclock.com:8081/img/stars.png) repeat top center;
 }
 #stars_container .twinkling {
-  background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  background: transparent url(http://dev.metaclock.com:8081/img/twinkling.png) repeat top center;
   animation: move-twink-back 200s linear infinite;
 }
 
@@ -593,6 +656,7 @@ header #pirsomet {
   width: 257px;
   z-index: 1;
   transition-duration: 0.6s;
+  text-align: center;
 }
 
 .tabs a.active {
@@ -635,8 +699,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 14%;
-  top: 66%;
+  left: 8%;
+  top: 20%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -667,12 +731,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( 29px);
-  left: calc( 245px);
-  animation-delay: 1444ms;
+  top: calc( -123px);
+  left: calc( 56px);
+  animation-delay: 6159ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 1444ms;
+  animation-delay: 6159ms;
 }
 
 @keyframes tail {
