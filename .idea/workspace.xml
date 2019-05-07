@@ -6,116 +6,6 @@
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/img/music.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/img/music.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/browserstorage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/Jplayer.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.player.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.skin/bgr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.skin/buffer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.skin/circle.player.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.skin/controls.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.skin/progress.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/circle.skin/progress_sprite.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/jquery.grab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/jquery.jplayer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/jquery.transform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jplayer/mod.csstransforms.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/main.min-backup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/README_zh.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/dist/timeago.locales.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/dist/timeago.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/all.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/format.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/bn_IN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/en_short.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/hi_IN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/id_ID.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ka.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/nb_NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/nn_NO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/pt_BR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/zh_CN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/lang/zh_TW.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/locales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/realtime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/utils/date.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/lib/utils/dom.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/node_modules/timeago.js/timeago.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/Sortable.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/dropzone.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/howler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/howler.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/html.sortable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/html.sortable.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/html.sortable.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/intro.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery-3.1.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery-confirm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.backstretch.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.cycle.all.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.knob.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.mousewheel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.plugin.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.simpleWeather.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.sortable.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/jquery.timeentry.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/js.cookie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/l.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/lodash.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/moment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/moment.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/pace.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/ripple.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/screenfull.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/smil.check.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/smil.user.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/tippy.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/vendor/tippy.standalone.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -137,14 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="126" column="110" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="110" />
-              <folding>
-                <element signature="n#style#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -152,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="402" column="31" selection-start-line="402" selection-start-column="31" selection-end-line="402" selection-end-column="31" />
+            <state relative-caret-position="445">
+              <caret line="471" column="13" lean-forward="true" selection-start-line="471" selection-start-column="13" selection-end-line="471" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -171,36 +55,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nth-</find>
-      <find>sonnen</find>
-      <find>you go-</find>
-      <find>tunes_player</find>
-      <find>tabs a</find>
-      <find>selector</find>
-      <find>bla1</find>
-      <find>tab_content</find>
-      <find>&lt;button&gt;</find>
-      <find>&lt;button</find>
-      <find>set_alarm_btn</find>
-      <find>button</find>
-      <find>.controls</find>
-      <find>timeago</find>
-      <find>cancel</find>
-      <find>onopen</find>
-      <find>cancel_tune</find>
-      <find>ok_tune</find>
-      <find>logo.</find>
-      <find>wacky alarm</find>
-      <find>wu_tune_name</find>
-      <find>nowrap</find>
-      <find>name_cont</find>
+      <find>time_modal</find>
+      <find>.tunes_list</find>
       <find>youtube</find>
+      <find>q</find>
+      <find>tune_modal</find>
+      <find>.tabs a</find>
+      <find>.tabs_content</find>
+      <find>tunes_list</find>
+      <find>header-title</find>
+      <find>izimodal</find>
+      <find>&amp;:hover</find>
       <find>&lt;i</find>
-      <find>tune&lt;</find>
-      <find>tab_tune</find>
-      <find>icon-music</find>
+      <find>fontawe</find>
+      <find>stars.pmnh</find>
+      <find>8081</find>
+      <find>stars.png</find>
+      <find>url(</find>
+      <find>googleapis</find>
+      <find>-header</find>
+      <find>tunes_list</find>
+      <find>cancel</find>
+      <find>buttons_c</find>
+      <find>active_tune</find>
+      <find>tab_tune_content</find>
+      <find>wake_up_time</find>
       <find>wu_tune_music</find>
-      <find>wake me up</find>
+      <find>.wu_tune {</find>
+      <find>ne_music {</find>
+      <find>btn_container</find>
+      <find>wu_tune_desc</find>
     </findStrings>
     <replaceStrings>
       <replace>http://dev.mc.com:8081/</replace>
@@ -220,6 +104,7 @@
       <replace>1s</replace>
       <replace>modal_content</replace>
       <replace>.</replace>
+      <replace>#icon-play2</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -276,7 +161,7 @@
       <path value="$PROJECT_DIR$/app/vendor/slim/slim" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1440" />
     <option name="y" value="-37" />
     <option name="width" value="1920" />
@@ -392,18 +277,19 @@
       <workItem from="1556899468358" duration="34454000" />
       <workItem from="1557044619989" duration="204000" />
       <workItem from="1557088444483" duration="2214000" />
-      <workItem from="1557163078974" duration="7813000" />
+      <workItem from="1557163078974" duration="13031000" />
+      <workItem from="1557248297571" duration="3487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80990000" />
+    <option name="totallyTimeSpent" value="89695000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-37" width="1920" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15814696" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.088924386" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -558,16 +444,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="13" />
-          <folding>
-            <element signature="e#62#6699#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/js/main.js" />
     <entry file="file://$PROJECT_DIR$/public_html/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -592,13 +469,6 @@
     <entry file="file://$USER_HOME$/Downloads/v12/css/not.the.skin.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index-old.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="155" column="28" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/block.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -609,23 +479,24 @@
     <entry file="file://$USER_HOME$/Downloads/icomoon 2/style.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index-old.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2325">
+          <caret line="155" column="28" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="402" column="31" selection-start-line="402" selection-start-column="31" selection-end-line="402" selection-end-column="31" />
+        <state relative-caret-position="445">
+          <caret line="471" column="13" lean-forward="true" selection-start-line="471" selection-start-column="13" selection-end-line="471" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="126" column="110" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="110" />
-          <folding>
-            <element signature="n#style#0;n#svg#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>

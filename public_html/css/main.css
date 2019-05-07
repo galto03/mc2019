@@ -118,6 +118,11 @@ header #pirsomet {
   vertical-align: -6px;
   fill: #1c9bd8;
 }
+#tune_modal .tabs .icon-music {
+  width: 19px;
+  height: 21px;
+  vertical-align: -5px;
+}
 #tune_modal .tabs_content {
   background-color: #f2f2f2;
   height: calc(100% - 36px);
@@ -363,7 +368,7 @@ header #pirsomet {
 #set_alarm_content .wu_tune {
   display: inline-block;
   text-align: left;
-  vertical-align: -33px;
+  vertical-align: -32px;
   padding-right: 10px;
 }
 #set_alarm_content .wu_tune .wu_tune_desc {
@@ -376,10 +381,10 @@ header #pirsomet {
 }
 #set_alarm_content .wu_tune .wu_tune_desc .wu_tune_music {
   display: inline-block;
-  vertical-align: 4px;
+  vertical-align: 15px;
   padding-right: 6px;
-  width: 40px;
-  height: 40px;
+  width: 22px;
+  height: 22px;
 }
 #set_alarm_content .wu_tune .wu_tune_desc .wu_tune_music svg {
   fill: #fff;
@@ -699,8 +704,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 8%;
-  top: 20%;
+  left: 97%;
+  top: 43%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -731,12 +736,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( -123px);
-  left: calc( 56px);
-  animation-delay: 6159ms;
+  top: calc( 23px);
+  left: calc( 217px);
+  animation-delay: 9164ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 6159ms;
+  animation-delay: 9164ms;
 }
 
 @keyframes tail {
