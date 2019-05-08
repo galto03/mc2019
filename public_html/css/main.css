@@ -2,7 +2,7 @@ body, html {
   margin: 0;
   padding: 0;
   background: #73beea;
-  font-family: "Comfortaa", cursive;
+  font-family: "Comfortaa", cursive !important;
   height: 1100px;
   overflow: hidden;
   overflow-y: scroll;
@@ -19,6 +19,7 @@ ul {
   padding: 0;
 }
 
+/* iziModal mods **************************************************************/
 .iziModal .iziModal-header {
   padding-left: 52px;
 }
@@ -40,6 +41,7 @@ ul {
 
 /* Buttons **************************************************************/
 .mc_btn {
+  letter-spacing: 1px;
   color: #54bcf0;
   font-weight: bold;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
@@ -213,13 +215,53 @@ header #pirsomet {
   display: inline-block;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search {
-  width: 571px;
+  width: 479px;
   border: 1px #d8d8d8 solid;
   border-radius: 9px;
-  margin: 13px;
   height: 30px;
   padding: 14px;
   font-size: 15px;
+  margin: 13px auto 13px 11%;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results {
+  overflow: scroll;
+  height: 255px;
+  width: 82%;
+  margin: 0 auto 0 9%;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li {
+  height: 70px;
+  padding-left: 14px;
+  margin-bottom: 12px;
+  border-bottom: 1px #f2f2f2 solid;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_image {
+  display: inline-block;
+  width: 70px;
+  border: 1px black solid;
+  border-radius: 5px;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content {
+  display: inline-block;
+  vertical-align: 4px;
+  line-height: 21px;
+  padding-left: 14px;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span {
+  display: block;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 385px;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span:first-child {
+  color: #1c9bd8;
+  font-size: 18px;
+}
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span:nth-child(2) {
+  color: #1c9bd8;
+  font-size: 12px;
 }
 
 #time_modal .modal_content {
@@ -228,26 +270,23 @@ header #pirsomet {
   overflow-x: hidden;
 }
 #time_modal .modal_content ul {
-  letter-spacing: -2px;
-  font-family: "Nanum Gothic Coding", monospace;
+  font-family: "Inconsolata", monospace;
 }
 #time_modal .modal_content ul li {
   cursor: pointer;
-  background-color: #edc643;
-  border-bottom: 1px #ffffff5e solid;
+  background-color: #ffffff;
+  border-bottom: 1px #e6e6e6 solid;
   padding: 10px;
-  font-size: 42px;
-  color: white;
+  font-size: 28px;
+  color: #1c9bd8;
   text-align: center;
   letter-spacing: 2px;
 }
-#time_modal .modal_content ul li:nth-child(2n) {
-  background-color: #f3d872;
-}
 #time_modal .modal_content ul li:hover {
-  background-color: #d5aa1b;
-  text-shadow: 0 0 10px #fff;
+  background-color: #1c9bd8;
+  /* text-shadow: 0 0 10px #fff; */
   font-weight: bold;
+  color: #fff;
 }
 
 /* Good night text **************************************************************/
@@ -303,13 +342,20 @@ header #pirsomet {
   bottom: 0;
   position: absolute;
   width: 100%;
-  height: 437px;
+  height: 660px;
   overflow: hidden;
   transition: all 0.1s;
   z-index: 30;
 }
 #underground.hidden {
   top: 110%;
+}
+#underground #underground_bottom {
+  background-color: #1a0b01;
+  bottom: 0;
+  position: absolute;
+  height: 222px;
+  width: 100%;
 }
 
 /* Set alarm container **************************************************************/
@@ -323,36 +369,43 @@ header #pirsomet {
 #set_alarm_content {
   position: absolute;
   width: 60%;
-  top: 22%;
+  top: 25%;
   left: 130px;
   text-align: center;
   text-shadow: #7ec6ed 1px 0 10px;
 }
 #set_alarm_content .wake_up_title {
-  font-size: 20px;
-  color: white;
+  font-size: 19px;
+  color: #ffffff9c;
+  text-shadow: none;
 }
 #set_alarm_content .wake_up_time {
   cursor: pointer;
   font-size: 92px;
-  padding-bottom: 12px;
-  color: #49b4ef;
-  margin: 20px auto 26px;
-  width: 311px;
+  color: #fffffe;
+  margin: 4px auto 26px;
+  width: 242px;
   /* border: 1px black solid; */
-  background-color: #ffffff47;
-  border-radius: 24px;
-  height: 89px;
+  /* background-color: #ffffff47; */
+  /* border-radius: 24px; */
+  height: 105px;
   text-align: center;
-  padding-top: 8px;
+  padding-top: 0px;
+  font-family: "Inconsolata", monospace;
+  /* border-bottom: 3px #ffffff8c solid; */
+  transition: background-color 0.25s linear;
+  /* line-height: 64px; */
+  background: transparent;
+  border-width: 0;
+  border-bottom: 3px #ffffff8c solid;
+  border-radius: 5px 5px 0 0;
 }
 #set_alarm_content .wake_up_time:hover {
-  background-color: #fff;
+  background-color: #ffffff57;
 }
 #set_alarm_content .wake_up_time .wut_inner_container {
   margin-top: 0;
   letter-spacing: -2px;
-  font-family: "Nanum Gothic Coding", monospace;
 }
 #set_alarm_content .wake_up_time .wut_hours {
   margin-right: -39px;
@@ -362,57 +415,61 @@ header #pirsomet {
 }
 #set_alarm_content .wake_up_time .wut_delimiter {
   display: inline-block;
-  vertical-align: 0;
   font-size: 81px;
+  vertical-align: 12px;
 }
 #set_alarm_content .wu_tune {
   display: inline-block;
   text-align: left;
-  vertical-align: -32px;
+  /* vertical-align: -27px; */
   padding-right: 10px;
-}
-#set_alarm_content .wu_tune .wu_tune_desc {
+  background-color: transparent;
+  border: 0;
+  font-family: "Comfortaa", cursive;
+  padding-top: 0;
+  border-radius: 5px;
   cursor: pointer;
+  height: 39px;
 }
-#set_alarm_content .wu_tune .wu_tune_desc .wu_tune_edit {
-  color: #fff;
-  font-size: 12px;
-  opacity: 0;
-}
-#set_alarm_content .wu_tune .wu_tune_desc .wu_tune_music {
+#set_alarm_content .wu_tune .wu_tune_music {
   display: inline-block;
-  vertical-align: 15px;
+  /* vertical-align: 15px; */
   padding-right: 6px;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
+  vertical-align: 6px;
 }
-#set_alarm_content .wu_tune .wu_tune_desc .wu_tune_music svg {
+#set_alarm_content .wu_tune .wu_tune_music svg {
   fill: #fff;
   height: 100%;
   width: 100%;
 }
-#set_alarm_content .wu_tune .wu_tune_desc .wu_tune_name_cont {
+#set_alarm_content .wu_tune .wu_tune_name_cont {
   display: inline-block;
-  font-size: 19px;
+  font-size: 17px;
   color: #54bcf0;
   max-width: 193px;
   white-space: nowrap;
-  vertical-align: 4px;
+  vertical-align: -3px;
+  text-shadow: none;
+  min-width: 120px;
 }
-#set_alarm_content .wu_tune .wu_tune_desc .wu_tune_name_cont .wu_tune_name {
+#set_alarm_content .wu_tune .wu_tune_name_cont .wu_tune_name {
+  font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: 39px;
 }
-#set_alarm_content .wu_tune .wu_tune_desc:hover .wu_tune_edit {
-  opacity: 1;
-}
-#set_alarm_content .wu_tune .wu_tune_desc:hover .wu_tune_name {
+#set_alarm_content .wu_tune:hover .wu_tune_name {
   font-weight: bold;
   color: #54bcf0;
 }
+#set_alarm_content .wu_tune:hover {
+  background-color: #ffffff57;
+}
 #set_alarm_content .set_alarm_btn_container {
   display: inline-block;
-  vertical-align: -13px;
+  vertical-align: top;
 }
 
 /* Sun and Moon **************************************************************/
@@ -704,8 +761,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 97%;
-  top: 43%;
+  left: 70%;
+  top: 51%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -736,12 +793,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( 23px);
-  left: calc( 217px);
-  animation-delay: 9164ms;
+  top: calc( 82px);
+  left: calc( 22px);
+  animation-delay: 9446ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 9164ms;
+  animation-delay: 9446ms;
 }
 
 @keyframes tail {

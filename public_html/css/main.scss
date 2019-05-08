@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     background: #73beea;
-    font-family: "Comfortaa", cursive;
+    font-family: "Comfortaa", cursive !important;
     height: 1100px;
     overflow: hidden;
     overflow-y: scroll;
@@ -25,6 +25,8 @@ ul {
     padding: 0;
 }
 
+
+/* iziModal mods **************************************************************/
 .iziModal .iziModal-header {
     padding-left: 52px;
 }
@@ -45,7 +47,7 @@ ul {
 }
 /* Buttons **************************************************************/
 .mc_btn {
-    //color: #73be4c;
+    letter-spacing: 1px;
     color: #54bcf0;
     font-weight: bold;
     box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -251,15 +253,62 @@ header {
         }
 
         .tab_youtube_content {
-            #youtube_search {
-                width: 571px;
-                border: 1px #d8d8d8 solid;
-                border-radius: 9px;
-                margin: 13px;
-                height: 30px;
-                padding: 14px;
-                font-size: 15px;
+          #youtube_search {
+              width: 479px;
+              border: 1px #d8d8d8 solid;
+              border-radius: 9px;
+              height: 30px;
+              padding: 14px;
+              font-size: 15px;
+              margin: 13px auto 13px 11%;
+          }
+
+          #youtube_search_results {
+              overflow: scroll;
+              height: 255px;
+              width: 82%;
+              margin: 0 auto 0 9%;
+
+              li {
+              height: 70px;
+              padding-left: 14px;
+              margin-bottom: 12px;
+              border-bottom: 1px #f2f2f2 solid;
+
+              .youtube_image {
+                display: inline-block;
+                width: 70px;
+                border: 1px black solid;
+                //height: 70px;
+                border-radius: 5px;
+              }
+              .youtube_content {
+                display: inline-block;
+                vertical-align: 4px;
+                line-height: 21px;
+                padding-left: 14px;
+
+                span {
+                  display: block;
+                  font-weight: bold;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  width: 385px;
+                }
+
+                span:first-child {
+                  color: #1c9bd8;
+                  font-size: 18px;
+                }
+
+                span:nth-child(2) {
+                  color: #1c9bd8;
+                  font-size: 12px;
+                }
+              }
             }
+          }
         }
     }
 }
@@ -270,29 +319,29 @@ header {
         overflow-x: hidden;
 
         ul {
-            letter-spacing: -2px;
-            font-family: "Nanum Gothic Coding", monospace;
+          font-family: 'Inconsolata', monospace;
 
-            li {
-                cursor: pointer;
-                background-color: #edc643;
-                border-bottom: 1px #ffffff5e solid;
-                padding: 10px;
-                font-size: 42px;
-                color: white;
-                text-align: center;
-                letter-spacing: 2px;
+          li {
+            cursor: pointer;
+            background-color: #ffffff;
+            border-bottom: 1px #e6e6e6 solid;
+            padding: 10px;
+            font-size: 28px;
+            color: #1c9bd8;
+            text-align: center;
+            letter-spacing: 2px;
 
-                &:nth-child(2n) {
-                    background-color: #f3d872;
-                }
+            //&:nth-child(2n) {
+            //  background-color: #f3d872;
+            //}
 
-                &:hover {
-                    background-color: #d5aa1b;
-                    text-shadow: 0 0 10px #fff;
-                    font-weight: bold;
-                }
+            &:hover {
+              background-color: #1c9bd8;
+              /* text-shadow: 0 0 10px #fff; */
+              font-weight: bold;
+              color: #fff;
             }
+          }
 
         }
     }
@@ -355,13 +404,21 @@ header {
     bottom: 0;
     position: absolute;
     width: 100%;
-    height: 437px;
+    height: 660px;
     overflow: hidden;
     transition: all 0.1s;
     z-index: 30;
 
     &.hidden {
         top: 110%;
+    }
+
+    #underground_bottom {
+        background-color: #1a0b01;
+        bottom: 0;
+        position: absolute;
+        height: 222px;
+        width: 100%;
     }
 }
 
@@ -377,62 +434,45 @@ header {
 #set_alarm_content {
     position: absolute;
     width: 60%;
-    top: 22%;
+    top: 25%;
     left: 130px;
     text-align: center;
     text-shadow: #7ec6ed 1px 0 10px;
 
-    //#time_dropdown {
-    //    position: absolute;
-    //    overflow: hidden;
-    //    display: none;
-    //    font-size: 21px;
-    //    list-style-type: none;
-    //    margin-top: 0;
-    //    padding: 0;
-    //    width: 162px;
-    //    top: 143px;
-    //    left: 109px;
-    //    max-height: 147px;
-    //    overflow-y: scroll;
-    //    border-bottom-left-radius: 15px;
-    //
-    //    li {
-    //        border-bottom: 1px #ffffff61 solid;
-    //        background: #ffd95d;
-    //        padding: 7px;
-    //        width: 141px;
-    //
-    //    }
-    //}
-
     .wake_up_title {
-        font-size: 20px;
-        color: white;
+        font-size: 19px;
+        color: #ffffff9c;
+        text-shadow: none;
     }
     .wake_up_time {
         cursor: pointer;
         font-size: 92px;
-        padding-bottom: 12px;
-        color: #49b4ef;
-        margin: 20px auto 26px;
-        width: 311px;
+        color: #fffffe;
+        margin: 4px auto 26px;
+        width: 242px;
         /* border: 1px black solid; */
-        background-color: #ffffff47;
-        border-radius: 24px;
-        height: 89px;
+        /* background-color: #ffffff47; */
+        /* border-radius: 24px; */
+        height: 105px;
         text-align: center;
-        padding-top: 8px;
+        padding-top: 0px;
+        font-family: "Inconsolata", monospace;
+        /* border-bottom: 3px #ffffff8c solid; */
+        transition: background-color 0.25s linear;
+        /* line-height: 64px; */
+        background: transparent;
+        border-width: 0;
+        border-bottom: 3px #ffffff8c solid;
+        border-radius: 5px 5px 0 0;
 
         &:hover {
-            background-color: #fff;
+            background-color: #ffffff57;
         }
 
         .wut_inner_container {
 
             margin-top: 0;
             letter-spacing: -2px;
-            font-family: "Nanum Gothic Coding", monospace;
 
         }
 
@@ -445,8 +485,8 @@ header {
 
         .wut_delimiter {
             display: inline-block;
-            vertical-align: 0;
             font-size: 81px;
+            vertical-align: 12px;
 
         }
     }
@@ -454,72 +494,69 @@ header {
     .wu_tune {
         display: inline-block;
         text-align: left;
-        vertical-align: -32px;
+        /* vertical-align: -27px; */
         padding-right: 10px;
+        background-color: transparent;
+        border: 0;
+        font-family: "Comfortaa", cursive;
+        padding-top: 0;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 39px;
 
-        //.wu_tune_header {
-        //    font-size: 12px;
-        //    color: white;
-        //}
 
-        .wu_tune_desc {
-            cursor: pointer;
+        .wu_tune_music {
+            display: inline-block;
+            /* vertical-align: 15px; */
+            padding-right: 6px;
+            width: 20px;
+            height: 20px;
+            vertical-align: 6px;
 
-            .wu_tune_edit {
-                color: #fff;
-                font-size: 12px;
-                opacity: 0;
+            svg {
+                fill: #fff;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .wu_tune_name_cont {
+            display: inline-block;
+            font-size: 17px;
+            color: #54bcf0;
+            max-width: 193px;
+            white-space: nowrap;
+            vertical-align: -3px;
+            text-shadow: none;
+            min-width: 120px;
+
+            .wu_tune_name {
+                font-weight: bold;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                line-height: 39px;
             }
 
-            .wu_tune_music {
-                display: inline-block;
-                vertical-align: 15px;
-                padding-right: 6px;
-                width: 22px;
-                height: 22px;
+        }
 
-                svg {
-                    fill: #fff;
-                    height: 100%;
-                    width: 100%;
-                }
-            }
+        &:hover {
 
-            .wu_tune_name_cont {
-                display: inline-block;
-                font-size: 19px;
-                //color: #56ba52;
+            .wu_tune_name {
+                font-weight: bold;
+                //color: #41963d;
                 color: #54bcf0;
-                //vertical-align: 5px;
-                max-width: 193px;
-                white-space: nowrap;
-                vertical-align: 4px;
-
-                .wu_tune_name {
-
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                }
-
             }
+        }
 
-            &:hover {
-                .wu_tune_edit {
-                    opacity: 1;
-                }
 
-                .wu_tune_name {
-                    font-weight: bold;
-                    //color: #41963d;
-                    color: #54bcf0;
-                }
-            }
+        &:hover {
+            background-color: #ffffff57;
         }
     }
 
     .set_alarm_btn_container {
         display: inline-block;
-        vertical-align: -13px;
+        vertical-align: top;
 
 
     }

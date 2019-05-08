@@ -3,6 +3,7 @@
 
 
     <script src="/js/jquery-3.4.0.min.js"></script>
+    <title>MetaClock | 𝗧𝗛𝗘 𝗕𝗘𝗦𝗧 𝗦𝗢𝗖𝗜𝗔𝗟 𝗔𝗟𝗔𝗥𝗠 𝗖𝗟𝗢𝗖𝗞</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
@@ -16,6 +17,10 @@
     <!--  Optimize with https://icomoon.io/app/  -->
 <!--    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>-->
 
+
+<!--    <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
@@ -23,29 +28,38 @@
 
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <symbol id="icon-music" viewBox="0 0 32 32">
-            <title>music</title>
-            <path d="M30 0h2v23c0 2.761-3.134 5-7 5s-7-2.239-7-5c0-2.761 3.134-5 7-5 1.959 0 3.729 0.575 5 1.501v-11.501l-16 3.556v15.444c0 2.761-3.134 5-7 5s-7-2.239-7-5c0-2.761 3.134-5 7-5 1.959 0 3.729 0.575 5 1.501v-19.501l18-4z"></path>
-        </symbol>
-        <symbol id="icon-info" viewBox="0 0 32 32">
-            <title>info</title>
-            <path d="M14 9.5c0-0.825 0.675-1.5 1.5-1.5h1c0.825 0 1.5 0.675 1.5 1.5v1c0 0.825-0.675 1.5-1.5 1.5h-1c-0.825 0-1.5-0.675-1.5-1.5v-1z"></path>
-            <path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z"></path>
-            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
-        </symbol>
-        <symbol id="icon-play2" viewBox="0 0 32 32">
-            <title>play2</title>
-            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>
-        </symbol>
-        <symbol id="icon-pause" viewBox="0 0 32 32">
-            <title>pause</title>
-            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z"></path>
-        </symbol>
-        <symbol id="icon-youtube" viewBox="0 0 32 32">
-            <title>youtube</title>
-            <path d="M31.681 9.6c0 0-0.313-2.206-1.275-3.175-1.219-1.275-2.581-1.281-3.206-1.356-4.475-0.325-11.194-0.325-11.194-0.325h-0.012c0 0-6.719 0-11.194 0.325-0.625 0.075-1.987 0.081-3.206 1.356-0.963 0.969-1.269 3.175-1.269 3.175s-0.319 2.588-0.319 5.181v2.425c0 2.587 0.319 5.181 0.319 5.181s0.313 2.206 1.269 3.175c1.219 1.275 2.819 1.231 3.531 1.369 2.563 0.244 10.881 0.319 10.881 0.319s6.725-0.012 11.2-0.331c0.625-0.075 1.988-0.081 3.206-1.356 0.962-0.969 1.275-3.175 1.275-3.175s0.319-2.587 0.319-5.181v-2.425c-0.006-2.588-0.325-5.181-0.325-5.181zM12.694 20.15v-8.994l8.644 4.513-8.644 4.481z"></path>
-        </symbol>
-    </defs>
+    <symbol id="icon-alarm" viewBox="0 0 32 32">
+        <title>alarm</title>
+        <path d="M16 4c-7.732 0-14 6.268-14 14s6.268 14 14 14 14-6.268 14-14-6.268-14-14-14zM16 29.25c-6.213 0-11.25-5.037-11.25-11.25s5.037-11.25 11.25-11.25c6.213 0 11.25 5.037 11.25 11.25s-5.037 11.25-11.25 11.25zM29.212 8.974c0.501-0.877 0.788-1.892 0.788-2.974 0-3.314-2.686-6-6-6-1.932 0-3.65 0.913-4.747 2.331 4.121 0.851 7.663 3.287 9.96 6.643v0zM12.748 2.331c-1.097-1.418-2.816-2.331-4.748-2.331-3.314 0-6 2.686-6 6 0 1.082 0.287 2.098 0.788 2.974 2.297-3.356 5.838-5.792 9.96-6.643z"></path>
+        <path d="M16 18v-8h-2v10h8v-2z"></path>
+    </symbol>
+    <symbol id="icon-bell" viewBox="0 0 32 32">
+        <title>bell</title>
+        <path d="M32.047 25c0-9-8-7-8-14 0-0.58-0.056-1.076-0.158-1.498-0.526-3.532-2.88-6.366-5.93-7.23 0.027-0.123 0.041-0.251 0.041-0.382 0-1.040-0.9-1.891-2-1.891s-2 0.851-2 1.891c0 0.131 0.014 0.258 0.041 0.382-3.421 0.969-5.966 4.416-6.039 8.545-0.001 0.060-0.002 0.121-0.002 0.183 0 7-8 5-8 14 0 2.382 5.331 4.375 12.468 4.878 0.673 1.263 2.002 2.122 3.532 2.122s2.86-0.86 3.532-2.122c7.137-0.503 12.468-2.495 12.468-4.878 0-0.007-0.001-0.014-0.001-0.021l0.048 0.021zM25.82 26.691c-1.695 0.452-3.692 0.777-5.837 0.958-0.178-2.044-1.893-3.648-3.984-3.648s-3.805 1.604-3.984 3.648c-2.144-0.18-4.142-0.506-5.837-0.958-2.332-0.622-3.447-1.318-3.855-1.691 0.408-0.372 1.523-1.068 3.855-1.691 2.712-0.724 6.199-1.122 9.82-1.122s7.109 0.398 9.82 1.122c2.332 0.622 3.447 1.318 3.855 1.691-0.408 0.372-1.523 1.068-3.855 1.691z"></path>
+    </symbol>
+    <symbol id="icon-music" viewBox="0 0 32 32">
+        <title>music</title>
+        <path d="M30 0h2v23c0 2.761-3.134 5-7 5s-7-2.239-7-5c0-2.761 3.134-5 7-5 1.959 0 3.729 0.575 5 1.501v-11.501l-16 3.556v15.444c0 2.761-3.134 5-7 5s-7-2.239-7-5c0-2.761 3.134-5 7-5 1.959 0 3.729 0.575 5 1.501v-19.501l18-4z"></path>
+    </symbol>
+    <symbol id="icon-info" viewBox="0 0 32 32">
+        <title>info</title>
+        <path d="M14 9.5c0-0.825 0.675-1.5 1.5-1.5h1c0.825 0 1.5 0.675 1.5 1.5v1c0 0.825-0.675 1.5-1.5 1.5h-1c-0.825 0-1.5-0.675-1.5-1.5v-1z"></path>
+        <path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z"></path>
+        <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+    </symbol>
+    <symbol id="icon-play2" viewBox="0 0 32 32">
+        <title>play2</title>
+        <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>
+    </symbol>
+    <symbol id="icon-pause" viewBox="0 0 32 32">
+        <title>pause</title>
+        <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z"></path>
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 32 32">
+        <title>youtube</title>
+        <path d="M31.681 9.6c0 0-0.313-2.206-1.275-3.175-1.219-1.275-2.581-1.281-3.206-1.356-4.475-0.325-11.194-0.325-11.194-0.325h-0.012c0 0-6.719 0-11.194 0.325-0.625 0.075-1.987 0.081-3.206 1.356-0.963 0.969-1.269 3.175-1.269 3.175s-0.319 2.588-0.319 5.181v2.425c0 2.587 0.319 5.181 0.319 5.181s0.313 2.206 1.269 3.175c1.219 1.275 2.819 1.231 3.531 1.369 2.563 0.244 10.881 0.319 10.881 0.319s6.725-0.012 11.2-0.331c0.625-0.075 1.988-0.081 3.206-1.356 0.962-0.969 1.275-3.175 1.275-3.175s0.319-2.587 0.319-5.181v-2.425c-0.006-2.588-0.325-5.181-0.325-5.181zM12.694 20.15v-8.994l8.644 4.513-8.644 4.481z"></path>
+    </symbol>
+</defs>
 </svg>
 
 
@@ -100,49 +114,29 @@
             <div class="wake_up_title">
                 Wake me up at
             </div>
-            <div class="wake_up_time">
+            <button class="wake_up_time">
                 <div class="wut_inner_container">
                     <span class="wut_hours">07</span>
                     <span class="wut_delimiter">:</span>
                     <span class="wut_minutes">00</span>
 
                 </div>
-<!--                <ul id="time_dropdown">-->
-<!--                   <li>00:00</li>-->
-<!--                   <li>01:00</li>-->
-<!--                   <li>02:00</li>-->
-<!--                   <li>03:00</li>-->
-<!--                   <li>04:00</li>-->
-<!--                   <li>05:00</li>-->
-<!--                   <li>06:00</li>-->
-<!--                   <li>07:00</li>-->
-<!--                   <li>08:00</li>-->
-<!--                   <li>09:00</li>-->
-<!--                   <li>10:00</li>-->
-<!--                   <li>11:00</li>-->
-<!--                   <li>12:00</li>-->
-<!--                </ul>-->
-            </div>
-            <!--            <div class="wake_up_sleep_time">-->
-            <!--                About 6 hours of sleep-->
-            <!--            </div>-->
-            <div class="wu_tune" title="Wake me up before you go go go go-go"> <!-- TODO: CHANGE TO LIVE TEXT -->
-                <!--                <div class="wu_tune_header">Tune or YouTube</div>-->
-                <div class="wu_tune_desc">
-                    <div class="wu_tune_music">
-                        <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
 
-                    </div>
-                    <div class="wu_tune_name_cont">
-                        <div class="wu_tune_name">
-                            Wake me up before you go go go go-go
-                        </div>
-                        <div class="wu_tune_edit">
-                            Click to change
-                        </div>
+            </button>
+
+            <button class="wu_tune" title="Wake me up before you go go go go-go"> <!-- TODO: CHANGE TO LIVE TEXT -->
+                <div class="wu_tune_music">
+                    <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
+<!--                    <svg class="icon icon-bell"><use xlink:href="#icon-bell"></use></svg>-->
+
+
+                </div>
+                <div class="wu_tune_name_cont">
+                    <div class="wu_tune_name">
+                        Wake me up before you go go go go-go
                     </div>
                 </div>
-            </div>
+            </button>
             <div class="set_alarm_btn_container">
                 <a href="#" class="set_alarm_btn mc_btn">SET ALARM</a>
             </div>
@@ -150,7 +144,9 @@
 
     </div>
     <div id="ground" class="env hidden"></div>
-    <div id="underground" class="env hidden"></div>
+    <div id="underground" class="env hidden">
+        <div id="underground_bottom"></div>
+    </div>
     <div id="night_overly" class="env"></div>
     <header>
         <div id="logo">
@@ -291,13 +287,19 @@
                 <li style="display: none" class="tab_content tab_youtube_content">
                     <input id="youtube_search" type="text" placeholder="Search YouTube or paste a link">
                     <ul id="youtube_search_results">
-                        <li>Result</li>
-                        <li>Result</li>
-                        <li>Result</li>
+<!--                        <li>-->
+<!--                            <div class="youtube_image"></div>-->
+<!--                            <div class="youtube_content">-->
+<!--                                <span>Title</span>-->
+<!--                                <span>Description</span>-->
+<!--                            </div>-->
+<!--                        </li>-->
                     </ul>
-                    <div id="youtube_preview">
 
-                    </div>
+
+<!--                    <div id="youtube_preview">-->
+<!---->
+<!--                    </div>-->
                 </li>
             </ul>
             <div class="controls">
@@ -436,14 +438,31 @@
         });
 
 
+        var $youtubeSearchResults = $('#youtube_search_results');
         $('#youtube_search').on('keyup', function(e) {
           if (e.keyCode !== 13) {
             return;
           }
 
-          gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q": "metaclock"}).then(
-            function(response) {
-                console.log("Response", response);
+          var value = $(this).val();
+          gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q":value, "type": "video"}).then(
+            function (response) {
+              var result = response.result.items;
+              $youtubeSearchResults.html("");
+
+              result.forEach(function (item) {
+                var videoId = item.id.videoId,
+                  desc = item.snippet.description,
+                  image = item.snippet.thumbnails.default.url,
+                  title = item.snippet.title;
+
+                $youtubeSearchResults.append("<li videoId=\"" + videoId + "\"><div class=\"youtube_image\"><img src=\"" + image + "\"></div>" +
+                                               "<div class=\"youtube_content\">" +
+                                               "<span>" + title + "</span>" +
+                                               "<span>" + (desc ? desc : "&nbsp;") + "</span>" +
+                                               "</div></li>");
+              });
+              console.log(result)
             },
             function(err) { console.error("Execute error", err); });
         });
@@ -453,30 +472,79 @@
 
 
 
-    var $timeModal = $("#time_modal");
-    $timeModal.iziModal({
-        title: 'Select a time to wake up',
-        subtitle: '',
-        headerColor: '#1a91d2',
-        width: 250,
-        top: 250,
-        onOpening: function() {
+//    var $timeModal = $("#time_modal");
+//    $timeModal.iziModal({
+//        title: 'Select a time',
+//        subtitle: '',
+//        headerColor: '#1a91d2',
+//        width: 174,
+////        top: 250,
+//        onOpening: function() {
+//
+//        }
+//    });
 
-        }
+//    ([...Array(24).keys()]).forEach(function(hour) {
+//      hour = hour < 10 ? "0" + hour : hour;
+//      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ":" + '00</li>');
+//      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ':' + '15</li>');
+//      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ':' + '30</li>');
+//    });
+//    $timeModal.find('li').on('click', function() {
+//      var splitTime = $(this).text().split(":");
+//      $('.wut_hours').text(splitTime[0]);
+//      $('.wut_minutes').text(splitTime[1]);
+//    });
+
+    var $clockpicker = $('.wake_up_time');
+    var $wakeUpTitle = $('.wake_up_title');
+    $clockpicker.clockpicker({
+       donetext: 'Set the time',
+       placement: 'top',
+       default: '07:00',
+       autoclose: true,
+       init: function () {
+         console.log("colorpicker initiated");
+       },
+       beforeShow: function () {
+         $wakeUpTitle.css('visibility','hidden');
+       },
+       afterShow: function () {
+         $($('.clockpicker-tick')[0]).focus();
+       },
+       beforeHide: function () {
+         console.log("before hide");
+       },
+       afterHide: function () {
+         $wakeUpTitle.css('visibility','visible');
+       },
+       beforeHourSelect: function (e) {
+         console.log(e);
+       },
+       afterHourSelect: function (e) {
+         $('.wut_hours').text(e.hours < 10 ? "0" + e.hours : e.hours)
+       },
+       beforeDone: function () {
+         console.log("before done");
+       },
+       afterDone: function (e) {
+         $('.wut_minutes').text(e.minutes < 10 ? "0" + e.minutes : e.minutes)
+       }
+     });
+
+    $clockpicker.on('click', function(e) {
+      e.stopPropagation();
+      var $clockPickerPopover = $('.clockpicker-popover');
+      if (!$clockPickerPopover.length || $clockPickerPopover.is(":hidden")) {
+        $clockpicker.clockpicker('show');
+      } else {
+        $wakeUpTitle.css('visibility','visible');
+        $clockpicker.clockpicker('hide');
+      }
     });
 
-    ([...Array(24).keys()]).forEach(function(hour) {
-      hour = hour < 10 ? "0" + hour : hour;
-      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ":" + '00</li>');
-      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ':' + '30</li>');
-    });
-    $timeModal.find('li').on('click', function() {
-      var splitTime = $(this).text().split(":");
-      $('.wut_hours').text(splitTime[0]);
-      $('.wut_minutes').text(splitTime[1]);
-    });
 
-    $(document).on('click', '.wu_tune_desc', function () {
+    $(document).on('click', '.wu_tune', function () {
         $('#tune_modal').iziModal('open');
     });
 
@@ -495,7 +563,8 @@
 
       $tuneTabsContent.find('.' + $tuneModal.find('.active').attr('tab') + '_content').fadeOut(function () {
         $tuneTabsContent.find('.' + $this.attr('tab') + '_content').fadeIn(function() {
-
+          if ($this.hasClass('tab_youtube'))
+            $('#youtube_search').focus();
         });
       });
     });
