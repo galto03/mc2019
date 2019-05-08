@@ -384,14 +384,14 @@ header #pirsomet {
   font-size: 92px;
   color: #fffffe;
   margin: 4px auto 26px;
-  width: 242px;
+  width: 269px;
   /* border: 1px black solid; */
   /* background-color: #ffffff47; */
   /* border-radius: 24px; */
   height: 105px;
   text-align: center;
   padding-top: 0px;
-  font-family: "Inconsolata", monospace;
+  /* font-family: "Inconsolata", monospace; */
   /* border-bottom: 3px #ffffff8c solid; */
   transition: background-color 0.25s linear;
   /* line-height: 64px; */
@@ -407,16 +407,23 @@ header #pirsomet {
   margin-top: 0;
   letter-spacing: -2px;
 }
-#set_alarm_content .wake_up_time .wut_hours {
-  margin-right: -39px;
-}
-#set_alarm_content .wake_up_time .wut_minutes {
-  margin-left: -39px;
+#set_alarm_content .wake_up_time .wut_hours, #set_alarm_content .wake_up_time .wut_minutes {
+  /* margin-right: -39px; */
+  font-size: 92px;
+  color: white;
+  background: transparent;
+  font-family: "Inconsolata", monospace;
+  border: 0;
+  width: 90px;
+  vertical-align: top;
 }
 #set_alarm_content .wake_up_time .wut_delimiter {
   display: inline-block;
   font-size: 81px;
-  vertical-align: 12px;
+  vertical-align: 19px;
+  font-family: "Inconsolata", monospace;
+  width: 37px;
+  text-align: left;
 }
 #set_alarm_content .wu_tune {
   display: inline-block;
@@ -761,8 +768,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 70%;
-  top: 51%;
+  left: 32%;
+  top: 84%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -793,12 +800,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( 82px);
-  left: calc( 22px);
-  animation-delay: 9446ms;
+  top: calc( 100px);
+  left: calc( 32px);
+  animation-delay: 9169ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 9446ms;
+  animation-delay: 9169ms;
 }
 
 @keyframes tail {

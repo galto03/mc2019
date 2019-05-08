@@ -116,9 +116,9 @@
             </div>
             <button class="wake_up_time">
                 <div class="wut_inner_container">
-                    <span class="wut_hours">07</span>
+                    <input type="text" class="wut_hours" value="07" />
                     <span class="wut_delimiter">:</span>
-                    <span class="wut_minutes">00</span>
+                    <input type="text" class="wut_minutes" value="00" />
 
                 </div>
 
@@ -334,6 +334,23 @@
   "use strict";
   $(function () {
 
+    (function($) {
+      $.fn.inputFilter = function(inputFilter) {
+        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+          if (inputFilter(this.value)) {
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+          } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+          } else {
+
+          }
+        });
+      };
+    }(jQuery));
+
     window.execute = function() {
       return gapi.client.youtube.search.list({
                                                "part": "snippet",
@@ -470,79 +487,106 @@
       }
     });
 
-
-
-//    var $timeModal = $("#time_modal");
-//    $timeModal.iziModal({
-//        title: 'Select a time',
-//        subtitle: '',
-//        headerColor: '#1a91d2',
-//        width: 174,
-////        top: 250,
-//        onOpening: function() {
-//
-//        }
-//    });
-
-//    ([...Array(24).keys()]).forEach(function(hour) {
-//      hour = hour < 10 ? "0" + hour : hour;
-//      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ":" + '00</li>');
-//      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ':' + '15</li>');
-//      $timeModal.find('ul').append('<li data-izimodal-close=\"' +  hour + ' \">' + hour + ':' + '30</li>');
-//    });
-//    $timeModal.find('li').on('click', function() {
-//      var splitTime = $(this).text().split(":");
-//      $('.wut_hours').text(splitTime[0]);
-//      $('.wut_minutes').text(splitTime[1]);
-//    });
-
-    var $clockpicker = $('.wake_up_time');
+    var $clockPicker = $('.wake_up_time');
     var $wakeUpTitle = $('.wake_up_title');
-    $clockpicker.clockpicker({
-       donetext: 'Set the time',
-       placement: 'top',
-       default: '07:00',
-       autoclose: true,
-       init: function () {
-         console.log("colorpicker initiated");
-       },
-       beforeShow: function () {
-         $wakeUpTitle.css('visibility','hidden');
-       },
-       afterShow: function () {
-         $($('.clockpicker-tick')[0]).focus();
-       },
-       beforeHide: function () {
-         console.log("before hide");
-       },
-       afterHide: function () {
-         $wakeUpTitle.css('visibility','visible');
-       },
-       beforeHourSelect: function (e) {
-         console.log(e);
-       },
-       afterHourSelect: function (e) {
-         $('.wut_hours').text(e.hours < 10 ? "0" + e.hours : e.hours)
-       },
-       beforeDone: function () {
-         console.log("before done");
-       },
-       afterDone: function (e) {
-         $('.wut_minutes').text(e.minutes < 10 ? "0" + e.minutes : e.minutes)
-       }
-     });
+    var $hoursInput = $('.wut_hours');
+    window.$minutesInput = $('.wut_minutes');
 
-    $clockpicker.on('click', function(e) {
-      e.stopPropagation();
-      var $clockPickerPopover = $('.clockpicker-popover');
-      if (!$clockPickerPopover.length || $clockPickerPopover.is(":hidden")) {
-        $clockpicker.clockpicker('show');
-      } else {
-        $wakeUpTitle.css('visibility','visible');
-        $clockpicker.clockpicker('hide');
+    window.options = function() {
+      return {
+        placement: 'top',
+        default: $hoursInput.val() + ":" + $minutesInput.val(),
+        autoclose: true,
+        afterHide: function () {
+          $wakeUpTitle.css('visibility', 'visible');
+        },
+        beforeShow: function () {
+          $wakeUpTitle.css('visibility', 'hidden');
+        },
+        afterShow: function(e) {
+          e.minutes = parseInt($('.wut_minutes').val());
+          e.hours = parseInt($('.wut_hours').val());
+
+          $minutesInput.clockpicker('toggleView', 'minutes');
+        },
+        afterDone: function (e) {
+          $minutesInput.val(e.minutes < 10 ? "0" + e.minutes : e.minutes);
+        }
+      };
+    };
+
+    $hoursInput.clockpicker(Object.assign(Object.assign({}, options()), {
+      afterHourSelect: function (e) {
+        $hoursInput.val(e.hours < 10 ? "0" + e.hours : e.hours);
       }
+    }));
+
+    $minutesInput.clockpicker(options());
+
+    $hoursInput.inputFilter(function(val) {
+      if (!/^\d*$/.test(val)) {
+        return false;
+      }
+
+      var intVal = parseInt(val);
+      if (val.length === 0) {
+        $hoursInput.val("00");
+      }
+      else if (intVal === 0) {
+        $hoursInput.val("00");
+      }
+      else if(intVal < 10) {
+        $hoursInput.val("0" + intVal);
+      }
+      else if(intVal >= 10 && intVal <= 23) {
+        $hoursInput.val(intVal);
+      }
+      else if(intVal > 23) {
+        return false;
+      }
+
+      return true;
     });
 
+    $minutesInput.inputFilter(function(val) {
+      if (!/^\d*$/.test(val)) {
+        return false;
+      }
+
+      var intVal = parseInt(val);
+      if (val.length === 0) {
+        $minutesInput.val("00");
+      }
+      else if (intVal === 0) {
+        $minutesInput.val("00");
+      }
+      else if(intVal < 10) {
+        $minutesInput.val("0" + intVal);
+      }
+      else if(intVal >= 10 && intVal <= 59) {
+        $minutesInput.val(intVal);
+      }
+      else if(intVal > 59) {
+        return false;
+      }
+
+      return true;
+    });
+
+    $minutesInput.on('keyup focus', function() {
+      $minutesInput.clockpicker(options());
+      $minutesInput.clockpicker('hide');
+      $minutesInput.clockpicker('show');
+    });
+
+    $hoursInput.on('keyup focus', function() {
+      $minutesInput.clockpicker('hide');
+      $hoursInput.clockpicker(Object.assign(Object.assign({}, options()), {
+        afterHourSelect: function (e) {
+          $hoursInput.val(e.hours < 10 ? "0" + e.hours : e.hours);
+        }
+      })).clockpicker('hide').clockpicker('show');
+    });
 
     $(document).on('click', '.wu_tune', function () {
         $('#tune_modal').iziModal('open');

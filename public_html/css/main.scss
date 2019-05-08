@@ -449,14 +449,14 @@ header {
         font-size: 92px;
         color: #fffffe;
         margin: 4px auto 26px;
-        width: 242px;
+        width: 269px;
         /* border: 1px black solid; */
         /* background-color: #ffffff47; */
         /* border-radius: 24px; */
         height: 105px;
         text-align: center;
         padding-top: 0px;
-        font-family: "Inconsolata", monospace;
+        /* font-family: "Inconsolata", monospace; */
         /* border-bottom: 3px #ffffff8c solid; */
         transition: background-color 0.25s linear;
         /* line-height: 64px; */
@@ -476,17 +476,25 @@ header {
 
         }
 
-        .wut_hours {
-            margin-right: -39px;
-        }
-        .wut_minutes {
-            margin-left: -39px;
+        .wut_hours,.wut_minutes {
+            /* margin-right: -39px; */
+            font-size: 92px;
+            color: white;
+            background: transparent;
+            font-family: "Inconsolata", monospace;
+            border: 0;
+            width: 90px;
+            vertical-align: top;
+
         }
 
         .wut_delimiter {
             display: inline-block;
             font-size: 81px;
-            vertical-align: 12px;
+            vertical-align: 19px;
+            font-family: "Inconsolata", monospace;
+            width: 37px;
+            text-align: left;
 
         }
     }
