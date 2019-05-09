@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3520676-246b-4714-9e0a-aab1bc5c5cc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/js/jquery-clockpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/js/jquery-clockpicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +22,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="508" column="63" selection-start-line="508" selection-start-column="63" selection-end-line="508" selection-end-column="63" />
+            <state relative-caret-position="476">
+              <caret line="424" column="24" selection-start-line="424" selection-start-column="24" selection-end-line="424" selection-end-column="24" />
+              <folding>
+                <element signature="e#17090#17615#0#HTML" />
+                <element signature="e#22324#23000#0#HTML" />
+                <element signature="e#23075#23193#0#HTML" />
+                <element signature="e#23441#23659#0#HTML" />
+                <element signature="e#24266#24759#0#HTML" />
+                <element signature="e#19889#23323#0#HTML" />
+                <element signature="e#23349#23588#0#HTML" />
+                <element signature="e#23626#23783#0#HTML" />
+                <element signature="e#23872#23940#0#HTML" />
+                <element signature="e#24830#25309#0#HTML" />
+                <element signature="e#25347#25634#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,22 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>raisecallback(</find>
-      <find>afterHide</find>
-      <find>proxy</find>
-      <find>init</find>
-      <find>.show =</find>
-      <find>callback</find>
-      <find>raisecallbackcustom</find>
-      <find>beforeshow</find>
-      <find>sethand =</find>
-      <find>toggleview =</find>
-      <find>view</find>
-      <find>.hide =</find>
-      <find>.hide</find>
-      <find>option</find>
-      <find>arguments</find>
-      <find>afterHourSelect</find>
       <find>refreshvi</find>
       <find>defaultView</find>
       <find>.val</find>
@@ -122,6 +114,22 @@
       <find>o</find>
       <find>refreshview =</find>
       <find>wut_delimiter</find>
+      <find>.execute</find>
+      <find>window.isNight</find>
+      <find>window.alarmSettings</find>
+      <find>alarmSettings</find>
+      <find>randomizeClouds</find>
+      <find>randomizecl</find>
+      <find>refreshView</find>
+      <find>$('#time_modal')</find>
+      <find>#time_modal</find>
+      <find>tune_modal</find>
+      <find>return function</find>
+      <find>tab_youtube</find>
+      <find>$tabTuneYoutube</find>
+      <find>$tuneTabsContent</find>
+      <find>gapi</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>http://dev.mc.com:8081/</replace>
@@ -326,12 +334,12 @@
       <workItem from="1557312688016" duration="35000" />
       <workItem from="1557316918959" duration="18491000" />
       <workItem from="1557351908161" duration="2448000" />
-      <workItem from="1557420933793" duration="6116000" />
+      <workItem from="1557420933793" duration="7342000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123729000" />
+    <option name="totallyTimeSpent" value="124955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-37" width="1920" height="1058" extended-state="0" />
@@ -593,8 +601,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="508" column="63" selection-start-line="508" selection-start-column="63" selection-end-line="508" selection-end-column="63" />
+        <state relative-caret-position="476">
+          <caret line="424" column="24" selection-start-line="424" selection-start-column="24" selection-end-line="424" selection-end-column="24" />
+          <folding>
+            <element signature="e#17090#17615#0#HTML" />
+            <element signature="e#22324#23000#0#HTML" />
+            <element signature="e#23075#23193#0#HTML" />
+            <element signature="e#23441#23659#0#HTML" />
+            <element signature="e#24266#24759#0#HTML" />
+            <element signature="e#19889#23323#0#HTML" />
+            <element signature="e#23349#23588#0#HTML" />
+            <element signature="e#23626#23783#0#HTML" />
+            <element signature="e#23872#23940#0#HTML" />
+            <element signature="e#24830#25309#0#HTML" />
+            <element signature="e#25347#25634#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>

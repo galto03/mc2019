@@ -330,185 +330,40 @@
 </div>
 </body>
 <script>
-
-
-
   "use strict";
   $(function () {
 
-    (function($) {
-      $.fn.inputFilter = function(inputFilter) {
-        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
-          if (inputFilter(this.value)) {
-            this.oldValue = this.value;
-            this.oldSelectionStart = this.selectionStart;
-            this.oldSelectionEnd = this.selectionEnd;
-          } else if (this.hasOwnProperty("oldValue")) {
-            this.value = this.oldValue;
-            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-          } else {
+    // Application configuration
+    window.isNight = false; // todo - temp
 
-          }
-        });
-      };
-    }(jQuery));
-
-    window.execute = function() {
-      return gapi.client.youtube.search.list({
-                                               "part": "snippet",
-                                               "maxResults": 25,
-                                               "q": "metaclock"
-                                             })
-        .then(function (response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function (err) { console.error("Execute error", err); });
-    };
-
-
-
-    var $env = $('.env');
-
-    window.isNight = false;
-    window.alarmSettings = {
-      time: {
-        hours: 7,
-        minutes: 0
-      }
-    };
-
-    var randomizeClouds = function () {
-      $('.cloud').each(function () {
-          var value = 50 + Math.floor(Math.random() * 400);
-          $(this).css('top', value + "px");
-        })
-    };
-
-    $(window).on('load', function () {
-      $('#preloader').animate({'opacity': 0}, {
-        complete: function () {
-          $('#site_container').animate({'opacity': 1});
-        }
-      });
-      $env.removeClass('hidden');
-
-      randomizeClouds();
-
-
-      $("#ubaplayer").ubaPlayer({
-        codecs: [{name:"MP3", codec: 'audio/mpeg;'}]
-      });
-
-      $('.tunes_list a').on('click', function(e) {
-        e.preventDefault();
-      });
-
-      gapi.load("client", function() {
-        gapi.client.setApiKey("AIzaSyDNLiIgEPo9q_k9qIM8PgxgPh9G8buFl3Y");
-        gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-          .then(function () { console.log("GAPI client loaded for API"); },
-                function (err) { console.error("Error loading GAPI client for API", err); });
-
-      });
-
-    });
-
-    $('.set_alarm_btn').on('click', function () {
-        if (window.isNight) {
-          $('#stars_container').animate({'opacity': 0}, 1000);
-          $env.removeClass('night');
+    // Custom jquery methods
+    $.fn.inputFilter = function (inputFilter) {
+      return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+        if (inputFilter(this.value)) {
+          this.oldValue = this.value;
+          this.oldSelectionStart = this.selectionStart;
+          this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+          this.value = this.oldValue;
+          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
         } else {
-          $('#stars_container').animate({'opacity': 1}, 1000);
-          $env.addClass('night')
-        }
 
-        window.isNight = !window.isNight;
+        }
       });
+    };
 
+    // Jquery elements
+    var $env = $('.env');
     var $tuneModal = $("#tune_modal");
-    $tuneModal.iziModal({
-      title: 'Select a tune',
-      subtitle: 'You can select any tune, YouTube video or upload MP3',
-      headerColor: '#1a91d2',
-      width: 600,
-      onOpening: function() {
-
-        var $tabs = $('.tabs');
-        if ($tabs.data('inited')) {
-          return;
-        }
-
-        $tabs.data('inited', true);
-
-        $tabs.on("click", "a", function (e) {
-
-          e.preventDefault();
-          $('.tabs a').removeClass("active");
-          $(this).addClass('active');
-          var activeWidth = $(this).innerWidth();
-          var itemPos = $(this).position();
-          $(".selector").css({"left": itemPos.left + "px", "width": activeWidth + "px"});
-        });
-
-        $('#ok_tune').on('click', function() {
-          // TODO
-          $tuneModal.iziModal('close');
-          console.log('ok')
-        });
-
-        $('#cancel_tune').on('click', function() {
-          // TODO
-          $tuneModal.iziModal('close');
-          console.log('cancel')
-        });
-
-
-        var $youtubeSearchResults = $('#youtube_search_results');
-        $('#youtube_search').on('keyup', function(e) {
-          if (e.keyCode !== 13) {
-            return;
-          }
-
-          var value = $(this).val();
-          gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q":value, "type": "video"}).then(
-            function (response) {
-              var result = response.result.items;
-              $youtubeSearchResults.html("");
-
-              result.forEach(function (item) {
-                var videoId = item.id.videoId,
-                  desc = item.snippet.description,
-                  image = item.snippet.thumbnails.default.url,
-                  title = item.snippet.title;
-
-                $youtubeSearchResults.append("<li videoId=\"" + videoId + "\"><div class=\"youtube_image\"><img src=\"" + image + "\"></div>" +
-                                               "<div class=\"youtube_content\">" +
-                                               "<span>" + title + "</span>" +
-                                               "<span>" + (desc ? desc : "&nbsp;") + "</span>" +
-                                               "</div></li>");
-              });
-              console.log(result)
-            },
-            function(err) { console.error("Execute error", err); });
-        });
-
-      }
-    });
-
     var $wakeUpTitle = $('.wake_up_title');
     var $hoursInput = $('.wut_hours');
     var $minutesInput = $('.wut_minutes');
     var $wutDelimiter = $('.wut_delimiter')[0];
+    var $timeModal = $('#time_modal');
 
-    $('.wut_inner_container').on('focus click', function(e) {
-      if(e.target !== this && e.target !== $wutDelimiter) {
-        return
-      }
 
-      setTimeout(function() {$hoursInput.trigger('focus')}, 0);
-    });
-    var options = function() {
+    // Init clock picker
+    var options = function () {
       return {
         placement: 'top',
         default: $hoursInput.val() + ":" + $minutesInput.val(),
@@ -530,23 +385,19 @@
         }
       };
     };
-
     $hoursInput.clockpicker(Object.assign(Object.assign({}, options()), {
       afterHourSelect: function (e) {
         $hoursInput.val(e.hours < 10 ? "0" + e.hours : e.hours);
       }
     }));
-
     $minutesInput.clockpicker(Object.assign(Object.assign({}, options()), {
-      afterShow: function(e) {
-//        e.minutes = parseInt($('.wut_minutes').val());
-//        e.hours = parseInt($('.wut_hours').val());
+      afterShow: function () {
         $minutesInput.clockpicker('toggleView', 'minutes');
       }
     }));
 
-    var inputFilterHelper = function(maxValue, $elem) {
-      return function(val) {
+    var inputFilterHelper = function (maxValue, $elem) {
+      return function (val) {
         if (!/^\d*$/.test(val)) {
           return false;
         }
@@ -554,17 +405,13 @@
         var intVal = parseInt(val);
         if (val.length === 0) {
           $elem.val("00");
-        }
-        else if (intVal === 0) {
+        } else if (intVal === 0) {
           $elem.val("00");
-        }
-        else if(intVal < 10) {
+        } else if (intVal < 10) {
           $elem.val("0" + intVal);
-        }
-        else if(intVal >= 10 && intVal <= maxValue) {
+        } else if (intVal >= 10 && intVal <= maxValue) {
           $elem.val(intVal);
-        }
-        else if(intVal > maxValue) {
+        } else if (intVal > maxValue) {
           return false;
         }
 
@@ -574,46 +421,164 @@
     $hoursInput.inputFilter(inputFilterHelper(23, $hoursInput));
     $minutesInput.inputFilter(inputFilterHelper(59, $minutesInput));
 
-    var refreshView = function(e) {
+    // Modals
+    $tuneModal.iziModal({
+                          title: 'Select a tune',
+                          subtitle: 'You can select any tune, YouTube video or upload MP3',
+                          headerColor: '#1a91d2',
+                          width: 600,
+                          onOpening: function () {
+
+                            var $tabs = $('.tabs');
+                            if ($tabs.data('inited')) {
+                              return;
+                            }
+
+                            $tabs.data('inited', true);
+
+                            $tabs.on("click", "a", function (e) {
+
+                              e.preventDefault();
+                              $('.tabs a').removeClass("active");
+                              $(this).addClass('active');
+                              var activeWidth = $(this).innerWidth();
+                              var itemPos = $(this).position();
+                              $(".selector").css({"left": itemPos.left + "px", "width": activeWidth + "px"});
+                            });
+
+                            $('#ok_tune').on('click', function () {
+                              // TODO
+                              $tuneModal.iziModal('close');
+                            });
+
+                            $('#cancel_tune').on('click', function () {
+                              // TODO
+                              $tuneModal.iziModal('close');
+                            });
+
+                            var $youtubeSearchResults = $('#youtube_search_results');
+                            $('#youtube_search').on('keyup', function (e) {
+                              if (e.keyCode !== 13) {
+                                return;
+                              }
+
+                              var value = $(this).val();
+                              gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q": value, "type": "video"}).then(
+                                function (response) {
+                                  var result = response.result.items;
+                                  $youtubeSearchResults.html("");
+
+                                  result.forEach(function (item) {
+                                    var videoId = item.id.videoId,
+                                      desc = item.snippet.description,
+                                      image = item.snippet.thumbnails.default.url,
+                                      title = item.snippet.title;
+
+                                    $youtubeSearchResults.append("<li videoId=\"" + videoId + "\"><div class=\"youtube_image\"><img src=\"" + image + "\"></div>" +
+                                                                   "<div class=\"youtube_content\">" +
+                                                                   "<span>" + title + "</span>" +
+                                                                   "<span>" + (desc ? desc : "&nbsp;") + "</span>" +
+                                                                   "</div></li>");
+                                  });
+                                },
+                                function (err) { console.error("Execute error", err); });
+                            });
+
+                          }
+                        });
+
+    // Events handlers
+    var refreshView = function () {
       var minutes = parseInt($('.wut_minutes').val());
       var hours = parseInt($('.wut_hours').val());
       $minutesInput.clockpicker('refreshView', hours, minutes);
       $hoursInput.clockpicker('refreshView', hours, minutes);
     };
+    var hourTriggerFocus = function (e) {
+      if (e.target !== this && e.target !== $wutDelimiter) {
+        return
+      }
 
-    $minutesInput.on('keyup focus', refreshView);
-    $hoursInput.on('keyup focus', refreshView);
+      setTimeout(function () {$hoursInput.trigger('focus')}, 0);
+    };
+    var openModal = function($modalTriggerElem) {
+      return function () {
+        $modalTriggerElem.iziModal('open');
+      }
+    };
+    var loadEvent = function () {
+      $('#preloader').animate({'opacity': 0}, {
+        complete: function () {
+          $('#site_container').animate({'opacity': 1});
+        }
+      });
+      $env.removeClass('hidden');
 
-    $(document).on('click', '.wu_tune', function () {
-        $('#tune_modal').iziModal('open');
-    });
+      $('.cloud').each(function () {
+        var value = 50 + Math.floor(Math.random() * 400);
+        $(this).css('top', value + "px");
+      })
 
-    $(document).on('click', '.wake_up_time', function () {
-        $('#time_modal').iziModal('open');
-    });
+//      $("#ubaplayer").ubaPlayer({codecs: [{name: "MP3", codec: 'audio/mpeg;'}]});
+//
+//      $('.tunes_list a').on('click', function (e) {
+//        e.preventDefault();
+//      });
 
-    var $tuneTabsContent = $('#tune_modal .tabs_content');
-    var $tabTuneYoutube = $('.tab_youtube, .tab_tune');
+      gapi.load("client", function () {
+        gapi.client.setApiKey("AIzaSyDNLiIgEPo9q_k9qIM8PgxgPh9G8buFl3Y");
+        gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+          .then(function () {},
+                function (err) { console.error("Error loading GAPI client for API", err); });
 
-    $tabTuneYoutube.on('click', function () {
+      });
+    };
+    var tabsSwitchEvent = function () {
+      var $tuneTabsContent = $('#tune_modal .tabs_content');
       var $this = $(this);
       if ($this.hasClass('active')) {
         return;
       }
 
       $tuneTabsContent.find('.' + $tuneModal.find('.active').attr('tab') + '_content').fadeOut(function () {
-        $tuneTabsContent.find('.' + $this.attr('tab') + '_content').fadeIn(function() {
-          if ($this.hasClass('tab_youtube'))
+        $tuneTabsContent.find('.' + $this.attr('tab') + '_content').fadeIn(function () {
+          if ($this.hasClass('tab_youtube')) {
             $('#youtube_search').focus();
+          }
         });
       });
-    });
+    };
+    var setAlarmEvent = function () {
+      if (window.isNight) {
+        $('#stars_container').animate({'opacity': 0}, 1000);
+        $env.removeClass('night');
+      } else {
+        $('#stars_container').animate({'opacity': 1}, 1000);
+        $env.addClass('night')
+      }
 
+      window.isNight = !window.isNight;
+    };
+
+    // Events
+    $('.wut_inner_container').on('focus click', hourTriggerFocus);
+
+    $minutesInput.on('keyup focus', refreshView);
+
+    $hoursInput.on('keyup focus', refreshView);
+
+    $(document).on('click', '.wu_tune', openModal($tuneModal));
+
+    $(document).on('click', '.wake_up_time', openModal($timeModal));
+
+    $(window).on('load', loadEvent);
+
+    $('.set_alarm_btn').on('click', setAlarmEvent);
+
+    $('.tab_youtube, .tab_tune').on('click', tabsSwitchEvent);
   });
 
   $('#site_container').css('opacity', 0);
-
-
 </script>
 
 
