@@ -1,8 +1,9 @@
 <html lang="en">
 <head>
-
-
     <script src="/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
+    <script type="text/javascript" src="js/jquery.ubaplayer.js"></script>
+
     <title>MetaClock | 𝗧𝗛𝗘 𝗕𝗘𝗦𝗧 𝗦𝗢𝗖𝗜𝗔𝗟 𝗔𝗟𝗔𝗥𝗠 𝗖𝗟𝗢𝗖𝗞</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
@@ -18,17 +19,21 @@
 <!--    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>-->
 
 
-<!--    <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>-->
-    <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
-    <script type="text/javascript" src="js/jquery.ubaplayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
+<!--    <link rel="stylesheet" type="text/css" href="css/ubaplayer.css">-->
     <link rel="stylesheet" href="/css/main.css">
+
+
 </head>
 
 <body>
-
+<div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+    <symbol id="icon-search" viewBox="0 0 32 32">
+        <title>search</title>
+        <path d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+    </symbol>
     <symbol id="icon-alarm" viewBox="0 0 32 32">
         <title>alarm</title>
         <path d="M16 4c-7.732 0-14 6.268-14 14s6.268 14 14 14 14-6.268 14-14-6.268-14-14-14zM16 29.25c-6.213 0-11.25-5.037-11.25-11.25s5.037-11.25 11.25-11.25c6.213 0 11.25 5.037 11.25 11.25s-5.037 11.25-11.25 11.25zM29.212 8.974c0.501-0.877 0.788-1.892 0.788-2.974 0-3.314-2.686-6-6-6-1.932 0-3.65 0.913-4.747 2.331 4.121 0.851 7.663 3.287 9.96 6.643v0zM12.748 2.331c-1.097-1.418-2.816-2.331-4.748-2.331-3.314 0-6 2.686-6 6 0 1.082 0.287 2.098 0.788 2.974 2.297-3.356 5.838-5.792 9.96-6.643z"></path>
@@ -178,116 +183,91 @@
         <div class="tabs_content">
             <ul>
                 <li class="tab_content tab_tune_content">
-                    <div id="ubaplayer"></div>
-                    <ul class="tunes_list">
+                    <ul class="tunes_list ubaplayer-controls">
                        <li>
-                           <span>Good morning beautiful</span>
-                           <span>Steve Holy</span>
-                           <a class="play_pause_song ubaplayer-button" href="media/FiftyYears.mp3">
-                               <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                           <a class="ubaplayer-button" media="media/Good Morning Beautiful.mp3">
+                               <span>Good Morning Beautiful</span>
+                               <span>Steve Holy</span>
                            </a>
                        </li>
                        <li>
-                           <span>Good morning to You</span>
-                           <span>Unknown</span>
-                           <div class="play_pause_song">
-                               <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                           </div>
+                           <a class="ubaplayer-button" media="media/Good Morning To You.mp3">
+                               <span>Good Morning to You</span>
+                               <span>Unknown</span>
+                           </a>
                        </li>
                        <li>
-                           <span>Roja</span>
-                           <span>SP. Balasubramaniam & Chitra</span>
-                           <div class="play_pause_song">
-                               <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                           </div>
+                           <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                               <span>Roja</span>
+                               <span>SP. Balasubramaniam & Chitra</span>
+                           </a>
                        </li>
                         <li>
-                            <span>Kuch Kuch Hota Hai</span>
-                            <span>Hyacinth D'Souze</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Kuch Kuch Hota Hai</span>
+                                <span>Hyacinth D'Souze</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Guten Morgen</span>
-                            <span>Unknown</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Guten Morgen</span>
+                                <span>Unknown</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Sutta Na Mila</span>
-                            <span>Unknown</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Sutta Na Mila</span>
+                                <span>Unknown</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Wake Up</span>
-                            <span>Unknown Minions</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Wake Up</span>
+                                <span>Unknown Minions</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Good Morning</span>
-                            <span>Miss Li</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Good Morning</span>
+                                <span>Miss Li</span>
+                            </a>
                         </li>
                         <li>
-                            <span>I Feel Good</span>
-                            <span>James Brown</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>I Feel Good</span>
+                                <span>James Brown</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Maargazhi Poovea</span>
-                            <span>Sobha Shanker</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Maargazhi Poovea</span>
+                                <span>Sobha Shanker</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Northeast Tradewinds</span>
-                            <span>Mad Professor</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Northeast Tradewinds</span>
+                                <span>Mad Professor</span>
+                            </a>
                         </li>
                         <li>
-                            <span>Trumpet Morning</span>
-                            <span>Unknown</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Trumpet Morning</span>
+                                <span>Unknown</span>
+                            </a>
+
                         </li>
                         <li>
-                            <span>Wake Me Up Before</span>
-                            <span>Wham!</span>
-                            <div class="play_pause_song">
-                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
-                               <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                            </div>
+                            <a class="ubaplayer-button" media="media/FiftyYears.mp3">
+                                <span>Wake Me Up Before</span>
+                                <span>Wham!</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li style="display: none" class="tab_content tab_youtube_content">
-                    <input id="youtube_search" type="text" placeholder="Search YouTube or paste a link">
+                    <input id="youtube_search" type="text" placeholder="Search YouTube or paste a link" />
+
                     <ul id="youtube_search_results">
 <!--                        <li>-->
 <!--                            <div class="youtube_image"></div>-->
@@ -318,7 +298,7 @@
     </div>
 </div>
 
-<div id="time_modal" class="ui_modal">
+<div id="time_modal" class="ui_modal" style="display: none">
     <div class="modal_content">
         <ul>
         </ul>
@@ -361,7 +341,6 @@
     var $wutDelimiter = $('.wut_delimiter')[0];
     var $timeModal = $('#time_modal');
 
-
     // Init clock picker
     var options = function () {
       return {
@@ -369,12 +348,10 @@
         default: $hoursInput.val() + ":" + $minutesInput.val(),
         autoclose: true,
         afterHide: function () {
-          $wakeUpTitle.css('visibility', 'visible');
         },
         beforeShow: function (e) {
           e.minutes = parseInt($('.wut_minutes').val());
           e.hours = parseInt($('.wut_hours').val());
-          $wakeUpTitle.css('visibility', 'hidden');
         },
         afterShow: function (e) {
           e.minutes = parseInt($('.wut_minutes').val());
@@ -517,13 +494,7 @@
       $('.cloud').each(function () {
         var value = 50 + Math.floor(Math.random() * 400);
         $(this).css('top', value + "px");
-      })
-
-//      $("#ubaplayer").ubaPlayer({codecs: [{name: "MP3", codec: 'audio/mpeg;'}]});
-//
-//      $('.tunes_list a').on('click', function (e) {
-//        e.preventDefault();
-//      });
+      });
 
       gapi.load("client", function () {
         gapi.client.setApiKey("AIzaSyDNLiIgEPo9q_k9qIM8PgxgPh9G8buFl3Y");
@@ -576,6 +547,15 @@
     $('.set_alarm_btn').on('click', setAlarmEvent);
 
     $('.tab_youtube, .tab_tune').on('click', tabsSwitchEvent);
+
+    $("#ubaplayer").ubaPlayer({
+        codecs: [{name:"MP3", codec: 'audio/mpeg;'}]
+    });
+
+    $(document).on('click','.tunes_list li',function(e) {
+      $('.tunes_list li').removeClass('selected');
+      $(this).addClass('selected');
+    });
   });
 
   $('#site_container').css('opacity', 0);

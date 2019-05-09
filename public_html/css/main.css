@@ -1,12 +1,15 @@
 body, html {
   margin: 0;
   padding: 0;
+}
+
+body {
   background: #73beea;
   font-family: "Comfortaa", cursive !important;
   height: 1100px;
   overflow: hidden;
   overflow-y: scroll;
-  width: 101%;
+  width: 100%;
 }
 
 img {
@@ -135,9 +138,7 @@ header #pirsomet {
   padding-left: 14px;
 }
 #tune_modal .tabs_content .controls .active_tune {
-  width: 307px;
   display: inline-block;
-  line-height: 17px;
   vertical-align: top;
   padding-left: 38px;
 }
@@ -174,42 +175,40 @@ header #pirsomet {
   border-bottom: 1px #f2f2f2 solid;
   display: block;
   line-height: 17px;
-  height: 21px;
-  padding: 13px 61px 23px 51px;
+  height: 56px;
+  padding: 0px 61px 0px 51px;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li span {
+  width: 92%;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li span:first-child {
   color: #1a91d2;
   display: block;
   font-size: 18px;
+  height: 44px;
+  padding-top: 12px;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li span:nth-child(2) {
   color: #1a91d2;
   font-size: 12px;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li .play_pause_song {
-  cursor: pointer;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  float: right;
-  margin-top: -13px;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li .play_pause_song .icon {
-  width: 100%;
-  height: 100%;
-  fill: #1a91d2;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li .play_pause_song .icon-pause {
-  display: none;
+  margin-top: -26px;
+  display: block;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li:hover {
-  background-color: #1c9bd8;
+  background-color: #eae8e8;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_list li:hover span {
+#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected {
+  background: #1991d2;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected span:first-child {
   color: #fff;
+  font-weight: bold;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_list li:hover .icon {
-  fill: #fff;
+#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected span:nth-child(2) {
+  color: #f2f2f2;
+}
+#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected:hover {
+  background-color: #107dd2;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_description {
   display: inline-block;
@@ -222,6 +221,11 @@ header #pirsomet {
   padding: 14px;
   font-size: 15px;
   margin: 13px auto 13px 11%;
+  background-image: url(http://dev.metaclock.com:8081/img/search.svg);
+  background-repeat: no-repeat;
+  background-size: 4%;
+  background-position: 5px 5px;
+  padding-left: 31px;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results {
   overflow: scroll;
@@ -253,7 +257,6 @@ header #pirsomet {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 385px;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span:first-child {
   color: #1c9bd8;
@@ -376,8 +379,10 @@ header #pirsomet {
 }
 #set_alarm_content .wake_up_title {
   font-size: 19px;
-  color: #ffffff9c;
+  color: #ffffff;
   text-shadow: none;
+  text-shadow: 0px 0px 5px #75757563;
+  font-size: 20px;
 }
 #set_alarm_content .wake_up_time {
   cursor: pointer;
@@ -768,8 +773,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 57%;
-  top: 23%;
+  left: 30%;
+  top: 74%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -800,12 +805,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( -77px);
-  left: calc( 221px);
-  animation-delay: 6489ms;
+  top: calc( -102px);
+  left: calc( 183px);
+  animation-delay: 7237ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 6489ms;
+  animation-delay: 7237ms;
 }
 
 @keyframes tail {
@@ -852,55 +857,44 @@ header #pirsomet {
 }
 
 .ubaplayer-button {
-  background: url("../img/btn.png") no-repeat 0 7px;
+  background: url(../img/btn.png) no-repeat 447px -148px;
   display: block;
   cursor: pointer;
   margin: 0;
-  padding: 10px 10px 10px 25px;
   position: relative;
-  width: 200px;
+  /* width: 202px; */
+  text-decoration: none;
+  /* padding-top: 12px; */
 }
 
 .ubaplayer-button:hover {
-  background-position: 0 -33px;
+  background-position: 447px -222px;
 }
 
 .ubaplayer-button.ubaplayer-playing {
-  background-position: 0 -73px;
+  background-position: 447px -296px;
 }
 
 .ubaplayer-button.ubaplayer-playing:hover {
-  background-position: 0 -113px;
-}
-
-.ubaplayer-button.ubaplayer-loading:after,
-.ubaplayer-button.ubaplayer-loading:hover:after {
-  background: url("../img/loading.gif") no-repeat 0 7px;
-  content: " ";
-  height: 28px;
-  left: 0;
-  position: absolute;
-  text-indent: 0 !important;
-  top: 0;
-  width: 20px;
+  background-position: 447px -369px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
   .ubaplayer-button {
-    background-position: 0px -70px;
+    background-position: 447px -710px;
     background-size: 20px 250px;
   }
 
   .ubaplayer-button:hover {
-    background-position: 0 -107px;
+    background-position: 447px -107px;
   }
 
   .ubaplayer-button.ubaplayer-playing {
-    background-position: 0 -144px;
+    background-position: 447px -144px;
   }
 
   .ubaplayer-button.ubaplayer-playing:hover {
-    background-position: 0 -180px;
+    background-position: 447px -180px;
   }
 }
 /* Birds **************************************************************/
