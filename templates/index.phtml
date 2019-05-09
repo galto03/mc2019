@@ -20,6 +20,7 @@
 
 <!--    <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>-->
     <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
+    <script type="text/javascript" src="js/jquery.ubaplayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -177,14 +178,15 @@
         <div class="tabs_content">
             <ul>
                 <li class="tab_content tab_tune_content">
+                    <div id="ubaplayer"></div>
                     <ul class="tunes_list">
                        <li>
                            <span>Good morning beautiful</span>
                            <span>Steve Holy</span>
-                           <div class="play_pause_song">
+                           <a class="play_pause_song ubaplayer-button" href="media/FiftyYears.mp3">
                                <svg class="icon icon-play2"><use xlink:href="#icon-play2"></use></svg>
                                <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
-                           </div>
+                           </a>
                        </li>
                        <li>
                            <span>Good morning to You</span>
@@ -362,7 +364,7 @@
                 console.log("Response", response);
               },
               function (err) { console.error("Execute error", err); });
-    }
+    };
 
 
 
@@ -387,13 +389,20 @@
       $('#preloader').animate({'opacity': 0}, {
         complete: function () {
           $('#site_container').animate({'opacity': 1});
-
         }
       });
       $env.removeClass('hidden');
 
       randomizeClouds();
 
+
+      $("#ubaplayer").ubaPlayer({
+        codecs: [{name:"MP3", codec: 'audio/mpeg;'}]
+      });
+
+      $('.tunes_list a').on('click', function(e) {
+        e.preventDefault();
+      });
 
       gapi.load("client", function() {
         gapi.client.setApiKey("AIzaSyDNLiIgEPo9q_k9qIM8PgxgPh9G8buFl3Y");
@@ -487,12 +496,19 @@
       }
     });
 
-    var $clockPicker = $('.wake_up_time');
     var $wakeUpTitle = $('.wake_up_title');
     var $hoursInput = $('.wut_hours');
-    window.$minutesInput = $('.wut_minutes');
+    var $minutesInput = $('.wut_minutes');
+    var $wutDelimiter = $('.wut_delimiter')[0];
 
-    window.options = function() {
+    $('.wut_inner_container').on('focus click', function(e) {
+      if(e.target !== this && e.target !== $wutDelimiter) {
+        return
+      }
+
+      setTimeout(function() {$hoursInput.trigger('focus')}, 0);
+    });
+    var options = function() {
       return {
         placement: 'top',
         default: $hoursInput.val() + ":" + $minutesInput.val(),
@@ -500,14 +516,14 @@
         afterHide: function () {
           $wakeUpTitle.css('visibility', 'visible');
         },
-        beforeShow: function () {
-          $wakeUpTitle.css('visibility', 'hidden');
-        },
-        afterShow: function(e) {
+        beforeShow: function (e) {
           e.minutes = parseInt($('.wut_minutes').val());
           e.hours = parseInt($('.wut_hours').val());
-
-          $minutesInput.clockpicker('toggleView', 'minutes');
+          $wakeUpTitle.css('visibility', 'hidden');
+        },
+        afterShow: function (e) {
+          e.minutes = parseInt($('.wut_minutes').val());
+          e.hours = parseInt($('.wut_hours').val());
         },
         afterDone: function (e) {
           $minutesInput.val(e.minutes < 10 ? "0" + e.minutes : e.minutes);
@@ -521,72 +537,52 @@
       }
     }));
 
-    $minutesInput.clockpicker(options());
+    $minutesInput.clockpicker(Object.assign(Object.assign({}, options()), {
+      afterShow: function(e) {
+//        e.minutes = parseInt($('.wut_minutes').val());
+//        e.hours = parseInt($('.wut_hours').val());
+        $minutesInput.clockpicker('toggleView', 'minutes');
+      }
+    }));
 
-    $hoursInput.inputFilter(function(val) {
-      if (!/^\d*$/.test(val)) {
-        return false;
-      }
-
-      var intVal = parseInt(val);
-      if (val.length === 0) {
-        $hoursInput.val("00");
-      }
-      else if (intVal === 0) {
-        $hoursInput.val("00");
-      }
-      else if(intVal < 10) {
-        $hoursInput.val("0" + intVal);
-      }
-      else if(intVal >= 10 && intVal <= 23) {
-        $hoursInput.val(intVal);
-      }
-      else if(intVal > 23) {
-        return false;
-      }
-
-      return true;
-    });
-
-    $minutesInput.inputFilter(function(val) {
-      if (!/^\d*$/.test(val)) {
-        return false;
-      }
-
-      var intVal = parseInt(val);
-      if (val.length === 0) {
-        $minutesInput.val("00");
-      }
-      else if (intVal === 0) {
-        $minutesInput.val("00");
-      }
-      else if(intVal < 10) {
-        $minutesInput.val("0" + intVal);
-      }
-      else if(intVal >= 10 && intVal <= 59) {
-        $minutesInput.val(intVal);
-      }
-      else if(intVal > 59) {
-        return false;
-      }
-
-      return true;
-    });
-
-    $minutesInput.on('keyup focus', function() {
-      $minutesInput.clockpicker(options());
-      $minutesInput.clockpicker('hide');
-      $minutesInput.clockpicker('show');
-    });
-
-    $hoursInput.on('keyup focus', function() {
-      $minutesInput.clockpicker('hide');
-      $hoursInput.clockpicker(Object.assign(Object.assign({}, options()), {
-        afterHourSelect: function (e) {
-          $hoursInput.val(e.hours < 10 ? "0" + e.hours : e.hours);
+    var inputFilterHelper = function(maxValue, $elem) {
+      return function(val) {
+        if (!/^\d*$/.test(val)) {
+          return false;
         }
-      })).clockpicker('hide').clockpicker('show');
-    });
+
+        var intVal = parseInt(val);
+        if (val.length === 0) {
+          $elem.val("00");
+        }
+        else if (intVal === 0) {
+          $elem.val("00");
+        }
+        else if(intVal < 10) {
+          $elem.val("0" + intVal);
+        }
+        else if(intVal >= 10 && intVal <= maxValue) {
+          $elem.val(intVal);
+        }
+        else if(intVal > maxValue) {
+          return false;
+        }
+
+        return true;
+      }
+    };
+    $hoursInput.inputFilter(inputFilterHelper(23, $hoursInput));
+    $minutesInput.inputFilter(inputFilterHelper(59, $minutesInput));
+
+    var refreshView = function(e) {
+      var minutes = parseInt($('.wut_minutes').val());
+      var hours = parseInt($('.wut_hours').val());
+      $minutesInput.clockpicker('refreshView', hours, minutes);
+      $hoursInput.clockpicker('refreshView', hours, minutes);
+    };
+
+    $minutesInput.on('keyup focus', refreshView);
+    $hoursInput.on('keyup focus', refreshView);
 
     $(document).on('click', '.wu_tune', function () {
         $('#tune_modal').iziModal('open');

@@ -67,22 +67,22 @@
 	// Popover template
 	var tpl = [
 		'<div class="popover clockpicker-popover">',
-			'<div class="arrow"></div>',
-			'<div class="popover-title">',
-				'<span class="clockpicker-span-hours text-primary"></span>',
-				' : ',
-				'<span class="clockpicker-span-minutes"></span>',
-				'<span class="clockpicker-span-am-pm"></span>',
-			'</div>',
-			'<div class="popover-content">',
-				'<div class="clockpicker-plate">',
-					'<div class="clockpicker-canvas"></div>',
-					'<div class="clockpicker-dial clockpicker-hours"></div>',
-					'<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>',
-				'</div>',
-				'<span class="clockpicker-am-pm-block">',
-				'</span>',
-			'</div>',
+		'<div class="arrow"></div>',
+		'<div class="popover-title">',
+		'<span class="clockpicker-span-hours text-primary"></span>',
+		' : ',
+		'<span class="clockpicker-span-minutes"></span>',
+		'<span class="clockpicker-span-am-pm"></span>',
+		'</div>',
+		'<div class="popover-content">',
+		'<div class="clockpicker-plate">',
+		'<div class="clockpicker-canvas"></div>',
+		'<div class="clockpicker-dial clockpicker-hours"></div>',
+		'<div class="clockpicker-dial clockpicker-minutes clockpicker-dial-out"></div>',
+		'</div>',
+		'<span class="clockpicker-am-pm-block">',
+		'</span>',
+		'</div>',
 		'</div>'
 	].join('');
 
@@ -117,48 +117,48 @@
 		this.spanMinutes = popover.find('.clockpicker-span-minutes');
 		this.spanAmPm = popover.find('.clockpicker-span-am-pm');
 		this.amOrPm = "PM";
-		
+
 		// Setup for for 12 hour clock if option is selected
 		if (options.twelvehour) {
-			debugger;
+
 			var  amPmButtonsTemplate = ['<div class="clockpicker-am-pm-block">',
-				'<button type="button" class="btn btn-sm btn-default clockpicker-button clockpicker-am-button">',
-				'AM</button>',
-				'<button type="button" class="btn btn-sm btn-default clockpicker-button clockpicker-pm-button">',
-				'PM</button>',
-				'</div>'].join('');
-			
+										'<button type="button" class="btn btn-sm btn-default clockpicker-button clockpicker-am-button">',
+										'AM</button>',
+										'<button type="button" class="btn btn-sm btn-default clockpicker-button clockpicker-pm-button">',
+										'PM</button>',
+										'</div>'].join('');
+
 			var amPmButtons = $(amPmButtonsTemplate);
 			//amPmButtons.appendTo(plate);
-			
+
 			////Not working b/c they are not shown when this runs
 			//$('clockpicker-am-button')
 			//    .on("click", function() {
 			//        self.amOrPm = "AM";
 			//        $('.clockpicker-span-am-pm').empty().append('AM');
 			//    });
-			//    
+			//
 			//$('clockpicker-pm-button')
 			//    .on("click", function() {
 			//         self.amOrPm = "PM";
 			//        $('.clockpicker-span-am-pm').empty().append('PM');
 			//    });
-	
+
 			$('<button type="button" class="btn btn-sm btn-default clockpicker-button am-button">' + "AM" + '</button>')
 				.on("click", function() {
 					self.amOrPm = "AM";
 					$('.clockpicker-span-am-pm').empty().append('AM');
 				}).appendTo(this.amPmBlock);
-				
-				
+
+
 			$('<button type="button" class="btn btn-sm btn-default clockpicker-button pm-button">' + "PM" + '</button>')
 				.on("click", function() {
 					self.amOrPm = 'PM';
 					$('.clockpicker-span-am-pm').empty().append('PM');
 				}).appendTo(this.amPmBlock);
-				
+
 		}
-		
+
 		if (! options.autoclose) {
 			// If autoclose is not setted, append a button
 			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.donetext + '</button>')
@@ -173,7 +173,7 @@
 		popover.addClass(options.placement);
 		popover.addClass('clockpicker-align-' + options.align);
 
-//		this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
+		this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
 		this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
 
 		// Show or toggle
@@ -192,9 +192,9 @@
 				radius = outerRadius;
 				tick.css('font-size', '120%');
 				tick.css({
-					left: dialRadius + Math.sin(radian) * radius - tickRadius,
-					top: dialRadius - Math.cos(radian) * radius - tickRadius
-				});
+							 left: dialRadius + Math.sin(radian) * radius - tickRadius,
+							 top: dialRadius - Math.cos(radian) * radius - tickRadius
+						 });
 				tick.html(i === 0 ? '00' : i);
 				hoursView.append(tick);
 				tick.on(mousedownEvent, mousedown);
@@ -206,9 +206,9 @@
 				var inner = i > 0 && i < 13;
 				radius = inner ? innerRadius : outerRadius;
 				tick.css({
-					left: dialRadius + Math.sin(radian) * radius - tickRadius,
-					top: dialRadius - Math.cos(radian) * radius - tickRadius
-				});
+							 left: dialRadius + Math.sin(radian) * radius - tickRadius,
+							 top: dialRadius - Math.cos(radian) * radius - tickRadius
+						 });
 				if (inner) {
 					tick.css('font-size', '120%');
 				}
@@ -223,9 +223,9 @@
 			tick = tickTpl.clone();
 			radian = i / 30 * Math.PI;
 			tick.css({
-				left: dialRadius + Math.sin(radian) * outerRadius - tickRadius,
-				top: dialRadius - Math.cos(radian) * outerRadius - tickRadius
-			});
+						 left: dialRadius + Math.sin(radian) * outerRadius - tickRadius,
+						 top: dialRadius - Math.cos(radian) * outerRadius - tickRadius
+					 });
 			tick.css('font-size', '120%');
 			tick.html(leadingZero(i));
 			minutesView.append(tick);
@@ -440,7 +440,8 @@
 			return;
 		}
 
-		raiseCallback(this.options.beforeShow);
+//		raiseCallback(this.options.beforeShow);
+		raiseCallbackCustom(this, this.options.beforeShow);
 
 		var self = this;
 
@@ -470,7 +471,7 @@
 		}
 		this.hours = + value[0] || 0;
 		this.minutes = + value[1] || 0;
-//		this.spanHours.html(leadingZero(this.hours));
+		this.spanHours.html(leadingZero(this.hours));
 		this.spanMinutes.html(leadingZero(this.minutes));
 
 		// Toggle to hours view
@@ -485,8 +486,8 @@
 		$doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function(e){
 			var target = $(e.target);
 			if (target.closest(self.popover).length === 0 &&
-					target.closest(self.addon).length === 0 &&
-					target.closest(self.input).length === 0) {
+				target.closest(self.addon).length === 0 &&
+				target.closest(self.input).length === 0) {
 				self.hide();
 			}
 		});
@@ -503,6 +504,13 @@
 
 	};
 
+	ClockPicker.prototype.refreshView = function(hours, minutes) {
+		this.hours = hours;
+		this.minutes = minutes;
+
+		this.resetClock(0);
+	};
+
 	// Hide popover
 	ClockPicker.prototype.hide = function(){
 		raiseCallback(this.options.beforeHide);
@@ -510,8 +518,8 @@
 		this.isShown = false;
 
 		// Unbinding events on document
-		$doc.off('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id);
-		$doc.off('keyup.clockpicker.' + this.id);
+//		$doc.off('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id);
+//		$doc.off('keyup.clockpicker.' + this.id);
 
 		this.popover.hide();
 
@@ -531,7 +539,7 @@
 
 		this.currentView = view;
 
-//		this.spanHours.toggleClass('text-primary', isHours);
+		this.spanHours.toggleClass('text-primary', isHours);
 		this.spanMinutes.toggleClass('text-primary', ! isHours);
 
 		// Let's make transitions
@@ -576,6 +584,10 @@
 
 	// Set clock hand to (x, y)
 	ClockPicker.prototype.setHand = function(x, y, roundBy5, dragging){
+//		if (isNaN(x) || isNaN(y)) {
+//			return;
+//		}
+
 		var radian = Math.atan2(x, - y),
 			isHours = this.currentView === 'hours',
 			unit = Math.PI / (isHours || roundBy5 ? 6 : 30),
@@ -584,10 +596,10 @@
 			inner = isHours && z < (outerRadius + innerRadius) / 2,
 			radius = inner ? innerRadius : outerRadius,
 			value;
-			
-			if (options.twelvehour) {
-				radius = outerRadius;
-			}
+
+		if (options.twelvehour) {
+			radius = outerRadius;
+		}
 
 		// Radian should in range [0, 2PI]
 		if (radian < 0) {
@@ -629,7 +641,7 @@
 				}
 			}
 		}
-		
+
 		// Once hours or minutes changed, vibrate the device
 		if (this[this.currentView] !== value) {
 			if (vibrate && this.options.vibrate) {
@@ -644,7 +656,7 @@
 		}
 
 		this[this.currentView] = value;
-//		this[isHours ? 'spanHours' : 'spanMinutes'].html(leadingZero(value));
+
 		if (isHours) {
 			this.spanMinutes.html(leadingZero(this.minutes));
 			this.spanHours.html(leadingZero(value))
