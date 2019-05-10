@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3520676-246b-4714-9e0a-aab1bc5c5cc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public_html/css/jquery-clockpicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/jquery-clockpicker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.scss" afterDir="false" />
@@ -22,51 +22,36 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.phtml">
+        <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="337" column="18" selection-start-line="337" selection-start-column="9" selection-end-line="337" selection-end-column="18" />
+            <state relative-caret-position="325">
+              <caret line="938" column="7" selection-start-line="938" selection-start-column="4" selection-end-line="938" selection-end-column="7" />
               <folding>
-                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#17090#17615#0#HTML" />
-                <element signature="e#19889#23323#0#HTML" />
-                <element signature="e#23349#23588#0#HTML" />
-                <element signature="e#23626#23783#0#HTML" />
-                <element signature="e#24830#25309#0#HTML" />
-                <element signature="e#25347#25634#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/js/jquery.ubaplayer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#6845#8618#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
+        <entry file="file://$PROJECT_DIR$/templates/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="474" column="24" selection-start-line="474" selection-start-column="24" selection-end-line="474" selection-end-column="24" />
+            <state relative-caret-position="335">
+              <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/css/jquery-clockpicker.css">
+        <entry file="file://$PROJECT_DIR$/public_html/css/bootstrap.min.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+            <state relative-caret-position="90">
+              <caret line="6" column="1119" selection-start-line="6" selection-start-column="1119" selection-end-line="6" selection-end-column="1119" />
             </state>
           </provider>
         </entry>
@@ -82,36 +67,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;a</find>
-      <find>href</find>
-      <find>href=&quot;</find>
-      <find>href=&quot;media/</find>
-      <find>a'</find>
-      <find>this.$tgt.hasClass(this.options.audioButtonClass)</find>
-      <find>ubaplayer-button</find>
-      <find>:first-ch</find>
-      <find>18px</find>
-      <find>first-child</find>
-      <find>.on('click',</find>
-      <find>ubaplayer-cont</find>
-      <find>$tunesList</find>
-      <find>ubaplayer</find>
-      <find>tunes_list</find>
-      <find>youtube_search</find>
-      <find>.tunes_list</find>
-      <find>.set_alarm_</find>
-      <find>&lt;input</find>
-      <find>img/</find>
-      <find>set a</find>
+      <find>tune_modal</find>
+      <find>controls</find>
+      <find>your mom</find>
+      <find>active_tune</find>
+      <find>.controls</find>
+      <find>.selected</find>
+      <find>izimodal</find>
+      <find>selected</find>
+      <find>ok</find>
+      <find>icon-youtube</find>
+      <find>wu_tune_music</find>
+      <find>wu_tune_name</find>
+      <find>selected_tune</find>
+      <find>_title</find>
+      <find>selected_t</find>
+      <find>$selected</find>
+      <find>$selected</find>
+      <find>_name_cont</find>
       <find>mc_btn</find>
-      <find>&lt;defs&gt;</find>
-      <find>sea</find>
-      <find>$wakeUpTitle</find>
-      <find>afterHide</find>
-      <find>wakeuptit</find>
-      <find>jquery-clo</find>
-      <find>.top</find>
-      <find>wake_up_title</find>
+      <find>c</find>
+      <find>go go go</find>
+      <find>all se</find>
+      <find>opacity-show</find>
+      <find>use select</find>
+      <find>button,select</find>
+      <find>font-family:inherit</find>
+      <find>wake_up_time</find>
+      <find>font:inherit;</find>
+      <find>pri</find>
+      <find>primary</find>
     </findStrings>
     <replaceStrings>
       <replace>http://dev.mc.com:8081/</replace>
@@ -160,9 +145,10 @@
         <option value="$USER_HOME$/Downloads/clockpicker-gh-pages/dist/jquery-clockpicker.js" />
         <option value="$PROJECT_DIR$/public_html/js/jquery-clockpicker.js" />
         <option value="$PROJECT_DIR$/public_html/js/jquery.ubaplayer.js" />
-        <option value="$PROJECT_DIR$/templates/index.phtml" />
         <option value="$PROJECT_DIR$/public_html/css/jquery-clockpicker.css" />
         <option value="$PROJECT_DIR$/public_html/css/main.scss" />
+        <option value="$PROJECT_DIR$/public_html/css/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/templates/index.phtml" />
       </list>
     </option>
   </component>
@@ -246,8 +232,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,18 +305,19 @@
       <workItem from="1557312688016" duration="35000" />
       <workItem from="1557316918959" duration="18491000" />
       <workItem from="1557351908161" duration="2448000" />
-      <workItem from="1557420933793" duration="14557000" />
+      <workItem from="1557420933793" duration="14855000" />
+      <workItem from="1557468437690" duration="5068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132170000" />
+    <option name="totallyTimeSpent" value="137536000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-37" width="1920" height="1058" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19755058" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1996805" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -570,22 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="337" column="18" selection-start-line="337" selection-start-column="9" selection-end-line="337" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#17090#17615#0#HTML" />
-            <element signature="e#19889#23323#0#HTML" />
-            <element signature="e#23349#23588#0#HTML" />
-            <element signature="e#23626#23783#0#HTML" />
-            <element signature="e#24830#25309#0#HTML" />
-            <element signature="e#25347#25634#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/css/jquery-clockpicker.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -603,10 +574,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1119" selection-start-line="6" selection-start-column="1119" selection-end-line="6" selection-end-column="1119" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="474" column="24" selection-start-line="474" selection-start-column="24" selection-end-line="474" selection-end-column="24" />
+        <state relative-caret-position="325">
+          <caret line="938" column="7" selection-start-line="938" selection-start-column="4" selection-end-line="938" selection-end-column="7" />
+          <folding>
+            <element signature="e#6845#8618#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

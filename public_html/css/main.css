@@ -12,6 +12,10 @@ body {
   width: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 img {
   width: 100%;
 }
@@ -68,6 +72,18 @@ ul {
 .mc_btn:active {
   position: relative;
   top: 1px;
+}
+
+.mc_btn_blue {
+  box-shadow: inset 0px -3px 7px 0px #29bbff;
+  background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2dabf9", endColorstr="#0688fa",GradientType=0);
+  color: #fff;
+}
+
+.mc_btn_blue:hover {
+  background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0688fa", endColorstr="#2dabf9",GradientType=0);
 }
 
 /* Header **************************************************************/
@@ -135,22 +151,8 @@ header #pirsomet {
 #tune_modal .tabs_content .controls {
   display: block;
   padding-top: 12px;
-  padding-left: 14px;
-}
-#tune_modal .tabs_content .controls .active_tune {
-  display: inline-block;
-  vertical-align: top;
-  padding-left: 38px;
-}
-#tune_modal .tabs_content .controls .active_tune span:first-child {
-  color: #000000;
-  display: block;
-  font-size: 12px;
-  font-weight: bold;
-}
-#tune_modal .tabs_content .controls .active_tune span:nth-child(2) {
-  color: #1c9bd8;
-  font-size: 20px;
+  text-align: right;
+  padding-right: 65px;
 }
 #tune_modal .tabs_content .controls .buttons_container {
   display: inline-block;
@@ -158,10 +160,6 @@ header #pirsomet {
 #tune_modal .tabs_content .controls .buttons_container #cancel_tune {
   color: #b1b1b1;
   margin-right: 10px;
-}
-#tune_modal .tabs_content .tab_content {
-  height: 304px;
-  background: #fff;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list {
   vertical-align: top;
@@ -181,34 +179,18 @@ header #pirsomet {
 #tune_modal .tabs_content .tab_tune_content .tunes_list li span {
   width: 92%;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_list li span:first-child {
+#tune_modal .tabs_content .tab_tune_content .tunes_list li .item_title {
   color: #1a91d2;
   display: block;
   font-size: 18px;
   height: 44px;
   padding-top: 12px;
 }
-#tune_modal .tabs_content .tab_tune_content .tunes_list li span:nth-child(2) {
+#tune_modal .tabs_content .tab_tune_content .tunes_list li .item_desc {
   color: #1a91d2;
   font-size: 12px;
   margin-top: -26px;
   display: block;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li:hover {
-  background-color: #eae8e8;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected {
-  background: #1991d2;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected span:first-child {
-  color: #fff;
-  font-weight: bold;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected span:nth-child(2) {
-  color: #f2f2f2;
-}
-#tune_modal .tabs_content .tab_tune_content .tunes_list li.selected:hover {
-  background-color: #107dd2;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_description {
   display: inline-block;
@@ -229,15 +211,14 @@ header #pirsomet {
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results {
   overflow: scroll;
-  height: 255px;
-  width: 82%;
-  margin: 0 auto 0 9%;
+  height: 247px;
+  width: 100%;
+  /* padding: 0 0 0 11%; */
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li {
   height: 70px;
-  padding-left: 14px;
-  margin-bottom: 12px;
   border-bottom: 1px #f2f2f2 solid;
+  padding: 15px 10% 0;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_image {
   display: inline-block;
@@ -253,43 +234,39 @@ header #pirsomet {
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span {
   display: block;
-  font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 326px;
 }
-#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span:first-child {
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content .item_title {
   color: #1c9bd8;
   font-size: 18px;
 }
-#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span:nth-child(2) {
+#tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content .item_desc {
   color: #1c9bd8;
   font-size: 12px;
 }
-
-#time_modal .modal_content {
-  height: 500px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+#tune_modal .tab_content {
+  height: 304px;
+  background: #fff;
 }
-#time_modal .modal_content ul {
-  font-family: "Inconsolata", monospace;
-}
-#time_modal .modal_content ul li {
+#tune_modal .tab_content li:hover {
+  background-color: #eae8e8 !important;
   cursor: pointer;
-  background-color: #ffffff;
-  border-bottom: 1px #e6e6e6 solid;
-  padding: 10px;
-  font-size: 28px;
-  color: #1c9bd8;
-  text-align: center;
-  letter-spacing: 2px;
 }
-#time_modal .modal_content ul li:hover {
-  background-color: #1c9bd8;
-  /* text-shadow: 0 0 10px #fff; */
-  font-weight: bold;
-  color: #fff;
+#tune_modal .tab_content li.selected_tune {
+  background: #1991d2 !important;
+}
+#tune_modal .tab_content li.selected_tune .item_title {
+  color: #fff !important;
+  font-weight: bold !important;
+}
+#tune_modal .tab_content li.selected_tune .item_desc {
+  color: #f2f2f2 !important;
+}
+#tune_modal .tab_content li.selected_tune:hover {
+  background-color: #107dd2 !important;
 }
 
 /* Good night text **************************************************************/
@@ -298,7 +275,7 @@ header #pirsomet {
   text-align: center;
   margin: 0 auto;
   width: 100%;
-  top: 17%;
+  top: 524px;
   opacity: 0;
   z-index: 35;
 }
@@ -311,8 +288,8 @@ header #pirsomet {
   color: wheat;
 }
 #good_night_container.night {
-  animation: opacity-show 2s 1 linear forwards;
-  animation-delay: 0.71s;
+  animation: opacity-show 1s 1 linear forwards;
+  animation-delay: 1.31s;
 }
 
 /* Ground **************************************************************/
@@ -378,15 +355,14 @@ header #pirsomet {
   text-shadow: #7ec6ed 1px 0 10px;
 }
 #set_alarm_content .wake_up_title {
-  font-size: 19px;
   color: #ffffff;
-  text-shadow: none;
   text-shadow: 0px 0px 5px #75757563;
   font-size: 20px;
 }
 #set_alarm_content .wake_up_time {
   cursor: pointer;
   font-size: 92px;
+  display: block;
   color: #fffffe;
   margin: 4px auto 26px;
   width: 269px;
@@ -404,6 +380,7 @@ header #pirsomet {
   border-width: 0;
   border-bottom: 3px #ffffff8c solid;
   border-radius: 5px 5px 0 0;
+  line-height: initial;
 }
 #set_alarm_content .wake_up_time:hover {
   background-color: #ffffff57;
@@ -464,7 +441,6 @@ header #pirsomet {
   white-space: nowrap;
   vertical-align: -3px;
   text-shadow: none;
-  min-width: 120px;
 }
 #set_alarm_content .wu_tune .wu_tune_name_cont .wu_tune_name {
   font-weight: bold;
@@ -767,13 +743,13 @@ header #pirsomet {
   z-index: 40;
 }
 #shooting_stars_container.night {
-  animation: opacity-show 2s 1 linear forwards;
+  animation: opacity-show 1s 1 linear forwards;
 }
 
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 30%;
+  left: 16%;
   top: 74%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
@@ -805,12 +781,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( -102px);
-  left: calc( 183px);
-  animation-delay: 7237ms;
+  top: calc( -219px);
+  left: calc( 140px);
+  animation-delay: 5886ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 7237ms;
+  animation-delay: 5886ms;
 }
 
 @keyframes tail {
