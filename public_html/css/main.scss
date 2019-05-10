@@ -175,7 +175,6 @@ header {
                 display: inline-block;
 
                 #cancel_tune {
-                    color: #b1b1b1;
                     margin-right: 10px;
                 }
             }
@@ -194,7 +193,7 @@ header {
                     background: #ffffff;
                     border-bottom: 1px #f2f2f2 solid;
                     display: block;
-                    line-height: 17px;
+                    /* line-height: 18px; */
                     height: 56px;
                     padding: 0px 61px 0px 51px;
 
@@ -206,14 +205,14 @@ header {
                         color: #1a91d2;
                         display: block;
                         font-size: 18px;
-                        height: 44px;
-                        padding-top: 12px;
+                        height: 29px;
+                        padding-top: 8px;
                     }
 
                     .item_desc {
                         color: #1a91d2;
                         font-size: 12px;
-                        margin-top: -26px;
+                        /* margin-top: -26px; */
                         display: block;
                     }
 
@@ -249,27 +248,33 @@ header {
               li {
                   height: 70px;
                   border-bottom: 1px #f2f2f2 solid;
-                  padding: 15px 10% 0;
+                  padding: 0px 9% 0px 67px;
+                  position: relative;
+                  /* width: 100%; */
 
               .youtube_image {
-                display: inline-block;
-                width: 70px;
-                border: 1px black solid;
-                //height: 70px;
-                border-radius: 5px;
+                  display: inline-block;
+                  width: 70px;
+                  border: 1px black solid;
+                  border-radius: 5px;
+                  padding: 0;
+                  margin: 0;
+                  vertical-align: 18px;
               }
               .youtube_content {
-                display: inline-block;
-                vertical-align: 4px;
-                line-height: 21px;
-                padding-left: 14px;
+                  display: inline-block;
+                  /* vertical-align: 4px; */
+                  /* line-height: 13px; */
+                  padding-left: 14px;
+                  /* vertical-align: 33px; */
+                  padding-top: 14px;
 
                 span {
                     display: block;
                     text-overflow: ellipsis;
                     overflow: hidden;
                     white-space: nowrap;
-                    width: 326px;
+                    width: 379px;
                 }
 
                 .item_title {
@@ -297,6 +302,23 @@ header {
             &:hover {
                 background-color: #eae8e8 !important;
                 cursor: pointer;
+
+                .icon-new-tab {
+                    display: block !important;
+                    position: absolute;
+                    top: 20px;
+                    width: 30px;
+                    height: 30px;
+                    right: 58px;
+                    cursor: pointer;
+                    fill: #327ab7;
+                    &:hover {
+                        fill: #286090 !important;
+                    }
+                }
+                span {
+                    width: 339px !important;
+                }
             }
         }
 
@@ -314,6 +336,13 @@ header {
 
             &:hover {
                 background-color: #107dd2 !important;
+            }
+
+            .icon-new-tab {
+                fill: #f2f2f2;
+                &:hover {
+                    fill: #e2e2e2 !important;
+                }
             }
         }
 
@@ -486,16 +515,16 @@ header {
         padding-top: 0;
         border-radius: 5px;
         cursor: pointer;
-        height: 39px;
+        height: 34px;
 
 
         .wu_tune_music {
             display: inline-block;
             /* vertical-align: 15px; */
-            padding-right: 6px;
-            width: 20px;
-            height: 20px;
-            vertical-align: 6px;
+            padding-right: 5px;
+            width: 28px;
+            height: 28px;
+            vertical-align: -1px;
 
             svg {
                 fill: #fff;
@@ -510,15 +539,14 @@ header {
             color: #54bcf0;
             max-width: 193px;
             white-space: nowrap;
-            vertical-align: -3px;
+            vertical-align: -5px;
             text-shadow: none;
-            //min-width: 120px;
 
             .wu_tune_name {
                 font-weight: bold;
                 text-overflow: ellipsis;
                 overflow: hidden;
-                line-height: 39px;
+                line-height: 34px;
             }
 
         }
@@ -774,7 +802,7 @@ header {
     padding:10px 20px;
     display:inline-block;
     position:relative;
-    width: 257px;
+    width: 297px;
     z-index:1;
     transition-duration:0.6s;
     text-align: center;

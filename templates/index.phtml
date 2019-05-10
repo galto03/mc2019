@@ -21,9 +21,9 @@
 
 
     <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
-<!--    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <!--    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
-<!--    <link rel="stylesheet" type="text/css" href="css/ubaplayer.css">-->
+
     <link rel="stylesheet" href="/css/main.css">
 
 
@@ -33,7 +33,13 @@
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-    <symbol id="icon-search" viewBox="0 0 32 32">
+        <symbol id="icon-new-tab" viewBox="0 0 32 32">
+            <title>new-tab</title>
+            <path d="M6 2v24h24v-24h-24zM28 24h-20v-20h20v20zM4 28v-21l-2-2v25h25l-2-2h-21z"></path>
+            <path d="M11 8l5 5-6 6 3 3 6-6 5 5v-13z"></path>
+        </symbol>
+
+        <symbol id="icon-search" viewBox="0 0 32 32">
         <title>search</title>
         <path d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
     </symbol>
@@ -146,7 +152,9 @@
                 </div>
             </button>
             <div class="set_alarm_btn_container">
-                <a href="#" class="set_alarm_btn mc_btn">SET ALARM</a>
+<!--                <a href="#" class="set_alarm_btn mc_btn">SET ALARM</a>-->
+                <button type="button" class="set_alarm_btn btn btn-light">SET ALARM</button>
+
             </div>
         </div>
 
@@ -276,9 +284,8 @@
             </ul>
             <div class="controls">
                 <div class="buttons_container">
-                    <button id="cancel_tune" class="mc_btn" style="font-weight: normal;color: #ed0606; margin-right: 10px;">Cancel</button>
-                    <button id="ok_tune" class="mc_btn mc_btn_blue">Use selected tune</button>
-<!--                    <button type="button" class="btn btn-primary">Primary</button>-->
+                    <button id="cancel_tune" type="button" class="btn btn-secondary">Cancel</button>
+                    <button id="ok_tune" type="button" class="btn btn-primary">Use selected tune</button>
 
                 </div>
             </div>
@@ -459,7 +466,14 @@
                                                                    "<div class=\"youtube_content\">" +
                                                                    "<span class='item_title'>" + title + "</span>" +
                                                                    "<span class='item_desc'>" + (desc ? desc : "&nbsp;") + "</span>" +
-                                                                   "</div></li>");
+                                                                   "</div><a title='Watch on YouTube' target='blank' href='https://www.youtube" +
+                                                                   ".com/watch?v=" +
+                                                                   videoId +
+                                                                   "'><svg title='Watch on YouTube' " +
+                                                                   "class=\"icon " +
+                                                                   "icon-new-tab hidden\"><use " +
+                                                                   "xlink:href=\"#icon-new-tab\"></use></svg></a>" +
+                                                                   "</li>");
                                   });
                                 },
                                 function (err) { console.error("Execute error", err); });

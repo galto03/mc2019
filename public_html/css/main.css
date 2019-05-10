@@ -158,7 +158,6 @@ header #pirsomet {
   display: inline-block;
 }
 #tune_modal .tabs_content .controls .buttons_container #cancel_tune {
-  color: #b1b1b1;
   margin-right: 10px;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list {
@@ -172,7 +171,7 @@ header #pirsomet {
   background: #ffffff;
   border-bottom: 1px #f2f2f2 solid;
   display: block;
-  line-height: 17px;
+  /* line-height: 18px; */
   height: 56px;
   padding: 0px 61px 0px 51px;
 }
@@ -183,13 +182,13 @@ header #pirsomet {
   color: #1a91d2;
   display: block;
   font-size: 18px;
-  height: 44px;
-  padding-top: 12px;
+  height: 29px;
+  padding-top: 8px;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_list li .item_desc {
   color: #1a91d2;
   font-size: 12px;
-  margin-top: -26px;
+  /* margin-top: -26px; */
   display: block;
 }
 #tune_modal .tabs_content .tab_tune_content .tunes_description {
@@ -218,26 +217,33 @@ header #pirsomet {
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li {
   height: 70px;
   border-bottom: 1px #f2f2f2 solid;
-  padding: 15px 10% 0;
+  padding: 0px 9% 0px 67px;
+  position: relative;
+  /* width: 100%; */
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_image {
   display: inline-block;
   width: 70px;
   border: 1px black solid;
   border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  vertical-align: 18px;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content {
   display: inline-block;
-  vertical-align: 4px;
-  line-height: 21px;
+  /* vertical-align: 4px; */
+  /* line-height: 13px; */
   padding-left: 14px;
+  /* vertical-align: 33px; */
+  padding-top: 14px;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content span {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 326px;
+  width: 379px;
 }
 #tune_modal .tabs_content .tab_youtube_content #youtube_search_results li .youtube_content .item_title {
   color: #1c9bd8;
@@ -255,6 +261,22 @@ header #pirsomet {
   background-color: #eae8e8 !important;
   cursor: pointer;
 }
+#tune_modal .tab_content li:hover .icon-new-tab {
+  display: block !important;
+  position: absolute;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  right: 58px;
+  cursor: pointer;
+  fill: #327ab7;
+}
+#tune_modal .tab_content li:hover .icon-new-tab:hover {
+  fill: #286090 !important;
+}
+#tune_modal .tab_content li:hover span {
+  width: 339px !important;
+}
 #tune_modal .tab_content li.selected_tune {
   background: #1991d2 !important;
 }
@@ -267,6 +289,12 @@ header #pirsomet {
 }
 #tune_modal .tab_content li.selected_tune:hover {
   background-color: #107dd2 !important;
+}
+#tune_modal .tab_content li.selected_tune .icon-new-tab {
+  fill: #f2f2f2;
+}
+#tune_modal .tab_content li.selected_tune .icon-new-tab:hover {
+  fill: #e2e2e2 !important;
 }
 
 /* Good night text **************************************************************/
@@ -418,15 +446,15 @@ header #pirsomet {
   padding-top: 0;
   border-radius: 5px;
   cursor: pointer;
-  height: 39px;
+  height: 34px;
 }
 #set_alarm_content .wu_tune .wu_tune_music {
   display: inline-block;
   /* vertical-align: 15px; */
-  padding-right: 6px;
-  width: 20px;
-  height: 20px;
-  vertical-align: 6px;
+  padding-right: 5px;
+  width: 28px;
+  height: 28px;
+  vertical-align: -1px;
 }
 #set_alarm_content .wu_tune .wu_tune_music svg {
   fill: #fff;
@@ -439,14 +467,14 @@ header #pirsomet {
   color: #54bcf0;
   max-width: 193px;
   white-space: nowrap;
-  vertical-align: -3px;
+  vertical-align: -5px;
   text-shadow: none;
 }
 #set_alarm_content .wu_tune .wu_tune_name_cont .wu_tune_name {
   font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
-  line-height: 39px;
+  line-height: 34px;
 }
 #set_alarm_content .wu_tune:hover .wu_tune_name {
   font-weight: bold;
@@ -703,7 +731,7 @@ header #pirsomet {
   padding: 10px 20px;
   display: inline-block;
   position: relative;
-  width: 257px;
+  width: 297px;
   z-index: 1;
   transition-duration: 0.6s;
   text-align: center;
@@ -749,8 +777,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 16%;
-  top: 74%;
+  left: 26%;
+  top: 52%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -781,12 +809,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc( -219px);
-  left: calc( 140px);
-  animation-delay: 5886ms;
+  top: calc( 30px);
+  left: calc( 179px);
+  animation-delay: 4101ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 5886ms;
+  animation-delay: 4101ms;
 }
 
 @keyframes tail {
