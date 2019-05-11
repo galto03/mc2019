@@ -33,6 +33,11 @@
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-sun" viewBox="0 0 32 32">
+            <title>sun</title>
+            <path d="M16 26c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2s-2-0.895-2-2v-2c0-1.105 0.895-2 2-2zM16 6c-1.105 0-2-0.895-2-2v-2c0-1.105 0.895-2 2-2s2 0.895 2 2v2c0 1.105-0.895 2-2 2zM30 14c1.105 0 2 0.895 2 2s-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2zM6 16c0 1.105-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2c1.105 0 2 0.895 2 2zM25.899 23.071l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0zM6.101 8.929l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0zM25.899 8.929c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414zM6.101 23.071c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414z"></path>
+            <path d="M16 8c-4.418 0-8 3.582-8 8s3.582 8 8 8c4.418 0 8-3.582 8-8s-3.582-8-8-8zM16 21c-2.761 0-5-2.239-5-5s2.239-5 5-5 5 2.239 5 5-2.239 5-5 5z"></path>
+        </symbol>
         <symbol id="icon-new-tab" viewBox="0 0 32 32">
             <title>new-tab</title>
             <path d="M6 2v24h24v-24h-24zM28 24h-20v-20h20v20zM4 28v-21l-2-2v25h25l-2-2h-21z"></path>
@@ -116,14 +121,36 @@
         <img id="img_moon" src="img/moon.svg"/>
     </div>
 
-    <div id="good_night_container" class="env">
-        <div id="good_night_text">
-            good night
+    <div id="night_details_container" class="night_container env">
+        <div id="waking_up_text">
+            <span class="hide_on_timepicker">Waking up at</span> <input type="text" id="time_to_wake_up" value="00" readonly />
         </div>
-        <div id="good_night_info">
-            make sure your computer doesn't fall into sleep mode
-        </div>
+        <button class="hide_on_timepicker wu_tune setting_container" title="Wake me up before you go go go go-go"> <!-- TODO: CHANGE TITLE -->
+            <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
+            <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
+            <span class="title">Wake me up before you go go go go-go</span>
+        </button>
+        <buton id="snooze_settings" class="hide_on_timepicker setting_container">
+            <svg class="icon icon-bell"><use xlink:href="#icon-bell"></use></svg>
+            Snooze 5 minutes
+
+        </buton>
+        <button class="hide_on_timepicker setting_container">
+            <svg class="icon icon-sun"><use xlink:href="#icon-sun"></use></svg>
+            Reset
+
+        </button>
     </div>
+
+<!--  TODO: Do I need that?  -->
+<!--    <div id="good_night_container" class="night_container env">-->
+<!--        <div id="good_night_text">-->
+<!--            good night-->
+<!--        </div>-->
+<!--        <div id="good_night_info">-->
+<!--            make sure your computer doesn't fall into sleep mode-->
+<!--        </div>-->
+<!--    </div>-->
     <div id="set_alarm_container" class="env hidden sun_and_moon">
         <div id="set_alarm_content">
             <div class="wake_up_title">
@@ -131,25 +158,18 @@
             </div>
             <button class="wake_up_time">
                 <div class="wut_inner_container">
-                    <input type="text" class="wut_hours" value="07" />
+                    <input onfocus="this.select();" onmouseup="return false;" type="text" class="wut_hours" value="07" />
                     <span class="wut_delimiter">:</span>
-                    <input type="text" class="wut_minutes" value="00" />
+                    <input onfocus="this.select();" onmouseup="return false;" type="text" class="wut_minutes" value="00" />
 
                 </div>
 
             </button>
 
-            <button class="wu_tune" title="Wake me up before you go go go go-go"> <!-- TODO: CHANGE TO LIVE TEXT -->
-                <div class="wu_tune_music">
-                    <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
-                    <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
-
-                </div>
-                <div class="wu_tune_name_cont">
-                    <div class="wu_tune_name">
-                        Wake me up before you go go go go-go
-                    </div>
-                </div>
+            <button class="wu_tune setting_container" title="Wake me up before you go go go go-go"> <!-- TODO: CHANGE TO LIVE TEXT -->
+                <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
+                <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
+                <span class="title">Wake me up before you go go go go-go</span>
             </button>
             <div class="set_alarm_btn_container">
 <!--                <a href="#" class="set_alarm_btn mc_btn">SET ALARM</a>-->
@@ -327,14 +347,23 @@
       });
     };
 
-    // Jquery elements
+    // Jquery elements and helper functions
     var $env = $('.env');
     var $tuneModal = $("#tune_modal");
     var $wakeUpTitle = $('.wake_up_title');
     var $hoursInput = $('.wut_hours');
     var $minutesInput = $('.wut_minutes');
     var $wutDelimiter = $('.wut_delimiter')[0];
-//    var $timeModal = $('#time_modal');
+    var $timeToWakeUp = $('#time_to_wake_up');
+
+    // Helpers
+    var updateDomTime = function(e) {
+      var zeroBasedMinutes = e.minutes < 10 ? "0" + e.minutes : e.minutes;
+      var zeroBasedHours = e.hours < 10 ? "0" + e.hours : e.hours;
+      $minutesInput.val(zeroBasedMinutes);
+      $hoursInput.val(zeroBasedHours);
+      $timeToWakeUp.val(zeroBasedHours + ":" + zeroBasedMinutes);
+    };
 
     // Init clock picker
     var options = function () {
@@ -353,13 +382,13 @@
           e.hours = parseInt($('.wut_hours').val());
         },
         afterDone: function (e) {
-          $minutesInput.val(e.minutes < 10 ? "0" + e.minutes : e.minutes);
+          updateDomTime(e);
         }
       };
     };
     $hoursInput.clockpicker(Object.assign(Object.assign({}, options()), {
       afterHourSelect: function (e) {
-        $hoursInput.val(e.hours < 10 ? "0" + e.hours : e.hours);
+        updateDomTime(e);
       }
     }));
     $minutesInput.clockpicker(Object.assign(Object.assign({}, options()), {
@@ -367,6 +396,25 @@
         $minutesInput.clockpicker('toggleView', 'minutes');
       }
     }));
+    $timeToWakeUp.clockpicker(Object.assign(Object.assign({}, options()), {
+      placement: 'left',
+      beforeShow: function () {
+        $('.hide_on_timepicker').css('opacity', 0.1);
+      },
+      beforeHide: function() {
+        $('.hide_on_timepicker').css('opacity', 1);
+      },
+      afterHourSelect: function (e) {
+        updateDomTime(e);
+      }
+    }));
+    $(document).on('click', '#time_to_wake_up', function() {
+      $timeToWakeUp.clockpicker('show');
+
+    });
+//    $timeToWakeUp.on('click', function() {
+//      $('#time_to_wake_up').clockpicker('show');
+//    })
 
     var inputFilterHelper = function (maxValue, $elem) {
       return function (val) {
@@ -420,13 +468,13 @@
 
                             $('#ok_tune').on('click', function () {
                               var $selected = $($tuneModal.find('.selected_tune')[0]);
+                              var $wakeUpTune = $('.wu_tune');
                               var value = $.trim($selected.find('.item_title').text());
-                              var tuneMusic = $('.wu_tune_music');
-                              var $iconMusic = tuneMusic.find('.icon-music');
-                              var $iconYoutube = tuneMusic.find('.icon-youtube');
+                              var $iconMusic = $wakeUpTune.find('.icon-music');
+                              var $iconYoutube = $wakeUpTune.find('.icon-youtube');
 
-                              $('.wu_tune_name').text(value);
-                              $('.wu_tune').attr('title', value);
+                              $wakeUpTune.find('.title').text(value);
+                              $wakeUpTune.attr('title', value);
 
                               if ($selected.parents('#youtube_search_results').length) {
                                 $iconMusic.addClass('hidden');
@@ -505,9 +553,11 @@
       }
     };
     var loadEvent = function () {
-      $('#preloader').animate({'opacity': 0}, {
+      var $preloader = $('#preloader');
+      $preloader.animate({'opacity': 0}, {
         complete: function () {
           $('#site_container').animate({'opacity': 1});
+          $preloader.css('z-index', -1);
         }
       });
       $env.removeClass('hidden');
@@ -546,6 +596,7 @@
         $env.removeClass('night');
       } else {
         $('#stars_container').animate({'opacity': 1}, 1000);
+        $timeToWakeUp.val($hoursInput.val() + ":" + $minutesInput.val());
         $env.addClass('night')
       }
 

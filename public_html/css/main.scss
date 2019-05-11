@@ -351,14 +351,21 @@ header {
 
 
 /* Good night text **************************************************************/
-#good_night_container {
+.night_container {
     position: absolute;
     text-align: center;
     margin: 0 auto;
     width: 100%;
-    top: 524px;
     opacity: 0;
     z-index: 35;
+
+    &.night {
+        animation: opacity-show 1s 1 linear forwards;
+        animation-delay: 1.31s;
+    }
+}
+#good_night_container {
+    top: 524px;
 
     #good_night_text {
         color: #fff;
@@ -370,19 +377,40 @@ header {
         color: wheat;
     }
 
-    &.night {
-        animation: opacity-show 1s 1 linear forwards;
-        animation-delay: 1.31s;
+}
+
+#night_details_container {
+    top: 183px;
+
+    #waking_up_text {
+        font-size: 54px;
+        color: white;
+        padding-bottom: 13px;
+
+        #time_to_wake_up {
+            font-family: "Inconsolata", monospace;
+            color: #54bbef;
+            background: transparent;
+            border: 0;
+            width: 157px;
+            font-size: 62px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ffffff57;
+            }
+        }
     }
 }
 
 /* Ground **************************************************************/
 #ground {
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/surface.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/surface-1.png);
     background-size: cover;
     background-repeat: repeat-x;
     background-position: center center;
-    top: 214px;
+    top: 82px;
     bottom: 0;
     position: absolute;
     width: 100%;
@@ -402,7 +430,7 @@ header {
     /* background-size: cover; */
     background-repeat: repeat-x;
     /* background-position: center top; */
-    top: 858px;
+    top: 901px;
     background-size: 600px;
     bottom: 0;
     position: absolute;
@@ -433,7 +461,82 @@ header {
     animation-delay: .71s;
 
 }
+.setting_container {
+    display: inline-block;
+    text-align: left;
+    padding-right: 10px;
+    background-color: transparent;
+    border: 0;
+    font-family: "Comfortaa", cursive;
+    padding-top: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 34px;
+    color: #54bcf0;
+    font-size: 16px;
+    vertical-align: top;
 
+    .icon {
+        width: 32px;
+        height: 30px;
+        display: inline-block;
+        vertical-align: -7px;
+        padding-right: 5px;
+        fill: #fff;
+        padding-top: 1px;
+        padding-left: 5px;
+        margin-right: -2px;
+    }
+
+    &:hover {
+        background-color: #ffffff57;
+
+        .icon {
+
+            transform: rotate(15deg);
+        }
+    }
+
+}
+//#snooze_settings {
+//
+//    vertical-align: top;
+//    line-height: 36px;
+//
+//    &:hover {
+//        background-color: #ffffff57;
+//    }
+//
+//    .icon-bell {
+//        width: 32px;
+//        height: 30px;
+//        display: inline-block;
+//        vertical-align: -7px;
+//        padding-right: 5px;
+//        fill: #fff;
+//        padding-top: 1px;
+//        padding-left: 5px;
+//        margin-right: -2px;
+//    }
+//}
+.wu_tune {
+    max-width: 193px;
+
+    .title {
+        //font-weight: bold;
+        color: #54bcf0;
+        display: inline-block;
+        /* width: 63%; */
+        width: calc(100% - 36px);
+        white-space: nowrap;
+        vertical-align: -5px;
+        /* text-shadow: none; */
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+
+}
 #set_alarm_content {
     position: absolute;
     width: 60%;
@@ -452,7 +555,8 @@ header {
         font-size: 92px;
         display: block;
         color: #fffffe;
-        margin: 4px auto 26px;
+
+        margin: 4px auto 16px;
         width: 269px;
         /* border: 1px black solid; */
         /* background-color: #ffffff47; */
@@ -477,7 +581,9 @@ header {
         .wut_inner_container {
 
             margin-top: 0;
-            letter-spacing: -2px;
+            //letter-spacing: -2px;
+
+            letter-spacing: -17px;
 
         }
 
@@ -488,7 +594,7 @@ header {
             background: transparent;
             font-family: "Inconsolata", monospace;
             border: 0;
-            width: 90px;
+            width: 95px;
             vertical-align: top;
 
         }
@@ -504,72 +610,20 @@ header {
         }
     }
     .wake_up_sleep_time {}
-    .wu_tune {
-        display: inline-block;
-        text-align: left;
-        /* vertical-align: -27px; */
-        padding-right: 10px;
-        background-color: transparent;
-        border: 0;
-        font-family: "Comfortaa", cursive;
-        padding-top: 0;
-        border-radius: 5px;
-        cursor: pointer;
-        height: 34px;
 
-
-        .wu_tune_music {
-            display: inline-block;
-            /* vertical-align: 15px; */
-            padding-right: 5px;
-            width: 28px;
-            height: 28px;
-            vertical-align: -1px;
-
-            svg {
-                fill: #fff;
-                height: 100%;
-                width: 100%;
-            }
-        }
-
-        .wu_tune_name_cont {
-            display: inline-block;
-            font-size: 17px;
-            color: #54bcf0;
-            max-width: 193px;
-            white-space: nowrap;
-            vertical-align: -5px;
-            text-shadow: none;
-
-            .wu_tune_name {
-                font-weight: bold;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                line-height: 34px;
-            }
-
-        }
-
-        &:hover {
-
-            .wu_tune_name {
-                font-weight: bold;
-                //color: #41963d;
-                color: #54bcf0;
-            }
-        }
-
-
-        &:hover {
-            background-color: #ffffff57;
-        }
-    }
 
     .set_alarm_btn_container {
         display: inline-block;
         vertical-align: top;
+        margin-left: 13px;
 
+        .set_alarm_btn {
+            font-weight: bold;
+            color: #54bcf0;
+            padding-top: 6px;
+            padding-bottom: 4px;
+            font-size: 16px;
+        }
 
     }
 }
@@ -577,7 +631,7 @@ header {
 /* Sun and Moon **************************************************************/
 .sun_and_moon {
     position: absolute;
-    left: calc(50% - 330px);
+    left: calc(50% - 333.5px);
     transition: all 1s;
     transition-delay: 0.1s;
     height: 573px;
@@ -606,6 +660,8 @@ header {
     }
 
     &.night {
+        top: 323px;
+
         #img_sun, #set_alarm_content {
             transition: top 1s;
             top: 100%;

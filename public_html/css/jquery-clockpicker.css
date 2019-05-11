@@ -37,6 +37,8 @@
   margin-left: 10px;
 }
 .popover.bottom {
+
+  margin-left: -35px;
   margin-top: 10px;
 }
 .popover.left {
@@ -230,7 +232,7 @@
 }
 .clockpicker-popover .popover-title {
 	background-color: #ffffff69;
-	color: #999;
+    color: #fff;
 	font-size: 24px;
 	font-weight: bold;
 	line-height: 30px;
