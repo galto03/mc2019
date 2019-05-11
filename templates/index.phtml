@@ -104,7 +104,7 @@
         <div class="shooting_star"></div>
     </div>
 
-    <div id="stars_container">
+    <div id="stars_container" class="env">
         <div class="stars"></div>
         <div class="twinkling"></div>
     </div>
@@ -130,12 +130,12 @@
             <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
             <span class="title">Wake me up before you go go go go-go</span>
         </button>
-        <buton id="snooze_settings" class="hide_on_timepicker setting_container">
+        <buton id="snooze_settings_button" class="hide_on_timepicker setting_container">
             <svg class="icon icon-bell"><use xlink:href="#icon-bell"></use></svg>
             Snooze 5 minutes
 
         </buton>
-        <button class="hide_on_timepicker setting_container">
+        <button id="reset_button" class="hide_on_timepicker setting_container">
             <svg class="icon icon-sun"><use xlink:href="#icon-sun"></use></svg>
             Reset
 
@@ -329,7 +329,6 @@
   $(function () {
 
     // Application configuration
-    window.isNight = false; // todo - temp
 
     // Custom jquery methods
     $.fn.inputFilter = function (inputFilter) {
@@ -355,6 +354,8 @@
     var $minutesInput = $('.wut_minutes');
     var $wutDelimiter = $('.wut_delimiter')[0];
     var $timeToWakeUp = $('#time_to_wake_up');
+    var $resetButton = $('#reset_button');
+    var $snoozeButton = $('#snooze_settings_button');
 
     // Helpers
     var updateDomTime = function(e) {
@@ -534,6 +535,16 @@
                         });
 
     // Events handlers
+    var resetView = function() {
+      // todo
+      $env.removeClass('night');
+//      alert()
+    };
+
+    var chooseSnooze = function() {
+      // todo
+      alert()
+    }
     var refreshView = function () {
       var minutes = parseInt($('.wut_minutes').val());
       var hours = parseInt($('.wut_hours').val());
@@ -591,16 +602,10 @@
       });
     };
     var setAlarmEvent = function () {
-      if (window.isNight) {
-        $('#stars_container').animate({'opacity': 0}, 1000);
-        $env.removeClass('night');
-      } else {
-        $('#stars_container').animate({'opacity': 1}, 1000);
-        $timeToWakeUp.val($hoursInput.val() + ":" + $minutesInput.val());
-        $env.addClass('night')
-      }
+//        $('#stars_container').animate({'opacity': 1}, 1000);
+    $timeToWakeUp.val($hoursInput.val() + ":" + $minutesInput.val());
+    $env.addClass('night')
 
-      window.isNight = !window.isNight;
     };
 
     // Events
@@ -610,13 +615,16 @@
 
     $hoursInput.on('keyup focus', refreshView);
 
+    $snoozeButton.on('click', chooseSnooze);
+    $resetButton.on('click', resetView);
+
     $(document).on('click', '.wu_tune', openModal($tuneModal));
 
 //    $(document).on('click', '.wake_up_time', openModal($timeModal));
 
     $(window).on('load', loadEvent);
 
-    $('.set_alarm_btn').on('click', setAlarmEvent);
+    $(document).on('click', '.set_alarm_btn', setAlarmEvent);
 
     $('.tab_youtube, .tab_tune').on('click', tabsSwitchEvent);
 
