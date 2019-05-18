@@ -3,4 +3,4 @@ phpmyadmin/*
 .idea
 *.css
 *.map
-./idea/workspace.xml
+.idea/workspace.xml
