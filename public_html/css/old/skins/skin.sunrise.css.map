@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,QAAS;EACP,gBAAgB,EAAE,iDAAiD;;AAOjE,6BAAM;EACJ,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,SAAS;AAG5B,gCAAS;EACP,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,SAAS;AAS5B,+CAAe;EACb,KAAK,EAAE,IAAI;AAGb,6CAAa;EACX,KAAK,EAAE,OAAO",
-"sources": ["skin.sunrise.scss"],
-"names": [],
-"file": "skin.sunrise.css"
-}

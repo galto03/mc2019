@@ -446,14 +446,14 @@ header #pirsomet {
   vertical-align: top;
 }
 .setting_container .icon {
-  width: 32px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   display: inline-block;
   vertical-align: -7px;
   padding-right: 5px;
   fill: #fff;
   padding-top: 1px;
-  padding-left: 5px;
+  /* padding-left: 5px; */
   margin-right: -2px;
 }
 .setting_container:hover {
@@ -464,32 +464,29 @@ header #pirsomet {
 }
 
 .wu_tune {
-  max-width: 193px;
+  width: 269px;
+  margin: 0;
+  padding: 0 0 0 17px;
 }
 .wu_tune .title {
   color: #54bcf0;
   display: inline-block;
   /* width: 63%; */
   white-space: nowrap;
-  vertical-align: -5px;
+  vertical-align: -4px;
   /* text-shadow: none; */
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 135px;
+  width: 204px;
 }
 
 #set_alarm_content {
   position: absolute;
-  width: 60%;
+  width: 60.8%;
   top: 21%;
   left: 130px;
   text-align: center;
   text-shadow: #7ec6ed 1px 0 10px;
-}
-#set_alarm_content .wake_up_title {
-  color: #ffffff;
-  text-shadow: 0 0 5px #75757563;
-  font-size: 20px;
 }
 #set_alarm_content .wake_up_time {
   cursor: pointer;
@@ -536,14 +533,35 @@ header #pirsomet {
 #set_alarm_content .set_alarm_btn_container {
   display: inline-block;
   vertical-align: top;
-  margin-left: 13px;
+  /* margin-left: 13px; */
+  width: 234px;
+  text-align: right;
+  padding-top: 14px;
 }
 #set_alarm_content .set_alarm_btn_container .set_alarm_btn {
-  font-weight: bold;
   color: #54bcf0;
   padding-top: 6px;
   padding-bottom: 4px;
   font-size: 16px;
+  font-weight: normal;
+}
+#set_alarm_content .set_alarm_btn_container .set_alarm_btn:hover {
+  font-weight: bold;
+  color: white;
+  background: #73beea;
+}
+#set_alarm_content .set_alarm_btn_container .icon {
+  width: 28px;
+  height: 25px;
+  fill: #ffffff;
+  padding: 2px 2px 2px 0;
+  margin: 5px 9px 5px 0;
+  filter: drop-shadow(0px 0px 10px white);
+  cursor: pointer;
+  float: left;
+}
+#set_alarm_content .set_alarm_btn_container .icon:hover {
+  transform: scale(1.3);
 }
 
 /* Sun and Moon **************************************************************/
@@ -555,7 +573,7 @@ header #pirsomet {
   width: 667px;
   z-index: 20;
   overflow: hidden;
-  top: 300px;
+  top: 265px;
   transition: top 1s;
   filter: drop-shadow(0px 0px 100px #fff);
 }
@@ -847,8 +865,8 @@ header #pirsomet {
 .shooting_star {
   z-index: 30000;
   position: absolute;
-  left: 83%;
-  top: 41%;
+  left: 15%;
+  top: 24%;
   height: 2px;
   background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
   border-radius: 999px;
@@ -878,12 +896,12 @@ header #pirsomet {
   transform: translateX(50%) rotateZ(-45deg);
 }
 .shooting_star:nth-child(1) {
-  top: calc(-150px);
-  left: calc(33);
-  animation-delay: 9872ms;
+  top: calc(-62px);
+  left: calc(170);
+  animation-delay: 4792ms;
 }
 .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
-  animation-delay: 9872ms;
+  animation-delay: 4792ms;
 }
 
 @keyframes tail {

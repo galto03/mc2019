@@ -38,6 +38,22 @@
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-question" viewBox="0 0 32 32">
+            <title>question</title>
+            <path d="M14 22h4v4h-4zM22 8c1.105 0 2 0.895 2 2v6l-6 4h-4v-2l6-4v-2h-10v-4h12zM16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16z"></path>
+        </symbol>
+        <symbol id="icon-enlarge" viewBox="0 0 32 32">
+            <title>enlarge</title>
+            <path d="M32 0h-13l5 5-6 6 3 3 6-6 5 5z"></path>
+            <path d="M32 32v-13l-5 5-6-6-3 3 6 6-5 5z"></path>
+            <path d="M0 32h13l-5-5 6-6-3-3-6 6-5-5z"></path>
+            <path d="M0 0v13l5-5 6 6 3-3-6-6 5-5z"></path>
+        </symbol>
+        <symbol id="icon-equalizer" viewBox="0 0 32 32">
+            <title>equalizer</title>
+            <path d="M14 4v-0.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18zM8 8v-4h4v4h-4zM26 13.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-18v4h18v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h6v-4h-6v-0.5zM20 18v-4h4v4h-4zM14 23.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18v-0.5zM8 28v-4h4v4h-4z"></path>
+        </symbol>
+
         <symbol id="icon-sun" viewBox="0 0 32 32">
             <title>sun</title>
             <path d="M16 26c1.105 0 2 0.895 2 2v2c0 1.105-0.895 2-2 2s-2-0.895-2-2v-2c0-1.105 0.895-2 2-2zM16 6c-1.105 0-2-0.895-2-2v-2c0-1.105 0.895-2 2-2s2 0.895 2 2v2c0 1.105-0.895 2-2 2zM30 14c1.105 0 2 0.895 2 2s-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2zM6 16c0 1.105-0.895 2-2 2h-2c-1.105 0-2-0.895-2-2s0.895-2 2-2h2c1.105 0 2 0.895 2 2zM25.899 23.071l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0zM6.101 8.929l-1.414-1.414c-0.781-0.781-0.781-2.047 0-2.828s2.047-0.781 2.828 0l1.414 1.414c0.781 0.781 0.781 2.047 0 2.828s-2.047 0.781-2.828 0zM25.899 8.929c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414zM6.101 23.071c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-1.414 1.414c-0.781 0.781-2.047 0.781-2.828 0s-0.781-2.047 0-2.828l1.414-1.414z"></path>
@@ -158,9 +174,9 @@
 <!--    </div>-->
     <div id="set_alarm_container" class="env hidden sun_and_moon">
         <div id="set_alarm_content">
-            <div class="wake_up_title">
-                Wake me up at
-            </div>
+<!--            <div class="wake_up_title">-->
+<!--                Wake me up at-->
+<!--            </div>-->
             <button class="wake_up_time">
                 <div class="wut_inner_container">
                     <input onfocus="this.select();" onmouseup="return false;" type="text" class="wut_hours" value="07" />
@@ -177,8 +193,14 @@
                 <span class="title">Wake me up before you go go go go-go</span>
             </button>
             <div class="set_alarm_btn_container">
-                <button type="button" class="set_alarm_btn btn btn-light">SET ALARM</button>
-<!--                <div class="set_alarm_btn btn-group">-->
+                <button type="button" class="set_alarm_btn btn btn-light" style="float:right">SET ALARM</button>
+<!--                <button type="button" class="set_alarm_btn btn btn-light" style="float:left">SETTINGS</button>-->
+
+                <svg class="icon icon-enlarge"><use xlink:href="#icon-enlarge"></use></svg>
+                <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
+                <svg class="icon icon-question"><use xlink:href="#icon-question"></use></svg>
+
+                <!--                <div class="set_alarm_btn btn-group">-->
 <!--                    <button type="button" class="btn btn-light">Action</button>-->
 <!--                    <button type="button" class=" btn btn-light dropdown-toggle"-->
 <!--                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAQ,gCAAqB;AAG7B,IAAK;EACH,gBAAgB,EAAE,mCAAmC;;AAOnD,6BAAM;EACJ,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,SAAS;AAG5B,gCAAS;EACP,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,SAAS",
-"sources": ["day.scss"],
-"names": [],
-"file": "day.css"
-}
