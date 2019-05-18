@@ -6,15 +6,34 @@ $font-size-x-large-monospace: 62px;
 
 // General colors
 $white-1: #fff;
+$white-2: #f8f8f8;
+$white-transparent: #ffffff57;
+
 $blue-1: #73beea;
+$blue-2: #1a91d2;
+$blue-3: #286090;
 
-// Elements colors
-$alarm-time-color: #fff;
-$alarm-delimiter-color: #fffffe;
-$alarm-tune-setting-color: #fff;
-$alarm-tune-setting-color-hover: #fff;
 
-$alarm-general-setting-color: #fff;
+
+// Alarm time
+$alarm-time-color: $white-1;
+$alarm-delimiter-color: $white-2;
+$alarm-bottom-border-color: $white-2;
+
+$alarm-tune-setting-color: $blue-1;
+$alarm-tune-setting-color-hover: $white-1;
+
+// Alarm tune
+$alarm-general-setting-color: $blue-1;
+$alarm-general-setting-text-color: $blue-1;
+
+// Set alarm button
+$set-alarm-background-color-hover: $blue-1;
+$set-alarm-background-color: $white-1;
+
+$set-alarm-text-color: $blue-1;
+$set-alarm-text-color-hover: $white-1;
+
 body, html {
   margin: 0;
   padding: 0;
@@ -170,7 +189,7 @@ header {
       width: 24px;
       height: 24px;
       vertical-align: -6px;
-      fill: #1c9bd8;
+      fill: $blue-2;
     }
 
     .icon-music {
@@ -181,7 +200,7 @@ header {
   }
 
   .tabs_content {
-    background-color: #f2f2f2;
+    background-color: $white-2;
     height: calc(100% - 36px);
 
     .controls {
@@ -209,7 +228,7 @@ header {
         width: 100%;
 
         li {
-          background: #ffffff;
+          background: $white-1;
           border-bottom: 1px #f2f2f2 solid;
           display: block;
           /* line-height: 18px; */
@@ -221,7 +240,7 @@ header {
           }
 
           .item_title {
-            color: #1a91d2;
+            color: $blue-2;
             display: block;
             font-size: $font-size-small;
             height: 29px;
@@ -229,7 +248,7 @@ header {
           }
 
           .item_desc {
-            color: #1a91d2;
+            color: $blue-2;
             font-size: $font-size-mini;
             /* margin-top: -26px; */
             display: block;
@@ -246,7 +265,7 @@ header {
     .tab_youtube_content {
       #youtube_search {
         width: 479px;
-        border: 1px #d8d8d8 solid;
+        border: 1px $white-2 solid;
         border-radius: 9px;
         height: 30px;
         font-size: $font-size-small;
@@ -298,12 +317,12 @@ header {
             }
 
             .item_title {
-              color: #1c9bd8;
+              color: $blue-2;
               font-size: $font-size-small;
             }
 
             .item_desc {
-              color: #1c9bd8;
+              color: $blue-2;
               font-size: $font-size-mini;
             }
           }
@@ -316,11 +335,11 @@ header {
 
   .tab_content {
     height: 304px;
-    background: #fff;
+    background: $white-1;
 
     li {
       &:hover {
-        background-color: #eae8e8 !important;
+        background-color: $white-2 !important;
         cursor: pointer;
 
         .icon-new-tab {
@@ -331,10 +350,10 @@ header {
           height: 30px;
           right: 58px;
           cursor: pointer;
-          fill: #327ab7;
+          fill: $blue-2;
 
           &:hover {
-            fill: #286090 !important;
+            fill: $blue-3 !important;
           }
         }
 
@@ -347,19 +366,19 @@ header {
     }
 
     li.selected_tune {
-      background: #1991d2 !important;
+      background: $blue-2 !important;
 
       .item_title {
-        color: #fff !important;
+        color: $white-1 !important;
         font-weight: bold !important;
       }
 
       .item_desc {
-        color: #f2f2f2 !important;
+        color: $white-2 !important;
       }
 
       &:hover {
-        background-color: #107dd2 !important;
+        background-color: $blue-2 !important;
       }
 
       .icon-new-tab {
@@ -394,6 +413,10 @@ header {
 #night_details_container {
   top: 183px;
 
+  .icon {
+    fill: $white-1 !important;
+  }
+
   #waking_up_text {
     font-size: $font-size-x-large;
     color: white;
@@ -410,7 +433,7 @@ header {
       cursor: pointer;
 
       &:hover {
-        background-color: #ffffff57;
+        background-color: $white-transparent;
       }
     }
   }
@@ -493,30 +516,35 @@ header {
     display: inline-block;
     vertical-align: -6px;
     padding-right: 5px;
-    fill: $alarm-general-setting-color;
+    fill: $white-1;
     padding-top: 1px;
     /* padding-left: 5px; */
     margin-right: -2px;
   }
 
   &:hover {
-    background-color: #ffffff57;
+    background-color: $white-transparent;
+    color: $white-2;
 
     .icon {
-
       transform: rotate(15deg);
+      //fill: $white-2;
     }
   }
 
 }
 
 .wu_tune {
-  width: 269px;
+  max-width: 269px;
   margin: 0;
-  padding: 0 0 0 17px;
+  padding: 0 10px 0 10px;
+
+  .icon {
+    fill: $blue-1;
+  }
 
   .title {
-    color: #54bcf0;
+    color: $alarm-general-setting-text-color;
     display: inline-block;
     /* width: 63%; */
     white-space: nowrap;
@@ -524,7 +552,7 @@ header {
     /* text-shadow: none; */
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 204px;
+    max-width: 204px;
   }
 
 
@@ -552,12 +580,12 @@ header {
     transition: background-color 0.25s linear;
     background: transparent;
     border-width: 0;
-    border-bottom: 3px #ffffff8c solid;
+    border-bottom: 3px $alarm-bottom-border-color solid;
     border-radius: 5px 5px 0 0;
     line-height: initial;
 
     &:hover {
-      background-color: #ffffff57;
+      background-color: $white-transparent;
     }
 
     .wut_inner_container {
@@ -601,23 +629,24 @@ header {
     padding-top: 19px;
 
     .set_alarm_btn {
-      color: #54bcf0;
+      color: $set-alarm-text-color;
       padding-top: 6px;
       padding-bottom: 4px;
       font-size: $font-size-small;
       font-weight: normal;
+      background: $set-alarm-background-color;
 
       &:hover {
         font-weight: bold;
-        color: white;
-        background: $blue-1;
+        color: $set-alarm-text-color-hover;
+        background: $set-alarm-background-color-hover;
       }
     }
 
     .icon {
       width: 28px;
       height: 25px;
-      fill: $alarm-tune-setting-color;
+      fill: $white-1;
       padding: 2px 2px 2px 0;
       margin: 5px 9px 5px 0;
       filter: drop-shadow(0px 0px 10px white);
@@ -626,7 +655,7 @@ header {
 
       &:hover {
         transform: scale(1.3);
-        fill: $alarm-tune-setting-color-hover;
+        fill: $blue-1;
       }
     }
 
