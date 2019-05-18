@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3520676-246b-4714-9e0a-aab1bc5c5cc5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.min.before.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.min.before.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.min.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.min.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.phtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="58" column="105" selection-start-line="58" selection-start-column="105" selection-end-line="58" selection-end-column="105" />
+            <state relative-caret-position="306">
+              <caret line="55" column="80" selection-start-line="55" selection-start-column="80" selection-end-line="55" selection-end-column="80" />
               <folding>
                 <element signature="e#32#50#0#PHP" expanded="true" />
               </folding>
@@ -52,11 +58,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/DB.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="703">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="304" column="16" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="660" column="28" selection-start-line="660" selection-start-column="28" selection-end-line="660" selection-end-column="28" />
+            <state relative-caret-position="400">
+              <caret line="649" column="22" selection-start-line="649" selection-start-column="22" selection-end-line="649" selection-end-column="22" />
               <folding>
                 <element signature="e#11007#12022#0" />
                 <element signature="e#12046#12051#0" />
@@ -68,22 +92,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="178" column="25" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
+            <state relative-caret-position="643">
+              <caret line="241" column="51" selection-start-line="241" selection-start-column="51" selection-end-line="241" selection-end-column="51" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#11;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" />
                 <element signature="e#19465#20038#0#HTML" />
                 <element signature="e#21717#26790#0#HTML" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public_html/css/jquery-clockpicker.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="218" column="42" selection-start-line="218" selection-start-column="42" selection-end-line="218" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -108,36 +124,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.time</find>
-      <find>set_alarm_container</find>
-      <find>youtube</find>
-      <find>wake me up at</find>
-      <find>wake_up_title</find>
-      <find>set_alarm_conten</find>
-      <find>wu_tune {</find>
-      <find>set_alarm_btn_con</find>
-      <find>set_alarm_content</find>
-      <find>settings</find>
-      <find>&lt;synmb</find>
-      <find>settings&lt;</find>
-      <find>icon-equalizer</find>
-      <find>set_alarm_btn_container</find>
-      <find>.title {</find>
-      <find>setting</find>
-      <find>.setting_container</find>
-      <find>&lt;symbol</find>
-      <find>fullsc</find>
-      <find>set alarm</find>
-      <find>sun_and_moon</find>
-      <find>uba</find>
-      <find>stackpath</find>
-      <find>m_content</find>
-      <find>wu_tune</find>
-      <find>set_alarm_conta</find>
-      <find>filter:</find>
-      <find>.icon {</find>
-      <find>padding: 0</find>
-      <find>set_alarm_btn</find>
+      <find>good morning bea</find>
+      <find>ubaplayer-b</find>
+      <find>setting_conta</find>
+      <find>settimeout</find>
+      <find>setTimeout</find>
+      <find>wake_up_mode_tune_container</find>
+      <find>wake_up_cont</find>
+      <find>tunes_list</find>
+      <find>item_title</find>
+      <find>.ubaplayer-button</find>
+      <find>!important</find>
+      <find>tab_tune</find>
+      <find>ubaplayer-button</find>
+      <find>ubaplayer-controls</find>
+      <find>&lt;script&gt;</find>
+      <find>ubapl</find>
+      <find>selected_tune</find>
+      <find>$wakeUpModeTuneContainer</find>
+      <find>a {</find>
+      <find>wake_up_tune</find>
+      <find>tune_container</find>
+      <find>dev.metaclock.com</find>
+      <find>root</find>
+      <find>DBNAME</find>
+      <find>prepare</find>
+      <find>dev.metaclock.local</find>
+      <find>http://https://dev.metaclock.local:80</find>
+      <find>btn_container</find>
+      <find>323484318322219</find>
+      <find>example.com</find>
     </findStrings>
     <replaceStrings>
       <replace>http://dev.mc.com:8081/</replace>
@@ -163,10 +179,12 @@
       <replace>0</replace>
       <replace>: 0;</replace>
       <replace>dev.metaclock.com</replace>
+      <replace>dev.metaclock.local</replace>
+      <replace>https://dev.metaclock.local:80</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/app</dir>
       <dir>$PROJECT_DIR$/app/Controllers</dir>
+      <dir>$PROJECT_DIR$/app</dir>
       <dir>$PROJECT_DIR$/</dir>
     </dirStrings>
   </component>
@@ -177,7 +195,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/composer.json" />
-        <option value="$PROJECT_DIR$/app/Models/DB.php" />
         <option value="$PROJECT_DIR$/templates/index.min.phtml" />
         <option value="$PROJECT_DIR$/public_html/js/main.min.js" />
         <option value="$PROJECT_DIR$/app/routes.php" />
@@ -195,9 +212,11 @@
         <option value="$PROJECT_DIR$/public_html/css/jquery-clockpicker.css" />
         <option value="$PROJECT_DIR$/public_html/css/main.css" />
         <option value="$PROJECT_DIR$/public_html/applet.java" />
-        <option value="$PROJECT_DIR$/app/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/templates/index.phtml" />
+        <option value="$PROJECT_DIR$/app/Models/DB.php" />
+        <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/public_html/css/main.scss" />
+        <option value="$PROJECT_DIR$/app/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -254,19 +273,6 @@
               <item name="mc2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="mc2019" type="462c0819:PsiDirectoryNode" />
               <item name="public_html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mc2019" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mc2019" type="462c0819:PsiDirectoryNode" />
-              <item name="public_html" type="462c0819:PsiDirectoryNode" />
-              <item name="dev.metaclock.com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mc2019" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mc2019" type="462c0819:PsiDirectoryNode" />
-              <item name="public_html" type="462c0819:PsiDirectoryNode" />
-              <item name="dev.metaclock.com" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mc2019" type="b2602c69:ProjectViewProjectNode" />
@@ -354,12 +360,12 @@
       <workItem from="1557595284425" duration="312000" />
       <workItem from="1557598206149" duration="6470000" />
       <workItem from="1558111583189" duration="485000" />
-      <workItem from="1558118901206" duration="13771000" />
+      <workItem from="1558118901206" duration="17694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173107000" />
+    <option name="totallyTimeSpent" value="177030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-37" width="1920" height="1058" extended-state="6" />
@@ -454,13 +460,6 @@
             <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/DB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -649,13 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/css/jquery-clockpicker.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="218" column="42" selection-start-line="218" selection-start-column="42" selection-end-line="218" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/css/bootstrap-theme.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -670,38 +662,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="105" selection-start-line="58" selection-start-column="105" selection-end-line="58" selection-end-column="105" />
-          <folding>
-            <element signature="e#32#50#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/dev.metaclock.com/css/main.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/css/jquery-clockpicker.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="218" column="42" selection-start-line="218" selection-start-column="42" selection-end-line="218" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="178" column="25" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
+        <state relative-caret-position="643">
+          <caret line="241" column="51" selection-start-line="241" selection-start-column="51" selection-end-line="241" selection-end-column="51" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#11;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" />
             <element signature="e#19465#20038#0#HTML" />
             <element signature="e#21717#26790#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/DB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="304" column="16" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/css/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="660" column="28" selection-start-line="660" selection-start-column="28" selection-end-line="660" selection-end-column="28" />
+        <state relative-caret-position="400">
+          <caret line="649" column="22" selection-start-line="649" selection-start-column="22" selection-end-line="649" selection-end-column="22" />
           <folding>
             <element signature="e#11007#12022#0" />
             <element signature="e#12046#12051#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="55" column="80" selection-start-line="55" selection-start-column="80" selection-end-line="55" selection-end-column="80" />
+          <folding>
+            <element signature="e#32#50#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

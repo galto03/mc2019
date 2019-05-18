@@ -41,10 +41,10 @@ ul {
 /* Wake up mode - Tunes / YouTube container **************************************************************/
 #wake_up_mode_tune_container {
   height: 174px;
-  width: 247px;
-  left: calc(50% - 126px);
+  width: 394px;
   top: 437px;
   z-index: 35;
+  left: calc(50% - 200px);
 
   .div-round {
     overflow: hidden;
@@ -280,7 +280,7 @@ header {
         height: 30px;
         font-size: $font-size-small;
         margin: 13px auto 13px 11%;
-        background-image: url(http://dev.metaclock.com/img/search.svg);
+        background-image: url(https://dev.metaclock.local:80/img/search.svg);
         background-repeat: no-repeat;
         background-size: 4%;
         background-position: 5px 5px;
@@ -367,8 +367,10 @@ header {
           }
         }
 
-        span {
-          width: 339px !important;
+        &.tab_youtube_content {
+          span {
+            width: 339px !important;
+          }
         }
       }
     }
@@ -460,7 +462,7 @@ header {
 
 /* Ground **************************************************************/
 #ground {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com/img/surface-1.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://dev.metaclock.local:80/img/surface-1.png);
   background-size: cover;
   background-repeat: repeat-x;
   background-position: center center;
@@ -480,7 +482,7 @@ header {
 
 /* Ground **************************************************************/
 #underground {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com/img/underground.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://dev.metaclock.local:80/img/underground.png);
   background-repeat: repeat-x;
   top: 901px;
   background-size: 600px;
@@ -530,10 +532,10 @@ header {
   vertical-align: top;
 
   .icon {
-    width: 27px;
-    height: 27px;
+    width: 28px;
+    height: 28px;
     display: inline-block;
-    vertical-align: -7px;
+    vertical-align: -6px;
     padding-right: 5px;
     fill: #fff;
     padding-top: 1px;
@@ -646,7 +648,7 @@ header {
     /* margin-left: 13px; */
     width: 234px;
     text-align: right;
-    padding-top: 14px;
+    padding-top: 19px;
 
     .set_alarm_btn {
       color: #54bcf0;
@@ -759,7 +761,7 @@ header {
   z-index: 20;
   opacity: 0.6;
   transition: opacity 2s;
-  background-image: url(http://dev.metaclock.com/img/cloud.png);
+  background-image: url(https://dev.metaclock.local:80/img/cloud.png);
   background-size: 100%;
 
 
@@ -822,11 +824,11 @@ header {
   }
 
   .stars {
-    background: #000 url(http://dev.metaclock.com/img/stars.png) repeat top center;
+    background: #000 url(https://dev.metaclock.local:80/img/stars.png) repeat top center;
   }
 
   .twinkling {
-    background: transparent url(http://dev.metaclock.com/img/twinkling.png) repeat top center;
+    background: transparent url(https://dev.metaclock.local:80/img/twinkling.png) repeat top center;
     animation: move-twink-back 200s linear infinite;
   }
 
@@ -978,7 +980,7 @@ header {
 }
 
 .tabs a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #777;
   text-transform: uppercase;
   padding: 10px 20px;
@@ -988,6 +990,16 @@ header {
   z-index: 1;
   transition-duration: 0.6s;
   text-align: center;
+
+  &.tab {
+    cursor: pointer;
+
+    &:hover {
+      .name {
+        text-decoration: underline
+      }
+    }
+  }
 }
 
 .tabs a.active {
@@ -1159,7 +1171,7 @@ $spriteLoading: 7px;
   cursor: pointer;
   margin: 0;
   position: relative;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .ubaplayer-button:hover {
@@ -1235,7 +1247,7 @@ $spriteLoading: 7px;
 }
 
 .bird {
-  background-image: url(http://dev.metaclock.com/img/bird-cells.svg);
+  background-image: url(https://dev.metaclock.local:80/img/bird-cells.svg);
   background-size: auto 100%;
   width: 88px;
   height: 125px;

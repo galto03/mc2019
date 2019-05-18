@@ -18,7 +18,7 @@ class DB
     const HOST       = 'localhost';
     const DBNAME     = 'metacloc_MetaClock';//'metacloc_MetaClock';
     const USER       = 'root';
-    const PASS       = '';
+    const PASS       = 'root';
     const CHARSET    = 'utf8';
 
     protected static $instance = null;
@@ -34,26 +34,27 @@ class DB
 
     public static function instance()
     {
-		try {
-			if (self::$instance === null)
-			{
-				$opt  = array(
-					PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-					PDO::ATTR_EMULATE_PREPARES   => FALSE
-				);
-				$dsn = "mysql:host=" . self::HOST . ";dbname=" . self::DBNAME . ";charset=" . self::CHARSET;
-				self::$instance = new PDO($dsn, self::USER, self::PASS, $opt);
-				
+		    // TODO - Temporarily removed this
+//		try {
+//			if (self::$instance === null)
+//			{
+//				$opt  = array(
+//					PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+//					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//					PDO::ATTR_EMULATE_PREPARES   => FALSE
+//				);
+//				$dsn = "mysql:host=" . self::HOST . ";dbname=" . self::DBNAME . ";charset=" . self::CHARSET;
+//				self::$instance = new PDO($dsn, self::USER, self::PASS, $opt);
+//
 			//	self::$instance->prepare("SET SESSION interactive_timeout = 28800;");
 			//	self::$instance->execute(); 
 			//	self::$instance->prepare("SET SESSION wait_timeout = 28800;");
 			//	self::$instance->execute();
-			}
-			return self::$instance;	
-		} catch(PDOException $e) {
-			throw new Exception($e->getCode());
-		}
+//			}
+//			return self::$instance;
+//		} catch(PDOException $e) {
+//			throw new Exception($e->getCode());
+//		}
 
     }
 

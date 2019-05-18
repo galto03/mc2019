@@ -328,13 +328,13 @@ class User extends Model
 
     public static function getPeopleCount()
     {
-        $sth = DB::instance()->prepare("SELECT count(*) as counter FROM users");
-        $sth->bindParam(':fbid',$userID);
-        $sth->execute();
-        $counter = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $counter = $counter[0]['counter'] + 342506;
-
-        return $counter;
+//        $sth = DB::instance()->prepare("SELECT count(*) as counter FROM users");
+//        $sth->bindParam(':fbid',$userID);
+//        $sth->execute();
+//        $counter = $sth->fetchAll(PDO::FETCH_ASSOC);
+//        $counter = $counter[0]['counter'] + 342506;
+//
+//        return $counter;
     }
 
     public static function getAlarmHistory($fbId)

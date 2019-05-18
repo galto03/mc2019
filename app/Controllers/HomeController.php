@@ -22,41 +22,40 @@ class HomeController extends Controller
        // $fbId = User::refreshSessionsAndGetIndexIfPossible();
 
        // $settings = ($fbId === null) ? [] : User::getData($fbId);
-       require_once __DIR__ . '/Mobile_Detect.php';
-       $detect = new Mobile_Detect();
-       if ($detect->isMobile()) {
-           return $this->render('index.mobile.phtml');
-        } else {
-            return $this->render('index.min.before.phtml',[
-                'userData' => [],
-                'initValues' => [
-                    'people_count' => User::getPeopleCount()
-                ]
-            ]);
-        }
+//       require_once __DIR__ . '/Mobile_Detect.php';
+//       $detect = new Mobile_Detect();
+//       if ($detect->isMobile()) {
+//           return $this->render('index.mobile.phtml');
+//        } else {
+//            return $this->render('index.min.before.phtml',[
+//                'userData' => [],
+//                'initValues' => [
+//                    'people_count' => User::getPeopleCount()
+//                ]
+//            ]);
+//        }
 
 
     }
 
     public function dispatch() {
-        require_once __DIR__ . '/Mobile_Detect.php';
-        $detect = new Mobile_Detect();
-        if ($detect->isMobile()) {
-            return $this->render('index.mobile.phtml');
-        } else {
+//        require_once __DIR__ . '/Mobile_Detect.php';
+//        $detect = new Mobile_Detect();
+//        if ($detect->isMobile()) {
+//            return $this->render('index.mobile.phtml');
+//        } else {
             try {
                 $fb = new \Facebook\Facebook([
                   'app_id' => '323484318322219',
                   'app_secret' => 'a8cea2d0d284b8e3cbb64b68322bef33',
-                  'default_graph_version' => 'v2.10',
                   //'default_access_token' => '{access-token}', // optional
                 ]);
                 $helper = $fb->getRedirectLoginHelper();
 
                 $permissions = ['email']; // Optional permissions
-                $loginUrl = $helper->getLoginUrl('https://example.com/fb-callback.php', $permissions);
+                $loginUrl = $helper->getLoginUrl('https://dev.metaclock.local:80', $permissions);
 
-//                die('<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'); // TODO
+                die('<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'); // TODO
 
             } catch (FacebookSDKException $e) {
                 die($e->getMessage());
@@ -68,7 +67,7 @@ class HomeController extends Controller
                     'people_count' => User::getPeopleCount()
                 ]
             ]);
-        }
+//        }
     }
 
     public function oldMetaClock() {
