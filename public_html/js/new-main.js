@@ -160,7 +160,7 @@ $(function () {
                               $iconYoutube.addClass('hidden');
                               $iconMusic.removeClass('hidden');
                             }
-                            
+
                             $tuneModal.iziModal('close');
                           });
 
