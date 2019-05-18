@@ -158,20 +158,9 @@
         </button>
     </div>
 
-<!--  TODO: Do I need that?  -->
-<!--    <div id="good_night_container" class="night_container env">-->
-<!--        <div id="good_night_text">-->
-<!--            good night-->
-<!--        </div>-->
-<!--        <div id="good_night_info">-->
-<!--            make sure your computer doesn't fall into sleep mode-->
-<!--        </div>-->
-<!--    </div>-->
+
     <div id="set_alarm_container" class="env hidden sun_and_moon">
         <div id="set_alarm_content">
-<!--            <div class="wake_up_title">-->
-<!--                Wake me up at-->
-<!--            </div>-->
             <button class="wake_up_time">
                 <div class="wut_inner_container">
                     <input onfocus="this.select();" onmouseup="return false;" type="text" class="wut_hours" value="07" />
@@ -425,6 +414,7 @@
     var $timeToWakeUp = $('#time_to_wake_up');
     var $resetButton = $('#reset_button');
     var $snoozeButton = $('#snooze_settings_button');
+
 
     // Helpers
     var updateDomTime = function(e) {

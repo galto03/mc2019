@@ -1,3 +1,6 @@
 phpmyadmin/*
 .idea/*
 .idea
+*.css
+*.map
+./idea/workspace.xml

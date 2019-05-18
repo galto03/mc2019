@@ -53,9 +53,9 @@ class HomeController extends Controller
                 $helper = $fb->getRedirectLoginHelper();
 
                 $permissions = ['email']; // Optional permissions
-                $loginUrl = $helper->getLoginUrl('https://dev.metaclock.local:80', $permissions);
+                $loginUrl = $helper->getLoginUrl('https://dev.metaclock.local:80/login', $permissions);
 
-                die('<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'); // TODO
+//                die('<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'); // TODO
 
             } catch (FacebookSDKException $e) {
                 die($e->getMessage());
