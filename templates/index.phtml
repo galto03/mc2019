@@ -3,7 +3,7 @@
     <script src="/js/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
     <script type="text/javascript" src="js/jquery.ubaplayer.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!--    <script type="text/javascript" src="js/bootstrap.min.js"></script>-->
 
     <title>MetaClock | 𝗧𝗛𝗘 𝗕𝗘𝗦𝗧 𝗦𝗢𝗖𝗜𝗔𝗟 𝗔𝗟𝗔𝗥𝗠 𝗖𝗟𝗢𝗖𝗞</title>
 
@@ -21,15 +21,20 @@
 
 
     <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!--    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 <!--    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
 
     <link rel="stylesheet" href="/css/main.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
 
 
 </head>
 
 <body>
+<!--<applet code="applet.class" width="400" height="150"-->
+<!--        alt="Error loading applet!"></applet>-->
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -130,11 +135,11 @@
             <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
             <span class="title">Wake me up before you go go go go-go</span>
         </button>
-        <buton id="snooze_settings_button" class="hide_on_timepicker setting_container">
+        <button id="snooze_settings_button" class="hide_on_timepicker setting_container">
             <svg class="icon icon-bell"><use xlink:href="#icon-bell"></use></svg>
             Snooze 5 minutes
 
-        </buton>
+        </button>
         <button id="reset_button" class="hide_on_timepicker setting_container">
             <svg class="icon icon-sun"><use xlink:href="#icon-sun"></use></svg>
             Reset
@@ -172,13 +177,38 @@
                 <span class="title">Wake me up before you go go go go-go</span>
             </button>
             <div class="set_alarm_btn_container">
-<!--                <a href="#" class="set_alarm_btn mc_btn">SET ALARM</a>-->
                 <button type="button" class="set_alarm_btn btn btn-light">SET ALARM</button>
+<!--                <div class="set_alarm_btn btn-group">-->
+<!--                    <button type="button" class="btn btn-light">Action</button>-->
+<!--                    <button type="button" class=" btn btn-light dropdown-toggle"-->
+<!--                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <span class="sr-only">Set Alarm</span>-->
+<!--                    </button>-->
+<!--                    <div class="dropdown-menu">-->
+<!--                        <a class="dropdown-item" href="#">Action</a>-->
+<!--                        <a class="dropdown-item" href="#">Another action</a>-->
+<!--                        <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item" href="#">Separated link</a>-->
+<!--                    </div>-->
+<!--                </div>-->
 
             </div>
         </div>
 
     </div>
+
+    <div id="wake_up_mode_tune_container" class="env_wakeup hidden sun_and_moon">
+        <div class="div-round">
+            <iframe id="youtube_preview_iframe" class="iframe-round" allow="autoplay; encrypted-media; fullscreen"
+                    src="https://www.youtube.com/embed/Xjs6fnpPWy4?modestbranding=1&autoplay=0"></iframe>
+        </div>
+        <div>
+<!--            Tune ... -->
+        </div>
+
+    </div>
+
     <div id="ground" class="env hidden"></div>
     <div id="underground" class="env hidden">
         <div id="underground_bottom"></div>
@@ -329,6 +359,9 @@
   $(function () {
 
     // Application configuration
+    window.AppSettings = {
+      timer: null,
+    };
 
     // Custom jquery methods
     $.fn.inputFilter = function (inputFilter) {
@@ -348,6 +381,7 @@
 
     // Jquery elements and helper functions
     var $env = $('.env');
+    var $envWakeUp = $('.env_wakeup'); // TODO
     var $tuneModal = $("#tune_modal");
     var $wakeUpTitle = $('.wake_up_title');
     var $hoursInput = $('.wut_hours');
@@ -413,9 +447,6 @@
       $timeToWakeUp.clockpicker('show');
 
     });
-//    $timeToWakeUp.on('click', function() {
-//      $('#time_to_wake_up').clockpicker('show');
-//    })
 
     var inputFilterHelper = function (maxValue, $elem) {
       return function (val) {
@@ -603,8 +634,32 @@
     };
     var setAlarmEvent = function () {
 //        $('#stars_container').animate({'opacity': 1}, 1000);
-    $timeToWakeUp.val($hoursInput.val() + ":" + $minutesInput.val());
-    $env.addClass('night')
+        var hours = $hoursInput.val();
+        var minutes = $minutesInput.val();
+
+        $timeToWakeUp.val(hours + ":" + minutes);
+
+        $env.addClass('night');
+
+        var now = new Date(),
+            tomorrow = new Date();
+
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(hours);
+        tomorrow.setMinutes(minutes);
+
+        var secondsDiff = (Math.abs(tomorrow - now) / 36e5) * 60 * 60 * 1000;
+
+        secondsDiff = 2 * 1000;
+
+
+        window.AppSettings.timer = setTimeout(function() {
+          $('#set_alarm_container').hide();
+          $('#wake_up_mode_tune_container').hide().removeClass('hidden').delay(2000).fadeIn("slow");
+          $env.removeClass('night');
+
+          // TODO - Maybe a quote in the sky
+        }, secondsDiff);
 
     };
 

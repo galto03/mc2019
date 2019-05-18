@@ -1,13 +1,13 @@
 <?php
 namespace App\Controller;
-use App\Models\AppException;
 use App\Models\DB;
-use App\Models\MCFacebook;
 use App\Models\User;
+use Facebook\Exceptions\FacebookSDKException;
 use MartynBiz\Slim3Controller\Controller;
 use PDO;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
 /**
  * Created by PhpStorm.
  * User: Tomer
@@ -22,11 +22,10 @@ class HomeController extends Controller
        // $fbId = User::refreshSessionsAndGetIndexIfPossible();
 
        // $settings = ($fbId === null) ? [] : User::getData($fbId);
-
        require_once __DIR__ . '/Mobile_Detect.php';
        $detect = new Mobile_Detect();
        if ($detect->isMobile()) {
-        return $this->render('index.mobile.phtml');
+           return $this->render('index.mobile.phtml');
         } else {
             return $this->render('index.min.before.phtml',[
                 'userData' => [],
@@ -45,6 +44,24 @@ class HomeController extends Controller
         if ($detect->isMobile()) {
             return $this->render('index.mobile.phtml');
         } else {
+            try {
+                $fb = new \Facebook\Facebook([
+                  'app_id' => '323484318322219',
+                  'app_secret' => 'a8cea2d0d284b8e3cbb64b68322bef33',
+                  'default_graph_version' => 'v2.10',
+                  //'default_access_token' => '{access-token}', // optional
+                ]);
+                $helper = $fb->getRedirectLoginHelper();
+
+                $permissions = ['email']; // Optional permissions
+                $loginUrl = $helper->getLoginUrl('https://example.com/fb-callback.php', $permissions);
+
+//                die('<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'); // TODO
+
+            } catch (FacebookSDKException $e) {
+                die($e->getMessage());
+            }
+
             return $this->render('index.phtml',[
                 'userData' => [],
                 'initValues' => [

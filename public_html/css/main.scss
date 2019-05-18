@@ -38,6 +38,43 @@ ul {
 }
 
 
+/* Wake up mode - Tunes / YouTube container **************************************************************/
+#wake_up_mode_tune_container {
+  height: 174px;
+  width: 247px;
+  left: calc(50% - 126px);
+  top: 437px;
+  z-index: 35;
+
+  .div-round {
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .div-round::before {
+    display: block;
+    content: "";
+  }
+
+  .iframe-round {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+  }
+}
+
+
 /* iziModal mods **************************************************************/
 .iziModal .iziModal-header {
   padding-left: 52px;
@@ -243,7 +280,7 @@ header {
         height: 30px;
         font-size: $font-size-small;
         margin: 13px auto 13px 11%;
-        background-image: url(http://dev.metaclock.com:8081/img/search.svg);
+        background-image: url(http://dev.metaclock.com/img/search.svg);
         background-repeat: no-repeat;
         background-size: 4%;
         background-position: 5px 5px;
@@ -423,15 +460,15 @@ header {
 
 /* Ground **************************************************************/
 #ground {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/surface-1.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com/img/surface-1.png);
   background-size: cover;
   background-repeat: repeat-x;
   background-position: center center;
-  top: 82px;
+  top: 480px;
   bottom: 0;
   position: absolute;
   width: 100%;
-  height: 840px;
+  height: 537px;
   overflow: hidden;
   transition: all 0.1s;
   z-index: 30;
@@ -443,7 +480,7 @@ header {
 
 /* Ground **************************************************************/
 #underground {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com:8081/img/underground.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(http://dev.metaclock.com/img/underground.png);
   background-repeat: repeat-x;
   top: 901px;
   background-size: 600px;
@@ -542,9 +579,6 @@ header {
   left: 130px;
   text-align: center;
   text-shadow: #7ec6ed 1px 0 10px;
-  transition: opacity .3s;
-  animation: opacity-show 1s 1 ease forwards;
-  transition-delay: .5s;
 
   .wake_up_title {
     color: #ffffff;
@@ -575,10 +609,7 @@ header {
     }
 
     .wut_inner_container {
-
       margin-top: 0;
-      //letter-spacing: -2px;
-
       letter-spacing: -17px;
 
     }
@@ -609,7 +640,6 @@ header {
   .wake_up_sleep_time {
   }
 
-
   .set_alarm_btn_container {
     display: inline-block;
     vertical-align: top;
@@ -637,6 +667,7 @@ header {
   overflow: hidden;
   top: 300px;
   transition: top 1s;
+  filter: drop-shadow(0px 0px 100px #fff);
 
   &.hidden {
     top: 100%
@@ -648,7 +679,7 @@ header {
     animation: rotation 100s infinite linear;
     opacity: 1;
     margin-top: 8px;
-    transition: top 1s;
+    transition: top 1.8s;
   }
 
   #img_moon {
@@ -657,23 +688,41 @@ header {
     //opacity: 0;
     top: 100%;
     transition: top 1s;
-    //transition-delay: 0.5s;
   }
+  //
+  //#set_alarm_content {
+  //  animation: opacity-show 11s 1 ease forwards;
+  //  transition: opacity .3s;
+  //  transition-delay: 3s;
+  //  animation-delay: 13s;
+  //
+  //}
 
   &.night {
     top: 323px;
 
+    //#img_sun {
+    //  transition: top 11.4s;
+    //}
+
+
     #img_sun, #set_alarm_content {
+      transition: top 1.4s;
       top: 100%;
     }
 
+    #img_sun {
+      transition: top 1s;
+    }
+
     #set_alarm_content {
-      animation: opacity-hide 1s 1 ease forwards;
+      animation: opacity-hide 0.3s 1 ease forwards;
     }
 
     #img_moon {
       top: 0;
       opacity: 1;
+      transition: top 1.4s;
 
     }
   }
@@ -686,7 +735,7 @@ header {
   z-index: 20;
   opacity: 0.6;
   transition: opacity 2s;
-  background-image: url(http://dev.metaclock.com:8081/img/cloud.png);
+  background-image: url(http://dev.metaclock.com/img/cloud.png);
   background-size: 100%;
 
 
@@ -749,11 +798,11 @@ header {
   }
 
   .stars {
-    background: #000 url(http://dev.metaclock.com:8081/img/stars.png) repeat top center;
+    background: #000 url(http://dev.metaclock.com/img/stars.png) repeat top center;
   }
 
   .twinkling {
-    background: transparent url(http://dev.metaclock.com:8081/img/twinkling.png) repeat top center;
+    background: transparent url(http://dev.metaclock.com/img/twinkling.png) repeat top center;
     animation: move-twink-back 200s linear infinite;
   }
 
@@ -1162,7 +1211,7 @@ $spriteLoading: 7px;
 }
 
 .bird {
-  background-image: url(http://dev.metaclock.com:8081/img/bird-cells.svg);
+  background-image: url(http://dev.metaclock.com/img/bird-cells.svg);
   background-size: auto 100%;
   width: 88px;
   height: 125px;
