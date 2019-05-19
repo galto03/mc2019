@@ -15,6 +15,9 @@ $app->group('', function () use ($app) {
     $app->post('/old/ajax', $controller('oldmetaclockajax'));
 
     $app->get('/test-player', $controller('testplayer'));
+
+
+    // New added
 });
 
 
@@ -53,6 +56,8 @@ $app->group('/api', function () use ($app) {
     $app->get('/login-as-user-9622', $userController('loginasuser'));
 
 
+    // New dded
+    $app->get('/login', $userController('login'));
 
 
 });

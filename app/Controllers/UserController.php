@@ -19,6 +19,10 @@ use MartynBiz\Slim3Controller\Controller;
 class UserController extends Controller
 {
 
+    public function login() {
+
+    }
+
     public function uploadTune() {
         $data = $this->request->getUploadedFiles();
 

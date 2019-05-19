@@ -18,21 +18,25 @@
     <!--  Optimize with https://icomoon.io/app/  -->
 
 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
 
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
-
+    <script>
+        // App settings
+        window.data = <?php echo json_encode($data); ?>;
+    </script>
 
 </head>
 
 <body>
-<!--<applet code="applet.class" width="400" height="150"-->
-<!--        alt="Error loading applet!"></applet>-->
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-user" viewBox="0 0 32 32">
+            <title>user</title>
+            <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
+        </symbol>
         <symbol id="icon-question" viewBox="0 0 32 32">
             <title>question</title>
             <path d="M14 22h4v4h-4zM22 8c1.105 0 2 0.895 2 2v6l-6 4h-4v-2l6-4v-2h-10v-4h12zM16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16z"></path>
@@ -178,26 +182,10 @@
             </button>
             <div class="set_alarm_btn_container">
                 <button type="button" class="set_alarm_btn btn btn-light" style="float:right">SET ALARM</button>
-<!--                <button type="button" class="set_alarm_btn btn btn-light" style="float:left">SETTINGS</button>-->
 
-                <svg class="icon icon-enlarge"><use xlink:href="#icon-enlarge"></use></svg>
                 <svg class="icon icon-equalizer"><use xlink:href="#icon-equalizer"></use></svg>
+                <svg class="icon icon-enlarge"><use xlink:href="#icon-enlarge"></use></svg>
                 <svg class="icon icon-question"><use xlink:href="#icon-question"></use></svg>
-
-                <!--                <div class="set_alarm_btn btn-group">-->
-<!--                    <button type="button" class="btn btn-light">Action</button>-->
-<!--                    <button type="button" class=" btn btn-light dropdown-toggle"-->
-<!--                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                        <span class="sr-only">Set Alarm</span>-->
-<!--                    </button>-->
-<!--                    <div class="dropdown-menu">-->
-<!--                        <a class="dropdown-item" href="#">Action</a>-->
-<!--                        <a class="dropdown-item" href="#">Another action</a>-->
-<!--                        <a class="dropdown-item" href="#">Something else here</a>-->
-<!--                        <div class="dropdown-divider"></div>-->
-<!--                        <a class="dropdown-item" href="#">Separated link</a>-->
-<!--                    </div>-->
-<!--                </div>-->
 
             </div>
         </div>
@@ -239,12 +227,31 @@
     </div>
     <div id="night_overly" class="env"></div>
     <header>
-        <div id="logo">
-            <a href="https://www.metaclock.com"><img src="img/logo-night.png" /></a>
+        <div id="upper_header">
+            <div id="logo">
+                <a href="https://www.metaclock.com"><img src="img/logo-original.png" /></a>
+            </div>
+            <ul id="header_links">
+                <li><a href="">Alarm Clock</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Old MetaClock</a></li>
+                <li><a href="">More stuff</a></li>
+                <li><a href="">More stuff</a></li>
+            </ul>
+            <div id="login_container">
+                <div id="login_logout_link">(<a href="<?=$data['loginUrl']?>">login</a>)</div>
+                <div id="login_name">
+                    Guest
+                </div>
+                <div id="login_image"><svg class="icon icon-user"><use xlink:href="#icon-user"></div>
+            </div>
         </div>
-        <div id="pirsomet">
-            Ad
 
+        <div id="lower_header">
+            <div id="pirsomet">
+                Ad
+            </div>
         </div>
     </header>
 </div>

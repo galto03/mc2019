@@ -58,24 +58,24 @@ class DB
 
     }
 
-    public static function __callStatic($method, $args)
-    {
-        return call_user_func_array(array(self::instance(), $method), $args);
-    }
-
-    public static function run($sql, $args = [])
-    {
-        $stmt = self::instance()->prepare($sql);
-        $stmt->execute($args);
-        return $stmt;
-    }
-	
-	public function __destruct() {
-		unset(self::$instance);
-	}
-	
-    public function __wakeup() {
-        return false;
-	}
+//    public static function __callStatic($method, $args)
+//    {
+//        return call_user_func_array(array(self::instance(), $method), $args);
+//    }
+//
+//    public static function run($sql, $args = [])
+//    {
+//        $stmt = self::instance()->prepare($sql);
+//        $stmt->execute($args);
+//        return $stmt;
+//    }
+//
+//	public function __destruct() {
+//		unset(self::$instance);
+//	}
+//
+//    public function __wakeup() {
+//        return false;
+//	}
 
 }

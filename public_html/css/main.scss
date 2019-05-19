@@ -68,6 +68,16 @@ ul {
   padding: 0;
 }
 
+a {
+  color: $white-1;
+  text-decoration: none;
+
+  &:hover {
+    color: $white-2;
+    text-decoration: underline;
+  }
+}
+
 
 /* Wake up mode - Tunes / YouTube container **************************************************************/
 #wake_up_mode_tune_container {
@@ -134,18 +144,74 @@ header {
   margin: 11px auto 0;
   position: relative;
 
-  #logo {
-    width: 250px;
-    display: inline-block;
+  #upper_header {
+    padding-bottom: 10px;
+    #logo {
+      width: 160px;
+      display: inline-block;
 
+    }
+
+    #header_links {
+      display: inline-block;
+
+      li {
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        vertical-align: -4px;
+      }
+    }
+  }
+
+
+
+  #login_container {
+    color: $white-transparent;
+    display: inline-block;
+    float: right;
+
+    div {
+      display: inline-block;
+    }
+
+    #login_image {
+      width: 32px;
+      height: 32px;
+      fill: $white-1;
+      border: 1px $white-2 solid;
+      overflow: hidden;
+      border-radius: 18px;
+      /* vertical-align: -7px; */
+      margin-top: 11px;
+
+      svg {
+        width: 100%;
+        height: 110%;
+      }
+    }
+    #login_name {
+      //width: 40px;
+      color: $blue-3;
+      vertical-align: 10px;
+      padding-right: 4px;
+      padding-left: 4px;
+      font-weight: bold;
+    }
+    #login_logout_link {
+      //width: 30px;
+      vertical-align: 10px;
+    }
   }
 
   #pirsomet {
     width: 730px;
     height: 90px;
     display: inline-block;
-    float: right;
+
     border: 1px white solid;
+
+    margin-left: 5px; // TODO - This is used to align it with the logo, from the right side the text of the upper menu should be aligned as well!!!
   }
 }
 
@@ -325,6 +391,14 @@ header {
               color: $blue-2;
               font-size: $font-size-mini;
             }
+          }
+
+          &:hover {
+
+            span {
+              width: 320px;
+            }
+
           }
         }
       }

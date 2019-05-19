@@ -1,9 +1,17 @@
 "use strict";
 $(function () {
+  var DEBUG_VERBOSITY_LEVEL = 1; // 0 - Nothing, 1 - Some, 2 - All
 
   // Application configuration
   window.AppSettings = {
     timer: null,
+  };
+
+  var debug = function(msg, verbosity) {
+    verbosity = typeof verbosity === 'undefined' ? 2 : verbosity;
+    if (verbosity === DEBUG_VERBOSITY_LEVEL) {
+      console.log(msg);
+    }
   };
 
   // Custom jquery methods
@@ -33,7 +41,7 @@ $(function () {
   var $timeToWakeUp = $('#time_to_wake_up');
   var $resetButton = $('#reset_button');
   var $snoozeButton = $('#snooze_settings_button');
-  var $ubaPlayer = $("#ubaplayer");
+  var $alarmFullScreen = $('.icon-enlarge');
 
 
   // Helpers
@@ -206,9 +214,40 @@ $(function () {
 
                         },
                         onClosing: function() {
-                          $ubaPlayer.ubaPlayer('pause');
+                          try {
+                            $("#ubaplayer").ubaPlayer('pause');
+                          } catch(e) {
+                            // Probably ubaPlayer was not defined, no issue
+                            debug(e, 2);
+                          }
                         }
                       });
+
+  var toggleScreen = function() {
+    var elem = document.documentElement;
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  };
 
   // Events handlers
   var resetView = function() {
@@ -293,7 +332,7 @@ $(function () {
 
     var secondsDiff = (Math.abs(tomorrow - now) / 36e5) * 60 * 60 * 1000;
 
-//        secondsDiff = 2 * 1000; // todo - for debugging
+    secondsDiff = 2 * 1000; // todo - for debugging
 
 
     window.AppSettings.timer = setTimeout(function() {
@@ -333,9 +372,9 @@ $(function () {
   $snoozeButton.on('click', chooseSnooze);
   $resetButton.on('click', resetView);
 
-  $(document).on('click', '.wu_tune', openModal($tuneModal));
+  $alarmFullScreen.on('click', toggleScreen);
 
-//    $(document).on('click', '.wake_up_time', openModal($timeModal));
+  $(document).on('click', '.wu_tune', openModal($tuneModal));
 
   $(window).on('load', loadEvent);
 
@@ -343,9 +382,7 @@ $(function () {
 
   $('.tab_youtube, .tab_tune').on('click', tabsSwitchEvent);
 
-  $ubaPlayer.ubaPlayer({
-                              codecs: [{name:"MP3", codec: 'audio/mpeg;'}]
-                            });
+  $("#ubaplayer").ubaPlayer({codecs: [{name:"MP3", codec: 'audio/mpeg;'}]});
 
   $(document).on('click','.tunes_list li, #youtube_search_results li',function(e) {
     $('.tunes_list li, #youtube_search_results li').removeClass('selected_tune');
@@ -356,6 +393,48 @@ $(function () {
       $('#ok_tune').text('Use selected video');
     }
   });
+
+
+  var sleep = {
+    prevent: function() {
+      if (!this._video) {
+        this._init();
+      }
+
+      this._video.setAttribute('loop', 'loop');
+      this._video.play();
+    },
+    allow: function() {
+      if (!this._video) {
+        return;
+      }
+
+      this._video.removeAttribute('loop');
+      this._video.pause();
+    },
+    _init: function() {
+      this._video = document.createElement('video');
+      this._video.setAttribute('width', '10');
+      this._video.setAttribute('height', '10');
+      this._video.style.position = 'absolute';
+      this._video.style.top = '-10px';
+      this._video.style.left = '-10px';
+
+      var source_mp4 = document.createElement('source');
+      source_mp4.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.mp4');
+      source_mp4.setAttribute('type', 'video/mp4');
+      this._video.appendChild(source_mp4);
+
+      var source_ogg = document.createElement('source');
+      source_ogg.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.ogv');
+      source_ogg.setAttribute('type', 'video/ogg');
+      this._video.appendChild(source_ogg);
+
+      document.body.appendChild(this._video);
+    },
+    _video: null
+  };
+  sleep.prevent();
 });
 
 $('#site_container').css('opacity', 0);
