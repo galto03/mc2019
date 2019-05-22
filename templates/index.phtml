@@ -33,6 +33,18 @@
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-alarm_on" viewBox="0 0 32 32">
+            <title>alarm_on</title>
+            <path d="M13.688 20.028l7.832-7.907 1.716 1.716-9.548 9.548-5.072-5.072 1.641-1.641zM16 28.755c6.191 0 11.114-4.998 11.114-11.189s-4.923-11.114-11.114-11.114-11.114 4.923-11.114 11.114 4.923 11.189 11.114 11.189zM16 3.245c7.907 0 14.322 6.415 14.322 14.322s-6.415 14.322-14.322 14.322-14.322-6.415-14.322-14.322 6.415-14.322 14.322-14.322zM9.436 2.275l-7.31 6.117-2.014-2.387 7.31-6.117zM31.888 6.005l-2.014 2.462-7.31-6.191 2.014-2.387z"></path>
+        </symbol>
+        <symbol id="icon-snooze" viewBox="0 0 32 32">
+            <title>snooze</title>
+            <path d="M11.226 14.434v-3.207h9.548v2.835l-5.744 6.713h5.744v3.207h-9.548v-2.909l5.744-6.639h-5.744zM16 28.755c6.191 0 11.114-4.998 11.114-11.189s-4.923-11.114-11.114-11.114-11.114 4.923-11.114 11.114 4.923 11.189 11.114 11.189zM16 3.245c7.907 0 14.322 6.415 14.322 14.322s-6.415 14.322-14.322 14.322-14.322-6.415-14.322-14.322 6.415-14.322 14.322-14.322zM31.888 6.005l-2.014 2.462-7.31-6.191 2.014-2.387zM9.436 2.275l-7.31 6.117-2.014-2.387 7.31-6.117z"></path>
+        </symbol>
+        <symbol id="icon-pause" viewBox="0 0 32 32">
+            <title>pause</title>
+            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z"></path>
+        </symbol>
         <symbol id="icon-user" viewBox="0 0 32 32">
             <title>user</title>
             <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
@@ -99,12 +111,12 @@
         <title>youtube</title>
         <path d="M31.681 9.6c0 0-0.313-2.206-1.275-3.175-1.219-1.275-2.581-1.281-3.206-1.356-4.475-0.325-11.194-0.325-11.194-0.325h-0.012c0 0-6.719 0-11.194 0.325-0.625 0.075-1.987 0.081-3.206 1.356-0.963 0.969-1.269 3.175-1.269 3.175s-0.319 2.588-0.319 5.181v2.425c0 2.587 0.319 5.181 0.319 5.181s0.313 2.206 1.269 3.175c1.219 1.275 2.819 1.231 3.531 1.369 2.563 0.244 10.881 0.319 10.881 0.319s6.725-0.012 11.2-0.331c0.625-0.075 1.988-0.081 3.206-1.356 0.962-0.969 1.275-3.175 1.275-3.175s0.319-2.587 0.319-5.181v-2.425c-0.006-2.588-0.325-5.181-0.325-5.181zM12.694 20.15v-8.994l8.644 4.513-8.644 4.481z"></path>
     </symbol>
-</defs>
+    </defs>
 </svg>
 
 
 <div id="site_container">
-
+    <?php if(!$data['isMobile']): ?>
     <div id="birds_container env">
         <div class="bird-container bird-container--one env">
             <div class="bird bird--one"></div>
@@ -120,6 +132,9 @@
         </div>
 
     </div>
+    <?php endif; ?>
+
+
     <div id="shooting_stars_container" class="env">
         <div class="shooting_star"></div>
     </div>
@@ -129,12 +144,14 @@
         <div class="twinkling"></div>
     </div>
 
+    <?php if(!$data['isMobile']): ?>
     <div id="cloud_1" class="env cloud"></div>
     <div id="cloud_2" class="env cloud"></div>
     <div id="cloud_3" class="env cloud"></div>
     <div id="cloud_4" class="env cloud"></div>
     <div id="cloud_5" class="env cloud"></div>
     <div id="cloud_6" class="env cloud"></div>
+    <?php endif; ?>
 
     <div class="env hidden sun_and_moon">
         <img id="img_sun" src="img/sun_large.png"/>
@@ -150,10 +167,17 @@
             <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
             <span class="title">Good Morning Beautiful</span>
         </button>
-        <button id="snooze_settings_button" class="hide_on_timepicker setting_container">
-            <svg class="icon icon-bell"><use xlink:href="#icon-bell"></use></svg>
-            Snooze 5 minutes
-
+        <button id="snooze_settings_button" class="hide_on_timepicker setting_container dropdown" style="position: relative">
+<!--                <svg class="icon icon-bell"><use xlink:href="#icon-bell"></use></svg>-->
+                <svg class="icon icon-snooze"><use xlink:href="#icon-snooze"></use></svg>
+                <span class="current_snooze">Snooze in 5 minutes</span>
+                <ul class="dropdown-content">
+                   <li class="selected_snooze">Snooze in 5 minutes</li>
+                   <li>Snooze in 10 minutes</li>
+                   <li>Snooze in 15 minutes</li>
+                   <li>Snooze in 30 minutes</li>
+                   <li>Disable snooze</li>
+                </ul>
         </button>
         <button id="reset_button" class="hide_on_timepicker setting_container">
             <svg class="icon icon-sun"><use xlink:href="#icon-sun"></use></svg>
@@ -175,7 +199,7 @@
 
             </button>
 
-            <button class="wu_tune setting_container" title="Good Morning Beautiful">
+            <button class="wu_tune setting_container" title="Good Morning Beautiful" style="width: 269px;">
                 <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
                 <svg class="icon icon-youtube hidden"><use xlink:href="#icon-youtube"></use></svg>
                 <span class="title">Good Morning Beautiful</span>
@@ -197,28 +221,23 @@
             <iframe id="youtube_preview_iframe" class="iframe-round" allow="autoplay; encrypted-media; fullscreen"
                     src="https://www.youtube.com/embed/Xjs6fnpPWy4?modestbranding=1&autoplay=0"></iframe>
         </div>
-        <div class="wake_up_cont ubaplayer-controls" id="wake_up_tune">
-                <a class="ubaplayer-button" media="media/Good Morning Beautiful.mp3">
-                    <span class="item_title"></span>
-                    <span class="item_desc"></span>
-                </a>
-            <svg class="lds-equalizer" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g transform="rotate(180 50 50)"><rect ng-attr-x="{{12.5 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="38.4959" fill="#d2d2cb" x="7.5" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="-1.0285714285714285s" dur="1.8">
-                        </animate></rect><rect ng-attr-x="{{25 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="56.3807" fill="#4d695d" x="20" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="-1.5428571428571427s" dur="1.8">
-                        </animate></rect><rect ng-attr-x="{{37.5 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="8.07307" fill="#8ea8a1" x="32.5" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="-0.5142857142857142s" dur="1.8">
-                        </animate></rect><rect ng-attr-x="{{50 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="17.6657" fill="#ffffff" x="45" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="-0.7714285714285714s" dur="1.8">
-                        </animate></rect><rect ng-attr-x="{{62.5 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="29.9424" fill="#30b0e0" x="57.5" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="-0.2571428571428571s" dur="1.8">
-                        </animate></rect><rect ng-attr-x="{{75 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="42.1482" fill="#a1cde5" x="70" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="-1.2857142857142858s" dur="1.8">
-                        </animate></rect><rect ng-attr-x="{{87.5 - config.width/2}}" y="22" ng-attr-width="{{config.width}}" height="59.0801" fill="#bfdeee" x="82.5" width="10">
-                        <animate attributeName="height" calcMode="spline" values="40;60;8;40" times="0;0.33;0.66;1" ng-attr-dur="{{config.speed}}" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" repeatCount="indefinite" begin="0s" dur="1.8">
-                        </animate></rect></g></svg>
+        <div class="wake_up_cont" id="wake_up_tune">
+            <div class="icon_cont icon_snooze_cont">
+                <svg class="icon icon-snooze"><use xlink:href="#icon-snooze"></use></svg>
+                <span class="icon_desc">Snooze</span>
+            </div>
+            <div class="icon_cont icon_alarm_on_cont">
+                <svg class="icon icon-alarm_on"><use xlink:href="#icon-alarm_on"></use></svg>
+                <span class="icon_desc">Reset alarm</span>
+            </div>
+            <div class="icon_cont icon_pause_cont">
+                <svg class="icon icon-pause"><use xlink:href="#icon-pause"></use></svg>
+                <svg class="icon icon-play2 hidden"><use xlink:href="#icon-play2"></use></svg>
+                <span class="icon_desc">Pause</span>
+            </div>
         </div>
 
+        <span class="space_to_reset">Press <span>SPACE</span> to reset</span>
     </div>
 
     <div id="ground" class="env hidden"></div>
@@ -240,10 +259,17 @@
                 <li><a href="">More stuff</a></li>
             </ul>
             <div id="login_container">
-                <div id="login_logout_link">(<a href="<?=$data['loginUrl']?>">login</a>)</div>
-                <div id="login_name">
-                    Guest
+                <div id="login_logout_link">
+                    <a href="<?=$data['loginUrl']?>"
+                   onclick="PopupCenter(this.href,'Yo mama',500, 500); return false;">Login with Facebook</a>
                 </div>
+
+
+
+
+
+
+
                 <div id="login_image"><svg class="icon icon-user"><use xlink:href="#icon-user"></div>
             </div>
         </div>

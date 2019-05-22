@@ -81,9 +81,9 @@ a {
 
 /* Wake up mode - Tunes / YouTube container **************************************************************/
 #wake_up_mode_tune_container {
-  height: 174px;
+  height: 220px;
   width: 394px;
-  top: 437px;
+  top: 314px;
   z-index: 35;
   left: calc(50% - 200px);
 
@@ -112,6 +112,68 @@ a {
     border: 0;
     -webkit-border-radius: 20px;
     border-radius: 20px;
+  }
+
+  .space_to_reset {
+    font-size: 23px;
+    position: absolute;
+    bottom: 0;
+    left: 69px;
+    font-weight: bold;
+    color: white;
+  }
+
+  #wake_up_tune {
+    .icon_cont {
+      display: inline-block;
+      width: 65px;
+      height: 65px;
+      position: absolute;
+      cursor: pointer;
+      fill: $blue-1;
+      text-align: center;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .icon_desc {
+        font-size: 14px;
+        display: none;
+        color: $blue-3;
+        //padding-top: 6px;
+
+      }
+
+      &:hover {
+        transform: scale(1.2);
+        fill: $blue-3;
+
+        .icon_desc {
+          display: block;
+        }
+      }
+    }
+
+    .icon_snooze_cont {
+      left: 20px;
+      top: 50px;
+
+      &:hover {
+
+      }
+    }
+    .icon_alarm_on_cont {
+      width: 130px;
+      height: 130px;
+      left: 131px;
+      top: 15px;
+      fill: #1a91d2;
+    }
+    .icon_pause_cont {
+      right: 20px;
+      top: 50px;
+    }
   }
 }
 
@@ -475,11 +537,13 @@ header {
   text-align: center;
   margin: 0 auto;
   width: 100%;
-  z-index: 35;
+  z-index: 40;
   animation: opacity-hide .3s 1 linear forwards;
+  display: none;
   //animation-delay: .31s;
 
   &.night {
+    display: block;
     animation: opacity-show 1s 1 linear forwards;
   }
 }
@@ -511,6 +575,43 @@ header {
       }
     }
   }
+
+  #snooze_settings_button {
+    position: relative;
+    display: inline-block;
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 34px;
+      width: 100%;
+      left: 0;
+      background: #00000040;
+      color: white;
+      font-size: 13px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      cursor: pointer;
+
+      li {
+        padding: 6px;
+
+        &.selected_snooze {
+          background: #00000040;
+        }
+
+        &:hover {
+          background: #0000007a;
+        }
+      }
+    }
+
+    &:hover{
+      .dropdown-content {
+        display: block;
+      }
+    }
+  }
 }
 
 /* Ground **************************************************************/
@@ -519,7 +620,7 @@ header {
   background-size: cover;
   background-repeat: repeat-x;
   background-position: center center;
-  top: 480px;
+  top: 394px;
   bottom: 0;
   position: absolute;
   width: 100%;
@@ -537,7 +638,7 @@ header {
 #underground {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://dev.metaclock.local:80/img/underground.png);
   background-repeat: repeat-x;
-  top: 901px;
+  top: 678px;
   background-size: 600px;
   bottom: 0;
   position: absolute;
@@ -745,7 +846,7 @@ header {
   width: 667px;
   z-index: 20;
   overflow: hidden;
-  top: 265px;
+  top: 192px;
   transition: top 1s;
   filter: drop-shadow(0px 0px 100px #fff);
 
@@ -768,6 +869,8 @@ header {
     //opacity: 0;
     top: 100%;
     transition: top 1s;
+
+
   }
   //
   //#set_alarm_content {
@@ -806,6 +909,9 @@ header {
 
     }
   }
+
+
+
 }
 
 /* Clouds **************************************************************/
@@ -817,7 +923,6 @@ header {
   transition: opacity 2s;
   background-image: url(https://dev.metaclock.local:80/img/cloud.png);
   background-size: 100%;
-
 
   &#cloud_1 {
     width: 200px;
@@ -858,6 +963,13 @@ header {
   &.night {
     opacity: 0;
   }
+
+  //&:hover {
+  //  animation-play-state: paused !important;
+  //
+  //  z-index: 30 !important;
+  //}
+
 }
 
 /* Stars **************************************************************/
@@ -1012,10 +1124,14 @@ header {
 }
 
 @keyframes opacity-hide {
-  from {
+  0% {
     opacity: 1;
   }
-  to {
+  99% {
+    opacity: 0;
+  }
+  100% {
+    display: none;
     opacity: 0;
   }
 }

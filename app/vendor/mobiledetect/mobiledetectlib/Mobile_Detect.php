@@ -1,5 +1,4 @@
 <?php
-namespace App\Controller;
 /**
  * Mobile Detect Library
  * Motto: "Every business should have a mobile detection script to detect mobile readers"

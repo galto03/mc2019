@@ -1,6 +1,6 @@
 "use strict";
 $(function () {
-  var DEBUG_VERBOSITY_LEVEL = 1; // 0 - Nothing, 1 - Some, 2 - All
+  var DEBUG_VERBOSITY_LEVEL = 2; // 0 - Nothing, 1 - Some, 2 - All
 
   // Application configuration
   window.AppSettings = {
@@ -12,6 +12,23 @@ $(function () {
     if (verbosity === DEBUG_VERBOSITY_LEVEL) {
       console.log(msg);
     }
+  };
+
+  window.PopupCenter = function(url, title, w, h) {
+    // Fixes dual-screen position                         Most browsers      Firefox
+    var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+    var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+
+    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+    var systemZoom = width / window.screen.availWidth;
+    var left = (width - w) / 2 / systemZoom + dualScreenLeft;
+    var top = (height - h) / 2 / systemZoom + dualScreenTop;
+    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w / systemZoom + ', height=' + h / systemZoom + ', top=' + top + ', left=' + left);
+
+    // Puts focus on the newWindow
+    if (window.focus) newWindow.focus();
   };
 
   // Custom jquery methods
@@ -34,7 +51,6 @@ $(function () {
   var $env = $('.env');
   var $envWakeUp = $('.env_wakeup'); // TODO
   var $tuneModal = $("#tune_modal");
-  var $wakeUpTitle = $('.wake_up_title');
   var $hoursInput = $('.wut_hours');
   var $minutesInput = $('.wut_minutes');
   var $wutDelimiter = $('.wut_delimiter')[0];
@@ -42,6 +58,11 @@ $(function () {
   var $resetButton = $('#reset_button');
   var $snoozeButton = $('#snooze_settings_button');
   var $alarmFullScreen = $('.icon-enlarge');
+
+  // Alarm window
+  var $pauseContainer = $('.icon_pause_cont');
+  var $snoozeContainer = $('.icon_snooze_cont');
+  var $resetContainer = $('.icon_alarm_on_cont');
 
 
   // Helpers
@@ -214,12 +235,7 @@ $(function () {
 
                         },
                         onClosing: function() {
-                          try {
-                            $("#ubaplayer").ubaPlayer('pause');
-                          } catch(e) {
-                            // Probably ubaPlayer was not defined, no issue
-                            debug(e, 2);
-                          }
+                          playerPause();
                         }
                       });
 
@@ -248,18 +264,40 @@ $(function () {
       }
     }
   };
+  var playerPlay = function($elem) {
+    $("#ubaplayer").ubaPlayer('play', $elem);
+  };
+
+  var playerPause = function() {
+    try {
+      $("#ubaplayer").ubaPlayer('pause');
+    } catch(e) {
+      // throws an exception if not playing...
+    }
+  };
+
+  var playerResume = function() {
+    try {
+      $("#ubaplayer").ubaPlayer('resume');
+    } catch(e) {
+      // throws an exception if not playing...
+    }
+  };
 
   // Events handlers
   var resetView = function() {
-    // todo
+    // todo - ?
+    $('#wake_up_mode_tune_container').hide();
+    $('#set_alarm_container').show();
+    clearTimeout(window.AppSettings.timer);
+    playerPause();
     $env.removeClass('night');
-//      alert()
   };
 
-  var chooseSnooze = function() {
-    // todo
-    alert()
-  }
+  var chooseSnooze = function(elem) {
+    $('.current_snooze').text($(elem.currentTarget).text());
+  };
+
   var refreshView = function () {
     var minutes = parseInt($('.wut_minutes').val());
     var hours = parseInt($('.wut_hours').val());
@@ -289,7 +327,7 @@ $(function () {
     $env.removeClass('hidden');
 
     $('.cloud').each(function () {
-      var value = 50 + Math.floor(Math.random() * 400);
+      var value = Math.random() * (320 - 150) + 150;
       $(this).css('top', value + "px");
     });
 
@@ -316,32 +354,22 @@ $(function () {
       });
     });
   };
-  var setAlarmEvent = function () {
-    var hours = $hoursInput.val();
-    var minutes = $minutesInput.val();
-    var now = new Date();
-    var tomorrow = new Date();
 
+  var setAlarm = function(hours, minutes, secondsDiff) {
     $timeToWakeUp.val(hours + ":" + minutes);
 
     $env.addClass('night');
 
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(hours);
-    tomorrow.setMinutes(minutes);
+    var $wakeUpModeTuneContainer = $('#wake_up_mode_tune_container');
+    $wakeUpModeTuneContainer.hide();
+    playerPause();
 
-    var secondsDiff = (Math.abs(tomorrow - now) / 36e5) * 60 * 60 * 1000;
-
-    secondsDiff = 2 * 1000; // todo - for debugging
-
-
+    clearTimeout(window.AppSettings.timer);
     window.AppSettings.timer = setTimeout(function() {
       $('#set_alarm_container').hide();
-      var $wakeUpModeTuneContainer = $('#wake_up_mode_tune_container');
       $wakeUpModeTuneContainer.find('.wake_up_cont').hide();
 
       var $selectedTuneYT = $($('.tunes_list li, #youtube_search_results li .selected_tune')[0]);
-      console.log($selectedTuneYT);
       var isTune = $selectedTuneYT.parents(".tunes_list").length;
 
       if (isTune) {
@@ -350,15 +378,46 @@ $(function () {
         $tuneCont.find('.item_desc').text($selectedTuneYT.find('.item_desc').text());
         $tuneCont.show();
         $wakeUpModeTuneContainer.hide().removeClass('hidden').delay(2000).fadeIn("slow");
+        setTimeout(function() {
+          playerPlay($('.selected_tune .ubaplayer-button'));
+        }, 2000);
 
       } else {
         $wakeUpModeTuneContainer.hide().removeClass('hidden').delay(2000).fadeIn("slow");
-
       }
+
       $env.removeClass('night');
 
       // TODO - Maybe a quote in the sky
     }, secondsDiff);
+  };
+
+  var calcMsDiffFromNow = function(hours, minutes) {
+    hours = parseInt(hours);
+    minutes = parseInt(minutes);
+
+    var now = new Date();
+    var tomorrow = new Date();
+
+    if ((now.getHours() > hours) || (now.getHours() === hours && now.getMinutes() > minutes)) {
+      tomorrow.setDate(tomorrow.getDate() + 1);
+    }
+
+    tomorrow.setHours(hours);
+    tomorrow.setMinutes(minutes);
+
+    return (Math.abs(tomorrow - now) / 36e5) * 60 * 60 * 1000;
+  };
+
+  var setAlarmEvent = function () {
+    var hours = $hoursInput.val();
+    var minutes = $minutesInput.val();
+
+    var msDiff = calcMsDiffFromNow(hours,minutes);
+
+    msDiff = 2 * 1000; // todo - for debugging
+
+    setAlarm(hours, minutes, msDiff);
 
   };
 
@@ -369,7 +428,8 @@ $(function () {
 
   $hoursInput.on('keyup focus', refreshView);
 
-  $snoozeButton.on('click', chooseSnooze);
+  $snoozeButton.find('li').on('click', chooseSnooze);
+
   $resetButton.on('click', resetView);
 
   $alarmFullScreen.on('click', toggleScreen);
@@ -382,7 +442,7 @@ $(function () {
 
   $('.tab_youtube, .tab_tune').on('click', tabsSwitchEvent);
 
-  $("#ubaplayer").ubaPlayer({codecs: [{name:"MP3", codec: 'audio/mpeg;'}]});
+  $("#ubaplayer").ubaPlayer({codecs: [{name:"MP3", codec: 'audio/mpeg;'}], loop: true});
 
   $(document).on('click','.tunes_list li, #youtube_search_results li',function(e) {
     $('.tunes_list li, #youtube_search_results li').removeClass('selected_tune');
@@ -394,6 +454,41 @@ $(function () {
     }
   });
 
+  $pauseContainer.on('click', function() {
+    var $this = $(this);
+    var $iconPause = $this.find('.icon-pause'),
+        $iconPlay = $this.find('.icon-play2'),
+        $desc = $this.find('.icon_desc');
+    if ($iconPause.hasClass('hidden')) {
+      $iconPlay.addClass('hidden');
+      $iconPause.removeClass('hidden');
+      $desc.text('Play');
+      playerResume();
+    } else { // Pause is shown
+      $iconPlay.removeClass('hidden');
+      $iconPause.addClass('hidden');
+      $desc.text('Pause');
+      playerPause();
+    }
+  });
+
+  $resetContainer.on('click', resetView);
+
+  $snoozeContainer.on('click', function() {
+    var snoozeTextSplit = $('.current_snooze').text().split("Snooze in ");
+    var snoozeTime = snoozeTextSplit.length !== 2 ? 5 : parseInt(snoozeTextSplit[1].split(" minutes")[0]);
+    var now = new Date();
+    var currentHours = now.getHours(), currentMinutes = now.getMinutes();
+    var newMinutes = currentMinutes + snoozeTime >= 60 ? snoozeTime - (60 - currentMinutes) : currentMinutes + snoozeTime;
+    var newHours = currentMinutes + snoozeTime >= 60 ? currentHours + 1 : currentHours;
+
+    newMinutes = newMinutes < 10 ? "0" + newMinutes : newMinutes;
+    newHours = newHours < 10 ? "0" + newHours : newHours;
+
+    var msDiff = calcMsDiffFromNow(newHours, newMinutes);
+
+    setAlarm(newHours, newMinutes, msDiff)
+  });
 
   var sleep = {
     prevent: function() {
@@ -404,14 +499,14 @@ $(function () {
       this._video.setAttribute('loop', 'loop');
       this._video.play();
     },
-    allow: function() {
-      if (!this._video) {
-        return;
-      }
-
-      this._video.removeAttribute('loop');
-      this._video.pause();
-    },
+//    allow: function() {
+//      if (!this._video) {
+//        return;
+//      }
+//
+//      this._video.removeAttribute('loop');
+//      this._video.pause();
+//    },
     _init: function() {
       this._video = document.createElement('video');
       this._video.setAttribute('width', '10');
