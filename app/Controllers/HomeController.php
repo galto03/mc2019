@@ -78,6 +78,7 @@ class HomeController extends Controller
                 }
             }
 
+            $userDetails = null;
             if (!is_null($accessToken)) {
                 // Logged in
                 $fbData["accessToken"]['value'] = $accessToken->getValue();
@@ -110,6 +111,20 @@ class HomeController extends Controller
 
                 $_SESSION['fb_access_token'] = (string) $accessToken;
 
+                // todo - store fb access token to db
+
+                try {
+                    // Returns a `Facebook\FacebookResponse` object
+                    $userDetails = $fb->get('/me?fields=id,name,email', $_SESSION['fb_access_token']);
+                } catch(Facebook\Exceptions\FacebookResponseException $e) {
+                    echo 'Graph returned an error: ' . $e->getMessage();
+                    // todo
+                } catch(Facebook\Exceptions\FacebookSDKException $e) {
+                    echo 'Facebook SDK returned an error: ' . $e->getMessage();
+                    // todo
+                }
+
+
                 // User is logged in with a long-lived access token.
                 // You can redirect them to a members-only page.
 //                    header('Location: https://dev.metaclock.local:80');
@@ -126,8 +141,8 @@ class HomeController extends Controller
         return $this->render('index.phtml',[
             'data' => [
               'loginUrl' => htmlspecialchars($loginUrl),
-              'fbDetails' => $fbData,
-              'isMobile' => $detect->isMobile()
+              'fbDetails' => $userDetails, // todo - from db, not from facebook
+              'isMobile' => $detect->isMobile(),
             ]
         ]);
     }
