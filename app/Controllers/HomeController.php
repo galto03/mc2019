@@ -2,7 +2,9 @@
 namespace App\Controller;
 use App\Models\DB;
 use App\Models\User;
+use App\Models\UserNew;
 use Detection\MobileDetect;
+use Exception;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use MartynBiz\Slim3Controller\Controller;
@@ -42,8 +44,10 @@ class HomeController extends Controller
     }
 
     public function dispatch() {
-        $detect = new MobileDetect();
+//        $detect = new MobileDetect();
         $fbData = null;
+        $userDetails = null;
+        $isLoggedIn = false;
         try {
             if (session_status() === PHP_SESSION_NONE || session_id() === '') {
                 @session_start();
@@ -53,99 +57,69 @@ class HomeController extends Controller
               'app_secret' => 'a8cea2d0d284b8e3cbb64b68322bef33',
               //'default_access_token' => '{access-token}', // optional
             ]);
-            $helper = $fb->getRedirectLoginHelper();
 
             $accessToken = null;
+//            if (isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token'])) {
+//                $accessToken = $_SESSION['fb_access_token'];
+//            } else {
+            $helper = $fb->getJavaScriptHelper();
             try {
                 $accessToken = $helper->getAccessToken();
+                $_SESSION['fb_access_token'] = (string) $accessToken;
             } catch(Facebook\Exceptions\FacebookResponseException $e) {
                 // When Graph returns an error
-                $fbData["errors"][] = "Graph returned an error: " . $e->getMessage();
             } catch(Facebook\Exceptions\FacebookSDKException $e) {
                 // When validation fails or other local issues
-                $fbData["errors"][] = 'Facebook SDK returned an error: ' . $e->getMessage();
             }
+//            }
 
-            if (! isset($accessToken)) {
-                if ($helper->getError()) {
-                    header('HTTP/1.0 401 Unauthorized');
-                    $fbData["errors"][] = "Error: " . $helper->getError();
-                    $fbData["errors"][] = "Error Code: " . $helper->getErrorCode();
-                    $fbData["errors"][] = "Error Reason: " . $helper->getErrorReason();
-                    $fbData["errors"][] = "Error Description: " . $helper->getErrorDescription();
-                } else {
-                    header('HTTP/1.0 400 Bad Request');
-                }
-            }
-
-            $userDetails = null;
-            if (!is_null($accessToken)) {
-                // Logged in
-                $fbData["accessToken"]['value'] = $accessToken->getValue();
-
-                // The OAuth 2.0 client handler helps us manage access tokens
-                $oAuth2Client = $fb->getOAuth2Client();
-
-                // Get the access token metadata from /debug_token
-                $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-                echo '<h3>Metadata</h3>';
-                $fbData["tokenMetadata"] = $tokenMetadata;
-
-                // Validation (these will throw FacebookSDKException's when they fail)
-                $tokenMetadata->validateAppId('323484318322219'); // Replace {app-id} with your app id
-                // If you know the user ID this access token belongs to, you can validate it here
-                //$tokenMetadata->validateUserId('123');
-                $tokenMetadata->validateExpiration();
-
-                if (! $accessToken->isLongLived()) {
-                    // Exchanges a short-lived access token for a long-lived one
-                    try {
-                        $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-                    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-                        $fbData["errors"][] = "<p>Error getting long-lived access token: " . $e->getMessage();
-                    }
-
-
-                    $fbData["accessToken"]['value'] = $accessToken->getValue();
-                }
-
-                $_SESSION['fb_access_token'] = (string) $accessToken;
-
-                // todo - store fb access token to db
-
+            if (isset($accessToken) && !empty($accessToken)) {
                 try {
-                    // Returns a `Facebook\FacebookResponse` object
-                    $userDetails = $fb->get('/me?fields=id,name,email', $_SESSION['fb_access_token']);
+                    $fbDetails = $fb->get('/me?fields=id', $accessToken);
+                    $fbDetails = $fbDetails->getGraphUser()->asArray();
+                    $id = $fbDetails['id'];
+                    $userDetails = UserNew::getUser($id);
+                    $userDetails = empty($userDetails) ? null : $userDetails;
+                    $isLoggedIn = true;
                 } catch(Facebook\Exceptions\FacebookResponseException $e) {
-                    echo 'Graph returned an error: ' . $e->getMessage();
-                    // todo
+                    die($e->getMessage());
                 } catch(Facebook\Exceptions\FacebookSDKException $e) {
-                    echo 'Facebook SDK returned an error: ' . $e->getMessage();
-                    // todo
+                    die($e->getMessage());
+
+                } catch(Exception $e) {
+                    die($e->getMessage());
+
                 }
-
-
-                // User is logged in with a long-lived access token.
-                // You can redirect them to a members-only page.
-//                    header('Location: https://dev.metaclock.local:80');
             }
 
-
-            $permissions = ['email']; // Optional permissions
-            $loginUrl = $helper->getLoginUrl('https://dev.metaclock.local:80', $permissions);
 
         } catch (FacebookSDKException $e) {
             die($e->getMessage());
+
         }
 
         return $this->render('index.phtml',[
             'data' => [
-              'loginUrl' => htmlspecialchars($loginUrl),
-              'fbDetails' => $userDetails, // todo - from db, not from facebook
-              'isMobile' => $detect->isMobile(),
+              'userDetails' => $userDetails,
+              'isLoggedIn' => $isLoggedIn,
+              'isMobile' => false // todo - make it work: $detect->isMobile(),
             ]
         ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function oldMetaClock() {
         require __DIR__ . '/../../old/public_html/index.php';

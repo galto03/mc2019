@@ -26,6 +26,7 @@ $app->group('', function () use ($app) {
 $app->group('/api', function () use ($app) {
     $controller = new App\Controller\HomeController($app);
     $userController = new App\Controller\UserController($app);
+    $userNewController = new App\Controller\UserNewController($app);
     $likeController = new App\Controller\LikeController($app);
 
     $app->post('/complete-login', $userController('completelogin'));
@@ -56,8 +57,10 @@ $app->group('/api', function () use ($app) {
     $app->get('/login-as-user-9622', $userController('loginasuser'));
 
 
-    // New dded
-    $app->get('/login', $userController('login'));
+    // New added
+//    $app->get('/login', $userController('login'));
+    $app->post('/get-user', $userNewController('getuser'));
+
 
 
 });

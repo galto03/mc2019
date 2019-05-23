@@ -38,6 +38,14 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: $blue-1 !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+}
+
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -46,6 +54,8 @@ body {
   overflow: hidden;
   overflow-y: scroll;
   width: 100%;
+  line-height: 1.42857143;
+  font-size: 14px;
 }
 
 @mixin set-invisible() {
@@ -55,11 +65,13 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 img {
   width: 100%;
+  border: 0;
+  vertical-align: middle;
 }
 
 ul {
@@ -78,6 +90,58 @@ a {
   }
 }
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn_cancel {
+  background: #c2c2c2;
+  color: $white-1 !important; // Important because of jquery-clockpicker bad design :/
+
+  &:hover {
+    background: #c7c7c7;
+  }
+}
+
+.btn_ok {
+  background: #1a91d2;
+  color: $white-1 !important; // Important because of jquery-clockpicker bad design :/
+
+  &:hover {
+    background: #187ab0;
+
+  }
+}
 
 /* Wake up mode - Tunes / YouTube container **************************************************************/
 #wake_up_mode_tune_container {
@@ -238,6 +302,42 @@ header {
       display: inline-block;
     }
 
+    .icon-spinner9 {
+      width: 20px;
+      height: 20px;
+      fill: white;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      top: 18px;
+      right: 108px;
+    }
+
+    #logged_in_view {
+      vertical-align: top;
+
+      #login_info {
+        color: $white-1;
+        line-height: 16px;
+        text-align: right;
+        vertical-align: 4px;
+        margin-right: 3px;
+
+        #user_name {
+          display: block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          max-width: 200px;
+        }
+
+        a {
+          text-align: right;
+          color: white;
+          text-decoration: underline;
+        }
+      }
+    }
+
     #login_image {
       width: 32px;
       height: 32px;
@@ -263,7 +363,11 @@ header {
     }
     #login_logout_link {
       //width: 30px;
-      vertical-align: 10px;
+      //vertical-align: 10px;
+      padding-top: 7px;
+      width: 237px;
+      overflow: hidden;
+      text-align: right;
     }
   }
 
@@ -393,12 +497,12 @@ header {
 
     .tab_youtube_content {
       #youtube_search {
-        width: 479px;
-        border: 1px $white-2 solid;
+        width: 482px;
+        border: 1px #dddddd solid;
         border-radius: 9px;
         height: 30px;
-        font-size: $font-size-small;
-        margin: 13px auto 13px 11%;
+        font-size: 16px;
+        margin: 13px auto 13px 9%;
         background-image: url(https://dev.metaclock.local:80/img/search.svg);
         background-repeat: no-repeat;
         background-size: 4%;
@@ -714,6 +818,7 @@ header {
   max-width: 269px;
   margin: 0;
   padding: 0 10px 0 10px;
+  text-align: center;
 
   .icon {
     fill: $blue-1;
@@ -985,7 +1090,7 @@ header {
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 100%;
+    height: 145%; // Not sure why 100% wasn't enough, increased
     display: block;
     z-index: 20;
   }
@@ -1014,6 +1119,8 @@ header {
 }
 
 /* Keyframes **************************************************************/
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
 @keyframes rotation {
   from {
     -webkit-transform: rotate(0deg);
@@ -1369,24 +1476,24 @@ $spriteLoading: 7px;
 //    width: 100%;
 //}
 
-@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
-  .ubaplayer-button {
-    background-position: $spriteLeft -710px;
-    background-size: 20px 250px;
-  }
-
-  .ubaplayer-button:hover {
-    background-position: $spriteLeft -107px;
-  }
-
-  .ubaplayer-button.ubaplayer-playing {
-    background-position: $spriteLeft -144px;
-  }
-
-  .ubaplayer-button.ubaplayer-playing:hover {
-    background-position: $spriteLeft -180px;
-  }
-}
+//@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+//  .ubaplayer-button {
+//    background-position: $spriteLeft -710px;
+//    background-size: 20px 250px;
+//  }
+//
+//  .ubaplayer-button:hover {
+//    background-position: $spriteLeft -107px;
+//  }
+//
+//  .ubaplayer-button.ubaplayer-playing {
+//    background-position: $spriteLeft -144px;
+//  }
+//
+//  .ubaplayer-button.ubaplayer-playing:hover {
+//    background-position: $spriteLeft -180px;
+//  }
+//}
 
 
 /* Birds **************************************************************/

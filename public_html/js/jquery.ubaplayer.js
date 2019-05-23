@@ -107,7 +107,7 @@
             this.isPlaying = false;
         },
 
-        play: function(element) {
+        play: function(element, overrideVolume) {
             this.$tgt = typeof element === 'undefined' ? $('.' + this.options.audioButtonClass).eq(0) : element;
             this.currentTrack = this.getFileNameWithoutExtension(this.$tgt.attr("media"));
             this.isPlaying = true;
@@ -134,7 +134,7 @@
                 this.addListeners(this.audio);
                 this.audio.id = "audio";
                 this.audio.loop = this.options.loop ? "loop" : "";
-                this.audio.volume = this.options.volume;
+                this.audio.volume = typeof overrideVolume !== 'undefined' ? overrideVolume : this.options.volume;
                 this.audio.src = this.currentTrack + this.options.extension;
                 this.audio.play();
             }

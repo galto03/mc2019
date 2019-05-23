@@ -1,5 +1,7 @@
 {
     "require": {
-        "facebook/graph-sdk": "^5.7"
+        "facebook/graph-sdk": "^5.7",
+      "ext-pdo": "*",
+      "ext-fileinfo": "*"
     }
 }

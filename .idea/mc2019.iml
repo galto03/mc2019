@@ -24,6 +24,8 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/dom-crawler" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/facebook/graph-sdk" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

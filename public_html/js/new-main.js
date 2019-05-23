@@ -20,21 +20,156 @@ $(function () {
     }
   };
 
-  window.PopupCenter = function(url, title, w, h) {
-    // Fixes dual-screen position                         Most browsers      Firefox
-    var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
-    var dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+  debug(data);
 
-    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+  // This is called with the results from from FB.getLoginStatus().
+  window.statusChangeCallback = function(response) {
 
-    var systemZoom = width / window.screen.availWidth;
-    var left = (width - w) / 2 / systemZoom + dualScreenLeft;
-    var top = (height - h) / 2 / systemZoom + dualScreenTop;
-    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w / systemZoom + ', height=' + h / systemZoom + ', top=' + top + ', left=' + left);
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
 
-    // Puts focus on the newWindow
-    if (window.focus) newWindow.focus();
+    $('.icon-spinner9').hide();
+    if (response.status === 'connected') {
+
+      // hide the login button
+      // ajax to authenticate the server (send id + configuration, get object with values)
+      // if the user was not exist, the configuration will take place, otherwise we'll take the conf from db
+
+
+      completeFacebookLogin();
+    } else {
+
+      $('#logged_in_view').hide();
+      $('#login_logout_link').show();
+      // The person is not logged into your app or we are unable to tell.
+//      document.getElementById('status').innerHTML = 'Please log into this app.';
+      debug('not logged in')
+    }
+  };
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  window.checkLoginState = function() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  };
+
+  window.fbAsyncInit = function() {
+    FB.init({
+              appId      : '323484318322219',
+              cookie     : true,  // enable cookies to allow the server to access
+                                  // the session
+              xfbml      : true,  // parse social plugins on this page
+              version    : 'v3.3' // The Graph API version to use for the call
+            });
+
+    // Now that we've initialized the JavaScript SDK, we call
+    // FB.getLoginStatus().  This function gets the state of the
+    // person visiting this page and can return one of three states to
+    // the callback you provide.  They can be:
+    //
+    // 1. Logged into your app ('connected')
+    // 2. Logged into Facebook, but not your app ('not_authorized')
+    // 3. Not logged into Facebook and can't tell if they are logged into
+    //    your app or not.
+    //
+    // These three cases are handled in the callback function.
+
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+
+  window.logoutUser = function() {
+    FB.logout(function(response) {
+      debug('loggout')
+      debug(response)
+      $('#logged_in_view').hide();
+      $('#login_logout_link').show();
+      window.data.isLoggedIn = false;
+    });
+  };
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  window.completeFacebookLogin = function() {
+    var getGreeting = function() {
+      var  date = new Date();
+      var hour = date.getHours();
+      if (hour < 12) {
+        return "Good morning";
+      } else {
+        if (hour >= 12 && hour < 17) {
+          return "Good afternoon";
+        } else {
+          if (hour >= 17 && hour < 19) {
+            return "Good evening";
+          } else
+          if (hour >= 19) {
+            return "Good night";
+          }
+        }
+      }
+    };
+
+    if (window.data.isLoggedIn === true) {
+      $('#logged_in_view').show();
+      $('#login_logout_link').hide();
+
+      // todo - take values from window.data OR nothing to do, since they will be parsed automatically on enter
+    } else {
+
+      // User is logged in on FB but not on the app, login to the app
+      FB.api('/me?fields=id,first_name,last_name,email', function(response) {
+        // User is logged in but need to get his configuration
+        $.ajax({
+         method: 'POST',
+         url: "api/get-user",
+         data: {
+           'fb_id': response.id,
+           'configuration': window.AppSettings,
+           'first_name': response.first_name,
+           'last_name': response.last_name,
+           'email': response.email
+         },
+         success: function(result){
+           $('#logged_in_view').show();
+           $('#login_logout_link').hide();
+           $('#user_name').text(getGreeting() + ", " + result.first_name);
+           $('#login_image').find('img').attr('src', 'https://graph.facebook.com/' + result.id + '/picture?type=square');
+           window.data.isLoggedIn = true;
+           console.log('result from server');
+           console.log(result)
+
+           // todo - populate window.data and refresh view
+         },
+         error: function(err) {
+
+           console.log('Error');
+           console.log(err);
+         }
+       });
+      });
+    }
+
+
   };
 
   // Custom jquery methods
@@ -79,6 +214,37 @@ $(function () {
     $minutesInput.val(zeroBasedMinutes);
     $hoursInput.val(zeroBasedHours);
     $timeToWakeUp.val(zeroBasedHours + ":" + zeroBasedMinutes);
+  };
+  var sleep = {
+    prevent: function() {
+      if (!this._video) {
+        this._init();
+      }
+
+      this._video.setAttribute('loop', 'loop');
+      this._video.play();
+    },
+    _init: function() {
+      this._video = document.createElement('video');
+      this._video.setAttribute('width', '10');
+      this._video.setAttribute('height', '10');
+      this._video.style.position = 'absolute';
+      this._video.style.top = '-10px';
+      this._video.style.left = '-10px';
+
+      var source_mp4 = document.createElement('source');
+      source_mp4.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.mp4');
+      source_mp4.setAttribute('type', 'video/mp4');
+      this._video.appendChild(source_mp4);
+
+      var source_ogg = document.createElement('source');
+      source_ogg.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.ogv');
+      source_ogg.setAttribute('type', 'video/ogg');
+      this._video.appendChild(source_ogg);
+
+      document.body.appendChild(this._video);
+    },
+    _video: null
   };
 
   // Init clock picker
@@ -304,7 +470,10 @@ $(function () {
   };
 
   var chooseSnooze = function(elem) {
-    $('.current_snooze').text($(elem.currentTarget).text());
+    var $elm = $(elem.currentTarget);
+    $('.current_snooze').text($elm.text());
+    $snoozeButton.find('li').removeClass('selected_snooze');
+    $elm.addClass('selected_snooze');
   };
 
   var refreshClockView = function () {
@@ -365,7 +534,7 @@ $(function () {
   };
   var setNightView = function(hours, minutes, secondsDiff) {
     window.AppSettings.viewMode = -1;
-
+    sleep.prevent();
     $timeToWakeUp.val(hours + ":" + minutes);
 
     $env.addClass('night');
@@ -517,39 +686,6 @@ $(function () {
 
     setNightView(newHours, newMinutes, msDiff)
   });
-
-  var sleep = {
-    prevent: function() {
-      if (!this._video) {
-        this._init();
-      }
-
-      this._video.setAttribute('loop', 'loop');
-      this._video.play();
-    },
-    _init: function() {
-      this._video = document.createElement('video');
-      this._video.setAttribute('width', '10');
-      this._video.setAttribute('height', '10');
-      this._video.style.position = 'absolute';
-      this._video.style.top = '-10px';
-      this._video.style.left = '-10px';
-
-      var source_mp4 = document.createElement('source');
-      source_mp4.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.mp4');
-      source_mp4.setAttribute('type', 'video/mp4');
-      this._video.appendChild(source_mp4);
-
-      var source_ogg = document.createElement('source');
-      source_ogg.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.ogv');
-      source_ogg.setAttribute('type', 'video/ogg');
-      this._video.appendChild(source_ogg);
-
-      document.body.appendChild(this._video);
-    },
-    _video: null
-  };
-  sleep.prevent();
 });
 
 $('#site_container').css('opacity', 0);
