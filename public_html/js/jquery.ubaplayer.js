@@ -107,6 +107,10 @@
             this.isPlaying = false;
         },
 
+        volume: function(volume) {
+            this.audio.volume = volume;
+        },
+
         play: function(element, overrideVolume) {
             this.$tgt = typeof element === 'undefined' ? $('.' + this.options.audioButtonClass).eq(0) : element;
             this.currentTrack = this.getFileNameWithoutExtension(this.$tgt.attr("media"));

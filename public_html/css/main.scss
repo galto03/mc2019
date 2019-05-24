@@ -146,21 +146,22 @@ button, input {
 /* Wake up mode - Tunes / YouTube container **************************************************************/
 #wake_up_mode_tune_container {
   height: 220px;
-  width: 394px;
+  width: 450px;
   top: 314px;
   z-index: 35;
-  left: calc(50% - 200px);
+  left: calc(50% - 220px);
 
-  .div-round {
+  .youtube_iframe_container {
     overflow: hidden;
     position: absolute;
     border-radius: 20px;
-    width: 77%;
-    height: 81%;
-    left: 12%;
+    width: 57%;
+    height: 68%;
+    left: 22%;
+    top: 27%;
   }
 
-  .div-round::before {
+  .youtube_iframe_container::before {
     display: block;
     content: "";
   }
@@ -180,64 +181,61 @@ button, input {
   }
 
   .space_to_reset {
+    text-shadow: 0 0 5px #73beea;
     font-size: 23px;
     position: absolute;
-    bottom: 0;
-    left: 74px;
+    top: 9px;
+    left: 101px;
     font-weight: bold;
-    color: white;
+    color: #ffffff;
+  }
+
+  .icon_snooze_cont {
+    left: 10px;
+    top: 100px;
+  }
+  .icon_share_cont {
+    right: 10px;
+    top: 100px;
+  }
+
+  .icon_cont {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    cursor: pointer;
+    fill: $blue-1;
+    text-align: center;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    .icon_desc {
+      font-size: 14px;
+      display: none;
+      color: $blue-3;
+      //padding-top: 6px;
+
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      fill: $blue-3;
+
+      .icon_desc {
+        display: block;
+      }
+    }
   }
 
   #wake_up_tune {
-    .icon_cont {
-      display: inline-block;
-      width: 65px;
-      height: 65px;
-      position: absolute;
-      cursor: pointer;
-      fill: $blue-1;
-      text-align: center;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-
-      .icon_desc {
-        font-size: 14px;
-        display: none;
-        color: $blue-3;
-        //padding-top: 6px;
-
-      }
-
-      &:hover {
-        transform: scale(1.2);
-        fill: $blue-3;
-
-        .icon_desc {
-          display: block;
-        }
-      }
-    }
-
-    .icon_snooze_cont {
-      left: 20px;
-      top: 50px;
-
-      &:hover {
-
-      }
-    }
     .icon_alarm_on_cont {
-      width: 130px;
-      height: 130px;
-      left: 131px;
-      top: 15px;
+      width: 150px;
+      height: 150px;
+      left: 34%;
+      top: 20%;
       fill: #1a91d2;
-    }
-    .icon_pause_cont {
-      right: 20px;
-      top: 50px;
     }
   }
 }
