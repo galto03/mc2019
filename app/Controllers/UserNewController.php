@@ -14,7 +14,7 @@ class UserNewController extends Controller
         $firstName = $params['first_name'];
         $lastName = $params['last_name'];
         $email = $params['email'];
-        $configuration = $params['configuration'];
+        $configuration = array_key_exists('configuration', $params) ? $params['configuration'] : [];
         $results = null;
 
         try {
@@ -27,7 +27,7 @@ class UserNewController extends Controller
         }
 
         return $this->response->withJson([
-          'AppSettings' => $configuration,
+          'configuration' => $configuration,
           'first_name' => $firstName,
           'last_name' => $lastName,
           'email' => $email,

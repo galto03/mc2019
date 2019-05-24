@@ -2,9 +2,10 @@
 $(function () {
   var IS_PROD = false;
 
-  window.originalDocumentTitle = document.title; // Used after wake up
   // Application configuration
   window.App = {
+    url: IS_PROD ? 'https://www.metaclock.com' : 'https://dev.metaclock.local:80',
+    documentTitle: null,
     timer: null,
     titleTimer: null,
     initialView: {},
@@ -19,8 +20,11 @@ $(function () {
      */
     viewMode: 0,
     configuration: {},
-    debug: function(msg) {
+    debug: function(msg, msg2) {
       console.log(msg);
+      if (typeof msg2 !== 'undefined') {
+        console.log(msg2);
+      }
     },
 
     dom: {
@@ -56,7 +60,7 @@ $(function () {
 
     viewControl: {
       setHomeView: function() {
-        window.App.viewMode = 0;
+        App.viewMode = 0;
         // todo - ?
 
         App.utils.clearTimers();
@@ -74,10 +78,10 @@ $(function () {
         var wakeupTime = wakeupTimeObj.getSeconds() + wakeupTimeObj.getMinutes() * 60 + wakeupTimeObj.getHours() * 60 * 60;
         wakeupTime *= 1000;
 
-        window.App.viewMode = -1;
+        App.viewMode = -1;
 
         App.utils.clearTimers();
-        window.App.titleTimer = setInterval(function() {
+        App.titleTimer = setInterval(function() {
           var time = App.utils.calcMsDiffFromNow(App.dom.$hoursInput.val(),App.dom.$minutesInput.val());
           var hours = time.getHours();
           var minutes = time.getMinutes();
@@ -106,12 +110,12 @@ $(function () {
             this._video.style.left = '-10px';
 
             var source_mp4 = document.createElement('source');
-            source_mp4.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.mp4');
+            source_mp4.setAttribute('src', App.url + '/muted-blank.mp4');
             source_mp4.setAttribute('type', 'video/mp4');
             this._video.appendChild(source_mp4);
 
             var source_ogg = document.createElement('source');
-            source_ogg.setAttribute('src', 'https://dev.metaclock.local:80/muted-blank.ogv');
+            source_ogg.setAttribute('src', App.url + '/muted-blank.ogv');
             source_ogg.setAttribute('type', 'video/ogg');
             this._video.appendChild(source_ogg);
 
@@ -130,7 +134,7 @@ $(function () {
         App.dom.$document.off('keypress.alarm');
         App.dom.$window.off('');
 
-        window.App.timer = setTimeout(function() {
+        App.timer = setTimeout(function() {
           App.viewControl.setWakingUpView();
         }, wakeupTime);
 
@@ -139,7 +143,7 @@ $(function () {
         });
       },
       setWakingUpView: function() {
-        window.App.viewMode = 1;
+        App.viewMode = 1;
 
         App.dom.$document.off('keypress.alarm');
         App.dom.$window.off('beforeunload');
@@ -152,7 +156,7 @@ $(function () {
         App.dom.$wakeUpModeTuneContainer.hide().removeClass('hidden');
 
         App.dom.$document.on('keypress.alarm', function(e) {
-          if ((e.keyCode === 0 || e.keyCode === 32) && window.App.viewMode === 1) {
+          if ((e.keyCode === 0 || e.keyCode === 32) && App.viewMode === 1) {
             e.preventDefault();
 
             App.viewControl.setHomeView();
@@ -160,7 +164,7 @@ $(function () {
         });
 
         setTimeout(function() {
-        if (window.App.viewMode === 0) {
+        if (App.viewMode === 0) {
           return;
         }
 
@@ -179,7 +183,8 @@ $(function () {
           var $selectedYouTube = $('#youtube_search_results li.selected_tune');
           var videoId = $selectedYouTube.attr('videoId');
           if (videoId) {
-            $('#youtube_preview_iframe').attr('src', "https://www.youtube.com/embed/" + videoId + "?modestbranding=1&autoplay=1&loop=1");
+//            App.alarmView.youtubePlayer.loadPlaylist({list: videoId, index: 1});
+            App.alarmView.youtubePlayer.loadVideoById(videoId);
           }
 
           var $ytCont = App.dom.$wakeUpModeTuneContainer.find('#wake_up_youtube_video');
@@ -311,7 +316,7 @@ $(function () {
       fbShareEvent: function() {
           FB.ui({
             method: 'share',
-            href: 'https://dev.metaclock.local:80',
+            href: App.url,
             hashtag: "#metaclock"
 
           }, function(response){});
@@ -375,9 +380,9 @@ $(function () {
     return retDate;
   },
       clearTimers: function() {
-        clearTimeout(window.App.timer);
-        clearInterval(window.App.titleTimer);
-        document.title = window.originalDocumentTitle;
+        clearTimeout(App.timer);
+        clearInterval(App.titleTimer);
+        document.title = App.documentTitle;
       }
     },
 
@@ -391,14 +396,47 @@ $(function () {
       };
 
       var initYouTube = function() {
-        return; //todo!!!
-        App.alarmView.youtubePlayer = new YT.Player('youtube_preview_iframe', {
-          events: {
-            'onReady': function(event) {
-              event.target.playVideo();
-            }
-          }
-        });
+        window.onYouTubeIframeAPIReady = function() {
+            App.alarmView.youtubePlayer = new YT.Player('youtube_preview_iframe', {
+              height: '100%',
+              width: '100%',
+              loop: 1,
+              videoId: 'eTu5bZKpTkI',
+              playerVars: {
+                playlist: 'eTu5bZKpTkI', // debug: eTNN8MtY4Io
+                wmode:'opaque',
+                enablejsapi: true,
+                autoplay: 1,
+                controls: 1,
+                showinfo: 1,
+                modestbranding: 0, // Hide the Youtube Logo
+                loop: 1,
+                fs: 1,
+                cc_load_policy: 1,
+                autohide: 0,
+                rel: 0
+              },
+              events: {
+                'onReady': function(event) {
+                  event.target.setVolume(100);
+                },
+                'onStateChange': function(event) {
+                  if (event.data === YT.PlayerState.ENDED) {
+                    App.alarmView.youtubePlayer.seekTo(0);
+                    App.alarmView.youtubePlayer.playVideo();
+                  }
+                }
+              }
+            });
+        };
+
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
       };
 
       var initFacebookIntegration = function() {
@@ -481,7 +519,7 @@ $(function () {
                 url: "api/login-user",
                 data: {
                  'fb_id': response.id,
-                 'configuration': window.App,
+                 'configuration': App.configuration,
                  'first_name': response.first_name,
                  'last_name': response.last_name,
                  'email': response.email
@@ -656,13 +694,7 @@ $(function () {
               App.dom.$tuneModal.iziModal('close');
             });
 
-            var $youtubeSearchResults = $('#youtube_search_results');
-            $('#youtube_search').on('keyup', function (e) {
-              if (e.keyCode !== 13) {
-                return;
-              }
-
-              var value = $(this).val();
+            var loadYouTubeResults = function(value) {
               gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q": value, "type": "video"}).then(
                 function (response) {
                   var result = response.result.items;
@@ -689,6 +721,22 @@ $(function () {
                   });
                 },
                 function (err) { console.error("Execute error", err); });
+            };
+
+            var $youtubeSearch = $('#youtube_search');
+
+            $('.tab_youtube_content .icon-search').on('click', function() {
+              loadYouTubeResults($youtubeSearch.val());
+            });
+            var $youtubeSearchResults = $('#youtube_search_results');
+
+            $youtubeSearch.on('keyup', function (e) {
+              if (e.keyCode !== 13) {
+                return;
+              }
+
+              var value = $(this).val();
+              loadYouTubeResults(value);
             });
 
           },
@@ -738,15 +786,18 @@ $(function () {
 
     run: function() {
       $('#site_container').css('opacity', 0);
+      App.documentTitle = document.title;
 
       App.debug(window.data);
 
       if (window.data.userInfo !== null) {
-        window.App.configuration = window.data.userInfo.configuration;
+        // User has data from server
+        var configuration = window.data.userInfo.configuration;
+        App.configuration = typeof configuration === "object" ? configuration : {};
       }
 
-      window.App.init();
-      window.App.initEvents();
+      App.init();
+      App.initEvents();
     },
   };
 

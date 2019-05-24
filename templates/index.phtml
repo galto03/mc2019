@@ -27,21 +27,15 @@ $greeting = getGreeting();
     <script src="/js/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
     <script type="text/javascript" src="js/jquery.ubaplayer.js"></script>
+    <script src="js/iziModal.min.js" type="text/javascript"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
 
     <title>MetaClock | 𝗧𝗛𝗘 𝗕𝗘𝗦𝗧 𝗦𝗢𝗖𝗜𝗔𝗟 𝗔𝗟𝗔𝗥𝗠 𝗖𝗟𝗢𝗖𝗞</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js" type="text/javascript"></script>
 
-    <script src="https://apis.google.com/js/api.js"></script>
-    <!--  Optimize with https://icomoon.io/app/  -->
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
 </head>
 <body>
@@ -254,15 +248,16 @@ $greeting = getGreeting();
     <div id="wake_up_mode_tune_container" class="hidden sun_and_moon">
         <span class="space_to_reset">Press <span>SPACE</span> to reset</span>
         <div class="youtube_iframe_container wake_up_cont" id="wake_up_youtube_video">
-            <iframe id="youtube_preview_iframe" class="iframe-round" frameborder="0" allowfullscreen allow="autoplay; encrypted-media; fullscreen"
-                    src="https://www.youtube.com/embed/BONgL61snlM?modestbranding=1&autoplay=1&loop=1"></iframe>
+            <div id="youtube_preview_iframe"></div>
+<!--            <iframe id="youtube_preview_iframe" class="iframe-round" frameborder="0" allow="autoplay; encrypted-media; fullscreen"-->
+<!--                    src="https://www.youtube.com/embed/BONgL61snlM?modestbranding=1&autoplay=1&loop=1"></iframe>-->
         </div>
         <div class="icon_cont icon_snooze_cont">
             <svg class="icon icon-snooze"><use xlink:href="#icon-snooze"></use></svg>
             <span class="icon_desc">Snooze</span>
         </div>
         <div class="icon_cont icon_share_cont">
-            <svg class="icon icon-facebook-with-circle"><use xlink:href="#icon-facebook-with-circle"></use></svg>
+            <svg class="icon icon-facebook-with-circle" style="fill: #3b5998;"><use xlink:href="#icon-facebook-with-circle"></use></svg>
             <span class="icon_desc">Share</span>
         </div>
         <div class="wake_up_cont" id="wake_up_tune">
@@ -307,7 +302,7 @@ $greeting = getGreeting();
                     </div>
                     <div id="login_image">
 <!--                        <svg class="icon icon-user"><use xlink:href="#icon-user"></use></svg>-->
-                        <img src="https://graph.facebook.com/<?=$userId ?  $userId : "" ?>/picture?type=square" alt="Logged in"/>
+                        <img src="<?=$userId ?  "https://graph.facebook.com/" . $userId . "/picture?type=square" : "#" ?>" alt="Logged in"/>
                     </div>
 
                 </div>
@@ -332,12 +327,12 @@ $greeting = getGreeting();
             <div class="selector" style="width: 297px;"></div>
             <a href="#" class="tab active tab_tune" tab="tab_tune">
                 <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
-                <span class="name">MetaClock Tunes</span>
+                <span class="name">Tunes</span>
 
             </a>
             <a href="#" class="tab tab_youtube" tab="tab_youtube">
                 <svg class="icon icon-youtube"><use xlink:href="#icon-youtube"></use></svg>
-                <span class="name">YouTube Video</span>
+                <span class="name">YouTube</span>
             </a>
         </nav>
         <div class="tabs_content">
@@ -427,6 +422,7 @@ $greeting = getGreeting();
                 </li>
                 <li style="display: none" class="tab_content tab_youtube_content">
                     <input id="youtube_search" type="text" placeholder="Search YouTube or paste a link" />
+                    <svg class="icon icon-search"><use xlink:href="#icon-search"></use></svg>
 
                     <ul id="youtube_search_results">
                     </ul>
@@ -443,16 +439,9 @@ $greeting = getGreeting();
     </div>
 </div>
 
-<!--<div id="time_modal" class="ui_modal" style="display: none">-->
-<!--    <div class="modal_content">-->
-<!--        <ul>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</div>-->
-
 <div id="preloader">
     <img src="https://dev.metaclock.local:80/img/sun_small.png" />
-    <span>Loading MetaClock Alarm Clock</span>
+    <div id="loading_text">Loading MetaClock Alarm Clock</div>
 </div>
 </body>
 <script src="/js/new-main.js"></script>
