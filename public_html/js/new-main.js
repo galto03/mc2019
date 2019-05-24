@@ -486,7 +486,8 @@ debug(result)
     });
   };
   var setNightView = function(hours, minutes, wakeupTimeObj) {
-    var wakeupTime = wakeupTimeObj.getMinutes() * 60 + wakeupTimeObj.getHours() * 60 * 60;
+    var wakeupTime = wakeupTimeObj.getSeconds() + wakeupTimeObj.getMinutes() * 60 + wakeupTimeObj.getHours() * 60 * 60;
+    wakeupTime *= 1000;
 
     window.App.viewMode = -1;
 
