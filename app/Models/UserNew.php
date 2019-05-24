@@ -8,11 +8,11 @@
 namespace App\Models;
 
 
+use App\Controller\UtilsNew;
 use Exception;
-use PDO;
-use RKA\Session;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Facebook\Exceptions\FacebookSDKException;
+use Facebook\Facebook;
+use Facebook\Facebook\Exceptions\FacebookResponseException;
 
 class UserNew extends Model
 {
@@ -22,7 +22,7 @@ class UserNew extends Model
           ':fname' => $firstName,
           ':lname' => $lastName,
           ':email' => $email,
-          ':configuration' => $configuration,
+          ':configuration' => json_encode($configuration),
         ];
 
         try {
@@ -39,6 +39,11 @@ class UserNew extends Model
         return $bool;
     }
 
+    /**
+     * @param $id
+     *
+     * @return array|null
+     */
     public static function getUser($id) {
         try {
             $sth = DB::instance()->prepare("SELECT * FROM users WHERE fb_id = :id");
@@ -50,5 +55,44 @@ class UserNew extends Model
         } catch (Exception $e) {
             return null;
         }
+    }
+
+    /**
+     * @param Facebook $fb
+     *
+     * @return array|null
+     */
+    public static function getUserInfoUsingAccessToken($fb) {
+        $accessToken = null;
+        $userInfo = null;
+        $helper = $fb->getJavaScriptHelper();
+
+        try {
+            $accessToken = $helper->getAccessToken();
+        } catch (FacebookSDKException $e) {
+            return null;
+        }
+        if (!$accessToken) {
+            return null;
+        }
+
+        try {
+            $fbDetails = $fb->get('/me?fields=id', $accessToken);
+            $fbDetails = $fbDetails->getGraphUser()->asArray();
+        } catch (FacebookSDKException $e) {
+            return null;
+        }
+        $userInfo = self::getUser($fbDetails['id']);
+        $userInfo = empty($userInfo) ? null : $userInfo;
+
+        return $userInfo;
+    }
+
+    public static function saveConfiguration($fb, $configuration) {
+        $userInfo = UserNew::getUserInfoUsingAccessToken($fb);
+        if (!$userInfo) {
+            return false;
+        }
+
     }
 }

@@ -8,7 +8,7 @@ use MartynBiz\Slim3Controller\Controller;
 class UserNewController extends Controller
 {
 
-    public function getUser() {
+    public function loginUser() {
         $params = $this->request->getParsedBody();
         $id = $params['fb_id'];
         $firstName = $params['first_name'];
@@ -18,9 +18,7 @@ class UserNewController extends Controller
         $results = null;
 
         try {
-            $userDetails = UserNew::getUser($id);
-
-            if (empty($userDetails)) {
+            if (empty(UserNew::getUser($id))) {
                 // User does not exist, create it with current configuration
                  UserNew::createNew($id, $firstName, $lastName, $email, $configuration);
             }
@@ -29,7 +27,7 @@ class UserNewController extends Controller
         }
 
         return $this->response->withJson([
-          'configuration' => $configuration,
+          'AppSettings' => $configuration,
           'first_name' => $firstName,
           'last_name' => $lastName,
           'email' => $email,
@@ -37,6 +35,31 @@ class UserNewController extends Controller
         ]);
     }
 
+    /**
+     * @return mixed
+     */
+    public function saveConfiguration() {
+        $params = $this->request->getParsedBody();
+        $configuration = $params['configuration'];
+        $fbId = $params['fb_id'];
+        $fb = UtilsNew::getFacebook();
+        if (!$fb) {
+            return $this->response->withJson([
+              'error' => 'Not logged in'
+            ], 500);
+        }
+
+        $confSaved = UserNew::saveConfiguration($fbId, $configuration);
+        if (!$confSaved) {
+            return $this->response->withJson([
+              'error' => 'Could not save configuration'
+            ], 500);
+        }
+        return $this->response->withJson([
+          'success' => true
+        ]);
+
+    }
 
 
 

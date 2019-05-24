@@ -743,7 +743,8 @@ header {
 #underground {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://dev.metaclock.local:80/img/underground.png);
   background-repeat: repeat-x;
-  top: 678px;
+  top: calc(42% + 400px);
+
   background-size: 600px;
   bottom: 0;
   position: absolute;

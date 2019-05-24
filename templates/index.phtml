@@ -1,6 +1,6 @@
 <?php
-$userName = $data['userDetails'] !== null ? $data['userDetails']['first_name'] : "Guest";
-$userId = $data['userDetails'] !== null ? $data['userDetails']['fb_id'] : null;
+$userName = $data['userInfo'] !== null ? $data['userInfo']['first_name'] : "Guest";
+$userId = $data['userInfo'] !== null ? $data['userInfo']['fb_id'] : null;
 
 function getGreeting() {
     $time = date("H");

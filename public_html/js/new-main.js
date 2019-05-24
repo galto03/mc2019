@@ -3,15 +3,20 @@ $(function () {
   var DEBUG_VERBOSITY_LEVEL = 2; // 0 - Nothing, 1 - Some, 2 - All
 
   // Application configuration
-  window.AppSettings = {
+  window.App = {
     timer: null,
     /**
      * 0 = Reset view (initial)
      * -1 = Sleeping
      * 1 = Woke up
      */
-    viewMode: 0
+    viewMode: 0,
+    configuration: {}
   };
+
+  if (window.data.userInfo !== null) {
+    window.App.configuration = window.data.userInfo.configuration;
+  }
 
   var debug = function(msg, verbosity) {
     verbosity = typeof verbosity === 'undefined' ? 2 : verbosity;
@@ -22,38 +27,19 @@ $(function () {
 
   debug(data);
 
-  // This is called with the results from from FB.getLoginStatus().
   window.statusChangeCallback = function(response) {
-
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-
     $('.icon-spinner9').hide();
     if (response.status === 'connected') {
-
-      // hide the login button
-      // ajax to authenticate the server (send id + configuration, get object with values)
-      // if the user was not exist, the configuration will take place, otherwise we'll take the conf from db
-
-
       completeFacebookLogin();
     } else {
-
       $('#logged_in_view').hide();
       $('#login_logout_link').show();
-      // The person is not logged into your app or we are unable to tell.
-//      document.getElementById('status').innerHTML = 'Please log into this app.';
-      debug('not logged in')
+
+      window.data.isLoggedIn = false;
+      // todo - refresh view?
     }
   };
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
   window.checkLoginState = function() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
@@ -61,30 +47,10 @@ $(function () {
   };
 
   window.fbAsyncInit = function() {
-    FB.init({
-              appId      : '323484318322219',
-              cookie     : true,  // enable cookies to allow the server to access
-                                  // the session
-              xfbml      : true,  // parse social plugins on this page
-              version    : 'v3.3' // The Graph API version to use for the call
-            });
-
-    // Now that we've initialized the JavaScript SDK, we call
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-
+    FB.init({appId:'323484318322219', cookie:true, xfbml:true, version:'v3.3'});
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
-
   };
 
   // Load the SDK asynchronously
@@ -96,7 +62,6 @@ $(function () {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-
   window.logoutUser = function() {
     FB.logout(function(response) {
       debug('loggout')
@@ -107,8 +72,6 @@ $(function () {
     });
   };
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
   window.completeFacebookLogin = function() {
     var getGreeting = function() {
       var  date = new Date();
@@ -133,18 +96,16 @@ $(function () {
       $('#logged_in_view').show();
       $('#login_logout_link').hide();
 
-      // todo - take values from window.data OR nothing to do, since they will be parsed automatically on enter
+      // todo - refresh view ?
     } else {
-
-      // User is logged in on FB but not on the app, login to the app
       FB.api('/me?fields=id,first_name,last_name,email', function(response) {
         // User is logged in but need to get his configuration
         $.ajax({
          method: 'POST',
-         url: "api/get-user",
+         url: "api/login-user",
          data: {
            'fb_id': response.id,
-           'configuration': window.AppSettings,
+           'configuration': window.App,
            'first_name': response.first_name,
            'last_name': response.last_name,
            'email': response.email
@@ -155,21 +116,17 @@ $(function () {
            $('#user_name').text(getGreeting() + ", " + result.first_name);
            $('#login_image').find('img').attr('src', 'https://graph.facebook.com/' + result.id + '/picture?type=square');
            window.data.isLoggedIn = true;
-           console.log('result from server');
-           console.log(result)
-
-           // todo - populate window.data and refresh view
+           window.data.userInfo = result.configuration; // todo - ? laasot seder
+debug('shshs')
+debug(result)
+           // todo - refresh view?
          },
          error: function(err) {
-
-           console.log('Error');
            console.log(err);
          }
        });
       });
     }
-
-
   };
 
   // Custom jquery methods
@@ -205,7 +162,6 @@ $(function () {
   var $pauseContainer = $('.icon_pause_cont');
   var $snoozeContainer = $('.icon_snooze_cont');
   var $resetContainer = $('.icon_alarm_on_cont');
-
 
   // Helpers
   var updateDomTime = function(e) {
@@ -322,95 +278,95 @@ $(function () {
 
   // Modals
   $tuneModal.iziModal({
-                        title: 'Select a tune',
-                        subtitle: 'You can select any tune, YouTube video or upload MP3',
-                        headerColor: '#1a91d2',
-                        width: 600,
-                        onOpening: function () {
+    title: 'Select a tune',
+    subtitle: 'You can select any tune, YouTube video or upload MP3',
+    headerColor: '#1a91d2',
+    width: 600,
+    onOpening: function () {
 
-                          var $tabs = $('.tabs');
-                          if ($tabs.data('inited')) {
-                            return;
-                          }
+      var $tabs = $('.tabs');
+      if ($tabs.data('inited')) {
+        return;
+      }
 
-                          $tabs.data('inited', true);
+      $tabs.data('inited', true);
 
-                          $tabs.on("click", "a", function (e) {
+      $tabs.on("click", "a", function (e) {
 
-                            e.preventDefault();
-                            $('.tabs a').removeClass("active");
-                            $(this).addClass('active');
-                            var activeWidth = $(this).innerWidth();
-                            var itemPos = $(this).position();
-                            $(".selector").css({"left": itemPos.left + "px", "width": activeWidth + "px"});
-                          });
+        e.preventDefault();
+        $('.tabs a').removeClass("active");
+        $(this).addClass('active');
+        var activeWidth = $(this).innerWidth();
+        var itemPos = $(this).position();
+        $(".selector").css({"left": itemPos.left + "px", "width": activeWidth + "px"});
+      });
 
-                          $('#ok_tune').on('click', function () {
-                            var $selected = $($tuneModal.find('.selected_tune')[0]);
-                            var $wakeUpTune = $('.wu_tune');
-                            var value = $.trim($selected.find('.item_title').text());
-                            var $iconMusic = $wakeUpTune.find('.icon-music');
-                            var $iconYoutube = $wakeUpTune.find('.icon-youtube');
+      $('#ok_tune').on('click', function () {
+        var $selected = $($tuneModal.find('.selected_tune')[0]);
+        var $wakeUpTune = $('.wu_tune');
+        var value = $.trim($selected.find('.item_title').text());
+        var $iconMusic = $wakeUpTune.find('.icon-music');
+        var $iconYoutube = $wakeUpTune.find('.icon-youtube');
 
-                            $wakeUpTune.find('.title').text(value);
-                            $wakeUpTune.attr('title', value);
+        $wakeUpTune.find('.title').text(value);
+        $wakeUpTune.attr('title', value);
 
-                            if ($selected.parents('#youtube_search_results').length) {
-                              $iconMusic.addClass('hidden');
-                              $iconYoutube.removeClass('hidden');
-                            } else {
-                              $iconYoutube.addClass('hidden');
-                              $iconMusic.removeClass('hidden');
-                            }
+        if ($selected.parents('#youtube_search_results').length) {
+          $iconMusic.addClass('hidden');
+          $iconYoutube.removeClass('hidden');
+        } else {
+          $iconYoutube.addClass('hidden');
+          $iconMusic.removeClass('hidden');
+        }
 
-                            $tuneModal.iziModal('close');
-                          });
+        $tuneModal.iziModal('close');
+      });
 
-                          $('#cancel_tune').on('click', function () {
-                            // TODO - change back to the previously selected tune
-                            $tuneModal.iziModal('close');
-                          });
+      $('#cancel_tune').on('click', function () {
+        // TODO - change back to the previously selected tune
+        $tuneModal.iziModal('close');
+      });
 
-                          var $youtubeSearchResults = $('#youtube_search_results');
-                          $('#youtube_search').on('keyup', function (e) {
-                            if (e.keyCode !== 13) {
-                              return;
-                            }
+      var $youtubeSearchResults = $('#youtube_search_results');
+      $('#youtube_search').on('keyup', function (e) {
+        if (e.keyCode !== 13) {
+          return;
+        }
 
-                            var value = $(this).val();
-                            gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q": value, "type": "video"}).then(
-                              function (response) {
-                                var result = response.result.items;
-                                $youtubeSearchResults.html("");
+        var value = $(this).val();
+        gapi.client.youtube.search.list({"part": "snippet", "maxResults": 25, "q": value, "type": "video"}).then(
+          function (response) {
+            var result = response.result.items;
+            $youtubeSearchResults.html("");
 
-                                result.forEach(function (item) {
-                                  var videoId = item.id.videoId,
-                                    desc = item.snippet.description,
-                                    image = item.snippet.thumbnails.default.url,
-                                    title = item.snippet.title;
+            result.forEach(function (item) {
+              var videoId = item.id.videoId,
+                desc = item.snippet.description,
+                image = item.snippet.thumbnails.default.url,
+                title = item.snippet.title;
 
-                                  $youtubeSearchResults.append("<li videoId=\"" + videoId + "\"><div class=\"youtube_image\"><img src=\"" + image + "\"></div>" +
-                                                                 "<div class=\"youtube_content\">" +
-                                                                 "<span class='item_title'>" + title + "</span>" +
-                                                                 "<span class='item_desc'>" + (desc ? desc : "&nbsp;") + "</span>" +
-                                                                 "</div><a title='Watch on YouTube' target='blank' href='https://www.youtube" +
-                                                                 ".com/watch?v=" +
-                                                                 videoId +
-                                                                 "'><svg title='Watch on YouTube' " +
-                                                                 "class=\"icon " +
-                                                                 "icon-new-tab hidden\"><use " +
-                                                                 "xlink:href=\"#icon-new-tab\"></use></svg></a>" +
-                                                                 "</li>");
-                                });
-                              },
-                              function (err) { console.error("Execute error", err); });
-                          });
+              $youtubeSearchResults.append("<li videoId=\"" + videoId + "\"><div class=\"youtube_image\"><img src=\"" + image + "\"></div>" +
+                                             "<div class=\"youtube_content\">" +
+                                             "<span class='item_title'>" + title + "</span>" +
+                                             "<span class='item_desc'>" + (desc ? desc : "&nbsp;") + "</span>" +
+                                             "</div><a title='Watch on YouTube' target='blank' href='https://www.youtube" +
+                                             ".com/watch?v=" +
+                                             videoId +
+                                             "'><svg title='Watch on YouTube' " +
+                                             "class=\"icon " +
+                                             "icon-new-tab hidden\"><use " +
+                                             "xlink:href=\"#icon-new-tab\"></use></svg></a>" +
+                                             "</li>");
+            });
+          },
+          function (err) { console.error("Execute error", err); });
+      });
 
-                        },
-                        onClosing: function() {
-                          playerPause();
-                        }
-                      });
+    },
+    onClosing: function() {
+      playerPause();
+    }
+  });
 
   var toggleScreen = function() {
     var elem = document.documentElement;
@@ -444,38 +400,35 @@ $(function () {
   var playerPause = function() {
     try {
       $("#ubaplayer").ubaPlayer('pause');
-    } catch(e) {
-      // throws an exception if not playing...
-    }
+    } catch(e) {}
   };
 
   var playerResume = function() {
     try {
       $("#ubaplayer").ubaPlayer('resume');
-    } catch(e) {
-      // throws an exception if not playing...
-    }
+    } catch(e) {}
   };
 
   // Events handlers
   var resetView = function() {
-    window.AppSettings.viewMode = 0;
+    window.App.viewMode = 0;
     // todo - ?
     $wakeUpModeTuneContainer.hide();
     $setAlarmContainer.show();
-    clearTimeout(window.AppSettings.timer);
+    clearTimeout(window.App.timer);
+
     $(document).off('keypress.alarm');
+    $(window).off('beforeunload.alarm');
+
     playerPause();
     $env.removeClass('night');
   };
-
   var chooseSnooze = function(elem) {
     var $elm = $(elem.currentTarget);
     $('.current_snooze').text($elm.text());
     $snoozeButton.find('li').removeClass('selected_snooze');
     $elm.addClass('selected_snooze');
   };
-
   var refreshClockView = function () {
     var minutes = parseInt($('.wut_minutes').val());
     var hours = parseInt($('.wut_hours').val());
@@ -532,8 +485,25 @@ $(function () {
       });
     });
   };
-  var setNightView = function(hours, minutes, secondsDiff) {
-    window.AppSettings.viewMode = -1;
+  var setNightView = function(hours, minutes, wakeupTimeObj) {
+    var wakeupTime = wakeupTimeObj.getMinutes() * 60 + wakeupTimeObj.getHours() * 60 * 60;
+
+    window.App.viewMode = -1;
+
+    $(window).bind("beforeunload.alarm",function() {
+      return "Leaving this page will cancel your alarm. Are you sure?";
+    });
+
+    setInterval(function() {
+      var time = calcMsDiffFromNow($hoursInput.val(),$minutesInput.val());
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      hours = hours < 10 ? "0" + hours : hours;
+
+      document.title = hours + ":" + minutes + " hours to wake up";
+    }, 1000);
+
     sleep.prevent();
     $timeToWakeUp.val(hours + ":" + minutes);
 
@@ -541,16 +511,19 @@ $(function () {
     $wakeUpModeTuneContainer.hide();
     playerPause();
 
-    clearTimeout(window.AppSettings.timer);
+    clearTimeout(window.App.timer);
     $(document).off('keypress.alarm');
+    $(window).off('beforeunload.alarm');
 
-    window.AppSettings.timer = setTimeout(function() {
+    window.App.timer = setTimeout(function() {
       setWakingUpView();
-    }, secondsDiff);
+    }, wakeupTime);
   };
-
   var setWakingUpView = function() {
-    window.AppSettings.viewMode = 1;
+    window.App.viewMode = 1;
+
+    $(document).off('keypress.alarm');
+    $(window).off('beforeunload.alarm');
 
     $setAlarmContainer.hide();
     $wakeUpModeTuneContainer.find('.wake_up_cont').hide();
@@ -564,16 +537,15 @@ $(function () {
       $tuneCont.show();
 
       setTimeout(function() {
-        if (window.AppSettings.viewMode === 0) {
+        if (window.App.viewMode === 0) {
           return;
         }
         $wakeUpModeTuneContainer.fadeIn("slow");
         playerPlay($('.selected_tune .ubaplayer-button'));
       }, 2000);
 
-      $(document).off('keypress.alarm');
       $(document).on('keypress.alarm', function(e) {
-        if ((e.keyCode === 0 || e.keyCode === 32) && window.AppSettings.viewMode === 1) {
+        if ((e.keyCode === 0 || e.keyCode === 32) && window.App.viewMode === 1) {
           resetView();
           e.preventDefault();
         }
@@ -587,22 +559,37 @@ $(function () {
 
     // TODO - Maybe a quote in the sky
   };
-
   var calcMsDiffFromNow = function(hours, minutes) {
     hours = parseInt(hours);
     minutes = parseInt(minutes);
+    var newHours, newMinutes, delta, retDate;
 
     var now = new Date();
     var tomorrow = new Date();
 
     if ((now.getHours() > hours) || (now.getHours() === hours && now.getMinutes() > minutes)) {
-      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setDate(now.getDate() + 1);
     }
 
     tomorrow.setHours(hours);
     tomorrow.setMinutes(minutes);
+    tomorrow.setSeconds(0);
 
-    return (Math.abs(tomorrow - now) / 36e5) * 60 * 60 * 1000;
+
+    retDate = new Date(tomorrow.getTime());
+    delta = Math.abs(tomorrow - now) / 1000;
+    delta -= Math.floor(delta / 86400) * 86400;
+
+    newHours = Math.floor(delta / 3600) % 24;
+    delta -= newHours * 3600;
+
+    newMinutes = Math.floor(delta / 60) % 60;
+
+    retDate.setHours(newHours);
+    retDate.setMinutes(newMinutes);
+    retDate.setSeconds(0);
+
+    return retDate;
   };
 
   var setAlarmEvent = function () {
@@ -611,7 +598,11 @@ $(function () {
 
     var msDiff = calcMsDiffFromNow(hours,minutes);
 
-    msDiff = 2 * 1000; // todo - for debugging
+    // todo - temp
+    msDiff.setHours(0);
+    msDiff.setMinutes(0);
+    msDiff.setSeconds(4);
+    //todo - temp
 
     setNightView(hours, minutes, msDiff);
 
@@ -671,7 +662,7 @@ $(function () {
   $resetContainer.on('click', resetView);
 
   $snoozeContainer.on('click', function() {
-    window.AppSettings.viewMode = -1;
+    window.App.viewMode = -1;
     var snoozeTextSplit = $('.current_snooze').text().split("Snooze in ");
     var snoozeTime = snoozeTextSplit.length !== 2 ? 5 : parseInt(snoozeTextSplit[1].split(" minutes")[0]);
     var now = new Date();

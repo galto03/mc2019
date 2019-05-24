@@ -3,13 +3,12 @@ namespace App\Controller;
 use App\Models\DB;
 use App\Models\User;
 use App\Models\UserNew;
-use Detection\MobileDetect;
-use Exception;
+use App\Models\UtilsNew;
 use Facebook\Exceptions\FacebookSDKException;
-use Facebook\Facebook;
 use MartynBiz\Slim3Controller\Controller;
-//use Mobile_Detect;
 use PDO;
+
+//use Mobile_Detect;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -22,89 +21,27 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class HomeController extends Controller
 {
 
-    public function beforeDispatch() {
-		// Attention: 6/10 I did some commenting here, not sure about the first method, pretty sure the $settings is unnecessary though because everything comes though ajax anyways
-       // $fbId = User::refreshSessionsAndGetIndexIfPossible();
-
-       // $settings = ($fbId === null) ? [] : User::getData($fbId);
-//       require_once __DIR__ . '/Mobile_Detect.php';
-//       $detect = new Mobile_Detect();
-//       if ($detect->isMobile()) {
-//           return $this->render('index.mobile.phtml');
-//        } else {
-//            return $this->render('index.min.before.phtml',[
-//                'userData' => [],
-//                'initValues' => [
-//                    'people_count' => User::getPeopleCount()
-//                ]
-//            ]);
-//        }
-
-
-    }
 
     public function dispatch() {
-//        $detect = new MobileDetect();
-        $fbData = null;
-        $userDetails = null;
-        $isLoggedIn = false;
+        if (session_status() === PHP_SESSION_NONE || session_id() === '') {
+            @session_start();
+        }
+        $userInfo = null;
         try {
-            if (session_status() === PHP_SESSION_NONE || session_id() === '') {
-                @session_start();
-            }
-            $fb = new Facebook([
-              'app_id' => '323484318322219',
-              'app_secret' => 'a8cea2d0d284b8e3cbb64b68322bef33',
-              //'default_access_token' => '{access-token}', // optional
-            ]);
-
-            $accessToken = null;
-//            if (isset($_SESSION['fb_access_token']) && !empty($_SESSION['fb_access_token'])) {
-//                $accessToken = $_SESSION['fb_access_token'];
-//            } else {
-            $helper = $fb->getJavaScriptHelper();
-            try {
-                $accessToken = $helper->getAccessToken();
-                $_SESSION['fb_access_token'] = (string) $accessToken;
-            } catch(Facebook\Exceptions\FacebookResponseException $e) {
-                // When Graph returns an error
-            } catch(Facebook\Exceptions\FacebookSDKException $e) {
-                // When validation fails or other local issues
-            }
-//            }
-
-            if (isset($accessToken) && !empty($accessToken)) {
-                try {
-                    $fbDetails = $fb->get('/me?fields=id', $accessToken);
-                    $fbDetails = $fbDetails->getGraphUser()->asArray();
-                    $id = $fbDetails['id'];
-                    $userDetails = UserNew::getUser($id);
-                    $userDetails = empty($userDetails) ? null : $userDetails;
-                    $isLoggedIn = true;
-                } catch(Facebook\Exceptions\FacebookResponseException $e) {
-                    die($e->getMessage());
-                } catch(Facebook\Exceptions\FacebookSDKException $e) {
-                    die($e->getMessage());
-
-                } catch(Exception $e) {
-                    die($e->getMessage());
-
-                }
-            }
-
-
+            $fb = UtilsNew::getFacebook();
+            $userInfo = UserNew::getUserInfoUsingAccessToken($fb);
         } catch (FacebookSDKException $e) {
-            die($e->getMessage());
 
         }
 
         return $this->render('index.phtml',[
             'data' => [
-              'userDetails' => $userDetails,
-              'isLoggedIn' => $isLoggedIn,
+              'userInfo' => $userInfo,
+              'isLoggedIn' => !empty($userInfo),
               'isMobile' => false // todo - make it work: $detect->isMobile(),
             ]
         ]);
+
     }
 
 
