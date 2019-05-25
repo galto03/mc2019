@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Models\UserNew;
+use App\Models\UtilsNew;
 use Exception;
 use MartynBiz\Slim3Controller\Controller;
 
@@ -14,20 +15,20 @@ class UserNewController extends Controller
         $firstName = $params['first_name'];
         $lastName = $params['last_name'];
         $email = $params['email'];
-        $configuration = array_key_exists('configuration', $params) ? $params['configuration'] : [];
+        $settings = array_key_exists('settings', $params) ? $params['settings'] : [];
         $results = null;
 
         try {
             if (empty(UserNew::getUser($id))) {
-                // User does not exist, create it with current configuration
-                 UserNew::createNew($id, $firstName, $lastName, $email, $configuration);
+                // User does not exist, create it with current settings
+                 UserNew::createNew($id, $firstName, $lastName, $email, $settings);
             }
         } catch (Exception $e) {
             // todo
         }
 
         return $this->response->withJson([
-          'configuration' => $configuration,
+          'settings' => $settings,
           'first_name' => $firstName,
           'last_name' => $lastName,
           'email' => $email,
@@ -38,9 +39,9 @@ class UserNewController extends Controller
     /**
      * @return mixed
      */
-    public function saveConfiguration() {
+    public function saveSettings() {
         $params = $this->request->getParsedBody();
-        $configuration = $params['configuration'];
+        $settings = $params['settings'];
         $fbId = $params['fb_id'];
         $fb = UtilsNew::getFacebook();
         if (!$fb) {
@@ -49,10 +50,10 @@ class UserNewController extends Controller
             ], 500);
         }
 
-        $confSaved = UserNew::saveConfiguration($fbId, $configuration);
+        $confSaved = UserNew::saveSettings($fbId, $settings);
         if (!$confSaved) {
             return $this->response->withJson([
-              'error' => 'Could not save configuration'
+              'error' => 'Could not save settings'
             ], 500);
         }
         return $this->response->withJson([

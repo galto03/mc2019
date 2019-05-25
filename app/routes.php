@@ -60,7 +60,7 @@ $app->group('/api', function () use ($app) {
     // New added
 //    $app->get('/login', $userController('login'));
     $app->post('/login-user', $userNewController('loginuser'));
-    $app->post('/save-config', $userNewController('saveconfiguration'));
+    $app->post('/save-config', $userNewController('savesettings'));
 
 
 

@@ -348,20 +348,22 @@ header {
 
   #upper_header {
     padding-bottom: 10px;
+
     #logo {
-      width: 160px;
+      width: 180px;
       display: inline-block;
 
     }
 
     #header_links {
       display: inline-block;
+      font-size: 19px;
 
       li {
         display: inline-block;
         padding-left: 10px;
-        padding-right: 10px;
-        vertical-align: -4px;
+        padding-right: 26px;
+        vertical-align: -9px;
       }
     }
   }
@@ -526,6 +528,17 @@ header {
       }
     }
 
+    .tab_tune_content, .tab_youtube_content {
+      .icon-checkmark {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        left: 24px;
+        top: 10px;
+        fill: #f7c826;
+      }
+    }
+
     .tab_tune_content {
 
       .tunes_list {
@@ -541,10 +554,11 @@ header {
           display: block;
           /* line-height: 18px; */
           height: 56px;
-          padding: 0 61px 0 51px;
+          padding: 0 61px 0 79px;
+          position: relative;
 
           span {
-            width: 92%;
+            width: 80%;
           }
 
           .item_title {
@@ -572,13 +586,12 @@ header {
 
     .tab_youtube_content {
       #youtube_search {
-        width: 481px;
+        width: 350px;
         border: 1px #dddddd solid;
         border-radius: 9px;
         height: 30px;
         font-size: 16px;
-        margin: 13px auto 13px 9%;
-        //background-image: url(https://dev.metaclock.local:80/img/search.svg);
+        margin: 13px auto 13px 16%;
         background-repeat: no-repeat;
         background-size: 4%;
         background-position: 5px 5px;
@@ -604,7 +617,8 @@ header {
         li {
           height: 70px;
           border-bottom: 1px #f2f2f2 solid;
-          padding: 0 9% 0 67px;
+          padding: 0 61px 0 79px;
+
           position: relative;
           /* width: 100%; */
 
@@ -631,7 +645,7 @@ header {
               text-overflow: ellipsis;
               overflow: hidden;
               white-space: nowrap;
-              width: 379px;
+              width: 264px;
             }
 
             .item_title {
@@ -648,7 +662,7 @@ header {
           &:hover {
 
             span {
-              width: 320px;
+              width: 220px;
             }
 
           }
@@ -674,12 +688,12 @@ header {
           top: 20px;
           width: 30px;
           height: 30px;
-          right: 58px;
+          right: 64px;
           cursor: pointer;
           fill: $blue-2;
 
           &:hover {
-            fill: $blue-3 !important;
+            //fill: $blue-3 !important;
           }
         }
 
@@ -692,26 +706,26 @@ header {
     }
 
     li.selected_tune {
-      background: $blue-2 !important;
+      background: #f6f6f6 !important;
 
-      .item_title {
-        color: $white-1 !important;
-        font-weight: bold !important;
-      }
+      //.item_title {
+      //  color: $white-1 !important;
+      //  font-weight: bold !important;
+      //}
 
-      .item_desc {
-        color: $white-2 !important;
-      }
+      //.item_desc {
+      //  color: $white-2 !important;
+      //}
 
-      &:hover {
-        background-color: $blue-2 !important;
-      }
+      //&:hover {
+      //  background-color: #d1d1d1 !important;
+      //}
 
       .icon-new-tab {
-        fill: #f2f2f2;
+        //fill: #f2f2f2;
 
         &:hover {
-          fill: #e2e2e2 !important;
+          //fill: #e2e2e2 !important;
         }
       }
     }
@@ -806,7 +820,7 @@ header {
 
 /* Ground **************************************************************/
 #ground {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://dev.metaclock.local:80/img/surface-1.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(/img/surface-1.png);
   background-size: cover;
   background-repeat: repeat-x;
   background-position: center center;
@@ -826,7 +840,7 @@ header {
 
 /* Ground **************************************************************/
 #underground {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://dev.metaclock.local:80/img/underground.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(/img/underground.png);
   background-repeat: repeat-x;
   top: calc(42% + 400px);
 
@@ -920,6 +934,7 @@ header {
     text-overflow: ellipsis;
     overflow: hidden;
     max-width: 204px;
+    //text-shadow: 0px 0px 4px #0000001a;
   }
 
 
@@ -971,6 +986,8 @@ header {
       width: 95px;
       vertical-align: top;
 
+      text-shadow: 0px 0px 4px #0000001a;
+
     }
 
     .wut_delimiter {
@@ -995,6 +1012,16 @@ header {
     text-align: right;
     padding-top: 19px;
 
+    .icon-equalizer {
+      height: 30px;
+      margin-top: 3px;
+    }
+
+    .icon-question {
+      height: 27px;
+      margin-top: 4px;
+    }
+
     .set_alarm_btn {
       color: $set-alarm-text-color;
       padding-top: 6px;
@@ -1016,9 +1043,10 @@ header {
       fill: $white-1;
       padding: 2px 2px 2px 0;
       margin: 5px 9px 5px 0;
-      filter: drop-shadow(0px 0px 10px white);
       cursor: pointer;
       float: left;
+      filter: drop-shadow(0px 0px 4px #0000001a);
+      cursor: pointer;
 
       &:hover {
         transform: scale(1.3);
@@ -1113,7 +1141,7 @@ header {
   z-index: 20;
   opacity: 0.6;
   transition: opacity 2s;
-  background-image: url(https://dev.metaclock.local:80/img/cloud.png);
+  background-image: url(/img/cloud.png);
   background-size: 100%;
 
   &#cloud_1 {
@@ -1182,11 +1210,11 @@ header {
   }
 
   .stars {
-    background: #000 url(https://dev.metaclock.local:80/img/stars.png) repeat top center;
+    background: #000 url(/img/stars.png) repeat top center;
   }
 
   .twinkling {
-    background: transparent url(https://dev.metaclock.local:80/img/twinkling.png) repeat top center;
+    background: transparent url(/img/twinkling.png) repeat top center;
     animation: move-twink-back 200s linear infinite;
   }
 
@@ -1364,10 +1392,10 @@ header {
   text-decoration: none !important;
   color: #777;
   text-transform: uppercase;
-  padding: 10px 20px;
+  padding: 10px;
   display: inline-block;
   position: relative;
-  width: 297px;
+  width: 247px;
   z-index: 1;
   transition-duration: 0.6s;
   text-align: center;
@@ -1402,8 +1430,9 @@ header {
   transition-duration: 0.6s;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-  background: linear-gradient(45deg, #d2c27a 0%, #ffca0e 100%);
-
+  //background: linear-gradient(45deg, #d2c27a 0%, #ffca0e 100%);
+  background: #1991d2c9;
+  
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#05abe0', endColorstr='#8200f4', GradientType=1);
 }
 
@@ -1539,7 +1568,7 @@ $shooting-time: 3000ms;
 //$spriteLeft: 461px;
 //$spriteTopPlay: 20px;
 //$spriteTopPlayHover: -20px;
-$spriteLeft: 447px;
+$spriteLeft: 317px;
 $spriteTopPlay: -148px;
 $spriteTopPlayHover: -222px;
 $spriteTopPlayPlaying: -296px;
@@ -1547,7 +1576,7 @@ $spriteTopPlayPlayingHover: -369px;
 $spriteLoading: 7px;
 
 .ubaplayer-button {
-  background: url(../img/btn.png) no-repeat 447px -148px;
+  background: url(../img/btn.png) no-repeat $spriteLeft -148px;
   display: block;
   cursor: pointer;
   margin: 0;
@@ -1567,36 +1596,19 @@ $spriteLoading: 7px;
   background-position: $spriteLeft $spriteTopPlayPlayingHover;
 }
 
-//.ubaplayer-button.ubaplayer-loading:after,
-//.ubaplayer-button.ubaplayer-loading:hover:after {
-//    background: url("../img/loading.gif") no-repeat $spriteLeft $spriteLoading;
-//    content: " ";
-//    height: 28px;
-//    left: 0;
-//    position: absolute;
-//    text-indent: 0!important;
-//    top: 0;
-//    width: 100%;
-//}
+.ubaplayer-button.ubaplayer-loading:after,
+.ubaplayer-button.ubaplayer-loading:hover:after {
+  background: url("../img/loading.gif") no-repeat $spriteLeft $spriteLoading;
+  content: " ";
+  height: 28px;
+  left: 7px;
+  position: absolute;
+  text-indent: 0 !important;
+  top: 11px;
+  width: 100%;
+}
 
-//@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
-//  .ubaplayer-button {
-//    background-position: $spriteLeft -710px;
-//    background-size: 20px 250px;
-//  }
-//
-//  .ubaplayer-button:hover {
-//    background-position: $spriteLeft -107px;
-//  }
-//
-//  .ubaplayer-button.ubaplayer-playing {
-//    background-position: $spriteLeft -144px;
-//  }
-//
-//  .ubaplayer-button.ubaplayer-playing:hover {
-//    background-position: $spriteLeft -180px;
-//  }
-//}
+
 
 
 /* Birds **************************************************************/
@@ -1628,7 +1640,7 @@ $spriteLoading: 7px;
 }
 
 .bird {
-  background-image: url(https://dev.metaclock.local:80/img/bird-cells.svg);
+  background-image: url(/img/bird-cells.svg);
   background-size: auto 100%;
   width: 88px;
   height: 125px;

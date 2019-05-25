@@ -49,6 +49,10 @@ $greeting = getGreeting();
 <div id="ubaplayer"></div>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+        <symbol id="icon-checkmark" viewBox="0 0 32 32">
+            <title>checkmark</title>
+            <path d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+        </symbol>
         <symbol id="icon-facebook-with-circle" viewBox="0 0 32 32">
             <title>facebook-with-circle</title>
             <path d="M16 0.64c-8.483 0-15.36 6.877-15.36 15.36s6.877 15.36 15.36 15.36 15.36-6.877 15.36-15.36-6.877-15.36-15.36-15.36zM19.638 11.254h-2.309c-0.274 0-0.578 0.36-0.578 0.838v1.667h2.888l-0.437 2.378h-2.451v7.138h-2.725v-7.138h-2.472v-2.378h2.472v-1.398c0-2.006 1.392-3.637 3.302-3.637h2.309v2.53z"></path>
@@ -285,8 +289,6 @@ $greeting = getGreeting();
                 <li><a href="">Blog</a></li>
                 <li><a href="">Privacy Policy</a></li>
                 <li><a href="">Old MetaClock</a></li>
-                <li><a href="">More stuff</a></li>
-                <li><a href="">More stuff</a></li>
             </ul>
             <div id="login_container">
                 <div id="login_logout_link" style="display:none">
@@ -320,11 +322,16 @@ $greeting = getGreeting();
     </header>
 </div>
 
+<div id="settings_modal" class="ui_modal">
+    <div class="modal_content">
+        bla
+    </div>
+</div>
 
 <div id="tune_modal" class="ui_modal">
     <div class="modal_content">
         <nav class="tabs">
-            <div class="selector" style="width: 297px;"></div>
+            <div class="selector" style="width: 247px;"></div>
             <a href="#" class="tab active tab_tune" tab="tab_tune">
                 <svg class="icon icon-music"><use xlink:href="#icon-music"></use></svg>
                 <span class="name">Tunes</span>
@@ -431,7 +438,7 @@ $greeting = getGreeting();
             <div class="controls">
                 <div class="buttons_container">
                     <button id="cancel_tune" type="button" class="btn btn_cancel">Cancel</button>
-                    <button id="ok_tune" type="button" class="btn btn_ok">Use selected tune</button>
+                    <button id="ok_tune" type="button" class="btn btn_ok">Ok</button>
 
                 </div>
             </div>
@@ -440,7 +447,7 @@ $greeting = getGreeting();
 </div>
 
 <div id="preloader">
-    <img src="https://dev.metaclock.local:80/img/sun_small.png" />
+    <img src="img/sun_small.png" />
     <div id="loading_text">Loading MetaClock Alarm Clock</div>
 </div>
 </body>

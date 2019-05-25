@@ -16,18 +16,18 @@ use Facebook\Facebook\Exceptions\FacebookResponseException;
 
 class UserNew extends Model
 {
-    public static function createNew($id, $firstName, $lastName, $email, $configuration) {
+    public static function createNew($id, $firstName, $lastName, $email, $settings) {
         $params = [
           ':fbid' =>  $id,
           ':fname' => $firstName,
           ':lname' => $lastName,
           ':email' => $email,
-          ':configuration' => json_encode($configuration),
+          ':settings' => json_encode($settings),
         ];
 
         try {
-            $query = DB::instance()->prepare("INSERT INTO users(fb_id, first_name, last_name, email, configuration, created) " .
-              "VALUES(:fbid, :fname, :lname, :email, :configuration, CURRENT_TIMESTAMP);");
+            $query = DB::instance()->prepare("INSERT INTO users(fb_id, first_name, last_name, email, settings, created) " .
+              "VALUES(:fbid, :fname, :lname, :email, :settings, CURRENT_TIMESTAMP);");
             $bool = $query->execute($params);
         } catch (Exception $e) {
             // todo
@@ -88,11 +88,12 @@ class UserNew extends Model
         return $userInfo;
     }
 
-    public static function saveConfiguration($fb, $configuration) {
+    public static function saveSettings($fb, $settings) {
         $userInfo = UserNew::getUserInfoUsingAccessToken($fb);
         if (!$userInfo) {
             return false;
         }
+        //todo
 
     }
 }

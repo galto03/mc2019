@@ -2,9 +2,9 @@
 $(function () {
   var IS_PROD = false;
 
-  // Application configuration
+  // Application settings
   window.App = {
-    url: IS_PROD ? 'https://www.metaclock.com' : 'https://dev.metaclock.local:80',
+    url: IS_PROD ? 'https://www.metaclock.com' : 'https://www.metaclock.com:80',
     documentTitle: null,
     timer: null,
     titleTimer: null,
@@ -19,7 +19,7 @@ $(function () {
      * 1 = Woke up
      */
     viewMode: 0,
-    configuration: {},
+    settings: {},
     debug: function(msg, msg2) {
       console.log(msg);
       if (typeof msg2 !== 'undefined') {
@@ -42,8 +42,12 @@ $(function () {
       $wutDelimiter: $('.wut_delimiter')[0],
       $timeToWakeUp: $('#time_to_wake_up'),
 
+      // Alarm controls
+      $settingsBtn: $('.set_alarm_btn_container .icon-equalizer'),
+
       // Modals
       $tuneModal: $("#tune_modal"),
+      $settingsModal: $('#settings_modal'),
       $alarmFullScreen: $('.icon-enlarge'),
       $wakeUpModeTuneContainer: $('#wake_up_mode_tune_container'),
       $setAlarmContainer: $('#set_alarm_container'),
@@ -305,13 +309,19 @@ $(function () {
         App.viewControl.setNightView(hours, minutes, msDiff);
       },
       setSelectedTuneOrVideo: function() {
-        $('.tunes_list li, #youtube_search_results li').removeClass('selected_tune');
-        $(this).addClass('selected_tune');
-        if ($(this).parent('.tunes_list').length) {
-          $('#ok_tune').text('Use selected tune');
-        } else {
-          $('#ok_tune').text('Use selected video');
-        }
+        var $tunesList = $('.tunes_list li, #youtube_search_results li');
+        var $this = $(this);
+
+        $tunesList.find('.icon-checkmark').remove();
+        $tunesList.removeClass('selected_tune');
+        $this.addClass('selected_tune');
+        $this.append('<svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>');
+
+//        if ($(this).parent('.tunes_list').length) {
+//          $('#ok_tune').text('Use selected tune');
+//        } else {
+//          $('#ok_tune').text('Use selected video');
+//        }
       },
       fbShareEvent: function() {
           FB.ui({
@@ -513,13 +523,13 @@ $(function () {
             // todo - refresh view ?
           } else {
             FB.api('/me?fields=id,first_name,last_name,email', function(response) {
-              // User is logged in but need to get his configuration
+              // User is logged in but need to get his settings
               $.ajax({
                 method: 'POST',
                 url: "api/login-user",
                 data: {
                  'fb_id': response.id,
-                 'configuration': App.configuration,
+                 'settings': App.settings,
                  'first_name': response.first_name,
                  'last_name': response.last_name,
                  'email': response.email
@@ -530,11 +540,13 @@ $(function () {
                  $('#user_name').text(getGreeting() + ", " + result.first_name);
                  $('#login_image').find('img').attr('src', 'https://graph.facebook.com/' + result.id + '/picture?type=square');
                  window.data.isLoggedIn = true;
-                 window.data.userInfo = result.configuration; // todo - ? laasot seder
+                 window.data.userInfo = result.settings; // todo - ? laasot seder
                  // todo - refresh view?
                 },
                 error: function(err) {
                  console.log(err);
+                  $loggedInView.hide();
+                  $loginLogoutLink.show();
                 }
               });
             });
@@ -643,12 +655,11 @@ $(function () {
       };
 
       var initTuneModal = function() {
-        // Modals
         App.dom.$tuneModal.iziModal({
           title: 'Select a tune',
           subtitle: 'You can select any tune or a YouTube video',
           headerColor: '#1a91d2',
-          width: 600,
+          width: 499,
           onOpening: function () {
 
             var $tabs = $('.tabs');
@@ -746,7 +757,23 @@ $(function () {
         });
       };
 
+      var initSettingsModal = function() {
+        App.dom.$settingsModal.iziModal({
+          title: 'Settings',
+//          subtitle: '&nbsp;',
+          headerColor: '#1a91d2',
+          width: 600,
+          onOpening: function () {
+
+          },
+          onClosing: function() {
+
+          }
+        });
+      };
+
       initTuneModal();
+      initSettingsModal();
       initPlayer();
       initYouTube();
       initFacebookIntegration();
@@ -782,6 +809,8 @@ $(function () {
       App.dom.$resetContainer.on('click', App.viewControl.setHomeView);
 
       App.dom.$snoozeContainer.on('click', App.handlers.applySnooze);
+
+      App.dom.$settingsBtn.on('click', App.handlers.openModal(App.dom.$settingsModal));
     },
 
     run: function() {
@@ -792,8 +821,8 @@ $(function () {
 
       if (window.data.userInfo !== null) {
         // User has data from server
-        var configuration = window.data.userInfo.configuration;
-        App.configuration = typeof configuration === "object" ? configuration : {};
+        var settings = window.data.userInfo.settings;
+        App.settings = typeof settings === "object" ? settings : {};
       }
 
       App.init();
