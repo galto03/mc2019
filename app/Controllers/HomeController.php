@@ -46,6 +46,17 @@ class HomeController extends Controller
 
 
 
+    public function stats() {
+        $sth = DB::instance()->prepare("SELECT * FROM users_dup");
+        $sth->execute();
+        $res = $sth->fetchAll();
+        return $this->render('index.phtml',[
+          'data' => [
+            'userInfo' => $res,
+          ]
+        ]);
+
+    }
 
 
 

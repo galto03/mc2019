@@ -18,6 +18,8 @@ $app->group('', function () use ($app) {
 
 
     // New added
+    $app->get('/stats', $controller('stats'));
+
 });
 
 

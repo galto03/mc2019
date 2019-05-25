@@ -540,7 +540,8 @@ $(function () {
                  $('#user_name').text(getGreeting() + ", " + result.first_name);
                  $('#login_image').find('img').attr('src', 'https://graph.facebook.com/' + result.id + '/picture?type=square');
                  window.data.isLoggedIn = true;
-                 window.data.userInfo = result.settings; // todo - ? laasot seder
+                 dbg('did an ajax to login');
+//                 window.data.userInfo = result.settings; // todo - ? laasot seder
                  // todo - refresh view?
                 },
                 error: function(err) {
@@ -657,7 +658,7 @@ $(function () {
       var initTuneModal = function() {
         App.dom.$tuneModal.iziModal({
           title: 'Select a tune',
-          subtitle: 'You can select any tune or a YouTube video',
+          subtitle: '&nbsp;',
           headerColor: '#1a91d2',
           width: 499,
           onOpening: function () {
