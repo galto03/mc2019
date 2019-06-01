@@ -75,9 +75,10 @@ $(function () {
         App.dom.$document.off('keypress.alarm');
         App.dom.$window.off('beforeunload');
 
-        App.utils.playerPause();
+        App.utils.stopAllPlayers();
         App.dom.$env.removeClass('night');
       },
+
       setNightView: function(hours, minutes, wakeupTimeObj) {
         var wakeupTime = wakeupTimeObj.getSeconds() + wakeupTimeObj.getMinutes() * 60 + wakeupTimeObj.getHours() * 60 * 60;
         wakeupTime *= 1000;
@@ -133,7 +134,7 @@ $(function () {
 
         App.dom.$env.addClass('night');
         App.dom.$wakeUpModeTuneContainer.hide();
-        App.utils.playerPause();
+        App.utils.stopAllPlayers();
 
         App.dom.$document.off('keypress.alarm');
         App.dom.$window.off('');
@@ -352,10 +353,15 @@ $(function () {
       playerPlay: function($elem) {
         App.dom.$ubaPlayer.ubaPlayer('play', $elem);
       },
-      playerPause: function() {
+      stopAllPlayers: function() {
         try {
           App.dom.$ubaPlayer.ubaPlayer('pause');
         } catch(e) {}
+
+        // Stop a YT video if active
+        if (typeof App.alarmView.youtubePlayer !== 'undefined') {
+          App.alarmView.youtubePlayer.stopVideo()
+        };
       },
       calcMsDiffFromNow: function(hours, minutes) {
     hours = parseInt(hours);
@@ -753,7 +759,7 @@ $(function () {
 
           },
           onClosing: function() {
-            App.utils.playerPause();
+            App.utils.stopAllPlayers();
           }
         });
       };

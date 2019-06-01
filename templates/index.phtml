@@ -348,12 +348,6 @@ $greeting = getGreeting();
             <ul>
                 <li class="tab_content tab_tune_content">
                     <ul class="tunes_list ubaplayer-controls">
-                       <li class="selected_tune">
-                           <a class="ubaplayer-button" media="media/Good Morning Beautiful - Steve Holy.mp3">
-                               <div class="item_title">Good Morning Beautiful</div>
-                               <div class="item_desc">Steve Holy</div>
-                           </a>
-                       </li>
                        <li>
                            <a class="ubaplayer-button" media="media/Good Morning To You.mp3">
                                <div class="item_title">Good Morning to You</div>
@@ -366,6 +360,14 @@ $greeting = getGreeting();
                                <div class="item_desc">SP. Balasubramaniam & Chitra</div>
                            </a>
                        </li>
+                        <li class="selected_tune">
+                            <a class="ubaplayer-button" media="media/Good Morning Beautiful - Steve Holy.mp3">
+                                <div class="item_title">Good Morning Beautiful</div>
+                                <div class="item_desc">Steve Holy</div>
+                            </a>
+                            <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg> <!-- todo: from PHP, if its the
+                            selected tune-->
+                        </li>
                         <li>
                             <a class="ubaplayer-button" media="media/Kuch Kuch Hota Hai - Hyacinth D'Souza.mp3">
                                 <div class="item_title">Kuch Kuch Hota Hai</div>
