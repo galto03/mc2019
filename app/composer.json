@@ -7,7 +7,7 @@
         "facebook/graph-sdk" : "^5.7",
         "dflydev/fig-cookies": "^1.0",
         "martynbiz/slim3-controller": "^0.0.0",
-        "phpmailer/phpmailer": "^5.2",
+        "phpmailer/phpmailer": "^6.5",
         "mobiledetect/mobiledetectlib": "^2.8"
 
     },
